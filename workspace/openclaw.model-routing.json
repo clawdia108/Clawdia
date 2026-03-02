@@ -1,0 +1,86 @@
+{
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434",
+        "apiKey": "ollama",
+        "api": "openai-chat",
+        "models": [
+          {
+            "id": "qwen2.5:7b",
+            "name": "Qwen 2.5 7B Local",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0 },
+            "contextWindow": 32000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "anthropic": {
+        "models": [
+          {
+            "id": "claude-sonnet-4-20250514",
+            "name": "Claude Sonnet 4",
+            "reasoning": true,
+            "input": ["text", "image"],
+            "cost": { "input": 0.003, "output": 0.015 },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "openai": {
+        "models": [
+          {
+            "id": "gpt-4o",
+            "name": "GPT-4o",
+            "reasoning": true,
+            "input": ["text", "image"],
+            "cost": { "input": 0.005, "output": 0.015 },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "gpt-5-mini",
+            "name": "GPT-5-mini",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0.001, "output": 0.003 },
+            "contextWindow": 65536,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "heartbeat": {
+        "every": "30m",
+        "target": "last",
+        "directPolicy": "allow",
+        "activeHours": { "start": "06:00", "end": "23:00" }
+      }
+    },
+    "entries": {
+      "growthlab": { "model": "anthropic/claude-sonnet-4-20250514", "heartbeat": { "model": "ollama/qwen2.5:7b" } },
+      "pipelinepilot": { "model": "anthropic/claude-sonnet-4-20250514", "heartbeat": { "model": "ollama/qwen2.5:7b" } },
+      "inboxforge": { "model": "ollama/qwen2.5:7b" },
+      "calendarcaptain": { "model": "ollama/qwen2.5:7b" },
+      "reviewer": { "model": "ollama/qwen2.5:7b" },
+      "knowledgekeeper": { "model": "ollama/qwen2.5:7b" },
+      "main": { "model": "anthropic/claude-sonnet-4-20250514" }
+    }
+  },
+  "fallback": {
+    "on_rate_limit": ["openai/gpt-5-mini","ollama/qwen2.5:7b"],
+    "on_cost_threshold": ["ollama/qwen2.5:7b"]
+  },
+  "budget": {
+    "monthly_usd": 100,
+    "alerts_at_pct": 80,
+    "daily_spend_limit_usd": 4
+  }
+}
