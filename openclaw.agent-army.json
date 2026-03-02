@@ -1,0 +1,6 @@
+{
+  "agentArmy": {
+    "main": "Bridge",
+    "agents": ["inboxforge", "dealops", "timebox", "growthlab", "reviewer", "knowledgekeeper"]
+  }
+}
