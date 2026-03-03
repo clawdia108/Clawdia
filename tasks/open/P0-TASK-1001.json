@@ -9,6 +9,13 @@
   "updated_at": "2026-03-03T08:20:00+01:00",
   "due_at": "2026-03-03T09:00:00+01:00",
   "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
+  "complexity": "low",
+  "capabilities_required": ["structured_data", "planning"],
+  "model_hint": null,
+  "depends_on": ["TASK-1002"],
+  "output_visibility": "internal",
+  "review_required": false,
+  "user_summary": null,
   "inputs": [
     "WORKBOARD.md",
     "pipedrive/PIPELINE_STATUS.md",

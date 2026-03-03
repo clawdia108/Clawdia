@@ -9,6 +9,13 @@
   "updated_at": "2026-03-03T08:20:00+01:00",
   "due_at": "2026-03-03T09:15:00+01:00",
   "summary": "Refresh aggregate hygiene counts, identify risk categories, and produce non-identifying next-step guidance.",
+  "complexity": "medium",
+  "capabilities_required": ["structured_data", "json", "analysis"],
+  "model_hint": null,
+  "depends_on": [],
+  "output_visibility": "internal",
+  "review_required": true,
+  "user_summary": null,
   "inputs": [
     "WORKBOARD.md",
     "pipedrive/HYGIENE_REPORT.md",

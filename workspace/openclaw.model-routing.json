@@ -109,9 +109,17 @@
       }
     }
   },
+  "task_routing": {
+    "enabled": true,
+    "router_config": "control-plane/model-router.json",
+    "override_agent_defaults": true,
+    "description": "When enabled, task complexity and capabilities_required fields drive model selection via model-router.json. Agent defaults are used only when task has no routing metadata."
+  },
   "fallback": {
     "on_rate_limit": ["openai/gpt-5-mini","ollama/qwen2.5:7b"],
-    "on_cost_threshold": ["ollama/qwen2.5:7b"]
+    "on_cost_threshold": ["ollama/qwen2.5:7b"],
+    "on_context_overflow": ["openai/gpt-4o"],
+    "on_quality_degradation": ["anthropic/claude-sonnet-4-20250514"]
   },
   "budget": {
     "monthly_usd": 100,

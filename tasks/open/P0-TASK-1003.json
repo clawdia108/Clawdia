@@ -9,6 +9,13 @@
   "updated_at": "2026-03-03T08:20:00+01:00",
   "due_at": "2026-03-03T09:30:00+01:00",
   "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+  "complexity": "medium",
+  "capabilities_required": ["writing", "tone_matching", "structured_data"],
+  "model_hint": null,
+  "depends_on": ["TASK-1002"],
+  "output_visibility": "internal",
+  "review_required": true,
+  "user_summary": null,
   "inputs": [
     "WORKBOARD.md",
     "tasks/open/P0-TASK-1002.json",

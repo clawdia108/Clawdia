@@ -9,6 +9,13 @@
   "updated_at": "2026-03-03T09:00:00+01:00",
   "due_at": "2026-03-03T12:00:00+01:00",
   "summary": "Sanitized summary of the work to be done.",
+  "complexity": "medium",
+  "capabilities_required": ["structured_data"],
+  "model_hint": null,
+  "depends_on": [],
+  "output_visibility": "internal",
+  "review_required": true,
+  "user_summary": null,
   "inputs": [
     "pipedrive/PIPELINE_STATUS.md"
   ],

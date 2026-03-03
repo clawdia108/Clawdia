@@ -1,10 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "main_agent": "main",
   "agents": {
     "main": {
       "display_name": "Bridge",
       "role": "orchestrator",
+      "capabilities": ["reasoning", "writing", "tone_matching", "coordination"],
+      "default_complexity": "high",
+      "preferred_model_tier": "standard",
+      "review_bypass": true,
+      "output_visibility": "user_facing",
       "writes_to": [
         "memory/",
         "WORKBOARD.md"
@@ -22,6 +27,11 @@
     "inboxforge": {
       "display_name": "InboxForge",
       "role": "email_and_followups",
+      "capabilities": ["writing", "tone_matching", "structured_data"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "review_bypass": false,
+      "output_visibility": "internal",
       "writes_to": [
         "inbox/INBOX_DIGEST.md",
         "inbox/DRAFTS.md",
@@ -37,6 +47,11 @@
     "dealops": {
       "display_name": "DealOps",
       "role": "crm_operations",
+      "capabilities": ["structured_data", "json", "analysis"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "economy",
+      "review_bypass": false,
+      "output_visibility": "internal",
       "writes_to": [
         "pipedrive/HYGIENE_REPORT.md",
         "pipedrive/PIPELINE_STATUS.md",
@@ -52,6 +67,11 @@
     "timebox": {
       "display_name": "Timebox",
       "role": "calendar_and_execution_planning",
+      "capabilities": ["structured_data", "planning"],
+      "default_complexity": "low",
+      "preferred_model_tier": "economy",
+      "review_bypass": false,
+      "output_visibility": "internal",
       "writes_to": [
         "calendar/TODAY.md",
         "calendar/PREP_NOTES.md",
@@ -68,6 +88,11 @@
     "growthlab": {
       "display_name": "GrowthLab",
       "role": "research_and_experiments",
+      "capabilities": ["web_search", "synthesis", "analysis", "writing"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "review_bypass": false,
+      "output_visibility": "internal",
       "writes_to": [
         "intel/DAILY-INTEL.md",
         "intel/MARKET_SIGNALS.md",
@@ -83,6 +108,11 @@
     "reviewer": {
       "display_name": "Reviewer",
       "role": "quality_and_risk",
+      "capabilities": ["validation", "comparison", "analysis", "reasoning"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "review_bypass": true,
+      "output_visibility": "internal",
       "writes_to": [
         "reviews/PENDING_REVIEWS.md",
         "reviews/CODE_QUALITY.md",
@@ -100,6 +130,11 @@
     "knowledgekeeper": {
       "display_name": "KnowledgeKeeper",
       "role": "knowledge_operations",
+      "capabilities": ["synthesis", "structured_data", "archival"],
+      "default_complexity": "low",
+      "preferred_model_tier": "economy",
+      "review_bypass": false,
+      "output_visibility": "internal",
       "writes_to": [
         "knowledge/KNOWLEDGE_BASE.md",
         "knowledge/AGENT_INSIGHTS.md",

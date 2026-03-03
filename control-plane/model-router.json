@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "description": "Task-aware model routing. Evaluated top-to-bottom, first match wins.",
+  "routing_rules": [
+    {
+      "id": "heartbeat",
+      "description": "Periodic lightweight status checks",
+      "match": { "task_type": ["heartbeat"] },
+      "model": "ollama/qwen2.5:7b",
+      "fallback": null,
+      "max_tokens": 512,
+      "budget_tier": "free"
+    },
+    {
+      "id": "output_simplification",
+      "description": "Postprocess agent output for human-friendly summaries",
+      "match": { "task_type": ["simplify_output"] },
+      "model": "ollama/qwen2.5:7b",
+      "fallback": "openai/gpt-5-mini",
+      "max_tokens": 1024,
+      "budget_tier": "free"
+    },
+    {
+      "id": "knowledge_sync",
+      "description": "Summarization, deduplication, archival",
+      "match": {
+        "agent": ["knowledgekeeper"],
+        "complexity": ["low", "medium"]
+      },
+      "model": "ollama/qwen2.5:7b",
+      "fallback": "openai/gpt-5-mini",
+      "max_tokens": 4096,
+      "budget_tier": "economy"
+    },
+    {
+      "id": "scheduling_planning",
+      "description": "Calendar management, time blocking, daily planning",
+      "match": {
+        "agent": ["timebox"],
+        "complexity": ["low", "medium"]
+      },
+      "model": "openai/gpt-5-mini",
+      "fallback": "ollama/qwen2.5:7b",
+      "max_tokens": 2048,
+      "budget_tier": "economy"
+    },
+    {
+      "id": "crm_operations",
+      "description": "Pipeline checks, hygiene reports, scoring",
+      "match": {
+        "agent": ["dealops"],
+        "complexity": ["low", "medium"],
+        "capabilities_required": ["structured_data", "json"]
+      },
+      "model": "openai/gpt-5-mini",
+      "fallback": "ollama/qwen2.5:7b",
+      "max_tokens": 4096,
+      "budget_tier": "economy"
+    },
+    {
+      "id": "research_web",
+      "description": "Market research, competitor analysis, web search synthesis",
+      "match": {
+        "agent": ["growthlab"],
+        "capabilities_required": ["web_search", "synthesis"]
+      },
+      "model": "openai/gpt-4o",
+      "fallback": "anthropic/claude-sonnet-4-20250514",
+      "max_tokens": 4096,
+      "budget_tier": "standard"
+    },
+    {
+      "id": "content_generation",
+      "description": "Email drafts, reports, user-facing summaries",
+      "match": {
+        "agent": ["inboxforge", "main"],
+        "capabilities_required": ["writing", "tone_matching"]
+      },
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "fallback": "openai/gpt-4o",
+      "max_tokens": 4096,
+      "budget_tier": "standard"
+    },
+    {
+      "id": "review_validation",
+      "description": "Quality checks, consistency validation, security review",
+      "match": {
+        "agent": ["reviewer"],
+        "capabilities_required": ["validation", "comparison"]
+      },
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "fallback": "openai/gpt-5-mini",
+      "max_tokens": 4096,
+      "budget_tier": "standard"
+    },
+    {
+      "id": "reasoning_heavy",
+      "description": "Complex analysis, strategy, multi-step reasoning — default fallback",
+      "match": {
+        "complexity": ["high"]
+      },
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "fallback": "openai/gpt-4o",
+      "max_tokens": 8192,
+      "budget_tier": "premium"
+    }
+  ],
+  "budget_tiers": {
+    "free":     { "cost_per_call_usd": 0,     "daily_limit": null },
+    "economy":  { "cost_per_call_usd": 0.005, "daily_limit": 50 },
+    "standard": { "cost_per_call_usd": 0.02,  "daily_limit": 30 },
+    "premium":  { "cost_per_call_usd": 0.05,  "daily_limit": 10 }
+  },
+  "selection_logic": "first_match_wins",
+  "default_rule": "reasoning_heavy"
+}
