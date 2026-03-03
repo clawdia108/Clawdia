@@ -336,25 +336,98 @@ MAX 20-line Czech report: Co se podařilo / Pipeline update / Na zítra / Potře
 Include best fun fact of the day.
 Write to knowledge/USER_DIGEST_PM.md."
 
+# ──────────────────────────────────────────────────
+# 10. NIGHT SHIFT (22:30 — 06:30)
+# VPS runs 24/7. No reason to waste 8 hours.
+# ──────────────────────────────────────────────────
+
+# KnowledgeKeeper — night reading (3 sessions)
+openclaw cron create --name kk-night-1 --agent knowledgekeeper --cron "0 23 * * *" --tz "$TZ" \
+  --message "Night study session 1. Pick next unread SALES book from ~/JosefGPT-Local/books/.
+Focus on closing techniques, objection handling, cold outreach.
+Extract actionable insights to knowledge/book-insights/[slug].md.
+Update knowledge/READING_TRACKER.md. Tag [FOR:COPYAGENT], [FOR:PIPELINEPILOT].
+Night sessions are quiet — go deep. No one will interrupt you."
+
+openclaw cron create --name kk-night-2 --agent knowledgekeeper --cron "0 1 * * *" --tz "$TZ" \
+  --message "Night study session 2 (1 AM). Pick next unread PROGRAMMING/AI book.
+Focus on agent architectures, API patterns, automation frameworks.
+Extract to knowledge/book-insights/[slug].md. Tag [FOR:CODEX].
+Update READING_TRACKER.md."
+
+openclaw cron create --name kk-night-3 --agent knowledgekeeper --cron "0 3 * * *" --tz "$TZ" \
+  --message "Night study session 3 (3 AM). Pick next unread AUTOMATION/CRM or PSYCHOLOGY book.
+Extract actionable insights. Update knowledge files where applicable.
+Write to knowledge/book-insights/[slug].md. Update READING_TRACKER.md.
+Prepare the DAILY_EXCERPT.md for tomorrow's morning email to Josef — pick the best insight from all night + yesterday's reads."
+
+# Codex — night builds (2 sessions)
+openclaw cron create --name codex-night --agent codex --cron "30 23 * * *" --tz "$TZ" \
+  --message "Night build session. You are Codex. The night is yours — no interruptions.
+Read knowledge/IMPROVEMENT_PROPOSALS.md and pick the most ambitious item.
+Also read today's [FOR:CODEX] insights from knowledge/book-insights/.
+Build something substantial:
+- Agent performance metrics dashboard
+- Self-healing cron detector
+- Pipeline automation scripts
+- Knowledge cross-referencing tool
+- Inter-agent message bus
+Code it. Test it. Commit. Push. Deploy to VPS.
+Write to scripts/BUILD_LOG.md."
+
+openclaw cron create --name codex-predawn --agent codex --cron "0 4 * * *" --tz "$TZ" \
+  --message "Pre-dawn build session (4 AM). You are Codex.
+Continue from night session OR start a new experiment.
+Read reviews/HEALTH_REPORT.md — fix any system issues found.
+Check if any agent produced empty output yesterday → debug and fix.
+Focus on reliability and robustness.
+Commit. Push. Deploy. Write to scripts/BUILD_LOG.md."
+
+# GrowthLab — international research (1 session)
+openclaw cron create --name growthlab-night --agent growthlab --cron "0 2 * * *" --tz "$TZ" \
+  --message "Night research (2 AM). US business day just ended — perfect time for:
+1) US HR tech news, funding rounds, product launches
+2) Global Gallup/McKinsey/Deloitte report releases
+3) LinkedIn trending posts in HR tech space
+4) International competitor moves (Culture Amp Australia, Lattice US, 15Five US)
+Update intel/DAILY-INTEL.md with international section.
+FUN FACT: If something surprising, write to knowledge/FUN_FACTS.md."
+
+# Reviewer — deep system analysis (1 session)
+openclaw cron create --name reviewer-deep-analysis --agent reviewer --cron "0 5 * * *" --tz "$TZ" \
+  --message "Pre-dawn deep analysis (5 AM). The whole system has been running overnight.
+1) Count ALL book-insights files created in last 24h — how many books were actually read?
+2) Count ALL Codex commits in last 24h — how many builds shipped?
+3) Check knowledge/FUN_FACTS.md — any new discoveries?
+4) Cross-reference IMPROVEMENT_PROPOSALS.md with actual implementations
+5) Grade the entire overnight performance
+6) Write overnight report to reviews/OVERNIGHT_REPORT.md
+7) Update reviews/HEALTH_REPORT.md with overnight data
+Be brutally honest. Track trends day over day."
+
 echo ""
 echo "══════════════════════════════════════════════════"
-echo " Agent Army Cron v3 — KOMBUCHA MODE"
-echo " 48 jobs across 8 agents + Bridge"
+echo " Agent Army Cron v3.1 — KOMBUCHA MODE (24/7)"
+echo " 49 cron registrations — runs 24/7, never sleeps"
 echo "══════════════════════════════════════════════════"
-echo " PipelinePilot:    8 jobs (enrichment, SPIN, scoring, hygiene, learning)"
-echo " KnowledgeKeeper:  9 jobs (7x book study + synthesis + deep read) — 5-7 books/day"
-echo " CopyAgent:        7 jobs (briefs, Slack, polish, blog, blog improve, excerpt, content plan)"
-echo " Codex:            4 jobs (morning build, afternoon experiment, evening deploy, weekend deep build)"
-echo " GrowthLab:        3 jobs (research, competitive, battle cards)"
-echo " InboxForge:       3 jobs (Gmail scan, follow-ups, drafts)"
-echo " CalendarCaptain:  2 jobs (morning plan, EOD)"
-echo " Reviewer:         4 jobs (health, coaching, weekly, security)"
-echo " Bridge:           2 jobs (AM/PM reports)"
-echo "══════════════════════════════════════════════════"
-echo " NEW: Codex agent — builds, experiments, deploys continuously"
-echo " NEW: 7 book study sessions/day (target: 35+ books/week)"
-echo " NEW: Daily book excerpt email to Josef"
-echo " NEW: Weekly blog + blog improvement on behavera.com"
-echo " NEW: Fun facts system — agents share discoveries"
-echo " NEW: Self-improvement loop — Codex implements book insights"
+echo ""
+echo " DAY SHIFT (06:30 — 22:30)"
+echo " PipelinePilot:    8 jobs"
+echo " KnowledgeKeeper:  9 jobs (7x study + synthesis + deep read)"
+echo " CopyAgent:        7 jobs (content, blog, excerpt, Slack, polish)"
+echo " Codex:            4 jobs (build, experiment, deploy, weekend)"
+echo " GrowthLab:        3 jobs"
+echo " InboxForge:       3 jobs"
+echo " CalendarCaptain:  2 jobs"
+echo " Reviewer:         4 jobs"
+echo " Bridge:           2 jobs"
+echo ""
+echo " NIGHT SHIFT (22:30 — 06:30)"
+echo " KnowledgeKeeper:  3 night reads (23:00, 01:00, 03:00)"
+echo " Codex:            2 night builds (23:30, 04:00)"
+echo " GrowthLab:        1 international research (02:00)"
+echo " Reviewer:         1 deep analysis (05:00)"
+echo ""
+echo " TOTAL: 10 book study sessions/day → target 8-10 books/day"
+echo " TOTAL: 6 Codex build sessions/day → min 6 commits/day"
 echo "══════════════════════════════════════════════════"
