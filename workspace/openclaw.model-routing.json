@@ -20,11 +20,29 @@
       "anthropic": {
         "models": [
           {
+            "id": "claude-opus-4-1-20250805",
+            "name": "Claude Opus 4.1",
+            "reasoning": true,
+            "input": ["text", "image"],
+            "cost": { "input": 0.015, "output": 0.075 },
+            "contextWindow": 200000,
+            "maxTokens": 32000
+          },
+          {
             "id": "claude-sonnet-4-20250514",
             "name": "Claude Sonnet 4",
             "reasoning": true,
             "input": ["text", "image"],
             "cost": { "input": 0.003, "output": 0.015 },
+            "contextWindow": 200000,
+            "maxTokens": 64000
+          },
+          {
+            "id": "claude-3-5-haiku-latest",
+            "name": "Claude 3.5 Haiku",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": { "input": 0.0008, "output": 0.004 },
             "contextWindow": 200000,
             "maxTokens": 8192
           }
@@ -33,22 +51,49 @@
       "openai": {
         "models": [
           {
-            "id": "gpt-4o",
-            "name": "GPT-4o",
+            "id": "gpt-5.2",
+            "name": "GPT-5.2",
             "reasoning": true,
             "input": ["text", "image"],
-            "cost": { "input": 0.005, "output": 0.015 },
-            "contextWindow": 128000,
-            "maxTokens": 4096
+            "cost": { "input": 0.00175, "output": 0.014 },
+            "contextWindow": 400000,
+            "maxTokens": 128000
+          },
+          {
+            "id": "gpt-5.2-pro",
+            "name": "GPT-5.2 Pro",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0.021, "output": 0.168 },
+            "contextWindow": 400000,
+            "maxTokens": 128000
+          },
+          {
+            "id": "gpt-5.2-codex",
+            "name": "GPT-5.2 Codex",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0.00175, "output": 0.014 },
+            "contextWindow": 400000,
+            "maxTokens": 128000
           },
           {
             "id": "gpt-5-mini",
             "name": "GPT-5-mini",
             "reasoning": true,
             "input": ["text"],
-            "cost": { "input": 0.001, "output": 0.003 },
-            "contextWindow": 65536,
-            "maxTokens": 8192
+            "cost": { "input": 0.00025, "output": 0.002 },
+            "contextWindow": 400000,
+            "maxTokens": 128000
+          },
+          {
+            "id": "gpt-5-nano",
+            "name": "GPT-5-nano",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.00005, "output": 0.0004 },
+            "contextWindow": 400000,
+            "maxTokens": 128000
           }
         ]
       }
@@ -56,7 +101,7 @@
   },
   "agents": {
     "defaults": {
-      "model": "anthropic/claude-sonnet-4-20250514",
+      "model": "openai/gpt-5.2",
       "heartbeat": {
         "every": "30m",
         "target": "last",
@@ -65,65 +110,77 @@
       }
     },
     "entries": {
-      "main": { "model": "anthropic/claude-sonnet-4-20250514" },
+      "main": { "model": "openai/gpt-5.2" },
       "inboxforge": {
         "model": "anthropic/claude-sonnet-4-20250514",
         "heartbeat": {
-          "model": "ollama/qwen2.5:7b",
+          "model": "openai/gpt-5-nano",
           "every": "30m",
           "activeHours": { "start": "07:00", "end": "20:00" }
         }
       },
       "dealops": {
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "openai/gpt-5-mini",
         "heartbeat": {
-          "model": "ollama/qwen2.5:7b",
+          "model": "openai/gpt-5-nano",
           "every": "30m",
           "activeHours": { "start": "07:00", "end": "20:00" }
         }
       },
       "timebox": {
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "openai/gpt-5-mini",
         "heartbeat": {
-          "model": "ollama/qwen2.5:7b",
+          "model": "openai/gpt-5-nano",
           "every": "30m",
           "activeHours": { "start": "06:30", "end": "20:00" }
         }
       },
-      "growthlab": { "model": "anthropic/claude-sonnet-4-20250514", "heartbeat": { "model": "ollama/qwen2.5:7b" } },
-      "reviewer": {
+      "growthlab": {
         "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": { "model": "openai/gpt-5-nano" }
+      },
+      "reviewer": {
+        "model": "openai/gpt-5.2",
         "heartbeat": {
-          "model": "ollama/qwen2.5:7b",
+          "model": "openai/gpt-5-nano",
           "every": "30m",
           "activeHours": { "start": "08:00", "end": "23:00" }
         }
       },
       "knowledgekeeper": {
-        "model": "anthropic/claude-sonnet-4-20250514",
+        "model": "openai/gpt-5-mini",
         "heartbeat": {
-          "model": "ollama/qwen2.5:7b",
+          "model": "openai/gpt-5-nano",
           "every": "30m",
           "activeHours": { "start": "06:00", "end": "23:00" }
         }
       }
     }
   },
+  "coordination": {
+    "patterns_config": "control-plane/coordination-patterns.json",
+    "output_contracts_config": "control-plane/output-contracts.json",
+    "runtime_policies_config": "control-plane/runtime-policies.json",
+    "review_gates_config": "control-plane/review-gates.json",
+    "route_resolver": "scripts/resolve_task_route.py",
+    "user_report_renderer": "scripts/render_user_report.py"
+  },
   "task_routing": {
     "enabled": true,
     "router_config": "control-plane/model-router.json",
     "override_agent_defaults": true,
-    "description": "When enabled, task complexity and capabilities_required fields drive model selection via model-router.json. Agent defaults are used only when task has no routing metadata."
+    "route_snapshot_required": true,
+    "description": "When enabled, structured task metadata drives pattern selection, model selection, and output contracts via control-plane/model-router.json. Agent defaults are used only when task has no routing metadata."
   },
   "fallback": {
-    "on_rate_limit": ["openai/gpt-5-mini","ollama/qwen2.5:7b"],
-    "on_cost_threshold": ["ollama/qwen2.5:7b"],
-    "on_context_overflow": ["openai/gpt-4o"],
-    "on_quality_degradation": ["anthropic/claude-sonnet-4-20250514"]
+    "on_rate_limit": ["anthropic/claude-sonnet-4-20250514", "openai/gpt-5-mini", "ollama/qwen2.5:7b"],
+    "on_cost_threshold": ["openai/gpt-5-mini", "anthropic/claude-3-5-haiku-latest", "ollama/qwen2.5:7b"],
+    "on_context_overflow": ["openai/gpt-5.2", "anthropic/claude-opus-4-1-20250805"],
+    "on_quality_degradation": ["openai/gpt-5.2-pro", "anthropic/claude-opus-4-1-20250805"]
   },
   "budget": {
-    "monthly_usd": 100,
+    "monthly_usd": 150,
     "alerts_at_pct": 80,
-    "daily_spend_limit_usd": 4
+    "daily_spend_limit_usd": 6
   }
 }

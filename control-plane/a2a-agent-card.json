@@ -1,0 +1,71 @@
+{
+  "name": "Clawdia Bridge",
+  "description": "Local orchestrator for inbox, CRM, calendar, research, review, and knowledge sync.",
+  "supportedInterfaces": [
+    {
+      "url": "local://clawdia/a2a",
+      "protocolBinding": "HTTP+JSON",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "Clawdia Workspace",
+    "url": "local://clawdia"
+  },
+  "version": "0.3.0",
+  "documentationUrl": "playbooks/agentic-modernization-2026.md",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": false
+  },
+  "securitySchemes": {},
+  "security": [],
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "daily-ops-orchestration",
+      "name": "Daily Ops Orchestration",
+      "description": "Turns inbox, CRM, and calendar state into an actionable daily plan.",
+      "tags": ["planning", "ops", "crm", "calendar"],
+      "examples": [
+        "Build today's operating plan from internal state.",
+        "Summarize what needs attention before noon."
+      ],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/plain"]
+    },
+    {
+      "id": "knowledge-sync",
+      "name": "Knowledge Sync",
+      "description": "Aggregates structured task state into execution snapshots and user digests.",
+      "tags": ["knowledge", "summary", "reporting"],
+      "examples": [
+        "Generate a fresh execution state snapshot.",
+        "Prepare a short digest for the user."
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json", "text/plain"]
+    },
+    {
+      "id": "research-fanout",
+      "name": "Research Fanout",
+      "description": "Runs breadth-first research with scoped subagents and synthesizes the result.",
+      "tags": ["research", "parallel", "analysis"],
+      "examples": [
+        "Investigate competitors in parallel and merge findings.",
+        "Research a market trend and return a concise recommendation."
+      ],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/plain"]
+    }
+  ]
+}

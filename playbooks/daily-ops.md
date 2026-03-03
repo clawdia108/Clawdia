@@ -26,6 +26,7 @@
 
 ### Bridge Reports (AM/PM)
 - Use `templates/user-report.md` format strictly
+- Prefer `knowledge/USER_DIGEST_AM.md` / `knowledge/USER_DIGEST_PM.md` generated from `knowledge/EXECUTION_STATE.json`
 - Max 15 řádků celkem
 - 3 sekce: **Co je dnes důležité** / **Co jsem udělal** / **Potřebuji od tebe**
 - Čeština, neformální ale profesionální
@@ -39,11 +40,19 @@
 - Mohou obsahovat task IDs, timestamps, technické detaily
 - Pole `output_visibility: "internal"` = neposílat uživateli přímo
 - Pole `output_visibility: "user_facing"` = musí projít review gate + simplifikací
+- Bridge má číst primárně `knowledge/EXECUTION_STATE.json`, ne skládat report z náhodných markdown souborů
 
 ### Complexity Classification
 - `low`: Formatting, scheduling, status aggregation → economy model
 - `medium`: Analysis, drafting, scoring → standard model
 - `high`: Strategy, multi-step reasoning, cross-domain synthesis → premium model
+
+### Coordination Patterns
+- `deterministic_router`: jeden specialista, rychlé a jasně strukturované tasky
+- `orchestrator_worker`: rozpad na podúkoly, bounded handoffs, syntéza
+- `reviewer_refiner`: draft → review → max 2 refinement loop
+- `approval_checkpoint`: zastavit na approval boundary a resumovat ve stejné session
+- `background_digest`: interní technický stav převést do krátkého lidského reportu
 
 ### Review Requirements
 - Všechny `user_facing` outputy → mandatory review gate

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "description": "Runtime policies for sessions, checkpoints, approvals, and context compaction.",
+  "sessions": {
+    "scopes": {
+      "human_session": {
+        "description": "Main user-facing conversation with the human.",
+        "resume_same_store": true,
+        "retain_outputs": [
+          "knowledge/USER_DIGEST_AM.md",
+          "knowledge/USER_DIGEST_PM.md"
+        ]
+      },
+      "task_session": {
+        "description": "Specialist session scoped to one structured task.",
+        "resume_same_store": true,
+        "retain_outputs": [
+          "tasks/open/*.json"
+        ]
+      },
+      "background_run": {
+        "description": "Autonomous cron or heartbeat run.",
+        "resume_same_store": false,
+        "retain_outputs": [
+          "knowledge/EXECUTION_STATE.json",
+          "knowledge/AGENT_INSIGHTS.md",
+          "reviews/PENDING_REVIEWS.md"
+        ]
+      }
+    }
+  },
+  "context_management": {
+    "prefer_structured_state_over_prose": true,
+    "checkpoint_files": [
+      "tasks/open/",
+      "tasks/done/",
+      "knowledge/EXECUTION_STATE.json"
+    ],
+    "compact_when_input_items_exceed": 80,
+    "handoff_history": "filtered",
+    "stale_output_threshold_hours": 24
+  },
+  "progress_tracking": {
+    "require_incremental_progress": true,
+    "require_clean_resume_state": true,
+    "progress_artifacts": [
+      "tasks/open/*.json",
+      "knowledge/EXECUTION_STATE.json",
+      "knowledge/IMPROVEMENTS.md"
+    ]
+  },
+  "parallelism": {
+    "default_max_workers": 3,
+    "research_max_workers": 5,
+    "review_max_workers": 2
+  },
+  "human_in_loop": {
+    "pause_on": [
+      "approval_state=pending_human",
+      "approval_state=pending_bridge",
+      "risk_level=critical",
+      "output_visibility=user_facing && review_required=true"
+    ],
+    "resume_requires_same_session": true
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "description": "Output layers. Internal reasoning can be rich; exposed outputs must be simple.",
+  "contracts": {
+    "internal_snapshot": {
+      "visibility": "internal",
+      "format": "markdown_or_json",
+      "max_lines": 80,
+      "allow_task_ids": true,
+      "allow_agent_names": true,
+      "allow_timestamps": true,
+      "required_sections": [
+        "status",
+        "blockers",
+        "next_step"
+      ]
+    },
+    "handoff_packet": {
+      "visibility": "internal",
+      "format": "structured_markdown",
+      "max_lines": 18,
+      "allow_task_ids": true,
+      "allow_agent_names": true,
+      "allow_timestamps": true,
+      "required_sections": [
+        "objective",
+        "done",
+        "open_questions",
+        "next_step",
+        "artifacts"
+      ]
+    },
+    "review_report": {
+      "visibility": "internal",
+      "format": "markdown",
+      "max_lines": 40,
+      "allow_task_ids": true,
+      "allow_agent_names": true,
+      "allow_timestamps": true,
+      "required_sections": [
+        "findings",
+        "risks",
+        "decision"
+      ],
+      "style": "findings_first"
+    },
+    "cron_digest": {
+      "visibility": "internal",
+      "format": "markdown",
+      "max_lines": 12,
+      "allow_task_ids": false,
+      "allow_agent_names": false,
+      "allow_timestamps": false,
+      "required_sections": [
+        "what_changed",
+        "what_needs_attention"
+      ],
+      "style": "changed_items_only"
+    },
+    "urgent_alert": {
+      "visibility": "user_facing",
+      "format": "markdown",
+      "max_lines": 6,
+      "allow_task_ids": false,
+      "allow_agent_names": false,
+      "allow_timestamps": false,
+      "required_sections": [
+        "problem",
+        "action_needed"
+      ]
+    },
+    "user_report": {
+      "visibility": "user_facing",
+      "format": "markdown",
+      "template": "templates/user-report.md",
+      "language": "cs",
+      "max_lines": 15,
+      "allow_task_ids": false,
+      "allow_agent_names": false,
+      "allow_timestamps": false,
+      "required_sections": [
+        "Co je dnes důležité",
+        "Co jsem udělal",
+        "Potřebuji od tebe"
+      ],
+      "style": "simple_human_readable"
+    }
+  }
+}

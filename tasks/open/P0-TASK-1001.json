@@ -1,6 +1,7 @@
 {
   "id": "TASK-1001",
   "title": "Publish command center snapshot for the current day",
+  "task_type": "daily_plan",
   "status": "todo",
   "priority": "P0",
   "owner": "timebox",
@@ -9,13 +10,26 @@
   "updated_at": "2026-03-03T08:20:00+01:00",
   "due_at": "2026-03-03T09:00:00+01:00",
   "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
+  "user_summary": "P\u0159ipravit dne\u0161n\u00ed jasn\u00fd p\u0159ehled priorit a \u010dty\u0159i bloky pr\u00e1ce bez technick\u00e9ho balastu.",
   "complexity": "low",
-  "capabilities_required": ["structured_data", "planning"],
+  "risk_level": "low",
+  "capabilities_required": [
+    "structured_data",
+    "planning"
+  ],
   "model_hint": null,
-  "depends_on": ["TASK-1002"],
+  "coordination_pattern": "deterministic_router",
+  "expected_output_contract": "internal_snapshot",
+  "approval_state": "not_required",
+  "requires_tools": false,
+  "requires_parallel_workers": false,
+  "session_id": "task-task-1001",
+  "trace_id": "trace_task1001000000000000000000000",
+  "depends_on": [
+    "TASK-1002"
+  ],
   "output_visibility": "internal",
   "review_required": false,
-  "user_summary": null,
   "inputs": [
     "WORKBOARD.md",
     "pipedrive/PIPELINE_STATUS.md",
@@ -25,13 +39,36 @@
     "calendar/TODAY.md"
   ],
   "blockers": [],
+  "acceptance_checks": [
+    "calendar/TODAY.md has four time blocks",
+    "Output stays sanitized for git",
+    "Top priorities are explicit"
+  ],
+  "handoff_brief": {
+    "objective": "Publish a concise day plan from current structured state.",
+    "done": [],
+    "next_step": "Hand off the final day snapshot to Bridge and KnowledgeKeeper.",
+    "open_questions": []
+  },
   "handoff_to": [
     "dealops",
     "knowledgekeeper"
   ],
   "reviewer": "reviewer",
+  "accepted_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "guardrails": [
     "keep_git_tracked_output_sanitized"
   ],
+  "route_snapshot": {
+    "rule_id": "planning_calendar",
+    "lead_model": "openai/gpt-5-mini",
+    "worker_model": null,
+    "reviewer_model": null,
+    "output_model": "openai/gpt-5-mini",
+    "output_contract": "internal_snapshot"
+  },
   "notes": []
 }

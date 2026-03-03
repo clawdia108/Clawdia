@@ -1,6 +1,7 @@
 {
   "id": "TASK-1003",
   "title": "Prepare sanitized follow-up queue and approval state",
+  "task_type": "follow_up_queue",
   "status": "blocked",
   "priority": "P0",
   "owner": "inboxforge",
@@ -9,13 +10,27 @@
   "updated_at": "2026-03-03T08:20:00+01:00",
   "due_at": "2026-03-03T09:30:00+01:00",
   "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+  "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
   "complexity": "medium",
-  "capabilities_required": ["writing", "tone_matching", "structured_data"],
+  "risk_level": "high",
+  "capabilities_required": [
+    "writing",
+    "tone_matching",
+    "structured_data"
+  ],
   "model_hint": null,
-  "depends_on": ["TASK-1002"],
+  "coordination_pattern": "approval_checkpoint",
+  "expected_output_contract": "handoff_packet",
+  "approval_state": "pending_human",
+  "requires_tools": false,
+  "requires_parallel_workers": false,
+  "session_id": "task-task-1003",
+  "trace_id": "trace_task1003000000000000000000000",
+  "depends_on": [
+    "TASK-1002"
+  ],
   "output_visibility": "internal",
   "review_required": true,
-  "user_summary": null,
   "inputs": [
     "WORKBOARD.md",
     "tasks/open/P0-TASK-1002.json",
@@ -28,14 +43,39 @@
     "explicit_send_approval_missing",
     "deal_context_not_finalized"
   ],
+  "acceptance_checks": [
+    "Queue stays sanitized for git",
+    "Every pending send is clearly marked as blocked",
+    "No outbound message is sent"
+  ],
+  "handoff_brief": {
+    "objective": "Prepare the follow-up queue and stop at the approval boundary.",
+    "done": [],
+    "next_step": "Wait for explicit human approval or updated deal context.",
+    "open_questions": [
+      "Which follow-ups should actually be sent once approval is granted?"
+    ]
+  },
   "handoff_to": [
     "reviewer",
     "knowledgekeeper"
   ],
   "reviewer": "reviewer",
+  "accepted_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "guardrails": [
     "no_external_send_without_explicit_approval",
     "keep_git_tracked_output_sanitized"
   ],
+  "route_snapshot": {
+    "rule_id": "writing_with_review",
+    "lead_model": "anthropic/claude-sonnet-4-20250514",
+    "worker_model": null,
+    "reviewer_model": "openai/gpt-5-mini",
+    "output_model": "openai/gpt-5-mini",
+    "output_contract": "handoff_packet"
+  },
   "notes": []
 }

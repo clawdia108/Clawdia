@@ -1,0 +1,295 @@
+{
+  "generated_at": "2026-03-03T09:50+01:00",
+  "counts": {
+    "open": 3,
+    "done": 0,
+    "blocked": 1,
+    "needs_review": 0,
+    "stale_outputs": 12,
+    "dependency_issues": 0
+  },
+  "top_priorities": [
+    {
+      "task_id": "TASK-1001",
+      "title": "Publish command center snapshot for the current day",
+      "task_type": "daily_plan",
+      "status": "todo",
+      "priority": "P0",
+      "owner": "timebox",
+      "complexity": "low",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
+      "user_summary": "P\u0159ipravit dne\u0161n\u00ed jasn\u00fd p\u0159ehled priorit a \u010dty\u0159i bloky pr\u00e1ce bez technick\u00e9ho balastu.",
+      "due_at": "2026-03-03T09:00+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "planning_calendar",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-1002",
+      "title": "Run sanitized CRM hygiene audit and aggregate status update",
+      "task_type": "crm_audit",
+      "status": "in_progress",
+      "priority": "P0",
+      "owner": "dealops",
+      "complexity": "medium",
+      "risk_level": "high",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Refresh aggregate hygiene counts, identify risk categories, and produce non-identifying next-step guidance.",
+      "user_summary": "Zkontrolovat hygienu pipeline a vr\u00e1tit jen souhrnn\u00e9 po\u010dty a rizika bez osobn\u00edch dat.",
+      "due_at": "2026-03-03T09:15+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [
+        "live_crm_exports_must_stay_local_only"
+      ],
+      "route_snapshot": {
+        "rule_id": "crm_structured_analysis",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-1003",
+      "title": "Prepare sanitized follow-up queue and approval state",
+      "task_type": "follow_up_queue",
+      "status": "blocked",
+      "priority": "P0",
+      "owner": "inboxforge",
+      "complexity": "medium",
+      "risk_level": "high",
+      "approval_state": "pending_human",
+      "output_visibility": "internal",
+      "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "due_at": "2026-03-03T09:30+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [
+        "explicit_send_approval_missing",
+        "deal_context_not_finalized"
+      ],
+      "route_snapshot": {
+        "rule_id": "writing_with_review",
+        "lead_model": "anthropic/claude-sonnet-4-20250514",
+        "worker_model": null,
+        "reviewer_model": "openai/gpt-5-mini",
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "handoff_packet"
+      }
+    }
+  ],
+  "blocked_tasks": [
+    {
+      "task_id": "TASK-1003",
+      "title": "Prepare sanitized follow-up queue and approval state",
+      "task_type": "follow_up_queue",
+      "status": "blocked",
+      "priority": "P0",
+      "owner": "inboxforge",
+      "complexity": "medium",
+      "risk_level": "high",
+      "approval_state": "pending_human",
+      "output_visibility": "internal",
+      "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "due_at": "2026-03-03T09:30+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [
+        "explicit_send_approval_missing",
+        "deal_context_not_finalized"
+      ],
+      "route_snapshot": {
+        "rule_id": "writing_with_review",
+        "lead_model": "anthropic/claude-sonnet-4-20250514",
+        "worker_model": null,
+        "reviewer_model": "openai/gpt-5-mini",
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "handoff_packet"
+      }
+    }
+  ],
+  "needs_review": [],
+  "recently_completed": [],
+  "recently_archived": [],
+  "stale_outputs": [
+    {
+      "agent": "inboxforge",
+      "path": "inbox/INBOX_DIGEST.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 15
+    },
+    {
+      "agent": "inboxforge",
+      "path": "inbox/DRAFTS.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 9
+    },
+    {
+      "agent": "dealops",
+      "path": "pipedrive/SCORING_LOG.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 14
+    },
+    {
+      "agent": "timebox",
+      "path": "calendar/PREP_NOTES.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 13
+    },
+    {
+      "agent": "timebox",
+      "path": "calendar/WEEKLY_OVERVIEW.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 18
+    },
+    {
+      "agent": "growthlab",
+      "path": "intel/DAILY-INTEL.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 14
+    },
+    {
+      "agent": "growthlab",
+      "path": "intel/MARKET_SIGNALS.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 17
+    },
+    {
+      "agent": "growthlab",
+      "path": "intel/COMPETITOR_WATCH.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 19
+    },
+    {
+      "agent": "growthlab",
+      "path": "knowledge/RESEARCH_LOG.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 15
+    },
+    {
+      "agent": "reviewer",
+      "path": "reviews/CODE_QUALITY.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 15
+    },
+    {
+      "agent": "reviewer",
+      "path": "reviews/SYSTEM_HEALTH.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 16
+    },
+    {
+      "agent": "knowledgekeeper",
+      "path": "knowledge/IMPROVEMENTS.md",
+      "reason": "empty_placeholder",
+      "last_modified": "2026-03-03T07:47+01:00",
+      "size_bytes": 15
+    }
+  ],
+  "dependency_issues": [],
+  "tasks": [
+    {
+      "task_id": "TASK-1001",
+      "title": "Publish command center snapshot for the current day",
+      "task_type": "daily_plan",
+      "status": "todo",
+      "priority": "P0",
+      "owner": "timebox",
+      "complexity": "low",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
+      "user_summary": "P\u0159ipravit dne\u0161n\u00ed jasn\u00fd p\u0159ehled priorit a \u010dty\u0159i bloky pr\u00e1ce bez technick\u00e9ho balastu.",
+      "due_at": "2026-03-03T09:00+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "planning_calendar",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-1002",
+      "title": "Run sanitized CRM hygiene audit and aggregate status update",
+      "task_type": "crm_audit",
+      "status": "in_progress",
+      "priority": "P0",
+      "owner": "dealops",
+      "complexity": "medium",
+      "risk_level": "high",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Refresh aggregate hygiene counts, identify risk categories, and produce non-identifying next-step guidance.",
+      "user_summary": "Zkontrolovat hygienu pipeline a vr\u00e1tit jen souhrnn\u00e9 po\u010dty a rizika bez osobn\u00edch dat.",
+      "due_at": "2026-03-03T09:15+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [
+        "live_crm_exports_must_stay_local_only"
+      ],
+      "route_snapshot": {
+        "rule_id": "crm_structured_analysis",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-1003",
+      "title": "Prepare sanitized follow-up queue and approval state",
+      "task_type": "follow_up_queue",
+      "status": "blocked",
+      "priority": "P0",
+      "owner": "inboxforge",
+      "complexity": "medium",
+      "risk_level": "high",
+      "approval_state": "pending_human",
+      "output_visibility": "internal",
+      "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "due_at": "2026-03-03T09:30+01:00",
+      "updated_at": "2026-03-03T08:20+01:00",
+      "blockers": [
+        "explicit_send_approval_missing",
+        "deal_context_not_finalized"
+      ],
+      "route_snapshot": {
+        "rule_id": "writing_with_review",
+        "lead_model": "anthropic/claude-sonnet-4-20250514",
+        "worker_model": null,
+        "reviewer_model": "openai/gpt-5-mini",
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "handoff_packet"
+      }
+    }
+  ]
+}

@@ -23,6 +23,7 @@ KNOWLEDGE_INSIGHTS = ROOT / "knowledge" / "AGENT_INSIGHTS.md"
 TODAY_SUMMARY = ROOT / "knowledge" / "TODAY_SUMMARY.md"
 PENDING_REVIEWS = ROOT / "reviews" / "PENDING_REVIEWS.md"
 IMPROVEMENTS = ROOT / "knowledge" / "IMPROVEMENTS.md"
+EXECUTION_STATE = ROOT / "knowledge" / "EXECUTION_STATE.json"
 
 
 PRIORITY_ORDER = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
@@ -60,8 +61,20 @@ class Task:
         return self.data.get("complexity", "medium")
 
     @property
+    def task_type(self) -> str:
+        return self.data.get("task_type", "general")
+
+    @property
+    def risk_level(self) -> str:
+        return self.data.get("risk_level", "medium")
+
+    @property
     def output_visibility(self) -> str:
         return self.data.get("output_visibility", "internal")
+
+    @property
+    def approval_state(self) -> str:
+        return self.data.get("approval_state", "not_required")
 
     @property
     def depends_on(self) -> list:
@@ -420,6 +433,54 @@ def write_pending_reviews(open_tasks):
     PENDING_REVIEWS.write_text("\n".join(lines).rstrip() + "\n")
 
 
+def serialize_task(task: Task) -> dict:
+    return {
+        "task_id": task.task_id,
+        "title": task.title,
+        "task_type": task.task_type,
+        "status": task.status,
+        "priority": task.priority,
+        "owner": task.owner,
+        "complexity": task.complexity,
+        "risk_level": task.risk_level,
+        "approval_state": task.approval_state,
+        "output_visibility": task.output_visibility,
+        "summary": task.data.get("summary"),
+        "user_summary": task.data.get("user_summary"),
+        "due_at": format_dt(task.due_at),
+        "updated_at": format_dt(task.updated_at),
+        "blockers": task.data.get("blockers", []),
+        "route_snapshot": task.data.get("route_snapshot", {}),
+    }
+
+
+def write_execution_state(open_tasks, done_tasks, archived, stale_outputs, dep_issues):
+    active = sort_tasks([t for t in open_tasks if t.status in ACTIVE_STATUSES])
+    blocked = [t for t in active if t.status == "blocked"]
+    needs_review = [t for t in active if t.status == "needs_review"]
+    recent_done = sort_tasks(done_tasks)[-3:]
+    state = {
+        "generated_at": datetime.now().astimezone().isoformat(timespec="minutes"),
+        "counts": {
+            "open": len(open_tasks),
+            "done": len(done_tasks),
+            "blocked": len(blocked),
+            "needs_review": len(needs_review),
+            "stale_outputs": len(stale_outputs),
+            "dependency_issues": len(dep_issues),
+        },
+        "top_priorities": [serialize_task(task) for task in active[:5]],
+        "blocked_tasks": [serialize_task(task) for task in blocked[:5]],
+        "needs_review": [serialize_task(task) for task in needs_review[:5]],
+        "recently_completed": [serialize_task(task) for task in recent_done],
+        "recently_archived": archived,
+        "stale_outputs": stale_outputs,
+        "dependency_issues": dep_issues,
+        "tasks": [serialize_task(task) for task in active],
+    }
+    EXECUTION_STATE.write_text(json.dumps(state, indent=2) + "\n")
+
+
 # ──────────────────────────────────────────────────
 # Main
 # ──────────────────────────────────────────────────
@@ -434,6 +495,7 @@ def main():
     if archived:
         write_improvements(archived)
         open_tasks = load_tasks(TASKS_OPEN_DIR)
+        done_tasks = load_tasks(TASKS_DONE_DIR)
 
     # Detect stale outputs
     stale_outputs = detect_stale_outputs(registry)
@@ -445,6 +507,7 @@ def main():
     write_agent_insights(registry, open_tasks, done_tasks, stale_outputs, dep_issues)
     write_today_summary(open_tasks, dep_issues)
     write_pending_reviews(open_tasks)
+    write_execution_state(open_tasks, done_tasks, archived, stale_outputs, dep_issues)
 
     # Print summary for cron logs
     print(

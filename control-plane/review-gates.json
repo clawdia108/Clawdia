@@ -1,11 +1,13 @@
 {
-  "version": 1,
+  "version": 2,
   "description": "Mandatory review gates. Tasks matching a gate are auto-blocked until reviewed.",
   "gates": [
     {
-      "id": "external_send",
-      "description": "Any output visible to people outside the system",
-      "trigger": "task.output_visibility == 'user_facing' && task.capabilities_required contains 'writing'",
+      "id": "user_facing_release",
+      "description": "Any user-visible output must be reviewed and simplified before release.",
+      "match": {
+        "output_visibility": ["user_facing"]
+      },
       "required_review": true,
       "reviewer": "reviewer",
       "auto_block": true,
@@ -13,8 +15,10 @@
     },
     {
       "id": "crm_write",
-      "description": "Any write operation to Pipedrive or external CRM",
-      "trigger": "task.guardrails contains 'no_cross_owner_writes_without_explicit_ack'",
+      "description": "Any write operation touching Pipedrive or another CRM.",
+      "match": {
+        "guardrails": ["no_cross_owner_writes_without_explicit_ack"]
+      },
       "required_review": true,
       "reviewer": "main",
       "auto_block": true,
@@ -22,21 +26,36 @@
     },
     {
       "id": "external_message",
-      "description": "Email sends, Slack messages, any outbound communication",
-      "trigger": "task.guardrails contains 'no_external_send_without_explicit_approval'",
+      "description": "Any outbound communication to email, Slack, WhatsApp, or similar.",
+      "match": {
+        "guardrails": ["no_external_send_without_explicit_approval"]
+      },
       "required_review": true,
       "reviewer": "main",
       "auto_block": true,
       "block_message": "External messages require explicit human approval."
     },
     {
-      "id": "knowledge_high_complexity",
-      "description": "Major knowledge base restructuring",
-      "trigger": "task.agent == 'knowledgekeeper' && task.complexity == 'high'",
+      "id": "high_risk_autonomy",
+      "description": "High-risk tasks should not continue autonomously without a reviewer.",
+      "match": {
+        "risk_level": ["high", "critical"]
+      },
       "required_review": true,
       "reviewer": "reviewer",
       "auto_block": false,
-      "block_message": "High-complexity knowledge changes should be reviewed."
+      "block_message": "High-risk tasks should be explicitly reviewed."
+    },
+    {
+      "id": "remote_delegate",
+      "description": "Remote A2A delegation must be explicitly approved.",
+      "match": {
+        "coordination_pattern": ["remote_a2a_delegate"]
+      },
+      "required_review": true,
+      "reviewer": "main",
+      "auto_block": true,
+      "block_message": "Remote delegation requires Bridge approval."
     }
   ],
   "bypass_rules": {

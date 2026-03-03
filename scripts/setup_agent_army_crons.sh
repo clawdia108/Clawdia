@@ -23,17 +23,21 @@ openclaw cron create --name dealops-am --agent dealops --cron "15 7 * * 1-5" --t
 openclaw cron create --name inboxforge-am --agent inboxforge --cron "30 7 * * 1-5" --tz "$TZ" \
   --message "Morning inbox triage. Update inbox/INBOX_DIGEST.md and inbox/DRAFTS.md. Flag items needing human approval. No sends without explicit command."
 
+# 07:45 — KnowledgeKeeper: prepare AM digest
+openclaw cron create --name knowledgekeeper-am-digest --agent knowledgekeeper --cron "45 7 * * 1-5" --tz "$TZ" \
+  --message "Prepare the AM execution snapshot. Run python3 scripts/knowledge_sync.py then python3 scripts/render_user_report.py --period AM. Write knowledge/EXECUTION_STATE.json and knowledge/USER_DIGEST_AM.md."
+
 # ──────────────────────────────────────────────────
 # BRIDGE REPORTS (daily, user-facing)
 # ──────────────────────────────────────────────────
 
 # 08:00 — Bridge: morning report for Josef
 openclaw cron create --name bridge-am-report --agent main --cron "0 8 * * 1-5" --tz "$TZ" \
-  --message "Morning report for Josef. Use templates/user-report.md format. Max 15 lines. Three sections: Co je dnes důležité / Co jsem udělal / Potřebuji od tebe. No task IDs, no agent names, no timestamps."
+  --message "Morning report for Josef. Read knowledge/USER_DIGEST_AM.md if it is fresh, otherwise regenerate from knowledge/EXECUTION_STATE.json via templates/user-report.md. Max 15 lines. Three sections: Co je dnes důležité / Co jsem udělal / Potřebuji od tebe. No task IDs, no agent names, no timestamps."
 
 # 18:30 — Bridge: evening report for Josef
 openclaw cron create --name bridge-pm-report --agent main --cron "30 18 * * 1-5" --tz "$TZ" \
-  --message "Evening report for Josef. Use templates/user-report.md format. Max 15 lines. Summarize what got done, what's blocked, what needs decision. No task IDs, no agent names."
+  --message "Evening report for Josef. Read knowledge/USER_DIGEST_PM.md if it is fresh, otherwise regenerate from knowledge/EXECUTION_STATE.json via templates/user-report.md. Max 15 lines. Summarize what got done, what's blocked, what needs decision. No task IDs, no agent names."
 
 # ──────────────────────────────────────────────────
 # MIDDAY OPS (Mon-Fri)
@@ -73,7 +77,11 @@ openclaw cron create --name reviewer-pm --agent reviewer --cron "30 17 * * 1-5" 
 
 # 18:00 — KnowledgeKeeper: daily sync
 openclaw cron create --name knowledgekeeper-sync --agent knowledgekeeper --cron "0 18 * * *" --tz "$TZ" \
-  --message "Daily knowledge sync. Run scripts/knowledge_sync.py. Update knowledge/AGENT_INSIGHTS.md, knowledge/TODAY_SUMMARY.md, reviews/PENDING_REVIEWS.md. Extract learnings from tasks/done/."
+  --message "Daily knowledge sync. Run python3 scripts/knowledge_sync.py. Update knowledge/AGENT_INSIGHTS.md, knowledge/TODAY_SUMMARY.md, reviews/PENDING_REVIEWS.md, and knowledge/EXECUTION_STATE.json. Extract learnings from tasks/done/."
+
+# 18:15 — KnowledgeKeeper: prepare PM digest
+openclaw cron create --name knowledgekeeper-pm-digest --agent knowledgekeeper --cron "15 18 * * 1-5" --tz "$TZ" \
+  --message "Prepare the PM execution digest. Run python3 scripts/knowledge_sync.py then python3 scripts/render_user_report.py --period PM. Write knowledge/USER_DIGEST_PM.md."
 
 # ──────────────────────────────────────────────────
 # NIGHTLY MAINTENANCE (daily, includes weekends)
@@ -87,4 +95,4 @@ openclaw cron create --name knowledgekeeper-night --agent knowledgekeeper --cron
 openclaw cron create --name reviewer-night --agent reviewer --cron "30 22 * * *" --tz "$TZ" \
   --message "Night security check. Verify no sensitive data in git-tracked files. Check open task backlog for stale items. Write findings to reviews/SYSTEM_HEALTH.md."
 
-echo "Agent Army cron setup complete (15 jobs: 12 weekday-only, 3 daily)"
+echo "Agent Army cron setup complete (17 jobs: 14 weekday-only, 3 daily)"

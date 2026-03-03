@@ -1,18 +1,46 @@
 {
-  "version": 2,
+  "version": 3,
   "main_agent": "main",
   "agents": {
     "main": {
       "display_name": "Bridge",
       "role": "orchestrator",
-      "capabilities": ["reasoning", "writing", "tone_matching", "coordination"],
+      "capabilities": [
+        "reasoning",
+        "writing",
+        "tone_matching",
+        "coordination",
+        "delegation",
+        "approval"
+      ],
       "default_complexity": "high",
       "preferred_model_tier": "standard",
+      "preferred_patterns": [
+        "deterministic_router",
+        "orchestrator_worker",
+        "reviewer_refiner",
+        "approval_checkpoint",
+        "background_digest"
+      ],
+      "handoff_contract": "handoff_packet",
+      "session_scope": "human_session",
+      "trace_workflow": "bridge_orchestration",
+      "preferred_output_contracts": [
+        "user_report",
+        "urgent_alert",
+        "handoff_packet"
+      ],
+      "external_protocols": [
+        "mcp",
+        "a2a-ready"
+      ],
       "review_bypass": true,
       "output_visibility": "user_facing",
       "writes_to": [
         "memory/",
-        "WORKBOARD.md"
+        "WORKBOARD.md",
+        "knowledge/USER_DIGEST_AM.md",
+        "knowledge/USER_DIGEST_PM.md"
       ],
       "reads_from": [
         "tasks/open/",
@@ -30,6 +58,18 @@
       "capabilities": ["writing", "tone_matching", "structured_data"],
       "default_complexity": "medium",
       "preferred_model_tier": "standard",
+      "preferred_patterns": [
+        "deterministic_router",
+        "reviewer_refiner",
+        "approval_checkpoint"
+      ],
+      "handoff_contract": "handoff_packet",
+      "session_scope": "task_session",
+      "trace_workflow": "inbox_operations",
+      "preferred_output_contracts": [
+        "handoff_packet",
+        "internal_snapshot"
+      ],
       "review_bypass": false,
       "output_visibility": "internal",
       "writes_to": [
@@ -50,6 +90,17 @@
       "capabilities": ["structured_data", "json", "analysis"],
       "default_complexity": "medium",
       "preferred_model_tier": "economy",
+      "preferred_patterns": [
+        "deterministic_router",
+        "approval_checkpoint"
+      ],
+      "handoff_contract": "handoff_packet",
+      "session_scope": "task_session",
+      "trace_workflow": "crm_operations",
+      "preferred_output_contracts": [
+        "internal_snapshot",
+        "handoff_packet"
+      ],
       "review_bypass": false,
       "output_visibility": "internal",
       "writes_to": [
@@ -70,6 +121,17 @@
       "capabilities": ["structured_data", "planning"],
       "default_complexity": "low",
       "preferred_model_tier": "economy",
+      "preferred_patterns": [
+        "deterministic_router",
+        "background_digest"
+      ],
+      "handoff_contract": "handoff_packet",
+      "session_scope": "task_session",
+      "trace_workflow": "calendar_planning",
+      "preferred_output_contracts": [
+        "internal_snapshot",
+        "handoff_packet"
+      ],
       "review_bypass": false,
       "output_visibility": "internal",
       "writes_to": [
@@ -91,6 +153,22 @@
       "capabilities": ["web_search", "synthesis", "analysis", "writing"],
       "default_complexity": "medium",
       "preferred_model_tier": "standard",
+      "preferred_patterns": [
+        "orchestrator_worker",
+        "parallel_fanout",
+        "reviewer_refiner"
+      ],
+      "handoff_contract": "handoff_packet",
+      "session_scope": "task_session",
+      "trace_workflow": "research_parallel",
+      "preferred_output_contracts": [
+        "internal_snapshot",
+        "handoff_packet"
+      ],
+      "external_protocols": [
+        "mcp",
+        "a2a-ready"
+      ],
       "review_bypass": false,
       "output_visibility": "internal",
       "writes_to": [
@@ -111,6 +189,17 @@
       "capabilities": ["validation", "comparison", "analysis", "reasoning"],
       "default_complexity": "medium",
       "preferred_model_tier": "standard",
+      "preferred_patterns": [
+        "reviewer_refiner",
+        "deterministic_router"
+      ],
+      "handoff_contract": "review_report",
+      "session_scope": "task_session",
+      "trace_workflow": "quality_review",
+      "preferred_output_contracts": [
+        "review_report",
+        "internal_snapshot"
+      ],
       "review_bypass": true,
       "output_visibility": "internal",
       "writes_to": [
@@ -133,13 +222,28 @@
       "capabilities": ["synthesis", "structured_data", "archival"],
       "default_complexity": "low",
       "preferred_model_tier": "economy",
+      "preferred_patterns": [
+        "deterministic_router",
+        "background_digest"
+      ],
+      "handoff_contract": "internal_snapshot",
+      "session_scope": "background_run",
+      "trace_workflow": "knowledge_sync",
+      "preferred_output_contracts": [
+        "internal_snapshot",
+        "cron_digest",
+        "user_report"
+      ],
       "review_bypass": false,
       "output_visibility": "internal",
       "writes_to": [
         "knowledge/KNOWLEDGE_BASE.md",
         "knowledge/AGENT_INSIGHTS.md",
         "knowledge/TODAY_SUMMARY.md",
-        "knowledge/IMPROVEMENTS.md"
+        "knowledge/IMPROVEMENTS.md",
+        "knowledge/EXECUTION_STATE.json",
+        "knowledge/USER_DIGEST_AM.md",
+        "knowledge/USER_DIGEST_PM.md"
       ],
       "reads_from": [
         "tasks/open/",

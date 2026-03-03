@@ -1,116 +1,255 @@
 {
-  "version": 1,
-  "description": "Task-aware model routing. Evaluated top-to-bottom, first match wins.",
+  "version": 2,
+  "description": "Task-aware multi-model routing. Evaluated top-to-bottom, first match wins.",
+  "selection_dimensions": [
+    "task_type",
+    "complexity",
+    "risk_level",
+    "output_visibility",
+    "requires_tools",
+    "requires_parallel_workers",
+    "capabilities_required"
+  ],
+  "models": {
+    "openai/gpt-5.2": {
+      "provider": "openai",
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.00175,
+      "cost_per_1k_output_usd": 0.014,
+      "strengths": ["reasoning", "tool_use", "coding", "context_management"]
+    },
+    "openai/gpt-5.2-pro": {
+      "provider": "openai",
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.021,
+      "cost_per_1k_output_usd": 0.168,
+      "strengths": ["hard_reasoning", "adjudication", "precision"]
+    },
+    "openai/gpt-5.2-codex": {
+      "provider": "openai",
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.00175,
+      "cost_per_1k_output_usd": 0.014,
+      "strengths": ["long_horizon_coding", "agentic_coding", "tool_use"]
+    },
+    "openai/gpt-5-mini": {
+      "provider": "openai",
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.00025,
+      "cost_per_1k_output_usd": 0.002,
+      "strengths": ["cost_efficiency", "structured_output", "fast_reasoning"]
+    },
+    "openai/gpt-5-nano": {
+      "provider": "openai",
+      "context_window": 400000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.00005,
+      "cost_per_1k_output_usd": 0.0004,
+      "strengths": ["summarization", "classification", "high_throughput"]
+    },
+    "anthropic/claude-opus-4-1-20250805": {
+      "provider": "anthropic",
+      "context_window": 200000,
+      "max_output_tokens": 32000,
+      "cost_per_1k_input_usd": 0.015,
+      "cost_per_1k_output_usd": 0.075,
+      "strengths": ["parallel_research", "advanced_coding", "deep_reasoning"]
+    },
+    "anthropic/claude-sonnet-4-20250514": {
+      "provider": "anthropic",
+      "context_window": 200000,
+      "max_output_tokens": 64000,
+      "cost_per_1k_input_usd": 0.003,
+      "cost_per_1k_output_usd": 0.015,
+      "strengths": ["writing", "review", "balanced_reasoning"]
+    },
+    "anthropic/claude-3-5-haiku-latest": {
+      "provider": "anthropic",
+      "context_window": 200000,
+      "max_output_tokens": 8192,
+      "cost_per_1k_input_usd": 0.0008,
+      "cost_per_1k_output_usd": 0.004,
+      "strengths": ["fast_checks", "low_latency", "cheap_screening"]
+    },
+    "ollama/qwen2.5:7b": {
+      "provider": "ollama",
+      "context_window": 32000,
+      "max_output_tokens": 8192,
+      "cost_per_1k_input_usd": 0,
+      "cost_per_1k_output_usd": 0,
+      "strengths": ["local", "privacy", "fallback"]
+    }
+  },
   "routing_rules": [
     {
-      "id": "heartbeat",
-      "description": "Periodic lightweight status checks",
-      "match": { "task_type": ["heartbeat"] },
-      "model": "ollama/qwen2.5:7b",
-      "fallback": null,
-      "max_tokens": 512,
+      "id": "heartbeat_low_cost",
+      "description": "Periodic lightweight checks and simple classification.",
+      "match": {
+        "task_type": ["heartbeat"],
+        "risk_level": ["low"]
+      },
+      "pattern": "deterministic_router",
+      "lead_model": "openai/gpt-5-nano",
+      "fallbacks": ["ollama/qwen2.5:7b"],
+      "output_contract": "cron_digest",
+      "reasoning_effort": "minimal",
       "budget_tier": "free"
     },
     {
-      "id": "output_simplification",
-      "description": "Postprocess agent output for human-friendly summaries",
-      "match": { "task_type": ["simplify_output"] },
-      "model": "ollama/qwen2.5:7b",
-      "fallback": "openai/gpt-5-mini",
-      "max_tokens": 1024,
-      "budget_tier": "free"
+      "id": "user_digest_pipeline",
+      "description": "Turn internal state into a short user-facing digest.",
+      "match": {
+        "task_type": ["user_digest", "simplify_output", "cron_report"],
+        "output_visibility": ["user_facing"]
+      },
+      "pattern": "background_digest",
+      "lead_model": "openai/gpt-5-mini",
+      "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["openai/gpt-5-nano"],
+      "output_contract": "user_report",
+      "reasoning_effort": "low",
+      "budget_tier": "economy"
     },
     {
       "id": "knowledge_sync",
-      "description": "Summarization, deduplication, archival",
+      "description": "Summarization, deduplication, archival, and state snapshots.",
       "match": {
         "agent": ["knowledgekeeper"],
+        "task_type": ["knowledge_sync", "archival", "state_snapshot"],
         "complexity": ["low", "medium"]
       },
-      "model": "ollama/qwen2.5:7b",
-      "fallback": "openai/gpt-5-mini",
-      "max_tokens": 4096,
+      "pattern": "deterministic_router",
+      "lead_model": "openai/gpt-5-mini",
+      "fallbacks": ["openai/gpt-5-nano", "ollama/qwen2.5:7b"],
+      "output_contract": "internal_snapshot",
+      "reasoning_effort": "low",
       "budget_tier": "economy"
     },
     {
-      "id": "scheduling_planning",
-      "description": "Calendar management, time blocking, daily planning",
+      "id": "planning_calendar",
+      "description": "Calendar management, time blocking, daily planning.",
       "match": {
         "agent": ["timebox"],
+        "task_type": ["daily_plan", "calendar_plan", "meeting_prep"],
         "complexity": ["low", "medium"]
       },
-      "model": "openai/gpt-5-mini",
-      "fallback": "ollama/qwen2.5:7b",
-      "max_tokens": 2048,
+      "pattern": "deterministic_router",
+      "lead_model": "openai/gpt-5-mini",
+      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/qwen2.5:7b"],
+      "output_contract": "internal_snapshot",
+      "reasoning_effort": "low",
       "budget_tier": "economy"
     },
     {
-      "id": "crm_operations",
-      "description": "Pipeline checks, hygiene reports, scoring",
+      "id": "crm_structured_analysis",
+      "description": "Pipeline hygiene, CRM scoring, and structured non-writing analysis.",
       "match": {
         "agent": ["dealops"],
-        "complexity": ["low", "medium"],
+        "task_type": ["crm_audit", "crm_hygiene", "crm_status"],
         "capabilities_required": ["structured_data", "json"]
       },
-      "model": "openai/gpt-5-mini",
-      "fallback": "ollama/qwen2.5:7b",
-      "max_tokens": 4096,
+      "pattern": "deterministic_router",
+      "lead_model": "openai/gpt-5-mini",
+      "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["ollama/qwen2.5:7b"],
+      "output_contract": "internal_snapshot",
+      "reasoning_effort": "low",
       "budget_tier": "economy"
     },
     {
-      "id": "research_web",
-      "description": "Market research, competitor analysis, web search synthesis",
+      "id": "writing_with_review",
+      "description": "Drafting and user-visible writing with an explicit review pass.",
       "match": {
-        "agent": ["growthlab"],
-        "capabilities_required": ["web_search", "synthesis"]
-      },
-      "model": "openai/gpt-4o",
-      "fallback": "anthropic/claude-sonnet-4-20250514",
-      "max_tokens": 4096,
-      "budget_tier": "standard"
-    },
-    {
-      "id": "content_generation",
-      "description": "Email drafts, reports, user-facing summaries",
-      "match": {
-        "agent": ["inboxforge", "main"],
         "capabilities_required": ["writing", "tone_matching"]
       },
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "openai/gpt-4o",
-      "max_tokens": 4096,
+      "pattern": "reviewer_refiner",
+      "lead_model": "anthropic/claude-sonnet-4-20250514",
+      "reviewer_model": "openai/gpt-5-mini",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["openai/gpt-5.2"],
+      "output_contract": "handoff_packet",
+      "reasoning_effort": "medium",
       "budget_tier": "standard"
     },
     {
-      "id": "review_validation",
-      "description": "Quality checks, consistency validation, security review",
+      "id": "research_parallel",
+      "description": "Breadth-first web research with a strong lead agent and cheaper subagents.",
       "match": {
-        "agent": ["reviewer"],
-        "capabilities_required": ["validation", "comparison"]
+        "agent": ["growthlab"],
+        "task_type": ["research", "market_scan", "competitor_scan"],
+        "requires_parallel_workers": [true]
       },
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "openai/gpt-5-mini",
-      "max_tokens": 4096,
-      "budget_tier": "standard"
+      "pattern": "orchestrator_worker",
+      "lead_model": "anthropic/claude-opus-4-1-20250805",
+      "worker_model": "anthropic/claude-sonnet-4-20250514",
+      "aggregator_model": "openai/gpt-5.2",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["openai/gpt-5.2", "anthropic/claude-sonnet-4-20250514"],
+      "output_contract": "internal_snapshot",
+      "reasoning_effort": "high",
+      "max_parallel_workers": 4,
+      "budget_tier": "premium"
     },
     {
-      "id": "reasoning_heavy",
-      "description": "Complex analysis, strategy, multi-step reasoning — default fallback",
+      "id": "code_change_long_horizon",
+      "description": "Long-horizon coding or orchestration refactors with tool use.",
+      "match": {
+        "task_type": ["code_change", "control_plane_upgrade"],
+        "complexity": ["high"],
+        "requires_tools": [true]
+      },
+      "pattern": "orchestrator_worker",
+      "lead_model": "openai/gpt-5.2-codex",
+      "reviewer_model": "openai/gpt-5.2",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["anthropic/claude-opus-4-1-20250805"],
+      "output_contract": "review_report",
+      "reasoning_effort": "high",
+      "budget_tier": "premium"
+    },
+    {
+      "id": "high_risk_adjudication",
+      "description": "Critical reviews, arbitration, or risky decisions.",
+      "match": {
+        "risk_level": ["critical"]
+      },
+      "pattern": "reviewer_refiner",
+      "lead_model": "openai/gpt-5.2-pro",
+      "reviewer_model": "anthropic/claude-opus-4-1-20250805",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["openai/gpt-5.2"],
+      "output_contract": "review_report",
+      "reasoning_effort": "xhigh",
+      "background_mode_preferred": true,
+      "budget_tier": "premium"
+    },
+    {
+      "id": "orchestrator_heavy_default",
+      "description": "Default route for complex orchestration or cross-domain synthesis.",
       "match": {
         "complexity": ["high"]
       },
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "openai/gpt-4o",
-      "max_tokens": 8192,
-      "budget_tier": "premium"
+      "pattern": "orchestrator_worker",
+      "lead_model": "openai/gpt-5.2",
+      "worker_model": "anthropic/claude-sonnet-4-20250514",
+      "output_model": "openai/gpt-5-mini",
+      "fallbacks": ["anthropic/claude-opus-4-1-20250805"],
+      "output_contract": "internal_snapshot",
+      "reasoning_effort": "high",
+      "budget_tier": "standard"
     }
   ],
   "budget_tiers": {
-    "free":     { "cost_per_call_usd": 0,     "daily_limit": null },
-    "economy":  { "cost_per_call_usd": 0.005, "daily_limit": 50 },
-    "standard": { "cost_per_call_usd": 0.02,  "daily_limit": 30 },
-    "premium":  { "cost_per_call_usd": 0.05,  "daily_limit": 10 }
+    "free": { "daily_limit_usd": null, "preferred_models": ["ollama/qwen2.5:7b", "openai/gpt-5-nano"] },
+    "economy": { "daily_limit_usd": 3, "preferred_models": ["openai/gpt-5-mini", "openai/gpt-5-nano", "anthropic/claude-3-5-haiku-latest"] },
+    "standard": { "daily_limit_usd": 8, "preferred_models": ["openai/gpt-5.2", "anthropic/claude-sonnet-4-20250514"] },
+    "premium": { "daily_limit_usd": 20, "preferred_models": ["openai/gpt-5.2-pro", "anthropic/claude-opus-4-1-20250805"] }
   },
   "selection_logic": "first_match_wins",
-  "default_rule": "reasoning_heavy"
+  "default_rule": "orchestrator_heavy_default"
 }

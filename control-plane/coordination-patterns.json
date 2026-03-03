@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "description": "Canonical multi-agent coordination patterns for OpenClaw.",
+  "patterns": {
+    "deterministic_router": {
+      "description": "Classify the task with structured fields and route to a single specialist flow.",
+      "use_when": [
+        "task_type is known",
+        "one specialist can complete the work",
+        "latency matters more than breadth"
+      ],
+      "max_parallel_workers": 1,
+      "required_task_fields": [
+        "task_type",
+        "expected_output_contract",
+        "summary"
+      ],
+      "context_policy": "pass only task summary, artifacts, blockers, and route snapshot",
+      "stop_condition": "deliverable matches acceptance checks"
+    },
+    "orchestrator_worker": {
+      "description": "Lead agent decomposes a task, delegates bounded subtasks, and synthesizes outputs.",
+      "use_when": [
+        "task is high complexity",
+        "subtasks are semi-independent",
+        "multiple tools or domains are involved"
+      ],
+      "max_parallel_workers": 5,
+      "required_task_fields": [
+        "summary",
+        "acceptance_checks",
+        "handoff_brief"
+      ],
+      "context_policy": "workers receive scoped briefs and artifacts, never full raw history",
+      "stop_condition": "aggregator synthesizes worker artifacts into the target contract"
+    },
+    "parallel_fanout": {
+      "description": "Run several independent workers in parallel and merge their outputs.",
+      "use_when": [
+        "coverage breadth matters",
+        "sources are independent",
+        "speed matters"
+      ],
+      "max_parallel_workers": 4,
+      "required_task_fields": [
+        "summary",
+        "acceptance_checks"
+      ],
+      "context_policy": "same prompt family, distinct scopes per worker",
+      "stop_condition": "all workers complete or quorum threshold is met"
+    },
+    "reviewer_refiner": {
+      "description": "Generate, evaluate against acceptance checks, refine once or twice, then release.",
+      "use_when": [
+        "quality bar is explicit",
+        "user-facing text must be simplified",
+        "risk or ambiguity is non-trivial"
+      ],
+      "max_parallel_workers": 2,
+      "max_review_loops": 2,
+      "required_task_fields": [
+        "acceptance_checks",
+        "expected_output_contract"
+      ],
+      "context_policy": "reviewer sees output plus acceptance checks, not all tool chatter",
+      "stop_condition": "review passes or task escalates"
+    },
+    "approval_checkpoint": {
+      "description": "Pause a task at an approval boundary and resume with the same session context.",
+      "use_when": [
+        "external side effects exist",
+        "CRM writes are possible",
+        "human approval is mandatory"
+      ],
+      "max_parallel_workers": 1,
+      "required_task_fields": [
+        "approval_state",
+        "session_id",
+        "trace_id"
+      ],
+      "context_policy": "preserve route snapshot, user intent, and decision history",
+      "stop_condition": "approval_state becomes approved or rejected"
+    },
+    "background_digest": {
+      "description": "Convert noisy internal state into a short, human-friendly digest.",
+      "use_when": [
+        "output is user_facing",
+        "internal reports are already available",
+        "the user does not want technical detail"
+      ],
+      "max_parallel_workers": 1,
+      "required_task_fields": [
+        "expected_output_contract",
+        "user_summary"
+      ],
+      "context_policy": "consume only execution_state JSON and approved internal reports",
+      "stop_condition": "digest satisfies output contract line limits"
+    },
+    "remote_a2a_delegate": {
+      "description": "Delegate to a remote agent using an A2A-compatible task envelope.",
+      "use_when": [
+        "required skill is not local",
+        "remote specialist exists",
+        "task can be represented as stateful artifacts"
+      ],
+      "max_parallel_workers": 2,
+      "required_task_fields": [
+        "task_type",
+        "accepted_output_modes",
+        "handoff_brief"
+      ],
+      "context_policy": "send minimal task envelope plus approved artifacts only",
+      "stop_condition": "remote task reaches terminal state and artifact is imported"
+    }
+  }
+}

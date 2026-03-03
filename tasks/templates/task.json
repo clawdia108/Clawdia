@@ -1,6 +1,7 @@
 {
   "id": "TASK-0001",
   "title": "Short task title",
+  "task_type": "general",
   "status": "todo",
   "priority": "P1",
   "owner": "dealops",
@@ -9,13 +10,21 @@
   "updated_at": "2026-03-03T09:00:00+01:00",
   "due_at": "2026-03-03T12:00:00+01:00",
   "summary": "Sanitized summary of the work to be done.",
+  "user_summary": "Krátké vysvětlení pro člověka bez technického šumu.",
   "complexity": "medium",
+  "risk_level": "medium",
   "capabilities_required": ["structured_data"],
   "model_hint": null,
+  "coordination_pattern": "deterministic_router",
+  "expected_output_contract": "internal_snapshot",
+  "approval_state": "not_required",
+  "requires_tools": false,
+  "requires_parallel_workers": false,
+  "session_id": "task-task-0001",
+  "trace_id": null,
   "depends_on": [],
   "output_visibility": "internal",
   "review_required": true,
-  "user_summary": null,
   "inputs": [
     "pipedrive/PIPELINE_STATUS.md"
   ],
@@ -23,10 +32,33 @@
     "pipedrive/HYGIENE_REPORT.md"
   ],
   "blockers": [],
+  "acceptance_checks": [
+    "Deliverable is sanitized for git",
+    "Required artifacts are updated",
+    "Next step is explicit"
+  ],
+  "handoff_brief": {
+    "objective": "What outcome is needed.",
+    "done": [],
+    "next_step": "What should happen next.",
+    "open_questions": []
+  },
   "handoff_to": [],
   "reviewer": "reviewer",
+  "accepted_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "guardrails": [
     "no_external_send_without_explicit_approval"
   ],
+  "route_snapshot": {
+    "rule_id": null,
+    "lead_model": null,
+    "worker_model": null,
+    "reviewer_model": null,
+    "output_model": null,
+    "output_contract": null
+  },
   "notes": []
 }
