@@ -65,13 +65,48 @@
       }
     },
     "entries": {
+      "main": { "model": "anthropic/claude-sonnet-4-20250514" },
+      "inboxforge": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": {
+          "model": "ollama/qwen2.5:7b",
+          "every": "30m",
+          "activeHours": { "start": "07:00", "end": "20:00" }
+        }
+      },
+      "dealops": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": {
+          "model": "ollama/qwen2.5:7b",
+          "every": "30m",
+          "activeHours": { "start": "07:00", "end": "20:00" }
+        }
+      },
+      "timebox": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": {
+          "model": "ollama/qwen2.5:7b",
+          "every": "30m",
+          "activeHours": { "start": "06:30", "end": "20:00" }
+        }
+      },
       "growthlab": { "model": "anthropic/claude-sonnet-4-20250514", "heartbeat": { "model": "ollama/qwen2.5:7b" } },
-      "pipelinepilot": { "model": "anthropic/claude-sonnet-4-20250514", "heartbeat": { "model": "ollama/qwen2.5:7b" } },
-      "inboxforge": { "model": "ollama/qwen2.5:7b" },
-      "calendarcaptain": { "model": "ollama/qwen2.5:7b" },
-      "reviewer": { "model": "ollama/qwen2.5:7b" },
-      "knowledgekeeper": { "model": "ollama/qwen2.5:7b" },
-      "main": { "model": "anthropic/claude-sonnet-4-20250514" }
+      "reviewer": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": {
+          "model": "ollama/qwen2.5:7b",
+          "every": "30m",
+          "activeHours": { "start": "08:00", "end": "23:00" }
+        }
+      },
+      "knowledgekeeper": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "heartbeat": {
+          "model": "ollama/qwen2.5:7b",
+          "every": "30m",
+          "activeHours": { "start": "06:00", "end": "23:00" }
+        }
+      }
     }
   },
   "fallback": {

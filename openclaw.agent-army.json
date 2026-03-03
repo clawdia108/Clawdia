@@ -1,6 +1,15 @@
 {
+  "version": 1,
+  "registryPath": "control-plane/agent-registry.json",
   "agentArmy": {
-    "main": "Bridge",
-    "agents": ["inboxforge", "dealops", "timebox", "growthlab", "reviewer", "knowledgekeeper"]
+    "main": "main",
+    "agents": [
+      "inboxforge",
+      "dealops",
+      "timebox",
+      "growthlab",
+      "reviewer",
+      "knowledgekeeper"
+    ]
   }
 }

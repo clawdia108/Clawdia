@@ -1,0 +1,34 @@
+{
+  "id": "TASK-1003",
+  "title": "Prepare sanitized follow-up queue and approval state",
+  "status": "blocked",
+  "priority": "P0",
+  "owner": "inboxforge",
+  "requester": "main",
+  "created_at": "2026-03-03T08:20:00+01:00",
+  "updated_at": "2026-03-03T08:20:00+01:00",
+  "due_at": "2026-03-03T09:30:00+01:00",
+  "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
+  "inputs": [
+    "WORKBOARD.md",
+    "tasks/open/P0-TASK-1002.json",
+    "inbox/FOLLOW_UPS.md"
+  ],
+  "artifacts": [
+    "inbox/FOLLOW_UPS.md"
+  ],
+  "blockers": [
+    "explicit_send_approval_missing",
+    "deal_context_not_finalized"
+  ],
+  "handoff_to": [
+    "reviewer",
+    "knowledgekeeper"
+  ],
+  "reviewer": "reviewer",
+  "guardrails": [
+    "no_external_send_without_explicit_approval",
+    "keep_git_tracked_output_sanitized"
+  ],
+  "notes": []
+}

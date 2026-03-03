@@ -1,0 +1,25 @@
+{
+  "id": "TASK-0001",
+  "title": "Short task title",
+  "status": "todo",
+  "priority": "P1",
+  "owner": "dealops",
+  "requester": "main",
+  "created_at": "2026-03-03T09:00:00+01:00",
+  "updated_at": "2026-03-03T09:00:00+01:00",
+  "due_at": "2026-03-03T12:00:00+01:00",
+  "summary": "Sanitized summary of the work to be done.",
+  "inputs": [
+    "pipedrive/PIPELINE_STATUS.md"
+  ],
+  "artifacts": [
+    "pipedrive/HYGIENE_REPORT.md"
+  ],
+  "blockers": [],
+  "handoff_to": [],
+  "reviewer": "reviewer",
+  "guardrails": [
+    "no_external_send_without_explicit_approval"
+  ],
+  "notes": []
+}

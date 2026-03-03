@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "main_agent": "main",
+  "agents": {
+    "main": {
+      "display_name": "Bridge",
+      "role": "orchestrator",
+      "writes_to": [
+        "memory/",
+        "WORKBOARD.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "knowledge/",
+        "reviews/",
+        "inbox/",
+        "calendar/",
+        "pipedrive/",
+        "intel/"
+      ]
+    },
+    "inboxforge": {
+      "display_name": "InboxForge",
+      "role": "email_and_followups",
+      "writes_to": [
+        "inbox/INBOX_DIGEST.md",
+        "inbox/DRAFTS.md",
+        "inbox/FOLLOW_UPS.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "calendar/",
+        "pipedrive/",
+        "knowledge/"
+      ]
+    },
+    "dealops": {
+      "display_name": "DealOps",
+      "role": "crm_operations",
+      "writes_to": [
+        "pipedrive/HYGIENE_REPORT.md",
+        "pipedrive/PIPELINE_STATUS.md",
+        "pipedrive/SCORING_LOG.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "knowledge/",
+        "inbox/",
+        "intel/"
+      ]
+    },
+    "timebox": {
+      "display_name": "Timebox",
+      "role": "calendar_and_execution_planning",
+      "writes_to": [
+        "calendar/TODAY.md",
+        "calendar/PREP_NOTES.md",
+        "calendar/WEEKLY_OVERVIEW.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "pipedrive/",
+        "inbox/",
+        "knowledge/",
+        "intel/"
+      ]
+    },
+    "growthlab": {
+      "display_name": "GrowthLab",
+      "role": "research_and_experiments",
+      "writes_to": [
+        "intel/DAILY-INTEL.md",
+        "intel/MARKET_SIGNALS.md",
+        "intel/COMPETITOR_WATCH.md",
+        "knowledge/RESEARCH_LOG.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "knowledge/",
+        "pipedrive/"
+      ]
+    },
+    "reviewer": {
+      "display_name": "Reviewer",
+      "role": "quality_and_risk",
+      "writes_to": [
+        "reviews/PENDING_REVIEWS.md",
+        "reviews/CODE_QUALITY.md",
+        "reviews/SYSTEM_HEALTH.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "knowledge/",
+        "inbox/",
+        "calendar/",
+        "pipedrive/",
+        "intel/"
+      ]
+    },
+    "knowledgekeeper": {
+      "display_name": "KnowledgeKeeper",
+      "role": "knowledge_operations",
+      "writes_to": [
+        "knowledge/KNOWLEDGE_BASE.md",
+        "knowledge/AGENT_INSIGHTS.md",
+        "knowledge/TODAY_SUMMARY.md",
+        "knowledge/IMPROVEMENTS.md"
+      ],
+      "reads_from": [
+        "tasks/open/",
+        "tasks/done/",
+        "reviews/",
+        "inbox/",
+        "calendar/",
+        "pipedrive/",
+        "intel/"
+      ]
+    }
+  }
+}
