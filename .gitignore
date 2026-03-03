@@ -1,0 +1,18 @@
+# Secrets and local runtime state
+.secrets/
+.private/
+.openclaw/
+*.env
+
+# Raw CRM exports and probes stay local-only
+monitoring/*.json
+pipedrive/*.json
+workspace/pipedrive/*.json
+workspace/pipedrive/*.md
+memory/*dryrun*.json
+memory/heartbeat-state.json
+
+# Misc local artifacts
+*.log
+__pycache__/
+scripts/__pycache__/
