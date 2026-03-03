@@ -8,34 +8,37 @@
 
 ---
 
-**Předmět:** 40 hodin práce na průzkumu, který nikdo nečte — jde to jinak
+**Předmět:** Rychlý přehled o náladě ve vašich týmech
 
-**Záložní předmět:** Co kdyby průzkum spokojenosti běžel sám a lidi ho vyplnili?
+**Záložní předmět:** Jak si získávat důležité informace o lidech z týmu
 
 ---
 
 Dobrý den, paní Svobodová,
 
-mám jednu otázku — kolik hodin vám zabere jeden zaměstnanecký průzkum od A do Z? Příprava otázek, distribuce, sběr, analýza, prezentace vedení.
+dokola slýchám od HR tyto stejné věci:
 
-HR manažeři, se kterými mluvím, říkají 40–60 hodin. A výsledek? PDF, které vedení otevře jednou a založí do šuplíku. Mezitím se svět v týmech posune a data jsou zastaralá.
+– Chceme mít přehled o tom, jak se lidem daří, ale není na to prostor.
+– Problémy se často ukážou až ve chvíli, kdy už je hasíme.
+– Týmy jsou šikovné, ale tlak a únava se objeví dřív, než to lidé řeknou nahlas.
+– A vedení chce jasná data, ne domněnky.
 
-Řešíme to nástrojem Echo Pulse — AI chatbot, který průběžně měří 12 faktorů engagementu. Stručně, co to znamená v praxi:
+Sepisuji stručně, proč si myslím, že by Echo Pulse mohl u vás sedět:
 
-- **Nulová příprava** — chatbot se ptá sám, otázky se přizpůsobují kontextu. Vy jen spustíte a sledujete výsledky.
-- **Návratnost 75–90 %** — protože zaměstnanec odpovídá 3 minuty v konverzaci, ne 30 minut v dotazníku.
-- **Živý dashboard místo PDF** — konkrétní doporučení na úrovni týmu a faktoru. Vidíte trendy v reálném čase, ne jednou za půl roku.
-- **12 validovaných faktorů** — od autonomie přes vztahy v týmu po důvěru ve vedení. Ne obecné „jste spokojení?", ale data, se kterými jde pracovat.
+- **Po nastavení běží vše automaticky** — výrazná úspora času i administrativy. Žádné dotazníky, žádné tabulky, žádné složité implementace.
+- **Jasná data místo dojmů** — konkrétní podklady pro vedení, které se obhájí samy.
+- **Včas vidíte, kde jsou týmy přetížené** nebo kde se něco začíná lámat — dřív, než se z toho stane odchod.
+- **Víc prostoru dělat HR strategicky, ne jen operativně** — rychlý přehled, kde vzniká tlak, přetížení nebo riziko odchodu.
 
-Prakticky je to analytik a psycholog v jednom — bez dvou dalších úvazků v rozpočtu.
+Prakticky — EchoPulse umí dát HR přesné odpovědi během pár minut.
 
-**Dvě varianty, jak to vyzkoušet:**
+**Dvě varianty:**
 
-**A)** Spustíme Echo Pulse zdarma na jednom vašem týmu. Bez platby, bez závazků. Za 2 týdny máte reálná data a můžete porovnat s tím, co děláte teď.
+**A)** Vyzkoušet na malém vzorku — zdarma, bez závazků. Pošlete mi 8–10 e-mailů z jednoho týmu, rozešleme to a uvidíte rovnou výsledky na vlastních datech.
 
-**B)** Uděláme si 20minutový hovor — ukážu vám dashboard na reálných datech a probereme, jak to zapadá do vašich stávajících procesů.
+**B)** Krátký hovor, 20 minut — ukážu vám dashboard na reálných datech. Pokud chcete, klidně i s vedením.
 
-Dejte vědět, co dává větší smysl — klidně jen krátkou odpovědí.
+Hodila by se vám [DEN] v [ČAS], případně [DEN] v [ČAS]? Kdyby se vám to nehodilo, klidně mi hoďte svůj termín.
 
 S pozdravem,
 Josef Hofman

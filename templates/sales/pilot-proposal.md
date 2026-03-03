@@ -7,13 +7,13 @@
 
 ---
 
-**Předmět:** Echo Pulse pro [COMPANY] — konkrétní návrh, dvě varianty
+**Předmět:** Echo Pulse pro [COMPANY] — konkrétní návrh a dvě varianty
 
 ---
 
 Dobrý den, [OSLOVENÍ],
 
-navazuji na náš [hovor/schůzku] — posílám konkrétní návrh pilotu Echo Pulse pro [COMPANY]. Stručně a přehledně, ať máte všechno na jednom místě.
+navazuji na náš [hovor/schůzku] a posílám konkrétní návrh pilotu Echo Pulse pro [COMPANY]. Níže posílám stručné a přehledné shrnutí jako podklad pro vaši interní diskusi.
 
 ---
 
@@ -21,9 +21,13 @@ navazuji na náš [hovor/schůzku] — posílám konkrétní návrh pilotu Echo 
 
 AI chatbot, který průběžně měří angažovanost zaměstnanců napříč **12 validovanými faktory**. Výstup: real-time dashboard s konkrétními doporučeními pro management.
 
-Prakticky — psycholog a data-analytik v jednom, dostupný 24/7. Bez dotazníkové únavy, s návratností přes 75 % (vs. 30–50 % u klasických průzkumů).
+Prakticky — psycholog a data-analytik v jednom, dostupný 24/7. Žádné dotazníky, žádné tabulky. Návratnost přes 75 % (vs. 30–50 % u klasických průzkumů).
 
-> Reálný příklad: Grammer CZ (350+ zaměstnanců, výroba) — Echo Pulse identifikoval 3 skryté faktory odchodů v prvních 6 týdnech pilotu. Manažeři měli konkrétní kroky do týdne.
+**Podívejte se sám/sama:**
+- Demo dashboard: [app.behavera.com](https://app.behavera.com) | login: pulsedemocs@behavera.com | heslo: showdemo
+- Jak to vypadá z pohledu zaměstnance (bez registrace): [Quick Scan](https://bibi.behavera.com/free/behiro/pulse-showcase-initial?x_lang=cs) | [Workload](https://bibi.behavera.com/free/behiro/pulse-showcase-workload?x_lang=cs) | [Recognition](https://bibi.behavera.com/free/behiro/pulse-showcase-recognition?x_lang=cs) | [Stress](https://bibi.behavera.com/free/behiro/pulse-showcase-stress?x_lang=cs) | [Values](https://bibi.behavera.com/free/behiro/pulse-showcase-values?x_lang=cs)
+
+> Reálný příklad: Grammer CZ (350+ zaměstnanců, výroba) — Echo Pulse identifikoval 3 skryté faktory odchodů v prvních 6 týdnech pilotu. Konkrétní řešení, která mají dopad — manažeři měli kroky do týdne.
 
 ---
 
@@ -94,13 +98,15 @@ Na začátku pilotu se dohodneme na konkrétních měřítkách. Typicky:
 
 **Pokud pilot nepřinese relevantní zjištění, vracíme 100 % částky.**
 
-Žádné drobné písmo. Pokud po 3 měsících řeknete, že vám to nepřineslo hodnotu — dostanete zpět celých 29 900 Kč. Jsme si jistí tím, co děláme.
+Žádné drobné písmo. Pokud po 3 měsících neuvidíte přínos, peníze vracíme — celých 29 900 Kč.
 
 ---
 
 ## Další krok
 
-Dejte mi vědět, která varianta vám dává větší smysl. Klidně rovnou mailem, nebo si zavoláme na 15 minut — doladíme detaily a můžeme začít do 5 dnů.
+Dejte mi prosím vědět, která varianta vám dává větší smysl. Klidně rovnou mailem, nebo si zavoláme na 15 minut — doladíme detaily a můžeme začít do 5 dnů. Pilot pak umíme spustit velmi rychle, typicky do druhého dne od potvrzení.
+
+Po odeslání se vám ozve moje kolegyně Veronika Nováková (je v kopii) — domluví s vámi technické detaily, aby to pro vás bylo co nejjednodušší. Případně ji neváhejte kontaktovat na 775 922 506.
 
 S pozdravem,
 Josef Hofman

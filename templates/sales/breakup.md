@@ -7,15 +7,15 @@
 
 ---
 
-**Předmět:** Zavírám složku [COMPANY] — ale rád pomůžu, kdykoliv
+**Předmět:** [COMPANY] — poslední zpráva ode mě
 
 ---
 
 Dobrý den, [OSLOVENÍ],
 
-píšu naposledy a budu stručný.
+píšu naposledy — stručně.
 
-Rozumím, že Echo Pulse teď není na stole. Žádný problém — ne každý nástroj sedí každé firmě v každou chvíli.
+Rozhodnutí samozřejmě respektuji. Ne vždy se dá potkat na společném poli.
 
 Mám na vás jednu prosbu — čistě pro mě, abych se zlepšil:
 
@@ -26,13 +26,13 @@ b) Cena — nesedí do rozpočtu
 c) Řešení — nepřesvědčilo vás, že to funguje
 d) Něco jiného
 
-Stačí písmenko. Beru to jako zpětnou vazbu, ne jako otevření jednání. Slovo.
+Stačí písmenko. Nepoužiji to jako prostor pro protinabídku — jde mi opravdu jen o podněty, které předám dál týmu.
 
 ---
 
-A jedna věc na závěr: pokud by vám kdykoli v budoucnu pomohla data k fluktuaci, benchmark vašeho odvětví, nebo jen nezávazná konzultace k engagementu — ozvěte se. Žádné podmínky.
+Kdyby se u vás kdykoli v budoucnu objevilo téma tlaku v týmech, fluktuace nebo potřeba dát vedení jasná data — ozvěte se. Žádné podmínky.
 
-Přeji vám i celému týmu hodně zdaru.
+Ať se vám daří.
 
 Josef Hofman
 Behavera | Echo Pulse

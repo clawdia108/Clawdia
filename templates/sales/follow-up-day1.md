@@ -7,27 +7,29 @@
 # Personalizovat: [OSLOVENÍ], [FIRMA], [MEETING_SUMMARY], [PAIN_POINT_1], [PAIN_POINT_2], [NEXT_STEP], [DEMO_LINK]
 ---
 
-**Předmět:** [FIRMA] — shrnutí a další krok
+**Předmět:** Další krok s Echo Pulse — [FIRMA]
 
 ---
 
 Dobrý den, [OSLOVENÍ],
 
-díky za váš čas. Stručně shrnuji, na čem jsme se bavili:
+děkuji vám za čas a za otevřenost při představení Echo Pulse. Chtěl jsem jen krátce navázat a sepsat, co jsem si z našeho rozhovoru odnesl:
 
 [MEETING_SUMMARY]
 
-Navazuje to na dvě věci, které jste zmínil/a — a kde vám Echo Pulse dá rychlý signál:
+Navazuje to na to, co jste řešil/a:
 
-1. **[PAIN_POINT_1]** — průzkum šitý na míru vašemu týmu, výsledky do 48 hodin.
-2. **[PAIN_POINT_2]** — konkrétní doporučení pro manažery, ne obecné fráze z PowerPointu.
+1. **[PAIN_POINT_1]** → konkrétní data do 48 hodin, ne domněnky.
+2. **[PAIN_POINT_2]** → jasná doporučení, co má smysl řešit hned a co může počkat.
 
 **Domluvený další krok:**
 [NEXT_STEP]
 
-Ukázka dashboardu: [DEMO_LINK]
+**Ukázka dashboardu a pulse dotazníků:**
+- Dashboard: [app.behavera.com](https://app.behavera.com) | login: pulsedemocs@behavera.com | heslo: showdemo
+- Jak to vypadá z pohledu zaměstnance: [Quick Scan](https://bibi.behavera.com/free/behiro/pulse-showcase-initial?x_lang=cs) | [Workload](https://bibi.behavera.com/free/behiro/pulse-showcase-workload?x_lang=cs) | [Recognition](https://bibi.behavera.com/free/behiro/pulse-showcase-recognition?x_lang=cs) | [Stress](https://bibi.behavera.com/free/behiro/pulse-showcase-stress?x_lang=cs)
 
-Kdybyste potřeboval/a cokoliv posunout, klidně napište — přizpůsobím se.
+Kdybyste potřeboval/a cokoliv posunout, klidně mi hoďte svůj termín a nějak to určitě sladíme. Případně se neváhejte s čímkoliv ozvat do té doby.
 
 Josef Hofman
 Behavera | Echo Pulse

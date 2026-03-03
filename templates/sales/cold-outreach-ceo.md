@@ -8,35 +8,35 @@
 
 ---
 
-**Předmět:** Odchod jednoho člověka stojí 9 platů — u [COMPANY] je to [ODHAD] ročně
+**Předmět:** Rychlý přehled o náladě ve vašich týmech — [COMPANY]
 
-**Záložní předmět:** [COMPANY] — jeden číslo, které většina firem nezná
+**Záložní předmět:** Když se firma mění rychleji než její lidé
 
 ---
 
 Dobrý den, pane Nováku,
 
-píšu stručně, vím, že máte nabitý den.
+dokola se s CEO řeším pár stejných otázek:
 
-Průměrná firma s 200 lidmi ztratí ročně 30 zaměstnanců. Každý odchod stojí 6–9 měsíčních platů — nábor, zaučení, ztráta know-how, propad výkonu týmu. U [COMPANY] s [POČET] lidmi to vychází na **[ODHAD] Kč ročně**.
+– Proč výkon kolísá, i když mi lidi makají?
+– Kdo je přetížený, kdo mi brzy odejde?
+– Kde vznikají ztráty, které ještě nejsou vidět v číslech?
 
-To nejpodstatnější: **většina těch odchodů šla předvídat**. Signály tam byly — jen je nikdo neměřil.
+Sepisuji stručně, proč si myslím, že by Echo Pulse mohl u [COMPANY] sedět:
 
-Přesně tohle řeší náš nástroj Echo Pulse:
+- **Rychlý signál „kde hoří / nehoří" po týmech** — bez mikromanagementu, bez čekání na kvartální výsledky.
+- **Rozhodování opřené o reálná data z týmů** — ne jen o jednotlivé názory nebo pocitové řízení.
+- **Včas zachytíte změnu zátěže, férovosti nebo uznání** dřív, než se z toho stane odchod nebo dlouhé „hašení".
 
-- **Průběžné micro-průzkumy** přes AI chatbot — zaměstnanci odpovídají 3 minuty, ne hodinu. Návratnost přes 80 %.
-- **Live dashboard** s konkrétními doporučeními — vidíte, který tým hoří a proč, bez čekání na kvartální výsledky.
-- **12 měřených faktorů** od autonomie po vztah s vedením — ne obecné „jste spokojení?", ale konkrétní data.
+Bez projektů, bez implementace, bez zátěže pro vás i zaměstnance. Výsledky jsou vidět okamžitě.
 
-Měříme to, co vede k odchodům, dřív než k nim dojde.
+**Dvě varianty:**
 
-**Dvě varianty, jak se na to podívat:**
+**A)** Krátký hovor, 15–20 minut — ukážu vám dashboard na reálných datech. Pokud chcete, klidně i s vaším HR.
 
-**A)** Krátký hovor, 15 minut — ukážu vám dashboard na reálných datech. Bez závazků, klidně jen rychlý signál, jestli to dává smysl.
+**B)** Spustíme Echo Pulse na jednom týmu zdarma — za 2 týdny uvidíte výsledky na vlastních datech. Bez platby, bez závazků.
 
-**B)** Spustíme Echo Pulse na jednom týmu zdarma — za 2 týdny uvidíte výsledky na vlastní kůži. Žádná platba, žádný závazek.
-
-Co vám sedí víc?
+Hodil by se vám [DEN] v [ČAS], nebo spíš [DEN] v [ČAS]? Kdyby se vám to nehodilo, klidně mi hoďte svůj termín a nějak to určitě sladíme.
 
 S pozdravem,
 Josef Hofman

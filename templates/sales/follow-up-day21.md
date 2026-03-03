@@ -7,29 +7,27 @@
 # Personalizovat: [JMÉNO]
 ---
 
-**Předmět:** Poslední mail — a jedna upřímná otázka
+**Předmět:** Krátce — kdyby se to hodilo
 
 ---
 
 Zdravím, [JMÉNO],
 
-tohle je poslední zpráva v téhle sérii. Nechci plnit inbox.
+nedaří se mi s vámi spojit, tak jen krátce.
 
-Rozumím — timing nemusí sedět, téma nemusí být priorita. Všechno v pohodě.
+Rozhodnutí samozřejmě respektuji — timing nemusí sedět, téma nemusí být priorita. Vůbec nic se neděje.
 
-Mám jednu otázku, a slibuji, že odpověď nepoužiji k protinabídce:
+Pokud byste si našel/a 2 minuty, budu moc vděčný za krátkou zpětnou vazbu:
 
-**Co vás od toho odradilo?**
+– Není to teď priorita?
+– Řešíte to jinak?
+– Něco v nabídce nedávalo smysl?
 
-- Není to teď priorita?
-- Řešíte to jinak?
-- Něco v nabídce nedávalo smysl?
+Nepoužiji to jako prostor pro protinabídku — jde mi opravdu jen o podněty, které předám dál týmu, abychom se mohli zlepšovat.
 
-Stačí i jednoslovná odpověď. Pomůže mi to.
+Kdyby se u vás kdykoliv objevilo téma tlaku v týmech, únavy nebo rychlé potřeby dát vedení jasná data — klidně se ozvěte. Nechávám to plně na vás.
 
-A na rovinu — pokud se kdykoliv tohle téma stane aktuální (fluktuace, engagement, zpětná vazba pro manažery), klidně se ozvěte. Žádný problém, dveře jsou otevřené.
-
-Přeji hodně úspěchů.
+Ať se vám daří.
 
 Josef Hofman
 Behavera | Echo Pulse
