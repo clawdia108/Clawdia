@@ -4,9 +4,9 @@ set -euo pipefail
 TZ="Europe/Prague"
 
 # ══════════════════════════════════════════════════════════════
-# OPENCLAW AGENT ARMY — PRODUCTION CRON CONFIG v3
+# OPENCLAW AGENT ARMY — PRODUCTION CRON CONFIG v4
 # "Kombucha Mode" — alive, fermenting, self-improving
-# 48 jobs across 8 agents + Bridge
+# 54 jobs across 10 agents + Bridge
 # Updated: 2026-03-04
 # ══════════════════════════════════════════════════════════════
 
@@ -277,16 +277,95 @@ Use Josef's tone. Create Gmail drafts via MCP. Write summaries to inbox/DRAFTS.m
 # ──────────────────────────────────────────────────
 
 openclaw cron create --name calendarcaptain-morning --agent calendarcaptain --cron "0 7 * * 1-5" --tz "$TZ" \
-  --message "Morning planning. Check Google Calendar. Write calendar/TODAY.md.
-For sales meetings: pull SPIN notes, deal status, relevant intel.
-Write meeting prep to calendar/meeting-prep/[date]-[company].md."
+  --message "Morning planning + ADHD-aware Pomodoro schedule. Check Google Calendar.
+Read reviews/daily-scorecard/SCOREBOARD.md for XP/streak status.
+1) Write calendar/TODAY.md with full daily agenda.
+2) Create calendar/pomodoro/[date].md with Pomodoro schedule:
+   - 08:00-10:45 PROSPECTING (5 Pomodoros) — non-negotiable
+   - 11:00-12:30 DEMO CALLS (2-3 scheduled)
+   - 13:20-14:20 PROPOSALS & ADMIN (2 Pomodoros)
+   - 14:35-15:30 MORE DEMOS if scheduled
+   - 15:30-16:30 CREATIVE/BUILDING (2 Pomodoros, high dopamine)
+   - 16:45-17:30 FOLLOW-UP SPRINT (2 Pomodoros)
+3) Include XP/streak in morning header: 'Day X streak | Level: Y (Z XP)'
+4) Warn if streak at risk: '⚠️ STREAK AT RISK'
+5) For sales meetings: pull SPIN notes, deal status, relevant intel.
+6) Write meeting prep to calendar/meeting-prep/[date]-[company].md.
+ADHD rules: alternate task types, buffer meetings +10min, front-load revenue activities."
+
+openclaw cron create --name calendarcaptain-midday --agent calendarcaptain --cron "45 12 * * 1-5" --tz "$TZ" \
+  --message "Midday rebalance (12:45). Josef has ADHD — mornings can go off-plan.
+1) Check Google Calendar — did morning meetings run over?
+2) Read today's calendar/pomodoro/[date].md — how many Pomodoros completed?
+3) If morning prospecting block was missed/interrupted, reschedule to afternoon.
+4) Update calendar/TODAY.md with adjusted afternoon plan.
+5) Keep it micro-specific: exactly what to do in each remaining time block.
+Short output — just the adjusted afternoon plan."
 
 openclaw cron create --name calendarcaptain-eod --agent calendarcaptain --cron "0 18 * * 1-5" --tz "$TZ" \
-  --message "EOD wrap. Check tomorrow's calendar. Write calendar/TOMORROW_PREP.md.
-Flag meetings needing SPIN notes. Suggest follow-up emails for today's meetings."
+  --message "EOD wrap + tomorrow prep.
+1) Check tomorrow's calendar. Write calendar/TOMORROW_PREP.md.
+2) Log Pomodoro completion to calendar/pomodoro/[date].md — how many completed vs planned.
+3) Flag meetings needing SPIN notes — trigger PipelinePilot.
+4) Suggest follow-up emails for today's meetings.
+5) Pre-plan tomorrow's Pomodoro schedule."
 
 # ──────────────────────────────────────────────────
-# 8. REVIEWER — Quality + Coaching + Self-Improvement (4 jobs)
+# 8. AUDITOR — Sales Performance Coach (4 jobs)
+# ──────────────────────────────────────────────────
+
+openclaw cron create --name auditor-morning --agent auditor --cron "15 7 * * 1-5" --tz "$TZ" \
+  --message "Morning accountability (07:15). You are Auditor — Josef's brutally honest sales performance coach.
+Source .secrets/pipedrive.env. Read reviews/daily-scorecard/SCOREBOARD.md for XP/streak status.
+1) Fetch yesterday's Pipedrive activities (user_id=24403638, done=1) — count demo bookings and completed calls.
+2) Compare to daily targets: 8 demo bookings, 5 demo calls, 10 follow-ups, 2 proposals.
+3) Write a SHORT (10-15 line) morning report: 'Yesterday you did X. Target was Y. You're [on track / behind by Z].'
+4) Update XP in SCOREBOARD.md based on yesterday's actual activity.
+5) Check streak — if yesterday hit all targets, increment streak. If not, reset to 0.
+6) Write today's scorecard to reviews/daily-scorecard/[date].md.
+Be brutally honest. Numbers first. No padding. Give the fix if behind."
+
+openclaw cron create --name auditor-midday --agent auditor --cron "30 12 * * 1-5" --tz "$TZ" \
+  --message "Midday check-in (12:30). You are Auditor.
+Source .secrets/pipedrive.env. Quick status check:
+1) How many calls/activities has Josef done TODAY so far? (Pipedrive API)
+2) Compare to pace needed for daily targets (8 bookings, 5 calls by EOD).
+3) Read calendar/TODAY.md — is he on track with the Pomodoro schedule?
+4) Write a 5-line max check-in: 'It's noon. You've done X calls. You need Y more. [Here's what's blocking you].'
+5) Append to today's reviews/daily-scorecard/[date].md.
+Short, sharp, actionable. No cheerleading."
+
+openclaw cron create --name auditor-eod --agent auditor --cron "30 17 * * 1-5" --tz "$TZ" \
+  --message "EOD scorecard (17:30). You are Auditor. Full daily review.
+Source .secrets/pipedrive.env.
+1) Final count: demos booked, calls done, follow-ups sent, proposals sent, deals won (all from Pipedrive).
+2) Revenue impact: any deals moved stages? New pipeline value?
+3) Compare to targets. Calculate daily XP earned.
+4) Check if daily target was hit (all 4 metrics) → update streak in SCOREBOARD.md.
+5) Write full scorecard to reviews/daily-scorecard/[date].md with:
+   - Numbers vs targets
+   - What went wrong (be specific — 'You spent 2h on templates instead of calling')
+   - What to fix tomorrow (micro-specific: 'Calls before 10 AM, templates after 4 PM')
+   - Cumulative weekly/monthly tracking
+   - XP earned today, total XP, current level, streak status
+6) Update SCOREBOARD.md with all XP data.
+Never lie. Never pad. Always give the fix."
+
+openclaw cron create --name auditor-weekly --agent auditor --cron "0 18 * * 5" --tz "$TZ" \
+  --message "Weekly roast (Friday 18:00). You are Auditor. Full week in review. NO MERCY.
+Source .secrets/pipedrive.env.
+1) Read all reviews/daily-scorecard/[date].md from this week.
+2) Weekly totals vs targets: 40 bookings, 25 calls, 50 follow-ups, 10 proposals.
+3) Revenue this week — deals won, pipeline growth, stage movements.
+4) Trend analysis: improving or declining? Day-by-day pattern.
+5) What's actually working vs what Josef THINKS is working.
+6) Top 3 time wasters this week.
+7) Boss fight result: Did Josef hit all targets 5/5 days?
+8) Write reviews/daily-scorecard/WEEKLY_ROAST.md — full, honest, data-driven.
+This is the weekly moment of truth. Be an expert who gives a damn."
+
+# ──────────────────────────────────────────────────
+# 9. REVIEWER — Quality + Coaching + Self-Improvement (4 jobs)
 # ──────────────────────────────────────────────────
 
 openclaw cron create --name reviewer-health --agent reviewer --cron "30 17 * * 1-5" --tz "$TZ" \
@@ -407,8 +486,8 @@ Be brutally honest. Track trends day over day."
 
 echo ""
 echo "══════════════════════════════════════════════════"
-echo " Agent Army Cron v3.1 — KOMBUCHA MODE (24/7)"
-echo " 49 cron registrations — runs 24/7, never sleeps"
+echo " Agent Army Cron v4 — KOMBUCHA MODE (24/7)"
+echo " 54 cron registrations — runs 24/7, never sleeps"
 echo "══════════════════════════════════════════════════"
 echo ""
 echo " DAY SHIFT (06:30 — 22:30)"
@@ -416,9 +495,10 @@ echo " PipelinePilot:    8 jobs"
 echo " KnowledgeKeeper:  9 jobs (7x study + synthesis + deep read)"
 echo " CopyAgent:        7 jobs (content, blog, excerpt, Slack, polish)"
 echo " Codex:            4 jobs (build, experiment, deploy, weekend)"
+echo " Auditor:          4 jobs (morning 07:15, midday 12:30, EOD 17:30, weekly Fri 18:00)"
 echo " GrowthLab:        3 jobs"
 echo " InboxForge:       3 jobs"
-echo " CalendarCaptain:  2 jobs"
+echo " CalendarCaptain:  3 jobs (morning + midday rebalance + EOD)"
 echo " Reviewer:         4 jobs"
 echo " Bridge:           2 jobs"
 echo ""
@@ -428,6 +508,8 @@ echo " Codex:            2 night builds (23:30, 04:00)"
 echo " GrowthLab:        1 international research (02:00)"
 echo " Reviewer:         1 deep analysis (05:00)"
 echo ""
+echo " TOTAL: 10 agents, 54 cron jobs"
 echo " TOTAL: 10 book study sessions/day → target 8-10 books/day"
 echo " TOTAL: 6 Codex build sessions/day → min 6 commits/day"
+echo " TOTAL: 3 daily sales accountability check-ins"
 echo "══════════════════════════════════════════════════"
