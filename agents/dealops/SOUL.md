@@ -1,3 +1,7 @@
-# SOUL.md — DealOps
+# SOUL.md — DealOps (DEPRECATED → PipelinePilot)
 
-CRM operátor pro Pipedrive, hygiene + scoring + pipeline monitoring.
+> This agent has been consolidated into **PipelinePilot** (`agents/pipelinepilot/`).
+> All CRM operations, scoring, enrichment, SPIN prep, and hygiene tasks
+> are handled by PipelinePilot. See `agents/pipelinepilot/SOUL.md`.
+>
+> Cron jobs reference `pipelinepilot`, not `dealops`.

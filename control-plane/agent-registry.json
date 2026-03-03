@@ -1,259 +1,105 @@
 {
-  "version": 3,
+  "version": 4,
+  "updated": "2026-03-04",
   "main_agent": "main",
   "agents": {
     "main": {
       "display_name": "Bridge",
       "role": "orchestrator",
-      "capabilities": [
-        "reasoning",
-        "writing",
-        "tone_matching",
-        "coordination",
-        "delegation",
-        "approval"
-      ],
+      "capabilities": ["reasoning", "writing", "tone_matching", "coordination", "delegation", "approval"],
       "default_complexity": "high",
       "preferred_model_tier": "standard",
-      "preferred_patterns": [
-        "deterministic_router",
-        "orchestrator_worker",
-        "reviewer_refiner",
-        "approval_checkpoint",
-        "background_digest"
-      ],
-      "handoff_contract": "handoff_packet",
-      "session_scope": "human_session",
-      "trace_workflow": "bridge_orchestration",
-      "preferred_output_contracts": [
-        "user_report",
-        "urgent_alert",
-        "handoff_packet"
-      ],
-      "external_protocols": [
-        "mcp",
-        "a2a-ready"
-      ],
+      "cron_jobs": ["bridge-am-report", "bridge-pm-report"],
       "review_bypass": true,
       "output_visibility": "user_facing",
-      "writes_to": [
-        "memory/",
-        "WORKBOARD.md",
-        "knowledge/USER_DIGEST_AM.md",
-        "knowledge/USER_DIGEST_PM.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "knowledge/",
-        "reviews/",
-        "inbox/",
-        "calendar/",
-        "pipedrive/",
-        "intel/"
-      ]
+      "writes_to": ["memory/", "WORKBOARD.md", "knowledge/USER_DIGEST_AM.md", "knowledge/USER_DIGEST_PM.md"],
+      "reads_from": ["tasks/open/", "knowledge/", "reviews/", "inbox/", "calendar/", "pipedrive/", "intel/"]
     },
-    "inboxforge": {
-      "display_name": "InboxForge",
-      "role": "email_and_followups",
-      "capabilities": ["writing", "tone_matching", "structured_data"],
-      "default_complexity": "medium",
+    "pipelinepilot": {
+      "display_name": "PipelinePilot",
+      "role": "crm_brain",
+      "aliases": ["dealops"],
+      "capabilities": ["structured_data", "json", "analysis", "web_research", "api_operations"],
+      "default_complexity": "high",
       "preferred_model_tier": "standard",
-      "preferred_patterns": [
-        "deterministic_router",
-        "reviewer_refiner",
-        "approval_checkpoint"
-      ],
-      "handoff_contract": "handoff_packet",
-      "session_scope": "task_session",
-      "trace_workflow": "inbox_operations",
-      "preferred_output_contracts": [
-        "handoff_packet",
-        "internal_snapshot"
-      ],
+      "cron_jobs": ["pipelinepilot-morning", "pipelinepilot-spin", "pipelinepilot-enrich-am", "pipelinepilot-enrich-pm", "pipelinepilot-hygiene", "pipelinepilot-notes", "pipelinepilot-pm", "pipelinepilot-learning"],
       "review_bypass": false,
       "output_visibility": "internal",
-      "writes_to": [
-        "inbox/INBOX_DIGEST.md",
-        "inbox/DRAFTS.md",
-        "inbox/FOLLOW_UPS.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "calendar/",
-        "pipedrive/",
-        "knowledge/"
-      ]
-    },
-    "dealops": {
-      "display_name": "DealOps",
-      "role": "crm_operations",
-      "capabilities": ["structured_data", "json", "analysis"],
-      "default_complexity": "medium",
-      "preferred_model_tier": "economy",
-      "preferred_patterns": [
-        "deterministic_router",
-        "approval_checkpoint"
-      ],
-      "handoff_contract": "handoff_packet",
-      "session_scope": "task_session",
-      "trace_workflow": "crm_operations",
-      "preferred_output_contracts": [
-        "internal_snapshot",
-        "handoff_packet"
-      ],
-      "review_bypass": false,
-      "output_visibility": "internal",
-      "writes_to": [
-        "pipedrive/HYGIENE_REPORT.md",
-        "pipedrive/PIPELINE_STATUS.md",
-        "pipedrive/SCORING_LOG.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "knowledge/",
-        "inbox/",
-        "intel/"
-      ]
-    },
-    "timebox": {
-      "display_name": "Timebox",
-      "role": "calendar_and_execution_planning",
-      "capabilities": ["structured_data", "planning"],
-      "default_complexity": "low",
-      "preferred_model_tier": "economy",
-      "preferred_patterns": [
-        "deterministic_router",
-        "background_digest"
-      ],
-      "handoff_contract": "handoff_packet",
-      "session_scope": "task_session",
-      "trace_workflow": "calendar_planning",
-      "preferred_output_contracts": [
-        "internal_snapshot",
-        "handoff_packet"
-      ],
-      "review_bypass": false,
-      "output_visibility": "internal",
-      "writes_to": [
-        "calendar/TODAY.md",
-        "calendar/PREP_NOTES.md",
-        "calendar/WEEKLY_OVERVIEW.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "pipedrive/",
-        "inbox/",
-        "knowledge/",
-        "intel/"
-      ]
-    },
-    "growthlab": {
-      "display_name": "GrowthLab",
-      "role": "research_and_experiments",
-      "capabilities": ["web_search", "synthesis", "analysis", "writing"],
-      "default_complexity": "medium",
-      "preferred_model_tier": "standard",
-      "preferred_patterns": [
-        "orchestrator_worker",
-        "parallel_fanout",
-        "reviewer_refiner"
-      ],
-      "handoff_contract": "handoff_packet",
-      "session_scope": "task_session",
-      "trace_workflow": "research_parallel",
-      "preferred_output_contracts": [
-        "internal_snapshot",
-        "handoff_packet"
-      ],
-      "external_protocols": [
-        "mcp",
-        "a2a-ready"
-      ],
-      "review_bypass": false,
-      "output_visibility": "internal",
-      "writes_to": [
-        "intel/DAILY-INTEL.md",
-        "intel/MARKET_SIGNALS.md",
-        "intel/COMPETITOR_WATCH.md",
-        "knowledge/RESEARCH_LOG.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "knowledge/",
-        "pipedrive/"
-      ]
-    },
-    "reviewer": {
-      "display_name": "Reviewer",
-      "role": "quality_and_risk",
-      "capabilities": ["validation", "comparison", "analysis", "reasoning"],
-      "default_complexity": "medium",
-      "preferred_model_tier": "standard",
-      "preferred_patterns": [
-        "reviewer_refiner",
-        "deterministic_router"
-      ],
-      "handoff_contract": "review_report",
-      "session_scope": "task_session",
-      "trace_workflow": "quality_review",
-      "preferred_output_contracts": [
-        "review_report",
-        "internal_snapshot"
-      ],
-      "review_bypass": true,
-      "output_visibility": "internal",
-      "writes_to": [
-        "reviews/PENDING_REVIEWS.md",
-        "reviews/CODE_QUALITY.md",
-        "reviews/SYSTEM_HEALTH.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "knowledge/",
-        "inbox/",
-        "calendar/",
-        "pipedrive/",
-        "intel/"
-      ]
+      "writes_to": ["pipedrive/PIPELINE_STATUS.md", "pipedrive/DEAL_SCORING.md", "pipedrive/HYGIENE_REPORT.md", "pipedrive/ENRICHMENT_LOG.md", "pipedrive/spin-notes/", "pipedrive/CRM_LEARNING_LOG.md"],
+      "reads_from": ["tasks/open/", "knowledge/", "inbox/", "intel/", "templates/sales/"]
     },
     "knowledgekeeper": {
       "display_name": "KnowledgeKeeper",
-      "role": "knowledge_operations",
-      "capabilities": ["synthesis", "structured_data", "archival"],
-      "default_complexity": "low",
-      "preferred_model_tier": "economy",
-      "preferred_patterns": [
-        "deterministic_router",
-        "background_digest"
-      ],
-      "handoff_contract": "internal_snapshot",
-      "session_scope": "background_run",
-      "trace_workflow": "knowledge_sync",
-      "preferred_output_contracts": [
-        "internal_snapshot",
-        "cron_digest",
-        "user_report"
-      ],
+      "role": "knowledge_operations_and_learning",
+      "capabilities": ["synthesis", "structured_data", "archival", "book_analysis", "cross_referencing"],
+      "default_complexity": "high",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["knowledgekeeper-study-am", "knowledgekeeper-study-mid", "knowledgekeeper-study-pm", "knowledgekeeper-synthesis", "knowledgekeeper-deep-read"],
       "review_bypass": false,
       "output_visibility": "internal",
-      "writes_to": [
-        "knowledge/KNOWLEDGE_BASE.md",
-        "knowledge/AGENT_INSIGHTS.md",
-        "knowledge/TODAY_SUMMARY.md",
-        "knowledge/IMPROVEMENTS.md",
-        "knowledge/EXECUTION_STATE.json",
-        "knowledge/USER_DIGEST_AM.md",
-        "knowledge/USER_DIGEST_PM.md"
-      ],
-      "reads_from": [
-        "tasks/open/",
-        "tasks/done/",
-        "reviews/",
-        "inbox/",
-        "calendar/",
-        "pipedrive/",
-        "intel/"
-      ]
+      "writes_to": ["knowledge/book-insights/", "knowledge/DEEP_READS/", "knowledge/IMPROVEMENT_PROPOSALS.md", "knowledge/READING_TRACKER.md", "knowledge/COPYWRITER_KNOWLEDGE_BASE.md", "knowledge/OBJECTION_LIBRARY.md", "knowledge/CZECH_PHRASE_LIBRARY.md", "knowledge/EXECUTION_STATE.json", "knowledge/AGENT_INSIGHTS.md"],
+      "reads_from": ["~/JosefGPT-Local/books/", "knowledge/", "drafts/", "templates/", "reviews/"]
+    },
+    "copyagent": {
+      "display_name": "CopyAgent",
+      "role": "sales_content_production",
+      "capabilities": ["writing", "tone_matching", "seo", "email_marketing", "czech_language"],
+      "default_complexity": "high",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["copyagent-morning", "copyagent-slack", "copyagent-polish", "copyagent-content-plan"],
+      "review_bypass": false,
+      "output_visibility": "internal",
+      "writes_to": ["drafts/", "delivery-queue/", "templates/sales/", "knowledge/SLACK_INSIGHTS.md", "briefs/auto-generated/"],
+      "reads_from": ["knowledge/", "pipedrive/PIPELINE_STATUS.md", "briefs/", "intel/"]
+    },
+    "growthlab": {
+      "display_name": "GrowthLab",
+      "role": "market_intelligence",
+      "capabilities": ["web_search", "synthesis", "analysis", "writing", "competitive_analysis"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["growthlab-morning", "growthlab-competitive", "growthlab-weekly"],
+      "review_bypass": false,
+      "output_visibility": "internal",
+      "writes_to": ["intel/DAILY-INTEL.md", "intel/COMPETITOR_WATCH.md", "intel/BATTLE_CARDS.md", "knowledge/RESEARCH_LOG.md"],
+      "reads_from": ["tasks/open/", "knowledge/", "pipedrive/"]
+    },
+    "inboxforge": {
+      "display_name": "InboxForge",
+      "role": "email_operations",
+      "capabilities": ["writing", "tone_matching", "structured_data", "gmail_mcp"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["inboxforge-scan-1", "inboxforge-drafts", "inboxforge-followup"],
+      "review_bypass": false,
+      "output_visibility": "internal",
+      "writes_to": ["inbox/TRIAGE.md", "inbox/DRAFTS.md", "inbox/FOLLOW_UPS.md"],
+      "reads_from": ["pipedrive/", "knowledge/", "templates/sales/", "calendar/"]
+    },
+    "calendarcaptain": {
+      "display_name": "CalendarCaptain",
+      "role": "time_and_meeting_prep",
+      "aliases": ["timebox"],
+      "capabilities": ["structured_data", "planning", "gcal_mcp"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["calendarcaptain-morning", "calendarcaptain-eod"],
+      "review_bypass": false,
+      "output_visibility": "internal",
+      "writes_to": ["calendar/TODAY.md", "calendar/TOMORROW_PREP.md", "calendar/meeting-prep/"],
+      "reads_from": ["pipedrive/spin-notes/", "pipedrive/PIPELINE_STATUS.md", "intel/", "inbox/"]
+    },
+    "reviewer": {
+      "display_name": "Reviewer",
+      "role": "quality_control_and_coaching",
+      "capabilities": ["validation", "comparison", "analysis", "reasoning", "security_audit"],
+      "default_complexity": "medium",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["reviewer-health", "reviewer-coaching", "reviewer-weekly", "reviewer-night"],
+      "review_bypass": true,
+      "output_visibility": "internal",
+      "writes_to": ["reviews/HEALTH_REPORT.md", "reviews/WEEKLY_REVIEW.md", "reviews/SYSTEM_HEALTH.md", "reviews/prompt-coaching/"],
+      "reads_from": ["tasks/", "knowledge/", "inbox/", "calendar/", "pipedrive/", "intel/", "drafts/", "templates/"]
     }
   }
 }
