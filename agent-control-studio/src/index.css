@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8f3ed;
+  color: #0f0d0c;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  --ink: #0f0d0c;
+  --muted-ink: #5b5350;
+  --panel: #fffaf4;
+  --panel-pop: #fff1e4;
+  --panel-secondary: #fff8ef;
+  --surface: #f5eee5;
+  --tag: #ffe7d1;
+  --warm: #ffc7a8;
+  --accent: #6d4aff;
+  --accent-soft: #e6ddff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --ink: #f7f0e8;
+  --muted-ink: #d5cbc0;
+  --panel: #241f28;
+  --panel-pop: #2f2734;
+  --panel-secondary: #352d3b;
+  --surface: #19161d;
+  --tag: #3f3348;
+  --warm: #c76e3a;
+  --accent: #f57cff;
+  --accent-soft: #513266;
+  background-color: #141218;
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: inherit;
+}
+
+button {
+  font-family: inherit;
+  border: 2px solid var(--ink);
+  background: var(--tag);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  color: inherit;
+}
+
+button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+button.ghost {
+  background: transparent;
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,554 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > renders the operator dashboard 1`] = `
+<div>
+  <div
+    class="app-shell"
+  >
+    <header
+      class="masthead"
+    >
+      <div>
+        <p
+          class="eyebrow"
+        >
+          OpenClaw / Control Studio
+        </p>
+        <h1>
+          Agent heartbeat
+        </h1>
+        <p
+          class="subhead"
+        >
+          One screen for today's files, pipeline alerts, live mock logs, and manual agent nudges.
+        </p>
+      </div>
+      <div
+        class="masthead-actions"
+      >
+        <button
+          class="ghost theme-toggle"
+          type="button"
+        >
+          Dark mode
+        </button>
+      </div>
+    </header>
+    <main
+      class="grid"
+    >
+      <section
+        class="panel agents"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Agents
+          </h2>
+          <span
+            class="tag"
+          >
+            live roster
+          </span>
+        </div>
+        <div
+          class="agent-list"
+        >
+          <button
+            class="agent-card selected"
+            type="button"
+          >
+            <header>
+              <div>
+                <p
+                  class="eyebrow"
+                >
+                  dealops
+                </p>
+                <h3>
+                  DealOps
+                </h3>
+              </div>
+              <span
+                class="badge"
+              >
+                13:40
+              </span>
+            </header>
+            <p
+              class="status"
+            >
+              publishing hygiene snapshot
+            </p>
+            <p
+              class="meta"
+            >
+              Model: 
+              Claude Sonnet 4
+            </p>
+            <p
+              class="meta"
+            >
+              Lane: 
+              pipeline hygiene
+            </p>
+          </button>
+        </div>
+      </section>
+      <section
+        class="panel alerts"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Pipeline alerts
+          </h2>
+          <span
+            class="tag warm"
+          >
+            12 overdue
+          </span>
+        </div>
+        <div
+          class="metric-row"
+        >
+          <article
+            class="metric-card"
+          >
+            <span
+              class="eyebrow"
+            >
+              open deals
+            </span>
+            <strong>
+              100
+            </strong>
+          </article>
+          <article
+            class="metric-card"
+          >
+            <span
+              class="eyebrow"
+            >
+              pipeline value
+            </span>
+            <strong>
+              2 168 585
+               Kč
+            </strong>
+          </article>
+        </div>
+        <ul>
+          <li>
+            <div>
+              <p
+                class="label"
+              >
+                Mycroft Mind
+              </p>
+              <p
+                class="sub"
+              >
+                Josef Hofman
+                 · 
+                Proposal made
+              </p>
+              <p
+                class="sub"
+              >
+                Next activity slipped to 2026-03-06
+              </p>
+            </div>
+            <span
+              class="priority priority-a"
+            >
+              A
+            </span>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="panel run-panel"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Run panel
+          </h2>
+          <div
+            class="run-panel-head-actions"
+          >
+            <span
+              class="tag accent"
+            >
+              manual trigger
+            </span>
+            <button
+              class="ghost"
+              type="button"
+            >
+              Routing drawer
+            </button>
+          </div>
+        </div>
+        <label
+          class="field"
+        >
+          <span>
+            Agent
+          </span>
+          <select>
+            <option
+              value="dealops"
+            >
+              DealOps
+            </option>
+          </select>
+        </label>
+        <label
+          class="field"
+        >
+          <span>
+            Model
+          </span>
+          <select>
+            <option
+              value="auto"
+            >
+              Auto route
+            </option>
+            <option
+              value="openai/gpt-5-mini"
+            >
+              GPT-5-mini
+            </option>
+          </select>
+        </label>
+        <div
+          class="field grid-two"
+        >
+          <label
+            class="field"
+          >
+            <span>
+              Task type
+            </span>
+            <select>
+              <option
+                value="daily_plan"
+              >
+                Daily plan
+              </option>
+              <option
+                value="crm_hygiene"
+              >
+                CRM hygiene
+              </option>
+              <option
+                value="follow_up"
+              >
+                Follow-up
+              </option>
+              <option
+                value="research"
+              >
+                Research
+              </option>
+              <option
+                value="review"
+              >
+                Review
+              </option>
+              <option
+                value="code_change"
+              >
+                Code change
+              </option>
+            </select>
+          </label>
+          <label
+            class="field"
+          >
+            <span>
+              Max tokens
+            </span>
+            <input
+              min="256"
+              step="256"
+              type="number"
+              value="2048"
+            />
+          </label>
+        </div>
+        <div
+          class="field"
+        >
+          <span>
+            Capabilities
+          </span>
+          <div
+            class="toggle-group"
+          >
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              crm
+            </button>
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              triage
+            </button>
+          </div>
+        </div>
+        <label
+          class="field"
+        >
+          <span>
+            Prompt
+          </span>
+          <textarea
+            placeholder="Tell the selected agent what to do. Keep it crisp; the mock runner will do the rest."
+            rows="5"
+          />
+        </label>
+        <div
+          class="field grid-two"
+        >
+          <label
+            class="field"
+          >
+            <span>
+              Temperature
+            </span>
+            <input
+              max="1"
+              min="0"
+              step="0.1"
+              type="number"
+              value="0.3"
+            />
+          </label>
+          <label
+            class="checkbox checkbox-boxed"
+          >
+            <input
+              checked=""
+              type="checkbox"
+            />
+            sandbox tools only
+          </label>
+        </div>
+        <div
+          class="run-actions"
+        >
+          <button
+            class="cta"
+            type="button"
+          >
+            Run playbook
+          </button>
+          <p
+            class="sub"
+          >
+            Cmd+Enter also triggers this form.
+          </p>
+        </div>
+      </section>
+      <section
+        class="panel log"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Activity log
+          </h2>
+          <span
+            class="tag muted"
+          >
+            ws stream
+          </span>
+        </div>
+        <div
+          class="toolbar"
+        >
+          <div
+            class="toggle-group"
+          >
+            <button
+              class="toggle-pill active"
+              type="button"
+            >
+              all
+            </button>
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              info
+            </button>
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              warn
+            </button>
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              error
+            </button>
+            <button
+              class="toggle-pill "
+              type="button"
+            >
+              success
+            </button>
+          </div>
+          <div
+            class="toolbar-actions"
+          >
+            <label
+              class="checkbox"
+            >
+              <input
+                checked=""
+                type="checkbox"
+              />
+              stick to fresh logs
+            </label>
+            <button
+              class="ghost"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+        <div
+          class="log-feed"
+        >
+          <div
+            class="empty-state"
+          >
+            No logs yet. Trigger a run or wait for a watcher ping.
+          </div>
+        </div>
+      </section>
+      <section
+        class="panel blocks"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Focus blocks
+          </h2>
+          <span
+            class="tag muted"
+          >
+            today
+          </span>
+        </div>
+        <ul>
+          <li>
+            <div>
+              <p
+                class="label"
+              >
+                15:00–15:30
+              </p>
+              <p
+                class="sub"
+              >
+                InboxForge
+              </p>
+            </div>
+            <p
+              class="focus"
+            >
+              Follow-up pack
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section
+        class="panel intel"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Command intel
+          </h2>
+          <span
+            class="tag"
+          >
+            fallback aware
+          </span>
+        </div>
+        <div
+          class="notice-strip"
+        >
+          Timebox cron selhal
+        </div>
+        <div
+          class="bullet-stack"
+        >
+          <article
+            class="chip-card"
+          >
+            Zero-Decay CRM camp
+          </article>
+        </div>
+        <div
+          class="actions-list"
+        >
+          <p
+            class="eyebrow"
+          >
+            Next ask for GrowthLab
+          </p>
+          <p
+            class="sub"
+          >
+            Doplnit externi signaly
+          </p>
+        </div>
+      </section>
+      <section
+        class="panel reports"
+      >
+        <div
+          class="panel-head"
+        >
+          <h2>
+            Recent runs
+          </h2>
+          <span
+            class="tag"
+          >
+            0
+             tracked
+          </span>
+        </div>
+        <div
+          class="empty-state"
+        >
+          No runs yet. The gallery wakes up after the first mock execution.
+        </div>
+        <div
+          class="report-list"
+        />
+      </section>
+    </main>
+  </div>
+</div>
+`;
