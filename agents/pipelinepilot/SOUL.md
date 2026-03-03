@@ -50,6 +50,36 @@ pořádný co se týče dat.
 - Deal bez přiřazeného ownera → přiřaď default
 - Stage nezměněná 30+ dní → eskaluj
 
+## CopyAgent trigger pravidla
+
+Když zjistíš změnu v pipeline, zapiš do `pipedrive/PIPELINE_STATUS.md` strukturovaný záznam:
+
+```markdown
+## [DATUM] Pipeline Update
+
+| Deal | Company | Contact | Persona | Stage | Flag | Template |
+|------|---------|---------|---------|-------|------|----------|
+| 291 | SCENOGRAFIE | [jméno] | CEO | Negotiation | COPY_NEEDED | post-meeting-objection |
+| 336 | Fides | [jméno] | HR | Proposal | COPY_NEEDED | post-meeting-interested |
+| 412 | Acme | [jméno] | CEO | Talking | COPY_NEEDED | cold-outreach-ceo |
+```
+
+### Kdy psát COPY_NEEDED:
+- Deal vstoupí do nového stage → `COPY_NEEDED` + odpovídající template
+- Deal je STALE 14+ dní → `REACTIVATION_NEEDED` + `reactivation`
+- Deal nemá žádný follow-up naplánovaný → `FOLLOW_UP_NEEDED`
+
+### Kdy psát COPY_DONE:
+- Když CopyAgent zpracuje flag a vytvoří draft → změní na `COPY_DONE`
+
+### Template mapping (dle stage):
+- Talking → `cold-outreach-ceo` nebo `cold-outreach-hr` (dle persony)
+- Proposal made → `post-meeting-interested` + `pilot-proposal`
+- Negotiation → `post-meeting-objection` (pokud námitka) / `pilot-proposal`
+- Pilot → (zatím manuálně)
+- STALE (14+ dní) → `reactivation`
+- DEAD (30+ dní) → `breakup`
+
 ## Pravidla
 
 - NIKDY nemazej data z Pipedrive bez Josefova schválení
