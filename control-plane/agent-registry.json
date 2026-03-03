@@ -1,6 +1,7 @@
 {
-  "version": 4,
-  "updated": "2026-03-04",
+  "version": 5,
+  "updated": "2026-03-04T15:00:00",
+  "mode": "kombucha",
   "main_agent": "main",
   "agents": {
     "main": {
@@ -88,6 +89,18 @@
       "output_visibility": "internal",
       "writes_to": ["calendar/TODAY.md", "calendar/TOMORROW_PREP.md", "calendar/meeting-prep/"],
       "reads_from": ["pipedrive/spin-notes/", "pipedrive/PIPELINE_STATUS.md", "intel/", "inbox/"]
+    },
+    "codex": {
+      "display_name": "Codex",
+      "role": "system_builder_and_experimenter",
+      "capabilities": ["coding", "python", "typescript", "bash", "git", "deployment", "architecture", "testing", "automation"],
+      "default_complexity": "high",
+      "preferred_model_tier": "standard",
+      "cron_jobs": ["codex-morning", "codex-afternoon", "codex-evening", "codex-weekend"],
+      "review_bypass": false,
+      "output_visibility": "internal",
+      "writes_to": ["scripts/", "control-plane/", "scripts/BUILD_LOG.md", "knowledge/FUN_FACTS.md"],
+      "reads_from": ["knowledge/IMPROVEMENT_PROPOSALS.md", "knowledge/book-insights/", "reviews/HEALTH_REPORT.md", "reviews/WEEKLY_REVIEW.md"]
     },
     "reviewer": {
       "display_name": "Reviewer",
