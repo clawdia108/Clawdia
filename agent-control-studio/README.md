@@ -8,9 +8,10 @@ Local operator console for the OpenClaw workspace.
   - `../calendar/TODAY.md`
   - `../intel/DAILY-INTEL.md`
   - `../pipedrive/.pipeline_snapshot.json`
-- exposes an Express API for those sources
-- streams mock log events over WebSocket
-- lets you trigger mocked agent runs from a single neobrutalist dashboard
+- exposes an Express API for those sources and control-plane metadata
+- streams runtime logs over WebSocket
+- lets you trigger real local `openclaw agent --local` turns from a single neobrutalist dashboard
+- shows route recommendation vs actual runtime model in reports
 
 ## Run locally
 
@@ -40,3 +41,6 @@ Backend:
 - The WebSocket endpoint is `/ws/logs`.
 - The backend uses in-memory run storage only.
 - File change events from the workspace are pushed into the log stream through `chokidar`.
+- `dealops` is bridged to runtime agent `pipelinepilot`.
+- `timebox` is bridged to runtime agent `calendarcaptain`.
+- Studio model routing is currently a recommendation layer; OpenClaw runtime may still execute with the agent's configured model.

@@ -169,6 +169,13 @@
   box-shadow: none;
 }
 
+.report-button,
+.report-card-button {
+  box-shadow: none;
+  text-align: left;
+  color: inherit;
+}
+
 .agent-card.selected {
   background: var(--accent-soft);
   transform: translate(-1px, -1px);
@@ -371,6 +378,19 @@
   padding: 0.85rem 1rem;
 }
 
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.report-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .empty-state {
   border: 2px dashed var(--ink);
   border-radius: 18px;
@@ -460,6 +480,49 @@
   justify-content: flex-start;
 }
 
+.json-shell {
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: var(--surface);
+  padding: 0.9rem 1rem;
+  overflow: auto;
+}
+
+.json-node summary,
+.json-leaf {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+.json-children {
+  padding-left: 1rem;
+  border-left: 2px dashed color-mix(in srgb, var(--ink) 25%, transparent);
+  margin-left: 0.45rem;
+}
+
+.json-key {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.84rem;
+}
+
+.json-meta,
+.json-value {
+  color: var(--muted-ink);
+  font-size: 0.82rem;
+}
+
+.report-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: var(--surface);
+  padding: 0.9rem 1rem;
+}
+
 @keyframes shimmer {
   to {
     background-position-x: -200%;
@@ -508,7 +571,8 @@
   }
 
   .grid-two,
-  .model-grid {
+  .model-grid,
+  .report-grid {
     grid-template-columns: 1fr;
   }
 

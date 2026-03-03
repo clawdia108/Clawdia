@@ -7,6 +7,10 @@ export class ReportStore {
     return [...this.reports]
   }
 
+  get(id: string) {
+    return this.reports.find((report) => report.id === id) ?? null
+  }
+
   latest() {
     return this.reports[0] ?? null
   }

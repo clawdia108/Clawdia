@@ -40,6 +40,9 @@ export function AgentList({ agents, selectedAgentId, onSelect, loading }: AgentL
               <p className="status">{agent.status}</p>
               <p className="meta">Model: {agent.model}</p>
               <p className="meta">Lane: {agent.lane}</p>
+              <p className="meta">
+                Runtime: {agent.runtimeAgentId ?? 'n/a'} {agent.runtimeAvailable ? 'online' : 'missing'}
+              </p>
             </button>
           ))}
         </div>

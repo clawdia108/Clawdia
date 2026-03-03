@@ -14,6 +14,7 @@ import { FocusPanel } from './components/FocusPanel'
 import { IntelPanel } from './components/IntelPanel'
 import { LogStream } from './components/LogStream'
 import { PipelinePanel } from './components/PipelinePanel'
+import { ReportDrawer } from './components/ReportDrawer'
 import { ReportPanel } from './components/ReportPanel'
 import { RoutingDrawer } from './components/RoutingDrawer'
 import { RunPanel } from './components/RunPanel'
@@ -64,6 +65,7 @@ function App() {
   const [runBusy, setRunBusy] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [toasts, setToasts] = useState<ToastMessage[]>([])
+  const [selectedReportId, setSelectedReportId] = useState<string | null>(null)
 
   useLogSocket()
 
@@ -120,6 +122,11 @@ function App() {
     }
   }, [setReports])
 
+  const refreshReports = async () => {
+    const nextReports = await fetchReports()
+    setReports(nextReports)
+  }
+
   const handleRun = async (payload: {
     agentId: string
     capabilities: string[]
@@ -138,6 +145,9 @@ function App() {
             ? `${report.agentName}: ${report.route.reason}`
             : `${report.agentName}: manual model override active.`,
       })
+      window.setTimeout(() => {
+        void refreshReports()
+      }, 5000)
     } finally {
       window.setTimeout(() => setRunBusy(false), 1500)
     }
@@ -152,6 +162,18 @@ function App() {
       message: 'Session routing config saved in memory for this studio run.',
     })
   }
+
+  const exportAllReports = () => {
+    const blob = new Blob([JSON.stringify(reports, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = `agent-control-studio-reports-${new Date().toISOString().slice(0, 10)}.json`
+    anchor.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const selectedReport = reports.find((report) => report.id === selectedReportId) ?? null
 
   return (
     <div className="app-shell">
@@ -203,7 +225,11 @@ function App() {
         />
         <FocusPanel today={today} loading={loading} />
         <IntelPanel intel={intel} today={today} loading={loading} />
-        <ReportPanel reports={reports} />
+        <ReportPanel
+          reports={reports}
+          onOpen={(report) => setSelectedReportId(report.id)}
+          onExportAll={exportAllReports}
+        />
       </main>
       <RoutingDrawer
         open={drawerOpen}
@@ -211,6 +237,11 @@ function App() {
         sessionConfig={sessionConfig}
         onClose={() => setDrawerOpen(false)}
         onSave={handleSessionConfigSave}
+      />
+      <ReportDrawer
+        open={selectedReport !== null}
+        report={selectedReport}
+        onClose={() => setSelectedReportId(null)}
       />
     </div>
   )

@@ -93,6 +93,14 @@ exports[`App > renders the operator dashboard 1`] = `
               Lane: 
               pipeline hygiene
             </p>
+            <p
+              class="meta"
+            >
+              Runtime: 
+              pipelinepilot
+               
+              online
+            </p>
           </button>
         </div>
       </section>
@@ -359,6 +367,11 @@ exports[`App > renders the operator dashboard 1`] = `
             Cmd+Enter also triggers this form.
           </p>
         </div>
+        <p
+          class="sub"
+        >
+          Studio route chooses the requested model, but OpenClaw runtime may still execute with the agent's configured model.
+        </p>
       </section>
       <section
         class="panel log"
@@ -532,12 +545,22 @@ exports[`App > renders the operator dashboard 1`] = `
           <h2>
             Recent runs
           </h2>
-          <span
-            class="tag"
+          <div
+            class="run-panel-head-actions"
           >
-            0
-             tracked
-          </span>
+            <span
+              class="tag"
+            >
+              0
+               tracked
+            </span>
+            <button
+              class="ghost"
+              type="button"
+            >
+              Export all
+            </button>
+          </div>
         </div>
         <div
           class="empty-state"
@@ -545,7 +568,7 @@ exports[`App > renders the operator dashboard 1`] = `
           No runs yet. The gallery wakes up after the first mock execution.
         </div>
         <div
-          class="report-list"
+          class="report-grid"
         />
       </section>
     </main>

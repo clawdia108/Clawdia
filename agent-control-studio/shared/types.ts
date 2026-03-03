@@ -5,6 +5,8 @@ export interface AgentSummary {
   name: string
   model: string
   defaultModelId?: string
+  runtimeAgentId?: string
+  runtimeAvailable?: boolean
   status: string
   updated: string
   lane: string
@@ -131,6 +133,17 @@ export interface RouteDecision {
   matchedRuleId?: string
 }
 
+export interface RuntimeExecution {
+  requestedAgentId: string
+  runtimeAgentId: string
+  mode: 'openclaw_local' | 'mock'
+  command: string[]
+  exitCode: number | null
+  actualModel?: string
+  sessionId?: string
+  provider?: string
+}
+
 export interface RunReport {
   id: string
   agentId: string
@@ -146,6 +159,9 @@ export interface RunReport {
   finishedAt: string | null
   filesTouched: string[]
   stats: RunStats
+  runtime: RuntimeExecution
+  rawResult?: unknown
+  error?: string | null
 }
 
 export interface LogEvent {

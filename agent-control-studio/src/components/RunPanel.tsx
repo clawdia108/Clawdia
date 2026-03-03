@@ -180,9 +180,13 @@ export function RunPanel({
           {busy ? 'Running…' : 'Run playbook'}
         </button>
         <p className="sub">
-          {busy ? 'Mock executor is streaming logs now.' : 'Cmd+Enter also triggers this form.'}
+          {busy ? 'OpenClaw runtime is streaming logs now.' : 'Cmd+Enter also triggers this form.'}
         </p>
       </div>
+      <p className="sub">
+        Studio route chooses the requested model, but OpenClaw runtime may still execute with the
+        agent&apos;s configured model.
+      </p>
     </section>
   )
 }

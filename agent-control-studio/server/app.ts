@@ -3,6 +3,7 @@ import cors from 'cors'
 
 import type { RunRequest, RunReport, SessionConfig } from '../shared/types'
 import { LogHub } from './lib/log-hub'
+import { OpenClawRunner } from './lib/openclaw-runner'
 import { ReportStore } from './lib/report-store'
 import { SessionConfigStore } from './lib/session-config-store'
 import {
@@ -14,6 +15,7 @@ import {
   readPipelineData,
   readTodayData,
   resolveRoute,
+  resolveRuntimeAgentId,
 } from './lib/workspace-data'
 
 function createRunReport(payload: RunRequest, sessionConfig: SessionConfig): RunReport {
@@ -38,12 +40,22 @@ function createRunReport(payload: RunRequest, sessionConfig: SessionConfig): Run
       durationMs: 0,
       emittedLogs: 0,
     },
+    runtime: {
+      requestedAgentId: agent.id,
+      runtimeAgentId: resolveRuntimeAgentId(agent.id),
+      mode: 'openclaw_local',
+      command: [],
+      exitCode: null,
+    },
+    rawResult: null,
+    error: null,
   }
 }
 
 export function createApp(logHub: LogHub, reportStore: ReportStore) {
   const app = express()
   const sessionConfigStore = new SessionConfigStore(buildDefaultSessionConfig())
+  const runExecutor = new OpenClawRunner(logHub, reportStore)
 
   app.use(cors())
   app.use(express.json())
@@ -89,6 +101,15 @@ export function createApp(logHub: LogHub, reportStore: ReportStore) {
     response.json(reportStore.latest())
   })
 
+  app.get('/api/reports/:id', (request, response) => {
+    const report = reportStore.get(request.params.id)
+    if (!report) {
+      response.status(404).json({ error: 'Report not found' })
+      return
+    }
+    response.json(report)
+  })
+
   app.post('/api/run', (request, response) => {
     const payload = request.body as Partial<RunRequest>
     if (
@@ -116,7 +137,7 @@ export function createApp(logHub: LogHub, reportStore: ReportStore) {
       message: `Queued ${report.agentName} run with ${report.model}. ${report.route.reason}`,
       runId: report.id,
     })
-    logHub.runMockSequence(report)
+    runExecutor.run(report)
     response.status(202).json(report)
   })
 

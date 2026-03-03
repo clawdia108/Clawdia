@@ -12,7 +12,7 @@ function makeEvent(event: Omit<LogEvent, 'id'>): LogEvent {
 }
 
 const ambientMessages = [
-  'Lobsters are listening… mock tail still warm.',
+  'Lobsters are listening… runtime tail is quiet for now.',
   'Bridge pinged the board. Nothing exploded.',
   'Knowledge sync glanced at the fallback files.',
   'Pipeline heartbeat says the shell is steady.',
@@ -41,7 +41,7 @@ export class LogHub {
             timestamp: new Date().toISOString(),
             level: 'info',
             actor: 'studio',
-            message: 'Socket online. Lobsters are listening…',
+            message: 'Socket online. Lobsters are listening… runtime feed armed.',
           }),
         ),
       )

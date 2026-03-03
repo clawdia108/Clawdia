@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { execFileSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import matter from 'gray-matter'
 
@@ -27,6 +28,18 @@ const pipelinePath = path.join(workspaceRoot, 'pipedrive', '.pipeline_snapshot.j
 const agentRegistryPath = path.join(workspaceRoot, 'control-plane', 'agent-registry.json')
 const modelRouterPath = path.join(workspaceRoot, 'control-plane', 'model-router.json')
 const openClawRoutingPath = path.join(workspaceRoot, 'workspace', 'openclaw.model-routing.json')
+const runtimeAgentMap: Record<string, string> = {
+  dealops: 'pipelinepilot',
+  timebox: 'calendarcaptain',
+}
+const defaultWorkspacePathMap: Record<string, string> = {
+  dealops: 'pipedrive/',
+  timebox: 'calendar/',
+  inboxforge: 'inbox/',
+  reviewer: 'reviews/',
+  growthlab: 'intel/',
+  knowledgekeeper: 'knowledge/',
+}
 
 const knownAgents: Record<string, Omit<AgentSummary, 'updated' | 'status'>> = {
   dealops: {
@@ -236,6 +249,7 @@ export function readPipelineData(): PipelineData {
 
 export function listAgents(): AgentSummary[] {
   const sessionConfig = buildDefaultSessionConfig()
+  const runtimeAgents = new Set(readRuntimeAgents().map((agent) => agent.id))
   const today = readTodayData()
   const intel = readIntelData()
   const hasTodayFallback = today.attention.some((item) => item.includes('Timebox cron selhal'))
@@ -263,6 +277,8 @@ export function listAgents(): AgentSummary[] {
     return {
       ...agent,
       defaultModelId: sessionConfig.agents[agent.id]?.defaultModel,
+      runtimeAgentId: resolveRuntimeAgentId(agent.id),
+      runtimeAvailable: runtimeAgents.has(resolveRuntimeAgentId(agent.id)),
       status,
       updated: new Date().toLocaleTimeString('cs-CZ', {
         hour: '2-digit',
@@ -350,8 +366,32 @@ interface ModelRouterFile {
   }>
 }
 
+interface RuntimeAgent {
+  id: string
+  name?: string
+  identityName?: string
+  model?: string
+}
+
 function readJson<T>(filePath: string): T {
   return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T
+}
+
+export function resolveRuntimeAgentId(agentId: string) {
+  return runtimeAgentMap[agentId] ?? agentId
+}
+
+export function readRuntimeAgents(): RuntimeAgent[] {
+  try {
+    const output = execFileSync('openclaw', ['agents', 'list', '--json'], {
+      cwd: workspaceRoot,
+      encoding: 'utf8',
+      timeout: 15000,
+    })
+    return JSON.parse(output) as RuntimeAgent[]
+  } catch {
+    return []
+  }
 }
 
 export function readModelCatalog(): ModelOption[] {
@@ -384,26 +424,27 @@ export function readModelCatalog(): ModelOption[] {
 export function buildDefaultSessionConfig(): SessionConfig {
   const registry = readJson<AgentRegistryFile>(agentRegistryPath)
   const routing = readJson<OpenClawRoutingConfig>(openClawRoutingPath)
-
-  const agents = Object.entries(registry.agents)
-    .filter(([agentId]) => ['dealops', 'timebox', 'inboxforge', 'reviewer', 'growthlab', 'knowledgekeeper'].includes(agentId))
-    .reduce<SessionConfig['agents']>((accumulator, [agentId, agent]) => {
-      const writesTo = agent.writes_to?.[0] ?? 'knowledge/'
-      accumulator[agentId] = {
-        id: agentId,
-        name: agent.display_name ?? agentId,
-        soulFile: `agents/${agentId}/SOUL.md`,
-        workspacePath: writesTo.replace(/[^/]+$/, ''),
-        defaultModel: routing.agents?.entries?.[agentId]?.model ?? 'openai/gpt-5-mini',
-        heartbeatModel:
-          routing.agents?.entries?.[agentId]?.heartbeat?.model ??
-          routing.agents?.defaults?.heartbeat?.model ??
-          null,
-        rateLimitPerMinute: agentId === 'reviewer' ? 4 : 8,
-        capabilities: agent.capabilities ?? [],
-      }
-      return accumulator
-    }, {})
+  const desiredAgents = ['dealops', 'timebox', 'inboxforge', 'reviewer', 'growthlab', 'knowledgekeeper']
+  const agents = desiredAgents.reduce<SessionConfig['agents']>((accumulator, agentId) => {
+    const registryAgent = registry.agents[agentId]
+    const runtimeAgentId = resolveRuntimeAgentId(agentId)
+    const routingEntry = routing.agents?.entries?.[agentId] ?? routing.agents?.entries?.[runtimeAgentId]
+    const writesTo = registryAgent?.writes_to?.[0] ?? defaultWorkspacePathMap[agentId] ?? `${agentId}/`
+    accumulator[agentId] = {
+      id: agentId,
+      name: registryAgent?.display_name ?? knownAgents[agentId]?.name ?? agentId,
+      soulFile: `agents/${runtimeAgentId}/SOUL.md`,
+      workspacePath: writesTo.replace(/[^/]+$/, ''),
+      defaultModel: routingEntry?.model ?? 'openai/gpt-5-mini',
+      heartbeatModel:
+        routingEntry?.heartbeat?.model ??
+        routing.agents?.defaults?.heartbeat?.model ??
+        null,
+      rateLimitPerMinute: agentId === 'reviewer' ? 4 : 8,
+      capabilities: registryAgent?.capabilities ?? knownAgents[agentId]?.capabilities ?? [],
+    }
+    return accumulator
+  }, {})
 
   return {
     routingMode: 'strict_auto',
