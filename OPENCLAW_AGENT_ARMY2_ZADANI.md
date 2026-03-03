@@ -4,7 +4,7 @@
 > **Datum:** 2026-03-02
 > **Cíl:** Vytvořit a nasadit 7 autonomních agentů na Hetzner VPS, kteří běží 24/7, pracují každých 30 minut, sdílejí znalosti a aktivně se zlepšují.
 > **Rozpočet:** max $100/měsíc na API provoz
-> **VPS:** 157.180.43.83 (Ubuntu 24.04, 4GB RAM)
+> **VPS:** <redacted-vps-ip> (Ubuntu 24.04, 4GB RAM)
 
 ---
 
@@ -13,7 +13,7 @@
 ### 0.1 SSH na VPS a instalace
 
 ```bash
-ssh root@157.180.43.83
+ssh root@<redacted-vps-ip>
 
 # Instalace OpenClaw
 curl -fsSL https://openclaw.ai/install.sh | bash
