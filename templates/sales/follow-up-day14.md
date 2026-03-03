@@ -4,33 +4,34 @@
 # Stage: decision
 # Trigger: 14 dní po prvním kontaktu, stále bez rozhodnutí
 # Tone: Josef sales email
+# Personalizovat: [OSLOVENÍ]
 ---
 
-**Předmět:** [NUMBER] firem v podobné situaci — co funguje
+**Předmět:** 5 firem, stejný problém — dvě varianty řešení
 
 ---
 
 Dobrý den, [OSLOVENÍ],
 
-jen krátce — za poslední rok jsme Echo Pulse nasadili v [NUMBER] firmách, které řešily podobné věci jako vy. Pár jmen, která možná znáte:
+jen stručně — za poslední rok jsme Echo Pulse nasadili mimo jiné v těchto firmách:
 
 **Grammer** | **Vodafone** | **365.bank** | **StartupJobs** | **Valxon**
 
-Co mají společného: potřebovali vědět, co se v týmech reálně děje — rychle, bez velké implementace a bez toho, aby lidi vyplňovali 40minutový dotazník.
+Všechny řešily to samé: potřebovaly vědět, co se v týmech reálně děje. Rychle, bez měsíců implementace, bez 40minutových dotazníků.
 
 > *„Konečně vidíme, co lidi trápí — a hlavně to vidí přímo manažeři, ne jen HR."*
-> — [TESTIMONIAL_AUTOR, např. "Mario Tulia, HR Director, Grammer CZ"]
+> — Mario Tulia, HR Director, Grammer CZ
 
-Konkrétně — nabízím dvě varianty, ať si vyberete, co vám sedí:
+Prakticky — nabízím dvě varianty:
 
 **A) Test zdarma na 1 týmu**
-Spustíme Echo Pulse na jednom týmu (do 30 lidí). Uvidíte dashboard, výsledky, doporučení. Bez závazků, bez platby.
+Echo Pulse na jednom týmu (do 30 lidí). Dashboard, výsledky, doporučení. Bez závazků, bez platby.
 
 **B) Tříměsíční pilot — 29 900 Kč**
-Celá firma nebo vybrané týmy. 12 faktorů, real-time dashboard, doporučení pro manažery. A garanti: **pokud pilot nepřinese relevantní zjištění, vracíme 100 % částky.**
+Vybrané týmy nebo celá firma. 12 faktorů engagementu, real-time dashboard, doporučení pro manažery. A garance: **pokud pilot nepřinese relevantní zjištění, vracím 100 % částky.**
 
-Ať tak nebo tak — za 5 minut vám vysvětlím, jak to spustit. Dejte mi prosím vědět, která varianta vás zajímá víc.
+Za 5 minut vysvětlím, jak to spustit. Která varianta vám sedí víc?
 
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON]
++420 777 489 877

@@ -4,50 +4,52 @@
 # Stage: Cold outreach
 # Trigger: Firma 50+ zaměstnanců, známe HR kontakt
 # Tone: Josef sales email
+# Version: 2.0
 
 ---
 
-**Předmět:** Průzkumy spokojenosti, které opravdu fungují
+**Předmět:** 40 hodin práce na průzkumu, který nikdo nečte — jde to jinak
+
+**Záložní předmět:** Co kdyby průzkum spokojenosti běžel sám a lidi ho vyplnili?
 
 ---
 
-Dobrý den, [OSLOVENÍ],
+Dobrý den, paní Svobodová,
 
-rychlá otázka — kolik hodin vám zabere organizace jednoho zaměstnaneckého dotazníku? Příprava otázek, distribuce, sběr dat, analýza, prezentace vedení...
+mám jednu otázku — kolik hodin vám zabere jeden zaměstnanecký průzkum od A do Z? Příprava otázek, distribuce, sběr, analýza, prezentace vedení.
 
-Většina HR týmů, se kterými mluvím, říká 40–60 hodin práce. A výsledek? PDF, které vedení přečte jednou a založí.
+HR manažeři, se kterými mluvím, říkají 40–60 hodin. A výsledek? PDF, které vedení otevře jednou a založí do šuplíku. Mezitím se svět v týmech posune a data jsou zastaralá.
 
-**Porovnání: klasický průzkum vs. Echo Pulse**
+Řešíme to nástrojem Echo Pulse — AI chatbot, který průběžně měří 12 faktorů engagementu. Stručně, co to znamená v praxi:
 
-| | Klasický dotazník | Echo Pulse |
-|---|---|---|
-| Frekvence | 1–2× ročně | Průběžně, automaticky |
-| Příprava | 40–60 hodin | 0 hodin (AI chatbot) |
-| Návratnost | 30–50 % | 75–90 % (krátké, konverzační) |
-| Výsledky | PDF za 3 týdny | Real-time dashboard |
-| Doporučení | Obecná | Konkrétní, per tým, per faktor |
-| Pokrytí | Pár oblastí | 12 validovaných faktorů |
+- **Nulová příprava** — chatbot se ptá sám, otázky se přizpůsobují kontextu. Vy jen spustíte a sledujete výsledky.
+- **Návratnost 75–90 %** — protože zaměstnanec odpovídá 3 minuty v konverzaci, ne 30 minut v dotazníku.
+- **Živý dashboard místo PDF** — konkrétní doporučení na úrovni týmu a faktoru. Vidíte trendy v reálném čase, ne jednou za půl roku.
+- **12 validovaných faktorů** — od autonomie přes vztahy v týmu po důvěru ve vedení. Ne obecné „jste spokojení?", ale data, se kterými jde pracovat.
 
-Prakticky je to jako mít psychologa a data-analytika v počítači 24/7 — jen bez nákladů na dva plné úvazky.
+Prakticky je to analytik a psycholog v jednom — bez dvou dalších úvazků v rozpočtu.
 
 **Dvě varianty, jak to vyzkoušet:**
 
-**A)** Spustíme Echo Pulse zdarma na jednom vašem týmu. Bez závazků, bez platby. Za 2 týdny uvidíte reálná data a porovnáte s tím, co děláte teď.
+**A)** Spustíme Echo Pulse zdarma na jednom vašem týmu. Bez platby, bez závazků. Za 2 týdny máte reálná data a můžete porovnat s tím, co děláte teď.
 
-**B)** Uděláme si 20minutové demo — ukážu vám dashboard na reálných datech a probereme, jak to zapadá do toho, co už děláte.
+**B)** Uděláme si 20minutový hovor — ukážu vám dashboard na reálných datech a probereme, jak to zapadá do vašich stávajících procesů.
 
-Dejte mi prosím vědět, co dává větší smysl.
+Dejte vědět, co dává větší smysl — klidně jen krátkou odpovědí.
 
 S pozdravem,
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON] | [EMAIL]
++420 777 489 877 | josef.hofman@behavera.com
+[linkedin.com/in/josefhofman](https://linkedin.com/in/josefhofman)
 
 ---
 
 ### Personalizační checklist před odesláním:
-- [ ] Doplnit jméno HR kontaktu a správné oslovení
-- [ ] Zjistit, jaké nástroje na průzkumy firma aktuálně používá (pokud možno)
-- [ ] Ověřit velikost firmy — přizpůsobit jazyk (50 vs. 500 zaměstnanců)
-- [ ] Zkontrolovat LinkedIn profil — zmínit společné kontakty nebo skupiny
-- [ ] Ověřit, zda firma nedávno nehledala HR nástroje (inzeráty, PR)
+- [ ] **Oslovení** — paní/pane + příjmení ve správném tvaru (5. pád!)
+- [ ] **Aktuální nástroj** — zjistit, co firma na průzkumy používá (Survio, Engagement Survey, Excel, nic?) — zmínit v textu
+- [ ] **Velikost firmy** — 50 lidí vs. 500 lidí = jiný jazyk, jiná čísla, jiný pain
+- [ ] **LinkedIn check** — společné kontakty? Společné skupiny? Zmínit v úvodu
+- [ ] **HR inzeráty** — hledá firma HR nástroje, HRIS, engagement řešení? Pokud ano, zmínit jako kontext
+- [ ] **CRM check** — ověřit, že kontakt nebyl osloven v posledních 6 měsících
+- [ ] **Předmět** — zvážit záložní předmět podle profilu kontaktu

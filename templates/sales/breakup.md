@@ -4,9 +4,10 @@
 # Stage: breakup-final
 # Trigger: Absolutně poslední kontakt, po vyčerpání celé sekvence
 # Tone: Josef sales email
+
 ---
 
-**Předmět:** Zavírám složku — ale rád pomůžu, kdykoliv
+**Předmět:** Zavírám složku [COMPANY] — ale rád pomůžu, kdykoliv
 
 ---
 
@@ -18,17 +19,31 @@ Rozumím, že Echo Pulse teď není na stole. Žádný problém — ne každý n
 
 Mám na vás jednu prosbu — čistě pro mě, abych se zlepšil:
 
-**Jaký byl hlavní důvod, proč jste se rozhodl/a nepokračovat?**
+**Co bylo hlavním důvodem, proč jste se rozhodl/a nepokračovat?**
 
-Cokoliv napíšete, beru jako zpětnou vazbu — ne jako otevření jednání. Slovo.
+a) Načasování — teď to prostě není priorita
+b) Cena — nesedí do rozpočtu
+c) Řešení — nepřesvědčilo vás, že to funguje
+d) Něco jiného
+
+Stačí písmenko. Beru to jako zpětnou vazbu, ne jako otevření jednání. Slovo.
 
 ---
 
-Jedna věc na závěr: kdybychom vám mezitím mohli být v čemkoli nápomocní — ať už jde o data k fluktuaci, benchmark vašeho odvětví, nebo jen konzultaci k engagementu — ozvěte se. Žádné podmínky, žádný prodejní pitch.
+A jedna věc na závěr: pokud by vám kdykoli v budoucnu pomohla data k fluktuaci, benchmark vašeho odvětví, nebo jen nezávazná konzultace k engagementu — ozvěte se. Žádné podmínky.
 
 Přeji vám i celému týmu hodně zdaru.
 
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON]
-[LINKEDIN]
++420 777 489 877
+linkedin.com/in/josefhofman
+
+---
+
+### Checklist před odesláním:
+- [ ] Doplnit [COMPANY] a [OSLOVENÍ] (pan/paní + příjmení)
+- [ ] Ověřit rod — "rozhodl/a" upravit na správný tvar
+- [ ] Ověřit, že celá sekvence proběhla (min. 3 předchozí kontakty bez odpovědi)
+- [ ] Označit deal v CRM jako "closed-lost" po odeslání
+- [ ] Nastavit reminder na 90 dnů — pro případný budoucí re-engagement

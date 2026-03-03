@@ -7,21 +7,23 @@
 
 ---
 
-**Předmět:** Návrh pilotu Echo Pulse pro [COMPANY] — dvě varianty
+**Předmět:** Echo Pulse pro [COMPANY] — konkrétní návrh, dvě varianty
 
 ---
 
 Dobrý den, [OSLOVENÍ],
 
-navazuji na náš [hovor/schůzku] — posílám konkrétní návrh pilotního projektu Echo Pulse pro [COMPANY].
-
-Stručně a přehledně, ať máte všechno na jednom místě.
+navazuji na náš [hovor/schůzku] — posílám konkrétní návrh pilotu Echo Pulse pro [COMPANY]. Stručně a přehledně, ať máte všechno na jednom místě.
 
 ---
 
-## Co je Echo Pulse
+## Co je Echo Pulse (v kostce)
 
-AI chatbot, který průběžně měří spokojenost a angažovanost zaměstnanců napříč **12 validovanými faktory**. Real-time dashboard s konkrétními doporučeními pro management. Prakticky psycholog a data-analytik v počítači 24/7.
+AI chatbot, který průběžně měří angažovanost zaměstnanců napříč **12 validovanými faktory**. Výstup: real-time dashboard s konkrétními doporučeními pro management.
+
+Prakticky — psycholog a data-analytik v jednom, dostupný 24/7. Bez dotazníkové únavy, s návratností přes 75 % (vs. 30–50 % u klasických průzkumů).
+
+> Reálný příklad: Grammer CZ (350+ zaměstnanců, výroba) — Echo Pulse identifikoval 3 skryté faktory odchodů v prvních 6 týdnech pilotu. Manažeři měli konkrétní kroky do týdne.
 
 ---
 
@@ -47,27 +49,27 @@ Ideální pro: ověření, že to ve vaší firmě funguje, než se rozhodnete p
 | **Rozsah** | [POČET_TÝMŮ] týmů, cca [POČET] zaměstnanců |
 | **Délka** | 3 měsíce |
 | **Cena** | **29 900 Kč** (jednorázově za celý pilot) |
-| **Co dostanete** | Vše z varianty A + průběžný monitoring, měsíční reporty, 3× konzultace s naším týmem, závěrečná zpráva s ROI analýzou |
+| **Co dostanete** | Vše z varianty A + průběžný monitoring, měsíční reporty, 3x konzultace s naším týmem, závěrečná ROI analýza |
 | **Co potřebujeme** | E-maily zaměstnanců, 30min kick-off call, kontakt na team leadery |
 | **Start** | Do 5 pracovních dnů od odsouhlasení |
+| **Garance** | 100% vrácení peněz, pokud pilot nepřinese relevantní zjištění |
 
 ---
 
-## Časový plán pilotu (varianta B)
+## Jak pilot probíhá (varianta B)
 
 **Týden 0–1: Setup**
-- Kick-off call (30 min)
+- Kick-off call (30 min) — dohodneme KPI a rozsah
 - Nastavení chatbotu, import zaměstnanců
-- Komunikace směrem k zaměstnancům (dodáme šablonu)
+- Komunikace směrem k týmu (dodáme šablonu)
 
 **Měsíc 1: První data**
-- Spuštění prvních pulse průzkumů
+- Spuštění pulse průzkumů
 - Dashboard aktivní — průběžný přístup pro vás
 - Konzultace č. 1 — první zjištění a doporučení
 
 **Měsíc 2: Hloubka**
-- Dostatek dat pro trendovou analýzu
-- Identifikace rizikových oblastí
+- Trendová analýza, identifikace rizikových oblastí
 - Konzultace č. 2 — konkrétní akční plány
 
 **Měsíc 3: Vyhodnocení**
@@ -77,44 +79,42 @@ Ideální pro: ověření, že to ve vaší firmě funguje, než se rozhodnete p
 
 ---
 
-## Měřítka úspěchu
+## Na čem měříme úspěch
 
-Na začátku pilotu se společně dohodneme na konkrétních KPI. Typicky:
+Na začátku pilotu se dohodneme na konkrétních měřítkách. Typicky:
 
 - **Návratnost průzkumu** — cíl: 75 %+ (vs. 30–50 % u klasických dotazníků)
-- **Identifikace rizikových faktorů** — konkrétní oblasti, kde je potřeba jednat
+- **Zachycení rizikových faktorů** — konkrétní oblasti, kde je potřeba jednat
 - **Akční doporučení** — min. 3 konkrétní kroky pro každý tým
-- **Spokojenost managementu** — užitečnost dat a dashboardu pro rozhodování
+- **Užitečnost pro management** — srozumitelnost dat a dashboardu pro rozhodování
 
 ---
 
-## Garance
+## Garance (platí pro variantu B)
 
 **Pokud pilot nepřinese relevantní zjištění, vracíme 100 % částky.**
 
-Žádné drobné písmo. Pokud po 3 měsících řeknete, že vám to nepřineslo hodnotu, dostanete peníze zpět. Celých 29 900 Kč.
-
-Jsme si jistí tím, co děláme — proto si tohle můžeme dovolit.
+Žádné drobné písmo. Pokud po 3 měsících řeknete, že vám to nepřineslo hodnotu — dostanete zpět celých 29 900 Kč. Jsme si jistí tím, co děláme.
 
 ---
 
 ## Další krok
 
-Dejte mi prosím vědět, která varianta vám dává větší smysl. Klidně se ozvěte mailem, nebo si zavoláme na 15 minut — doladíme detaily a můžeme začít do 5 dnů.
-
-Pokud máte otázky, rád odpovím. Stručně a konkrétně.
+Dejte mi vědět, která varianta vám dává větší smysl. Klidně rovnou mailem, nebo si zavoláme na 15 minut — doladíme detaily a můžeme začít do 5 dnů.
 
 S pozdravem,
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON] | [EMAIL]
++420 777 489 877 | josef.hofman@behavera.com
 
 ---
 
 ### Checklist před odesláním:
-- [ ] Doplnit název firmy, oslovení, počty zaměstnanců/týmů
+- [ ] Doplnit [COMPANY], [OSLOVENÍ] (pan/paní + příjmení)
+- [ ] Doplnit [POČET] zaměstnanců a [POČET_TÝMŮ] týmů
+- [ ] Upravit [hovor/schůzku] podle reálného kontaktu
 - [ ] Upravit rozsah varianty B podle toho, co se řešilo na callu
-- [ ] Ověřit, že cena 29 900 CZK je aktuální
+- [ ] Ověřit, že cena 29 900 Kč je aktuální
 - [ ] Přidat konkrétní KPI, pokud je prospect zmínil
-- [ ] Přiložit jako PDF? Nebo přímo v mailu? (záleží na kontextu)
-- [ ] Nastavit follow-up reminder na 3 dny
+- [ ] Rozhodnout formát: PDF příloha vs. přímo v mailu
+- [ ] Nastavit follow-up reminder na 3 pracovní dny

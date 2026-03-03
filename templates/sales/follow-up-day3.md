@@ -4,40 +4,37 @@
 # Stage: nurture
 # Trigger: 3 dny po prvním callu, pokud neodpověděli na Day 1
 # Tone: Josef sales email
+# Personalizovat: [JMÉNO], [KONKRÉTNÍ_TÉMA]
 ---
 
-**Předmět:** Jak to řešil Grammer — podobná situace jako u vás
-
----
-
-Zdravím vás, [JMÉNO],
-
-navazuji na to, co jsme řešili minulý týden — konkrétně [KONKRÉTNÍ_TÉMA, např. "odchody lidí v prvním roce"].
-
-Napadlo mě poslat vám případ, který je hodně podobný vaší situaci:
-
-[CASE_STUDY — výchozí příklad níže]
+**Předmět:** Grammer řešil to samé — tady je co udělali
 
 ---
 
-**Grammer CZ — výrobní firma, 500+ lidí**
+Zdravím, [JMÉNO],
 
-Mario Tulia (HR Director) řešil stejný problém: fluktuace na směnách přes 20 %, manažeři neměli data o tom, co lidi trápí. Klasické dotazníky měly návratnost pod 30 %.
+navazuji na [KONKRÉTNÍ_TÉMA] — napadlo mě poslat vám případ, který je hodně podobný.
+
+---
+
+**Grammer CZ — výroba, 350+ lidí**
+
+Mario Tulia (HR Director) řešil fluktuaci na směnách přes 20 %. Manažeři neměli data, co lidi trápí. Klasické dotazníky? Návratnost pod 30 %.
 
 Co udělali:
-- Spustili Echo Pulse na 3 týmech (pilot za 29 900 Kč).
+- Spustili Echo Pulse na 3 týmech — pilot za 29 900 Kč.
 - Chatbot místo dotazníku — návratnost přes 80 %.
 - Do 48 hodin měli dashboard s konkrétními faktory odchodu.
-- Manažeři dostali doporučení, na čem pracovat — ne obecnosti, ale kroky.
+- Manažeři dostali kroky, na čem pracovat. Ne obecnosti.
 
-Výsledek po 3 měsících: fluktuace na pilotních týmech klesla o 6 p.b. Při jejich velikosti to znamená úsporu v řádu milionů.
+**Výsledek:** fluktuace na pilotních týmech klesla o 6 procentních bodů za 3 měsíce. Při jejich velikosti úspora v řádu milionů.
 
 ---
 
-Prakticky — pokud byste chtěl/a vidět, jak by to vypadalo u vás, můžeme to projít za 15 minut. Bez závazků.
+Pokud byste chtěl/a vidět, jak by to vypadalo u vás — projdeme to za 15 minut. Bez závazků.
 
-Dejte mi prosím vědět, jestli to dává smysl.
+Dává to smysl?
 
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON]
++420 777 489 877

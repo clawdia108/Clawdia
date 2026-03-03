@@ -4,28 +4,25 @@
 # Stage: nurture
 # Trigger: 7 dní po prvním callu, pokud bez odpovědi
 # Tone: Josef sales email
+# Personalizovat: [JMÉNO]
 ---
 
-**Předmět:** Číslo, které mě zarazilo — a možná se vás týká taky
+**Předmět:** 15 milionů ročně — a většina firem to nevidí
 
 ---
 
-Zdravím vás, [JMÉNO],
+Zdravím, [JMÉNO],
 
-nechci být ten, co bombarduje inbox — ale narazil jsem na data, která stojí za 2 minuty čtení.
+nechci plnit inbox, ale narazil jsem na dvě čísla, která stojí za minutu čtení.
 
-Gallup letos aktualizoval svůj výzkum: **manažeři ovlivňují 70 % rozptylu v engagementu týmu.** Ne HR politiky, ne benefity — manažeři.
+**Gallup 2025: manažeři ovlivňují 70 % rozptylu v engagementu týmu.** Ne benefity, ne HR politiky — manažeři. Jenže většina firem nemá způsob, jak jim dát zpětnou vazbu dřív než při ročním hodnocení. A exit rozhovory? To už je pitva, ne prevence.
 
-Problém je, že většina firem nemá způsob, jak manažerům dát zpětnou vazbu v reálném čase. Roční hodnocení přichází pozdě. Exit rozhovory jsou pitva, ne prevence.
+**Druhé číslo:** 15% fluktuace u firmy s 200 lidmi stojí cca 15 milionů ročně. Nábor, zaučení, ztráta know-how. Většinou to nikdo nesčítá, protože je to rozprostřené přes celý rok.
 
-Druhé číslo: **15% fluktuace u firmy s 200 lidmi stojí zhruba 15 milionů ročně.** Náklady na nábor, zaučení, ztrátu know-how. Většinou to nikdo nepočítá, protože je to rozprostřené.
+Echo Pulse tohle zachytí jednoduše — chatbot se ptá lidí pravidelně, manažeři vidí výsledky v dashboardu rovnou. Žádný velký projekt, spustíte to za den.
 
-Echo Pulse tohle řeší jednoduše — chatbot se ptá lidí pravidelně, výsledky jdou manažerům v dashboardu. Žádný velký projekt, žádná implementace na měsíce.
-
-Kdybyste chtěl/a, rád to projdu za 15 min — ukážu vám, jak to vypadá na reálných datech.
-
-Klidně napište, kdy se vám hodí.
+Rád to ukážu za 15 minut na reálných datech. Klidně napište, kdy se hodí.
 
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON]
++420 777 489 877

@@ -4,46 +4,53 @@
 # Stage: Cold outreach
 # Trigger: Identifikovaná firma 50+ zaměstnanců, známe jméno CEO
 # Tone: Josef sales email
+# Version: 2.0
 
 ---
 
-**Předmět:** [COMPANY] — kolik vás stojí odchod jednoho člověka?
+**Předmět:** Odchod jednoho člověka stojí 9 platů — u [COMPANY] je to [ODHAD] ročně
+
+**Záložní předmět:** [COMPANY] — jeden číslo, které většina firem nezná
 
 ---
 
-Dobrý den, [OSLOVENÍ],
+Dobrý den, pane Nováku,
 
-píšu vám stručně — mám pro vás jedno číslo, které většina firem nezná.
+píšu stručně, vím, že máte nabitý den.
 
-Při průměrné fluktuaci 15 % a 100 zaměstnancích přijdete ročně o cca **15 milionů Kč**. Náborové náklady, zaučení, ztráta know-how, pokles výkonu týmu. U [COMPANY] s [POČET] lidmi to bude konkrétně kolem **[ODHAD] Kč/rok**.
+Průměrná firma s 200 lidmi ztratí ročně 30 zaměstnanců. Každý odchod stojí 6–9 měsíčních platů — nábor, zaučení, ztráta know-how, propad výkonu týmu. U [COMPANY] s [POČET] lidmi to vychází na **[ODHAD] Kč ročně**.
 
-Nejhorší na tom je, že většina odchodů jde předvídat — když víte, kde hledat.
+To nejpodstatnější: **většina těch odchodů šla předvídat**. Signály tam byly — jen je nikdo neměřil.
 
-**Co s tím řeší Echo Pulse od Behavera:**
+Přesně tohle řeší náš nástroj Echo Pulse:
 
-- Průběžné AI pulse průzkumy, které odhalí problémy **dřív, než lidé podají výpověď** — ne jednou ročně, ale průběžně
-- Real-time dashboard s konkrétními doporučeními — prakticky psycholog a data-analytik v počítači 24/7
-- Za 5 minut víte, který tým hoří a proč — bez čekání na výsledky tříměsíčního dotazníku
+- **Průběžné micro-průzkumy** přes AI chatbot — zaměstnanci odpovídají 3 minuty, ne hodinu. Návratnost přes 80 %.
+- **Live dashboard** s konkrétními doporučeními — vidíte, který tým hoří a proč, bez čekání na kvartální výsledky.
+- **12 měřených faktorů** od autonomie po vztah s vedením — ne obecné „jste spokojení?", ale konkrétní data.
 
-**Dvě varianty, jak to vyzkoušet:**
+Měříme to, co vede k odchodům, dřív než k nim dojde.
 
-**A)** Zavoláme si na 15–20 minut, ukážu vám, jak to funguje na reálných datech. Bez závazků, klidně jen rychlý signál.
+**Dvě varianty, jak se na to podívat:**
 
-**B)** Spustíme Echo Pulse na jednom vašem týmu zdarma — uvidíte výsledky na vlastní kůži, aniž byste cokoli platili.
+**A)** Krátký hovor, 15 minut — ukážu vám dashboard na reálných datech. Bez závazků, klidně jen rychlý signál, jestli to dává smysl.
 
-Dejte mi prosím vědět, co vám sedí líp.
+**B)** Spustíme Echo Pulse na jednom týmu zdarma — za 2 týdny uvidíte výsledky na vlastní kůži. Žádná platba, žádný závazek.
+
+Co vám sedí víc?
 
 S pozdravem,
 Josef Hofman
 Behavera | Echo Pulse
-[TELEFON] | [EMAIL]
++420 777 489 877 | josef.hofman@behavera.com
+[linkedin.com/in/josefhofman](https://linkedin.com/in/josefhofman)
 
 ---
 
 ### Personalizační checklist před odesláním:
-- [ ] Doplnit jméno CEO a správné oslovení (pane/paní + příjmení)
-- [ ] Zjistit počet zaměstnanců firmy (LinkedIn / Justice.cz / web)
-- [ ] Spočítat odhad nákladů fluktuace (počet × 0.15 × průměrná mzda × 6–9 měsíců)
-- [ ] Ověřit obor — přizpůsobit jazyk (výroba vs. IT vs. služby)
-- [ ] Zkontrolovat, zda firma nemá čerstvé zprávy (růst, akvizice, propouštění) — případně zmínit
-- [ ] Ověřit, že CEO není v CRM jako kontaktovaný
+- [ ] **Oslovení** — pane/paní + příjmení ve správném tvaru (5. pád!)
+- [ ] **Počet zaměstnanců** — zjistit z LinkedIn / Justice.cz / firemního webu
+- [ ] **Odhad nákladů** — vzorec: počet × 0,15 × průměrná hrubá mzda v oboru × 7,5
+- [ ] **Obor firmy** — přizpůsobit jazyk (výroba: „směny, bezpečnost" / IT: „talenty, remote" / služby: „zákaznický servis, rotace")
+- [ ] **Čerstvé zprávy** — roste firma? Propouští? Akvizice? Zmínit v úvodu jako kontext
+- [ ] **CRM check** — ověřit, že kontakt nebyl osloven v posledních 6 měsících
+- [ ] **Předmět** — doplnit [COMPANY] a [ODHAD], případně použít záložní předmět
