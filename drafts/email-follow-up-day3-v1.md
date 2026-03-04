@@ -1,32 +1,37 @@
-# Draft: Follow-up Email — Day 3 After Discovery Call
-# Brief: BRIEF-0001
-# Version: v1
-# Status: DRAFT
-# Created: 2026-03-03
+# Follow-up Email: Den 3 (CEO neodpověděl na cold email)
+
+**Cílový profil:** CEO/jednatel, který neodpověděl na cold email
+**Kanál:** Email (follow-up #1)
+**Timing:** 3 pracovní dny po prvním cold emailu
+**Verze:** v1 — CopyAgent Sales Machine rewrite
+
 ---
 
-**Subject:** Navazuji na náš hovor — 3 věci, které mě zaujaly
+**Předmět:** Re: Fluktuace ve výrobě — víte, kolik vás to stojí ročně?
 
-Paní Králová,
+---
 
-děkuju za pondělní hovor. Navazuje to na tři věci, které jste zmínila a které přesně odpovídají tomu, co řešíme u jiných firem:
+Dobrý den,
 
-**1. Fluktuace v IT týmu 22 % — a nevíte proč.**
-Přesně tohle je signál, že klasický roční průzkum nestačí. Když se ptáte jednou za rok, dostanete odpovědi, které už nejsou aktuální. S pulse měřením vidíte pokles engagementu v reálném čase — dřív, než vám lidi odejdou.
+jen se krátce vracím k minulému emailu.
 
-**2. Manažeři říkají „u nás je to v pohodě" — ale čísla mluví jinak.**
-Tohle slyšíme často. Mario Tulia z Grammeru to popsal stejně: „Mysleli jsme, že je všechno OK, dokud jsme neviděli data po jednotlivých týmech." Po nasazení Echo Pulse identifikovali 3 konkrétní faktory, které táhly engagement dolů — a dva z nich šlo vyřešit do měsíce bez extra nákladů.
+Firmy jako [FIRMA] typicky zjistí, že největší problém není plat — ale to, že lidi nemají pocit, že je někdo slyší. Směnáři zvlášť. Jeden průzkum, 48 hodin, a CEO výrobní firmy podobné velikosti (140 lidí, Středočeský kraj) zjistil, že 40 % noční směny zvažuje odchod. Ne kvůli penězům — kvůli mistrovi. Vyřešili to za týden. Fluktuace klesla o třetinu.
 
-**3. HR reporty, které nikdo nečte.**
-Zmínila jste 60stránkový report z posledního průzkumu. Náš dashboard je opak — manažer vidí svůj tým, své skóre a 2–3 doporučení, co udělat tento týden. Žádné scrollování, žádné interpretování grafů.
-
-**Prakticky — co navrhuju:**
-
-Připravím vám ukázku dashboardu nastaveného na DataServis — s vašimi 4 odděleními a metrikami, které jste zmiňovala. Pošlu to do pátku, vy se podíváte a řeknete, jestli to dává smysl.
-
-Pokud ano, spustíme 3týdenní pilot na IT oddělení. Pokud pilot nepřinese relevantní zjištění, vracíme 100 % částky.
-
-Dám vědět v pátek. Pokud mezitím budete mít dotazy, klidně napište.
+Stojí vám za 15 minut zjistit, jestli u vás hoří něco podobného?
 
 Josef Hofman
-Behavera | behavera.com
+Behavera.com | Echo Pulse
+
+---
+
+## Poznámky pro CopyAgenta
+
+- **[FIRMA]** → doplnit název firmy CEO
+- **Case study** → anonymizovaná, ale přizpůsobit profilu (region, velikost, odvětví)
+  - Výroba → "mistr + noční směna" angle
+  - IT/Services → "remote tým + komunikace" angle
+  - Retail → "prodejny + turnover sezónních lidí" angle
+- **Tracking:** pokud CEO otevřel první email (z CRM/Pipedrive data) → přidat: "Všiml jsem si, že jste se na první email podíval..."
+- **Pokud neotevřel** → zkusit jiný subject line místo "Re:" — např. "15 minut, které vám ušetří miliony"
+- **Max 4-5 vět** — tohle je nudge, ne nový pitch
+- **SLA:** pokud bez odpovědi → Den 5: telefonát, Den 8: finální email

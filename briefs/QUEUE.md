@@ -1,24 +1,20 @@
-# Briefs Queue
-# CopyAgent kontroluje tento soubor při každém heartbeatu
-# Nové briefy přidávej na začátek tabulky
+# CopyAgent Brief Queue
 
-Last checked: never
-Next check: pending
+## Active Briefs
+| ID | Priority | Type | Title | Status | Deadline |
+|----|----------|------|-------|--------|----------|
+| BRIEF-0001 | HIGH | email | Cold CEO sequence refresh | PENDING | 2026-03-07 |
+| BRIEF-0002 | HIGH | blog | Proc pruzkumy nefunguji | PENDING | 2026-03-08 |
+| BRIEF-0003 | MEDIUM | linkedin | Echo Pulse launch post series | PENDING | 2026-03-10 |
 
----
+## Completed
+(none yet)
 
-## Aktivní briefy (seřazeno dle priority)
-
-| ID | Type | Persona | Status | Priority | Deadline | Draft |
-|----|------|---------|--------|----------|----------|-------|
-| BRIEF-0001 | email | CEO | DONE | HIGH | 2026-03-04 | drafts/email-cold-ceo-v1.md |
-| BRIEF-0002 | blog-post | HR/CEO | DONE | MEDIUM | 2026-03-07 | drafts/blog-proc-pruzkumy-nefunguji-v1.md |
-| BRIEF-0003 | email | CEO | DONE | HIGH | 2026-03-05 | drafts/email-follow-up-day3-v1.md |
-
-## Dokončené briefy
-_(přesunout sem po delivery)_
-
-## Poznámky
-- Status: NEW → IN_PROGRESS → REVIEW → DONE
-- CopyAgent bere první NEW brief s nejvyšší prioritou
-- Pokud není žádný brief → self-improvement routine
+## How This Works
+1. Briefs are added here by any agent or by Josef
+2. CopyAgent checks this file on every heartbeat
+3. CopyAgent picks the highest-priority PENDING brief
+4. Moves status to IN_PROGRESS
+5. Writes output to drafts/
+6. Moves status to REVIEW
+7. After Josef approves, moves to DONE

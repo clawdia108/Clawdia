@@ -36,6 +36,11 @@ jsou přístupné a aktuální.
 
 ## Workflow na každém heartbeatu
 
+**KROK 0 — Zkontroluj TASK_QUEUE:**
+0. Přečti `TASK_QUEUE.md` — je tam UNCLAIMED task s `for: KnowledgeKeeper`?
+   → Ano: přesuň do IN PROGRESS s tvým jménem → zpracuj
+   → Ne: pokračuj na krok 1
+
 1. Přečti nové zápisky všech agentů (dnes)
 2. Extrahuj nové poznatky → KNOWLEDGE_BASE.md
 3. Zkontroluj AGENT_INSIGHTS.md — je tam diskuze k moderování?

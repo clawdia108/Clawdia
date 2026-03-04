@@ -1,34 +1,46 @@
-# Draft: Cold Email — CEO
-# Brief: BRIEF-0001
-# Version: v1
-# Status: DRAFT
-# Created: 2026-03-03
+# Cold Email: CEO výrobní firma ~120 zaměstnanců
+
+**Cílový profil:** CEO/jednatel, výrobní/manufacturing firma, 80-200 zaměstnanců, směnný provoz
+**Kanál:** Email (cold outreach)
+**Verze:** v1 — CopyAgent Sales Machine rewrite
+**Produkt:** Echo Pulse (Behavera.com) — 99-129 Kč/osoba, jednorázově, výsledky 48h, anonymní, benchmarkovaný
+
 ---
 
-**Subject:** TechParts — 15 % fluktuace stojí víc, než si myslíte
+**Předmět:** Fluktuace ve výrobě — víte, kolik vás to stojí ročně?
 
-Pane Nováku,
+---
 
-narazil jsem na TechParts při hledání výrobních firem, které rostou i přes složitý trh. Gratuluju — při 150 lidech to není samozřejmost.
+Dobrý den,
 
-Píšu, protože ve výrobních firmách podobné velikosti vidíme opakovaně stejný vzorec: fluktuace kolem 15 % ročně, která firmu tiše stojí miliony. U 150 zaměstnanců to vychází zhruba na 10–15 milionů Kč za rok — na nábor, zaučení a ztrátu know-how.
+píšu vám, protože se zaměřuju na výrobní firmy vaší velikosti — a vidím pořád stejný scénář.
 
-Problém většinou není v penězích nebo benefitech. Je v tom, co se děje mezi lidmi a jejich přímým nadřízeným. Gallup ukazuje, že manažer ovlivňuje 70 % toho, jak je člověk v práci spokojený. A právě tohle většina firem neměří — nebo měří jednou za rok dotazníkem, který nikdo nebere vážně.
+Směnáři odcházejí. Ne všichni najednou, ale po jednom, po dvou. Než si toho všimnete, máte za rok 15-20 % fluktuaci a hledáte lidi na trhu, kde žádní nejsou. Náklady? Minimálně 150-250 tisíc za každého odchozího — nábor, zaučení, ztráta produktivity. U firmy se 120 lidmi a 15% fluktuací to je přes 3 miliony ročně.
 
-**Co s tím děláme v Behavera:**
+Přitom většina z nich vám řekne důvod až u výstupního pohovoru. Pozdě.
 
-- Krátké pulse průzkumy přes AI chatbota (5 minut, ne 40minutový formulář)
-- Měříme 12 konkrétních faktorů v reálném čase — ne jednou za rok
-- Manažeři dostanou praktické doporučení, ne 80stránkový report
+**Echo Pulse od Behavera** je anonymní průzkum engagementu, který za 48 hodin ukáže, kde vám hoří — a kde ne. Žádný 40stránkový dotazník, ale cílená sada otázek s benchmarkem vůči vašemu odvětví. Cena je 99-129 Kč na osobu, jednorázově. Žádné roční licence, žádné skryté poplatky.
 
-Mám pro vás dvě varianty:
+U firmy vaší velikosti to je investice kolem 12-15 tisíc — versus stovky tisíc za fluktuaci, které jdou zastavit.
 
-**A)** Pošlu vám stručnou ukázku dashboardu a case study z výrobní firmy Grammer (podobná velikost i obor) — bez závazků, jen abyste viděl, jak to vypadá v praxi.
+**Co bych navrhoval:** 15minutový call, kde vám ukážu, jak to funguje a co typicky zjišťujeme u výrobních firem. Žádná prezentace, jen konkrétní příklady.
 
-**B)** Spustíme 3týdenní pilotní měření na jednom oddělení (20–30 lidí). Dostanete konkrétní data a doporučení. Pokud pilot nepřinese relevantní zjištění, vracíme 100 % částky.
-
-Stačí odpovědět A nebo B — nebo napsat, že to teď není téma. Respektuju obojí.
+Hodí se vám tento nebo příští týden?
 
 S pozdravem,
 Josef Hofman
-Behavera | behavera.com
+Behavera.com | Echo Pulse
++420 XXX XXX XXX
+
+---
+
+## Poznámky pro CopyAgenta
+
+- **Personalizovat:** doplnit jméno CEO, název firmy, konkrétní region/město
+- **Odvětví hook:** pokud automotive → zmínit "automotive supply chain tlak"; pokud potravinářství → "sezónní výkyvy + směnnost"
+- **Cenový výpočet:** vždy spočítat pro konkrétní počet zaměstnanců (X × 99 nebo 129 Kč)
+- **A/B test subject lines:**
+  - Varianta A: "Fluktuace ve výrobě — víte, kolik vás to stojí ročně?"
+  - Varianta B: "Co vás stojí odchod jednoho směnáka?"
+  - Varianta C: "[FIRMA] — mám pro vás číslo, které vás překvapí"
+- **SLA:** pokud bez odpovědi → Day 3 follow-up (`email-follow-up-day3-v1.md`)

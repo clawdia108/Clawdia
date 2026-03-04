@@ -1,5 +1,5 @@
 # 🎛️ MISSION CONTROL
-**Generated:** 2026-03-04 04:35 | **System:** OpenClaw Kombucha Mode
+**Generated:** 2026-03-04 05:50 | **System:** OpenClaw Kombucha Mode
 
 ---
 
@@ -10,15 +10,15 @@
 
 | Agent | Role | Mission | Last Output |
 |-------|------|---------|-------------|
-| **PipelinePilot** | Echo Pulse Pipeline | Fill Josef's calendar with Echo Pulse demos at 50-200 employ... | 4h ago |
-| **Auditor** | Revenue Accountability | Drive Josef to close 20+ Echo Pulse deals/month = 258K+ CZK ... | 3h ago |
-| **CopyAgent** | Echo Pulse Sales Content | Write emails that get CEOs to book Echo Pulse demos.... | 5h ago |
-| **GrowthLab** | Prospect Research | Find companies with 50-200 employees that need engagement su... | 12h ago |
-| **InboxForge** | Lead Response | Never let a warm Echo Pulse lead go cold in the inbox.... | 12h ago |
-| **KnowledgeKeeper** | Sales Knowledge | Arm Josef with knowledge that closes Echo Pulse deals.... | 12h ago |
-| **CalendarCaptain** | Demo Scheduling | Pack Josef's calendar with Echo Pulse demos, protect calling... | 11h ago |
-| **Codex** | Sales Automation | Build tools that put more Echo Pulse prospects in front of J... | 4h ago |
-| **Reviewer** | Revenue QA | Ensure every agent is pulling its weight toward Echo Pulse s... | 12h ago |
+| **PipelinePilot** | Echo Pulse Pipeline | Fill Josef's calendar with Echo Pulse demos at 50-200 employ... | 5h ago |
+| **Auditor** | Revenue Accountability | Drive Josef to close 20+ Echo Pulse deals/month = 258K+ CZK ... | 4h ago |
+| **CopyAgent** | Echo Pulse Sales Content | Write emails that get CEOs to book Echo Pulse demos.... | 6h ago |
+| **GrowthLab** | Prospect Research | Find companies with 50-200 employees that need engagement su... | 13h ago |
+| **InboxForge** | Lead Response | Never let a warm Echo Pulse lead go cold in the inbox.... | 13h ago |
+| **KnowledgeKeeper** | Sales Knowledge | Arm Josef with knowledge that closes Echo Pulse deals.... | 13h ago |
+| **CalendarCaptain** | Demo Scheduling | Pack Josef's calendar with Echo Pulse demos, protect calling... | 12h ago |
+| **Codex** | Sales Automation | Build tools that put more Echo Pulse prospects in front of J... | 5h ago |
+| **Reviewer** | Revenue QA | Ensure every agent is pulling its weight toward Echo Pulse s... | 13h ago |
 
 ## 📊 Pipeline Snapshot
 
@@ -83,7 +83,7 @@
 
 - **Agents:** 9 active
 - **Mode:** Kombucha (autonomous)
-- **Last refresh:** 2026-03-04 04:35
+- **Last refresh:** 2026-03-04 05:50
 
 ## 🔄 Reverse Prompt (for idle agents)
 

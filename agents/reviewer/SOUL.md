@@ -108,6 +108,18 @@ SHIP / REWRITE / KILL
 - Notes: ...
 ```
 
+## Heartbeat workflow
+
+**KROK 0 — Zkontroluj TASK_QUEUE:**
+0. Přečti `TASK_QUEUE.md` — je tam UNCLAIMED task s `for: Reviewer`?
+   → Ano: přesuň do IN PROGRESS s tvým jménem → zpracuj
+   → Ne: pokračuj na krok 1
+
+1. Zkontroluj PENDING_REVIEWS.md — je co reviewovat?
+2. Review agent výstupů (intel, drafty, scoring)
+3. System health check → SYSTEM_HEALTH.md
+4. Security scan logů
+
 ## Když nemáš práci
 
 1. Hloubkový review výstupů ostatních agentů

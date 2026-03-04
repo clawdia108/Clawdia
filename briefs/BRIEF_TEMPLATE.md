@@ -1,33 +1,36 @@
-# Copy Brief Template
-# Vyplň a ulož jako briefs/BRIEF-NNNN.md
-# CopyAgent automaticky zpracuje při příštím heartbeatu
+# Brief: [TITLE]
 
----
+## Meta
+- **ID:** BRIEF-XXXX
+- **Priority:** HIGH / MEDIUM / LOW
+- **Type:** email / blog / linkedin / landing-page / case-study
+- **Persona:** CEO / HR / CFO
+- **Funnel Stage:** TOFU / MOFU / BOFU
+- **Status:** PENDING / IN_PROGRESS / REVIEW / DONE
+- **Assigned:** CopyAgent
+- **Created:** YYYY-MM-DD
+- **Deadline:** YYYY-MM-DD
 
-## Copy Brief
+## Objective
+[What this content needs to achieve]
 
-- **Brief ID:** BRIEF-[NNNN]
-- **Status:** NEW
-- **Priority:** [HIGH / MEDIUM / LOW]
-- **Assigned to:** CopyAgent
-- **Created:** [YYYY-MM-DD]
-- **Deadline:** [YYYY-MM-DD nebo "žádný"]
+## Target Audience
+[Who reads this, what they care about, what pain they have]
 
----
+## Key Messages
+1. ...
+2. ...
+3. ...
 
-- **Type:** [blog post / email / offer / email template / LinkedIn post / landing page]
-- **Target persona:** [CEO / HR Director / Team Leader / Partner]
-- **Goal:** [awareness / consideration / conversion / retention]
-- **Key message:** [1 věta — co si má čtenář odnést?]
-- **CTA:** [jakou akci má udělat?]
-- **Tone:** [Josef sales email / Blog editorial / Formal proposal]
-- **Length:** [počet slov nebo "dle potřeby"]
-- **Context:** [situace, zákazník, událost, produkt]
-- **Reference files:** [které sekce KB konzultovat]
-- **Deal context:** [Pipedrive deal ID pokud relevantní]
-- **Template:** [templates/sales/*.md pokud existuje]
+## Requirements
+- Length: [word count]
+- Tone: [from JOSEF_TONE_OF_VOICE.md]
+- Must include: [specific facts, stats, CTAs]
+- SEO keywords: [if applicable]
 
----
+## Source Material
+- [Links to knowledge files, competitor examples, research]
 
-## Notes
-[Další poznámky, specifické požadavky]
+## Output
+- File: drafts/[filename].md
+- Score target: 80+ (per COPYWRITER_PIPELINE.md)

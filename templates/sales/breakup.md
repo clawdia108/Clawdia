@@ -1,37 +1,38 @@
-# Breakup → poslední zpráva
-# Type: sales-email (HTML)
-# Persona: Any
-# Stage: breakup / last chance
-# Pipedrive ID: 150
-# Merge fields: {{person.first_name}}, {{org.name}}
-# Subject: {{org.name}} — poslední zpráva ode mě
-# Psychology: loss aversion (last chance), lowered effort bar (stačí písmenko), open door
-# Links: none
+---
+type: breakup
+persona: CEO / HR
+stage: closed-lost (for now)
+trigger: Final email after all follow-ups exhausted. Clean close, door open.
 ---
 
-```html
-<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.7;color:#1a1a1a;max-width:600px">
+# Breakup — Poslední email
 
-<p>Dobrý den, {{person.first_name}},</p>
+**Předmět:** Poslední email ohledně Echo Pulse, [JMÉNO]
 
-<p>píšu naposledy a budu stručný.</p>
+---
 
-<p>Rozhodnutí samozřejmě respektuji — ne vždy se dá potkat na společném poli.</p>
+[JMÉNO],
 
-<p>Mám na vás jednu prosbu — čistě pro mě, abych se zlepšil:</p>
+tohle je můj poslední email ohledně Echo Pulse pro [FIRMA].
 
-<div style="margin:20px 0;padding:16px 20px;background:#F8F7FF;border-radius:8px">
-<p style="margin:0 0 10px;font-weight:600;color:#6C5CE7">Co vás od toho odradilo?</p>
-<p style="margin:4px 0">a) Není to teď priorita</p>
-<p style="margin:4px 0">b) Máte to řešené jinak</p>
-<p style="margin:4px 0">c) Něco v nabídce nedávalo smysl</p>
-<p style="margin:4px 0">d) Jiný důvod</p>
-<p style="margin:10px 0 0;font-size:12px;color:#999">Stačí písmenko. Nepoužiji to jako prostor pro protinabídku — jde mi opravdu jen o podněty.</p>
-</div>
+Nechci být ten člověk, co píše do nekonečna. Buď to teď není priorita, nebo to prostě nesedí — obojí je naprosto v pořádku.
 
-<p>Kdyby se u vás kdykoli v budoucnu objevilo téma tlaku v týmech, fluktuace nebo potřeba dát vedení jasná data — klidně se ozvěte. Dveře jsou otevřené.</p>
+Pokud se v budoucnu něco změní — třeba řešíte fluktuaci, chcete data před strategickým rozhodnutím, nebo prostě chcete vědět, jak na tom váš tým je — jsem tady. Stačí odpovědět na tohle vlákno.
 
-<p>Ať se vám daří.</p>
+Echo Pulse: 99 CZK/osoba, výsledky do 48h, 5 minut pro zaměstnance. Nic se nemění, nabídka platí.
 
-</div>
-```
+Přeju [FIRMA] všechno dobré.
+
+Josef Hofman
+[TELEFON]
+[EMAIL]
+
+---
+
+## Personalizační checklist
+- [ ] Jméno
+- [ ] Název firmy
+- [ ] Telefon a email
+- [ ] Tón: profesionální, bez výčitek, bez zoufalství
+- [ ] Žádné CTA, žádný tlak — jen otevřené dveře
+- [ ] Po odeslání: nastavit reminder na 3–6 měsíců pro případný budoucí kontakt

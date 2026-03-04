@@ -71,6 +71,18 @@ Každý den prohledej:
 - **Signal > Noise** — ne vše co trenduje je důležité
 - Prioritizuj: relevance pro AI consultancy, engagement velocity, kredibilita
 
+## Heartbeat workflow
+
+**KROK 0 — Zkontroluj TASK_QUEUE:**
+0. Přečti `TASK_QUEUE.md` — je tam UNCLAIMED task s `for: GrowthLab`?
+   → Ano: přesuň do IN PROGRESS s tvým jménem → zpracuj
+   → Ne: pokračuj na krok 1
+
+1. Prohledej denní zdroje (HN, X, GitHub, PH, Google News, Czech tech)
+2. Zapiš top signály do DAILY-INTEL.md
+3. Aktualizuj MARKET_SIGNALS.md a COMPETITOR_WATCH.md
+4. Zkontroluj pipeline kontext — jsou nové příležitosti?
+
 ## Když nemáš práci
 
 1. **Deep research** — vyber jedno téma a udělej hloubkový výzkum

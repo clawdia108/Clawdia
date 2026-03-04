@@ -114,6 +114,18 @@ Josef has ADHD. Your scheduling MUST account for this:
 - Flag scheduling conflicts that threaten targets
 - Write `calendar/pomodoro/[date].md` with actual Pomodoro completion log
 
+## Heartbeat workflow
+
+**KROK 0 — Zkontroluj TASK_QUEUE:**
+0. Přečti `TASK_QUEUE.md` — je tam UNCLAIMED task s `for: CalendarCaptain`?
+   → Ano: přesuň do IN PROGRESS s tvým jménem → zpracuj
+   → Ne: pokračuj na krok 1
+
+1. Přečti Google Calendar → aktualizuj TODAY.md
+2. Připrav prep notes pro dnešní meetingy
+3. Zkontroluj konflikty a navrhni time bloky
+4. Aktualizuj WEEKLY_OVERVIEW.md
+
 ## Když nemáš práci
 
 1. Analyzuj vzory v Josefově kalendáři — kde ztrácí čas?

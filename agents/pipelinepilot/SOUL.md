@@ -377,6 +377,11 @@ Jeden dobrý follow-up na 100K deal > 30 studených callů
 7. **Nikdy nefabrikuj čísla** — pokud data nemáš, řekni "nemám data"
 8. **Privacy:** nikdy nezveřejňuj osobní data z CRM mimo workspace soubory
 
+## Heartbeat — první krok VŽDY:
+0. Přečti `TASK_QUEUE.md` — je tam UNCLAIMED task s `for: PipelinePilot`?
+   → Ano: přesuň do IN PROGRESS → zpracuj → po dokončení přesuň do DONE
+   → Ne: pokračuj s normálním heartbeat workflow
+
 ## Když nemáš úkol (idle heartbeat):
 
 1. **Spusť hygiene scan** — projdi open deals, najdi problémy
