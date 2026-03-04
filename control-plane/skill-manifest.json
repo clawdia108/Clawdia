@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "description": "Registry of all installed skills with status, dependencies, and agent bindings.",
+  "generated_at": "2026-03-04T03:15:00Z",
+  "skills": {
+    "youtube-watcher": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "tool_wrapper",
+      "has_scripts": true,
+      "entry": "skills/youtube-watcher/SKILL.md",
+      "scripts": ["skills/youtube-watcher/scripts/get_transcript.py"],
+      "requires_binaries": ["yt-dlp"],
+      "bound_agents": ["growthlab"],
+      "task_types": ["video_transcript"],
+      "capabilities_added": ["video_transcription"]
+    },
+    "auto-updater": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/auto-updater/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["knowledgekeeper"],
+      "task_types": ["auto_update", "skill_update", "system_maintenance"],
+      "capabilities_added": ["auto_update"]
+    },
+    "humanize-ai-text": {
+      "version": "1.0.1",
+      "status": "active",
+      "type": "cli_toolkit",
+      "has_scripts": true,
+      "entry": "skills/humanize-ai-text/SKILL.md",
+      "scripts": [
+        "skills/humanize-ai-text/scripts/detect.py",
+        "skills/humanize-ai-text/scripts/transform.py",
+        "skills/humanize-ai-text/scripts/compare.py"
+      ],
+      "data_files": ["skills/humanize-ai-text/scripts/patterns.json"],
+      "requires_binaries": ["python3"],
+      "bound_agents": ["inboxforge"],
+      "task_types": ["ai_detection", "humanize_text"],
+      "capabilities_added": ["ai_detection", "text_humanization"]
+    },
+    "openai-whisper": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "tool_wrapper",
+      "has_scripts": false,
+      "entry": "skills/openai-whisper/SKILL.md",
+      "requires_binaries": ["whisper"],
+      "bound_agents": ["growthlab"],
+      "task_types": ["audio_transcript"],
+      "capabilities_added": ["audio_transcription"]
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "status": "active",
+      "type": "architectural",
+      "has_scripts": true,
+      "entry": "skills/proactive-agent/SKILL.md",
+      "assets_deployed": [
+        "memory/HEARTBEAT.md",
+        "memory/MEMORY_TEMPLATE.md"
+      ],
+      "requires_binaries": [],
+      "bound_agents": ["main", "knowledgekeeper"],
+      "task_types": ["heartbeat", "memory_flush", "proactive_check"],
+      "capabilities_added": ["proactive_memory"],
+      "architectural_features": [
+        "wal_protocol",
+        "working_buffer",
+        "heartbeat_system",
+        "memory_architecture",
+        "security_hardening"
+      ]
+    },
+    "humanizer": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/humanizer/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["inboxforge"],
+      "task_types": ["text_rewrite", "humanize_text"],
+      "capabilities_added": ["text_humanization"]
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "tool_wrapper",
+      "has_scripts": false,
+      "entry": "skills/summarize/SKILL.md",
+      "requires_binaries": ["summarize"],
+      "bound_agents": ["growthlab", "knowledgekeeper"],
+      "task_types": ["media_summary", "content_summarization"],
+      "capabilities_added": ["content_summarization"]
+    },
+    "gog": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "tool_wrapper",
+      "has_scripts": false,
+      "entry": "skills/gog/SKILL.md",
+      "requires_binaries": ["gog"],
+      "bound_agents": ["timebox", "inboxforge"],
+      "task_types": ["gmail_ops", "calendar_ops", "drive_ops", "gworkspace"],
+      "capabilities_added": ["google_workspace"]
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "status": "active",
+      "type": "meta",
+      "has_scripts": false,
+      "entry": "skills/find-skills/SKILL.md",
+      "requires_binaries": ["npx"],
+      "bound_agents": ["main"],
+      "task_types": ["skill_discovery"],
+      "capabilities_added": ["skill_discovery"]
+    },
+    "self-improving-agent": {
+      "version": "1.0.11",
+      "status": "active",
+      "type": "architectural",
+      "has_scripts": true,
+      "entry": "skills/self-improving-agent/SKILL.md",
+      "hooks_deployed": [
+        "hooks/openclaw/self-improvement.ts",
+        "hooks/openclaw/self-improvement.js"
+      ],
+      "scripts_deployed": [
+        "scripts/hooks/error-detector.sh",
+        "scripts/hooks/extract-skill.sh"
+      ],
+      "assets_deployed": [
+        ".learnings/ERRORS.md",
+        ".learnings/FEATURE_REQUESTS.md",
+        ".learnings/LEARNINGS.md"
+      ],
+      "requires_binaries": [],
+      "bound_agents": ["main", "knowledgekeeper", "reviewer"],
+      "task_types": ["error_log", "learning_capture", "skill_extraction"],
+      "capabilities_added": ["self_improvement"],
+      "architectural_features": [
+        "error_detection_hook",
+        "learning_capture",
+        "skill_extraction"
+      ]
+    },
+    "pipedrive-api": {
+      "version": "1.0.3",
+      "status": "active",
+      "type": "api_integration",
+      "has_scripts": false,
+      "entry": "skills/pipedrive-api/SKILL.md",
+      "requires_env": ["MATON_API_KEY"],
+      "requires_binaries": [],
+      "bound_agents": ["dealops"],
+      "task_types": ["crm_write", "deal_update", "contact_update", "pipeline_ops"],
+      "capabilities_added": ["pipedrive_api"]
+    },
+    "knowledge-sync": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/knowledge-sync/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["knowledgekeeper"],
+      "task_types": ["knowledge_sync"],
+      "capabilities_added": ["knowledge_sync"]
+    },
+    "web-research": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/web-research/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["growthlab"],
+      "task_types": ["research", "market_scan"],
+      "capabilities_added": ["web_research"]
+    },
+    "lead-scoring": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/lead-scoring/SKILL.md",
+      "requires_binaries": [],
+      "requires_env": ["MATON_API_KEY"],
+      "bound_agents": ["dealops"],
+      "task_types": ["lead_scoring", "lead_classification", "score_recalc"],
+      "capabilities_added": ["lead_scoring", "lead_classification"]
+    },
+    "sentiment-classifier": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/sentiment-classifier/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["inboxforge"],
+      "task_types": ["sentiment_classification", "reply_routing", "frame_detection"],
+      "capabilities_added": ["sentiment_analysis", "frame_detection", "buying_signal_detection"]
+    },
+    "deal-health": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/deal-health/SKILL.md",
+      "requires_binaries": [],
+      "requires_env": ["MATON_API_KEY"],
+      "bound_agents": ["dealops"],
+      "task_types": ["deal_health_scoring", "churn_prediction", "advance_tracking"],
+      "capabilities_added": ["deal_health", "churn_prediction"]
+    },
+    "cadence-engine": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/cadence-engine/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["main", "inboxforge"],
+      "task_types": ["cadence_management", "sequence_step", "ab_test", "backoff_check"],
+      "capabilities_added": ["multi_channel_cadence", "ab_testing", "adaptive_sequencing"]
+    },
+    "spin-questions": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": true,
+      "entry": "skills/spin-questions/SKILL.md",
+      "data_files": [
+        "skills/spin-questions/banks/saas_tech.json",
+        "skills/spin-questions/banks/professional_services.json",
+        "skills/spin-questions/banks/manufacturing.json",
+        "skills/spin-questions/banks/finance.json",
+        "skills/spin-questions/banks/ecommerce.json"
+      ],
+      "requires_binaries": [],
+      "bound_agents": ["dealops"],
+      "task_types": ["spin_question_gen", "precall_brief", "discovery_prep"],
+      "capabilities_added": ["spin_methodology", "precall_briefing"]
+    },
+    "pitch-builder": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": true,
+      "entry": "skills/pitch-builder/SKILL.md",
+      "data_files": [
+        "skills/pitch-builder/stories.json",
+        "skills/pitch-builder/concessions.json"
+      ],
+      "requires_binaries": [],
+      "bound_agents": ["growthlab"],
+      "task_types": ["pitch_building", "proposal_draft", "frame_counter", "pricing_strategy"],
+      "capabilities_added": ["pitch_building", "frame_control", "pricing_strategy"]
+    },
+    "social-selling": {
+      "version": "1.0.0",
+      "status": "active",
+      "type": "instruction_only",
+      "has_scripts": false,
+      "entry": "skills/social-selling/SKILL.md",
+      "requires_binaries": [],
+      "bound_agents": ["growthlab"],
+      "task_types": ["social_selling", "linkedin_content", "profile_audit", "prospect_engagement"],
+      "capabilities_added": ["social_selling", "linkedin_management", "ssi_optimization"]
+    }
+  },
+  "dependency_check": {
+    "required_binaries": ["yt-dlp", "whisper", "summarize", "gog", "python3", "npx"],
+    "required_env_vars": ["MATON_API_KEY"],
+    "note": "Run 'which <binary>' to check availability. Missing binaries will cause skill failures at runtime."
+  }
+}

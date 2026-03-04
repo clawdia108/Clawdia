@@ -12,6 +12,14 @@ workspace/pipedrive/*.md
 memory/*dryrun*.json
 memory/heartbeat-state.json
 
+# Node / build artifacts
+node_modules/
+dist/
+.vite/
+
+# Claude Code local state
+.claude/
+
 # Misc local artifacts
 *.log
 __pycache__/

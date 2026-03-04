@@ -1,0 +1,64 @@
+{
+  "industry": "Ecommerce (Retail, D2C, Marketplace)",
+  "version": "1.0.0",
+  "questions": {
+    "situation": [
+      "What does your current tech stack look like — platform, CRM, email, analytics?",
+      "How do you currently acquire customers — paid, organic, referral, or a mix?",
+      "What's your average order value and how has it trended over the past year?",
+      "How do you handle post-purchase communication and retention?",
+      "What does your fulfillment process look like from order to delivery?",
+      "How do you segment your customer base today?",
+      "What's your current approach to inventory management and demand forecasting?",
+      "How do you track customer lifetime value across channels?",
+      "What does your returns/exchange process look like?",
+      "How do you manage product content and listings across channels?"
+    ],
+    "problem": [
+      "What's your biggest challenge with customer acquisition cost right now?",
+      "Where are you seeing the most cart abandonment or drop-off in the funnel?",
+      "How well does your current email/SMS marketing convert compared to industry benchmarks?",
+      "What's the hardest part about managing inventory across multiple channels?",
+      "How often do stockouts or oversupply cause problems?",
+      "What's your biggest challenge with repeat purchase rates?",
+      "How difficult is it to personalize the shopping experience at scale?",
+      "Where do you see the most friction in your checkout flow?",
+      "What's your biggest pain point with marketplace management (Amazon, etc.)?",
+      "How well can you attribute revenue to specific marketing channels?",
+      "What's the most common reason customers return products?",
+      "How much time does your team spend on manual order management?",
+      "Where do you lose margin to shipping costs or promotions that don't convert?",
+      "How challenging is it to maintain consistent brand experience across all touchpoints?",
+      "What's your biggest frustration with your current analytics or reporting?"
+    ],
+    "implication": [
+      "If CAC keeps rising at the current rate, what does that do to your profitability in 12 months?",
+      "With [X%] cart abandonment, how much revenue walks away every month?",
+      "If repeat purchase rates stay at [current %], what does that mean for your LTV:CAC ratio?",
+      "How does [inventory problem] affect your cash flow and working capital?",
+      "When stockouts happen on your best sellers, what's the full revenue impact including lost trust?",
+      "If you can't personalize at scale, how does that affect your conversion rate vs. competitors who can?",
+      "What's the cost of [return rate] when you factor in shipping, restocking, and lost inventory?",
+      "How does [attribution gap] lead to misallocated marketing spend?",
+      "If checkout friction stays unchanged, how many mobile conversions are you losing per month?",
+      "What happens to your marketplace rankings when [problem] causes delivery delays?",
+      "If manual processes consume [X hours/week], what campaigns or optimizations aren't happening?",
+      "How does [inconsistent experience] affect your brand reputation and word-of-mouth?",
+      "What's the compound effect of [margin erosion] on your ability to invest in growth?",
+      "If competitors solve [personalization/speed/experience] before you, how does that change the competitive landscape?",
+      "How does [problem] affect your ability to negotiate better terms with suppliers?"
+    ],
+    "need_payoff": [
+      "If you could reduce cart abandonment by 30%, what would that mean for monthly revenue?",
+      "How would it change your business if repeat purchase rate went from [current] to [target]?",
+      "What would it be worth to know exactly which marketing channel drives profit, not just revenue?",
+      "If personalization increased conversion by even 15%, what does that look like over a year?",
+      "How would it impact your margins if return rates dropped by a third?",
+      "What would real-time inventory visibility across all channels save you in stockouts and overstock?",
+      "If checkout was 2 clicks instead of 5, how many more mobile conversions would you capture?",
+      "How valuable would it be to predict demand accurately enough to optimize your entire supply chain?",
+      "What would it mean for your team if the manual work was automated and they could focus on strategy?",
+      "If your LTV:CAC ratio improved by 40%, how would that change your investment in growth?"
+    ]
+  }
+}

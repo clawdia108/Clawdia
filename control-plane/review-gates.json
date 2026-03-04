@@ -56,6 +56,30 @@
       "reviewer": "main",
       "auto_block": true,
       "block_message": "Remote delegation requires Bridge approval."
+    },
+    {
+      "id": "pricing_proposal",
+      "description": "Any pricing proposal or discount below standard rates requires approval.",
+      "match": {
+        "task_type": ["pricing_strategy", "proposal_draft"],
+        "guardrails": ["no_discount_below_floor"]
+      },
+      "required_review": true,
+      "reviewer": "main",
+      "auto_block": true,
+      "block_message": "Pricing proposals require Josef approval. No pricing below floor without explicit sign-off."
+    },
+    {
+      "id": "cold_outreach_first_touch",
+      "description": "First message to any new prospect requires approval.",
+      "match": {
+        "task_type": ["cadence_management", "sequence_step"],
+        "guardrails": ["first_touch_approval"]
+      },
+      "required_review": true,
+      "reviewer": "main",
+      "auto_block": true,
+      "block_message": "First outreach to new prospect requires Josef approval."
     }
   ],
   "bypass_rules": {

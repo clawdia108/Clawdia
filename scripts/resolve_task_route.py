@@ -45,6 +45,7 @@ def load_context(task: dict) -> dict:
     normalized.setdefault("guardrails", [])
     normalized.setdefault("requires_tools", False)
     normalized.setdefault("requires_parallel_workers", False)
+    normalized.setdefault("skills_required", [])
     normalized.setdefault("expected_output_contract", "internal_snapshot")
     normalized.setdefault(
         "coordination_pattern",

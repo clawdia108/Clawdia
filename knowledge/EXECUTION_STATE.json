@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-03T09:50+01:00",
+  "generated_at": "2026-03-04T03:41+01:00",
   "counts": {
-    "open": 3,
+    "open": 5,
     "done": 0,
     "blocked": 1,
     "needs_review": 0,
@@ -87,6 +87,56 @@
         "reviewer_model": "openai/gpt-5-mini",
         "output_model": "openai/gpt-5-mini",
         "output_contract": "handoff_packet"
+      }
+    },
+    {
+      "task_id": "TASK-2002",
+      "title": "System health audit: validate control plane consistency and agent readiness",
+      "task_type": "system_review",
+      "status": "todo",
+      "priority": "P1",
+      "owner": "reviewer",
+      "complexity": "medium",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Review all control plane configs for consistency. Check that model router rules match agent capabilities. Verify skill dependencies are installed. Flag stale outputs and broken dependency chains.",
+      "user_summary": "Audit syst\u00e9mu: kontrola konzistence a p\u0159ipravenosti agent\u016f",
+      "due_at": "2026-03-04T17:00+01:00",
+      "updated_at": "2026-03-04T12:00+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "heartbeat_low_cost",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-2001",
+      "title": "Market intel scan: AI sales automation landscape Q1 2026",
+      "task_type": "research_parallel",
+      "status": "todo",
+      "priority": "P1",
+      "owner": "growthlab",
+      "complexity": "medium",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Research current AI sales automation tools, competitors, and market trends. Focus on what's working for SMBs in Europe. Identify 3-5 actionable experiments we could run.",
+      "user_summary": "Pr\u016fzkum trhu: AI n\u00e1stroje pro automatizaci prodeje v Evrop\u011b, Q1 2026",
+      "due_at": "2026-03-04T18:00+01:00",
+      "updated_at": "2026-03-04T12:00+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "research_parallel",
+        "lead_model": "anthropic/claude-opus-4-1",
+        "worker_model": "anthropic/claude-sonnet-4-20250514",
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
       }
     }
   ],
@@ -289,6 +339,56 @@
         "reviewer_model": "openai/gpt-5-mini",
         "output_model": "openai/gpt-5-mini",
         "output_contract": "handoff_packet"
+      }
+    },
+    {
+      "task_id": "TASK-2002",
+      "title": "System health audit: validate control plane consistency and agent readiness",
+      "task_type": "system_review",
+      "status": "todo",
+      "priority": "P1",
+      "owner": "reviewer",
+      "complexity": "medium",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Review all control plane configs for consistency. Check that model router rules match agent capabilities. Verify skill dependencies are installed. Flag stale outputs and broken dependency chains.",
+      "user_summary": "Audit syst\u00e9mu: kontrola konzistence a p\u0159ipravenosti agent\u016f",
+      "due_at": "2026-03-04T17:00+01:00",
+      "updated_at": "2026-03-04T12:00+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "heartbeat_low_cost",
+        "lead_model": "openai/gpt-5-mini",
+        "worker_model": null,
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
+      }
+    },
+    {
+      "task_id": "TASK-2001",
+      "title": "Market intel scan: AI sales automation landscape Q1 2026",
+      "task_type": "research_parallel",
+      "status": "todo",
+      "priority": "P1",
+      "owner": "growthlab",
+      "complexity": "medium",
+      "risk_level": "low",
+      "approval_state": "not_required",
+      "output_visibility": "internal",
+      "summary": "Research current AI sales automation tools, competitors, and market trends. Focus on what's working for SMBs in Europe. Identify 3-5 actionable experiments we could run.",
+      "user_summary": "Pr\u016fzkum trhu: AI n\u00e1stroje pro automatizaci prodeje v Evrop\u011b, Q1 2026",
+      "due_at": "2026-03-04T18:00+01:00",
+      "updated_at": "2026-03-04T12:00+01:00",
+      "blockers": [],
+      "route_snapshot": {
+        "rule_id": "research_parallel",
+        "lead_model": "anthropic/claude-opus-4-1",
+        "worker_model": "anthropic/claude-sonnet-4-20250514",
+        "reviewer_model": null,
+        "output_model": "openai/gpt-5-mini",
+        "output_contract": "internal_snapshot"
       }
     }
   ]

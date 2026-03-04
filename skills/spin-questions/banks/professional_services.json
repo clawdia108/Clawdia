@@ -1,0 +1,64 @@
+{
+  "industry": "Professional Services (Consulting, Agencies, Legal, Accounting)",
+  "version": "1.0.0",
+  "questions": {
+    "situation": [
+      "How do you currently scope and price new projects?",
+      "What's your current utilization rate across the team?",
+      "How do you track billable vs non-billable hours today?",
+      "What does your client onboarding process look like from signed contract to kickoff?",
+      "How many concurrent projects does your team typically manage?",
+      "What tools do you use for project management and client communication?",
+      "How do you handle change requests or scope creep with clients?",
+      "What's your current approach to business development — referrals, outbound, or both?",
+      "How do you measure client satisfaction or loyalty?",
+      "What does knowledge transfer look like when a team member leaves a project?"
+    ],
+    "problem": [
+      "Where does the most unbillable time disappear to each week?",
+      "What's the biggest challenge in forecasting revenue for next quarter?",
+      "How often do projects go over budget or over timeline?",
+      "What's the hardest part of scaling the business without linearly scaling headcount?",
+      "When a senior person is sick or on vacation, what happens to their projects?",
+      "How much time do partners/directors spend on admin vs client-facing work?",
+      "What's your biggest challenge in finding and retaining good people?",
+      "How often do clients push back on invoices or question the value they received?",
+      "Where does communication break down between your team and clients?",
+      "What's the most common reason a project goes sideways?",
+      "How much time goes into proposal writing that doesn't convert?",
+      "What visibility do you have into project profitability before it's too late?",
+      "How do you handle it when a client's expectations don't match the deliverable?",
+      "What happens when multiple clients need the same senior resource simultaneously?",
+      "How difficult is it to replicate your best processes across the entire team?"
+    ],
+    "implication": [
+      "If utilization stays at [current %], what does that do to your margins over the next year?",
+      "When scope creep goes unchecked, how does that affect team morale and burnout?",
+      "What's the cost of that unbillable time over 12 months across the whole team?",
+      "If you can't forecast revenue accurately, how does that affect hiring and investment decisions?",
+      "When senior knowledge walks out the door, what does that cost in ramp-up time for replacements?",
+      "If proposal conversion stays at [current %], how many hours are you spending writing proposals that go nowhere?",
+      "How does inconsistent delivery quality affect referrals and repeat business?",
+      "What happens to your growth rate if you can't solve the talent bottleneck?",
+      "If project profitability surprises keep happening, how does that affect your confidence in pricing?",
+      "How much revenue is at risk from clients who've experienced a delivery issue?",
+      "If burnout causes turnover, what's the real cost of recruiting and training replacements?",
+      "When admin work eats into billable time, what's the opportunity cost in revenue?",
+      "How does [problem] affect your ability to take on larger, more strategic engagements?",
+      "What competitive risk do you face if firms with better systems can deliver faster at lower cost?",
+      "If you can't demonstrate clear ROI to clients, how does that affect renewals and expansions?"
+    ],
+    "need_payoff": [
+      "If you could increase utilization by 10%, what would that mean for your annual revenue?",
+      "How would it change your business if you could accurately predict revenue 2 quarters out?",
+      "What would it be worth to cut proposal creation time in half while improving win rates?",
+      "If your team could handle 20% more clients without new hires, how would that affect margins?",
+      "How valuable would it be to know project profitability in real-time, not after the invoice goes out?",
+      "What would it mean for retention if your team spent less time on admin and more on the work they love?",
+      "If client onboarding was 50% faster, how would that impact satisfaction scores?",
+      "How would it feel to have a system that flags scope creep before it becomes a budget problem?",
+      "What would it mean for your growth if every delivery was as good as your best team's delivery?",
+      "If you could replicate your top performer's process across the whole team, what impact would that have?"
+    ]
+  }
+}

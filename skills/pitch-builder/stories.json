@@ -1,0 +1,102 @@
+{
+  "version": "1.0.0",
+  "description": "Intrigue Story Bank — indexed by industry, deal size, and objection type. Used by pitch-builder for frame control and hot cognition.",
+  "stories": [
+    {
+      "id": "saas_scaling_pain",
+      "title": "The SaaS company that was drowning in spreadsheets",
+      "industry": ["saas", "technology"],
+      "deal_size_range": [5000, 50000],
+      "objection_type": ["price", "status_quo"],
+      "protagonist": "Head of Ops at a 50-person SaaS startup",
+      "situation": "Managing customer onboarding across 12 spreadsheets, losing 3 hours/day to manual updates",
+      "risk": "Their biggest enterprise client threatened to churn — onboarding took 6 weeks instead of promised 2",
+      "time_pressure": "Had 30 days before the enterprise renewal review",
+      "resolution": "Cut onboarding from 6 weeks to 8 days. Enterprise client renewed for 2x the contract. Ops lead got promoted.",
+      "key_metric": "75% reduction in onboarding time, 2x upsell on renewal",
+      "use_when": "Prospect says 'we manage fine with what we have' or pushes back on price"
+    },
+    {
+      "id": "agency_margin_squeeze",
+      "title": "The agency owner who couldn't stop trading time for money",
+      "industry": ["professional_services", "agency"],
+      "deal_size_range": [3000, 25000],
+      "objection_type": ["time", "complexity"],
+      "protagonist": "Founder of a 15-person digital agency",
+      "situation": "Team utilization at 120% but margins falling — every new client meant hiring, every hire ate the margin",
+      "risk": "Two senior team members quit from burnout in the same month. Three clients in jeopardy.",
+      "time_pressure": "Had to stabilize within 60 days or face a cash crunch",
+      "resolution": "Automated 40% of delivery workflow. Handled same client load with 3 fewer FTEs. Margins went from 18% to 34%.",
+      "key_metric": "34% margin (up from 18%), zero client churn during transition",
+      "use_when": "Prospect says 'we don't have time to implement something new'"
+    },
+    {
+      "id": "ecom_lost_revenue",
+      "title": "The ecommerce brand leaving €200K on the table",
+      "industry": ["ecommerce", "retail"],
+      "deal_size_range": [2000, 15000],
+      "objection_type": ["roi", "analyst_frame"],
+      "protagonist": "CMO of a mid-market D2C brand doing €2M ARR",
+      "situation": "Cart abandonment at 78%. Follow-up emails were generic, sent 24 hours late. Recovery rate: 3%.",
+      "risk": "€200K/year in recoverable revenue just evaporating. Board was asking questions about CAC efficiency.",
+      "time_pressure": "Black Friday was 6 weeks away — biggest revenue window of the year",
+      "resolution": "Personalized recovery sequences launched in 4 weeks. Recovery rate jumped to 14%. Black Friday recovery alone brought in €47K extra.",
+      "key_metric": "14% cart recovery (up from 3%), €47K recovered in one month",
+      "use_when": "Prospect wants to see ROI models or asks for detailed projections"
+    },
+    {
+      "id": "manufacturing_compliance",
+      "title": "The manufacturer who almost lost their ISO certification",
+      "industry": ["manufacturing", "industrial"],
+      "deal_size_range": [10000, 100000],
+      "objection_type": ["risk_averse", "committee"],
+      "protagonist": "Quality Director at a 200-person manufacturer",
+      "situation": "Compliance documentation scattered across 4 systems. Audit trail gaps. Internal audit found 23 non-conformities.",
+      "risk": "ISO recertification audit in 90 days. Losing certification = losing 60% of their customer base (enterprise buyers require it).",
+      "time_pressure": "90 days to close 23 non-conformities or face certification loss",
+      "resolution": "Unified compliance system deployed in 6 weeks. All 23 non-conformities closed. Passed recertification with zero findings.",
+      "key_metric": "Zero audit findings (down from 23), certification retained, €3.2M in at-risk revenue protected",
+      "use_when": "Prospect has a committee process or says 'this seems risky to change'"
+    },
+    {
+      "id": "fintech_speed",
+      "title": "The fintech that was losing deals to faster competitors",
+      "industry": ["finance", "fintech"],
+      "deal_size_range": [5000, 75000],
+      "objection_type": ["competitor", "power_frame"],
+      "protagonist": "VP Sales at a B2B fintech doing €5M ARR",
+      "situation": "Sales cycle: 47 days average. Their main competitor was closing in 21 days. Pipeline was healthy but conversion was dying.",
+      "risk": "Lost 3 enterprise deals in one quarter to the same competitor. Board started questioning product-market fit.",
+      "time_pressure": "Needed to show improvement before Q4 board meeting in 8 weeks",
+      "resolution": "Streamlined proposal→close workflow. Sales cycle dropped to 19 days. Win rate increased 34% in the next quarter.",
+      "key_metric": "19-day sales cycle (down from 47), 34% higher win rate",
+      "use_when": "Prospect is comparing with competitors or tries to establish a power frame"
+    }
+  ],
+  "index": {
+    "by_industry": {
+      "saas": ["saas_scaling_pain"],
+      "technology": ["saas_scaling_pain"],
+      "professional_services": ["agency_margin_squeeze"],
+      "agency": ["agency_margin_squeeze"],
+      "ecommerce": ["ecom_lost_revenue"],
+      "retail": ["ecom_lost_revenue"],
+      "manufacturing": ["manufacturing_compliance"],
+      "industrial": ["manufacturing_compliance"],
+      "finance": ["fintech_speed"],
+      "fintech": ["fintech_speed"]
+    },
+    "by_objection": {
+      "price": ["saas_scaling_pain"],
+      "status_quo": ["saas_scaling_pain"],
+      "time": ["agency_margin_squeeze"],
+      "complexity": ["agency_margin_squeeze"],
+      "roi": ["ecom_lost_revenue"],
+      "analyst_frame": ["ecom_lost_revenue"],
+      "risk_averse": ["manufacturing_compliance"],
+      "committee": ["manufacturing_compliance"],
+      "competitor": ["fintech_speed"],
+      "power_frame": ["fintech_speed"]
+    }
+  }
+}

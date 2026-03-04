@@ -1,0 +1,80 @@
+{
+  "version": "1.0.0",
+  "description": "Pre-approved reciprocity concessions. Low actual cost, high perceived value. Use to create deal momentum without discounting.",
+  "pre_approved": true,
+  "note": "These concessions are pre-approved by Josef. No approval loop needed. Track which concessions correlate with closes.",
+  "concessions": [
+    {
+      "id": "extended_trial",
+      "name": "Extended trial period",
+      "description": "+1 week added to standard trial",
+      "actual_cost": "near_zero",
+      "perceived_value": "medium",
+      "best_for": ["hesitant_buyer", "needs_more_time", "committee_decision"],
+      "trigger": "Prospect asks for more time to evaluate",
+      "script": "I can extend the trial by a week so your team has more time to see the impact. No strings attached.",
+      "track_metric": "trial_to_close_rate"
+    },
+    {
+      "id": "free_onboarding",
+      "name": "Complimentary onboarding call",
+      "description": "1-hour dedicated onboarding session with Josef",
+      "actual_cost": "1_hour_time",
+      "perceived_value": "high",
+      "best_for": ["enterprise_buyer", "complex_setup", "relationship_builder"],
+      "trigger": "Prospect worried about implementation complexity",
+      "script": "I'll personally walk your team through setup — usually we charge for this, but I want to make sure you get maximum value from day one.",
+      "track_metric": "onboarding_satisfaction_to_retention"
+    },
+    {
+      "id": "early_feature_access",
+      "name": "Early access to upcoming feature",
+      "description": "Beta access to next feature release",
+      "actual_cost": "near_zero",
+      "perceived_value": "high",
+      "best_for": ["tech_forward", "innovation_buyer", "insider_feeling"],
+      "trigger": "Prospect asks about roadmap or missing features",
+      "script": "I can give you early access to [feature] — it's coming in the next release and you'd be one of the first to use it.",
+      "track_metric": "beta_access_to_retention"
+    },
+    {
+      "id": "custom_report",
+      "name": "Custom quarterly business review",
+      "description": "Personalized QBR deck with insights specific to their business",
+      "actual_cost": "2_hours_time",
+      "perceived_value": "very_high",
+      "best_for": ["data_driven_buyer", "enterprise", "multi_stakeholder"],
+      "trigger": "Prospect needs to justify ROI to leadership",
+      "script": "I'll build a custom quarterly review showing exactly how this impacts your metrics. Makes it easy to show your team the ROI.",
+      "track_metric": "qbr_to_expansion"
+    },
+    {
+      "id": "priority_support",
+      "name": "Priority support channel",
+      "description": "Direct Slack/email channel for 90 days",
+      "actual_cost": "low",
+      "perceived_value": "high",
+      "best_for": ["risk_averse", "enterprise", "first_time_buyer"],
+      "trigger": "Prospect worried about support or responsiveness",
+      "script": "For the first 90 days, you'll have a direct line to me — any question, any time. We usually reserve this for our premium tier.",
+      "track_metric": "priority_support_to_nps"
+    },
+    {
+      "id": "strategy_session",
+      "name": "Free strategy session",
+      "description": "30-min strategy call focused on their specific challenge",
+      "actual_cost": "30_min_time",
+      "perceived_value": "medium",
+      "best_for": ["early_stage", "needs_education", "consultative_sale"],
+      "trigger": "Prospect is interested but unclear on how to apply the solution",
+      "script": "Let me block 30 minutes to map out exactly how this would work for your specific situation. No commitment needed.",
+      "track_metric": "strategy_session_to_close"
+    }
+  ],
+  "rules": {
+    "max_concessions_per_deal": 2,
+    "never_stack_with_discount": true,
+    "offer_order": "Always offer concession BEFORE any price discussion. Never concede and discount simultaneously.",
+    "reciprocity_note": "After giving a concession, immediately follow with a small ask: 'In return, could you get me a meeting with [decision maker]?' or 'Could you share feedback within the first week?'"
+  }
+}

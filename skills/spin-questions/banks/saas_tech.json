@@ -1,0 +1,69 @@
+{
+  "industry": "SaaS / Technology",
+  "version": "1.0.0",
+  "questions": {
+    "situation": [
+      "How does your team currently handle [specific process] — is it mostly manual, partially automated, or fully systematized?",
+      "What tools does your team use for [area] today, and how long have they been in place?",
+      "How many people on your team touch [process] on a daily basis?",
+      "What does your current tech stack look like for [function]?",
+      "How do you measure success for [department/function] right now?",
+      "Walk me through what happens when [trigger event] occurs — who does what?",
+      "How is your team structured around [function]?",
+      "What's your typical timeline from [start point] to [end point]?",
+      "Where does [data/information] live today — one system or scattered?",
+      "How do you currently onboard new [team members/customers]?"
+    ],
+    "problem": [
+      "What's the most frustrating part of your current [process]?",
+      "Where do things typically break down or slow down?",
+      "What would your team say is the biggest bottleneck in [area]?",
+      "How often do you find yourself manually fixing things that should be automated?",
+      "What happens when [common failure point] occurs?",
+      "Are there tasks your team spends time on that feel like they shouldn't require human effort?",
+      "When was the last time [current tool] failed you in a critical moment?",
+      "How much time does your team spend on [low-value activity] each week?",
+      "What workarounds has your team built to compensate for gaps in [current solution]?",
+      "If you could eliminate one recurring headache in [area], what would it be?",
+      "How confident are you in the data coming out of your current [system]?",
+      "What visibility do you have into [key metric] right now?",
+      "How well does your current setup scale as you add [customers/users/data]?",
+      "What's the biggest surprise or blind spot you've encountered with [current approach]?",
+      "How easy is it for a new team member to get up to speed on [process]?"
+    ],
+    "implication": [
+      "If [problem] continues for another 6 months, what impact does that have on your [revenue/growth]?",
+      "How does [bottleneck] affect your ability to close deals / serve customers faster?",
+      "When [failure point] happens, what's the downstream effect on your team's productivity?",
+      "What does the lost time on [manual process] cost you in terms of deals not pursued?",
+      "If your team is spending X hours/week on [low-value task], what higher-impact work isn't getting done?",
+      "How does [data quality issue] affect the decisions your leadership team makes?",
+      "When [current tool] falls short, does that ever impact the customer experience?",
+      "If scaling [process] requires headcount, what does that do to your unit economics?",
+      "How does [problem] affect your ability to retain top performers on the team?",
+      "What happens to your competitive position if [competitor] solves this faster than you?",
+      "If [onboarding delay] continues, how does that impact your time-to-value for new customers?",
+      "How much pipeline leaks out because [visibility gap] means deals don't get followed up in time?",
+      "If you can't fix [problem] before [upcoming event/deadline], what are the consequences?",
+      "What's the compound effect of [problem] over the next year if nothing changes?",
+      "How does [issue] affect your team's confidence in the numbers they report to leadership?",
+      "When [breakdown] occurs, how long does it take to recover, and what's the real cost of that downtime?",
+      "If [manual process] introduces errors, what's the risk to [compliance/customer trust/revenue]?",
+      "How does [limitation] affect your ability to experiment with new [strategies/channels/products]?",
+      "What opportunities are you leaving on the table because [current approach] can't handle [scenario]?",
+      "If your top salesperson leaves tomorrow, how much institutional knowledge walks out the door because [knowledge gap]?"
+    ],
+    "need_payoff": [
+      "If you could cut [time on process] in half, what would your team do with that freed-up capacity?",
+      "How would it impact your revenue if [conversion rate/speed] improved by even 20%?",
+      "What would it mean for your team if [painful process] just worked automatically?",
+      "If you had real-time visibility into [key metric], how would that change your weekly decisions?",
+      "How valuable would it be to onboard new [customers/team members] in [time] instead of [current time]?",
+      "If [problem] was eliminated, what would that mean for your ability to hit your [quarterly/annual] targets?",
+      "What would your leadership say if you could show them [specific improvement] in [timeframe]?",
+      "How much would it be worth to never have to worry about [recurring issue] again?",
+      "If scaling didn't require adding headcount, how would that change your growth plans?",
+      "What would it mean for your competitive position if you were the fastest in your space at [capability]?"
+    ]
+  }
+}

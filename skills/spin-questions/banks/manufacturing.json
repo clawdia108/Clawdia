@@ -1,0 +1,64 @@
+{
+  "industry": "Manufacturing / Industrial",
+  "version": "1.0.0",
+  "questions": {
+    "situation": [
+      "What does your current production planning process look like?",
+      "How do you track quality metrics across your production lines?",
+      "What systems do you use for inventory management and supply chain visibility?",
+      "How many suppliers do you work with, and how do you manage those relationships?",
+      "What does your maintenance schedule look like — reactive, preventive, or predictive?",
+      "How do you handle compliance documentation and audit trails?",
+      "What's your current OEE (Overall Equipment Effectiveness) tracking setup?",
+      "How do shop floor operators communicate issues to management today?",
+      "What does your quality control process look like from raw material to shipped product?",
+      "How do you manage production scheduling when demand fluctuates?"
+    ],
+    "problem": [
+      "What's your biggest challenge with unplanned downtime?",
+      "Where do quality issues most commonly surface — and how long does it take to catch them?",
+      "What's the most frustrating part of managing your supply chain?",
+      "How much scrap or rework does your current process generate?",
+      "What happens when a key machine goes down unexpectedly?",
+      "How difficult is it to trace the root cause of a quality issue?",
+      "Where does paperwork or manual data entry slow your operations down?",
+      "What's your biggest challenge with workforce scheduling and skill matching?",
+      "How often do production plans need to be changed at the last minute?",
+      "What visibility do you have into real-time production status?",
+      "How challenging is it to maintain consistent quality across shifts?",
+      "What's the biggest bottleneck in your order-to-delivery timeline?",
+      "How do you handle it when customer specifications change mid-production?",
+      "What's the hardest part of staying compliant with [ISO/industry standard]?",
+      "How much time do your engineers spend firefighting vs. improving processes?"
+    ],
+    "implication": [
+      "If unplanned downtime continues at current levels, what does that cost you annually?",
+      "When a quality issue makes it to a customer, what's the real impact beyond the replacement cost?",
+      "How does [supply chain visibility gap] affect your ability to make delivery commitments?",
+      "If scrap rates stay where they are, what does that do to your margins over 12 months?",
+      "What's at stake if you miss an audit finding and your certification is at risk?",
+      "When firefighting takes up engineering time, what improvement projects don't get done?",
+      "How does [problem] affect your ability to win new contracts with quality-sensitive customers?",
+      "If production planning can't respond to demand changes quickly, what happens to customer satisfaction?",
+      "What's the compound cost of manual data entry errors across your entire operation?",
+      "How does [maintenance issue] affect your equipment lifespan and capex planning?",
+      "If you can't trace root causes quickly, how many repeat issues go unresolved?",
+      "What happens to worker safety when [problem] creates shortcuts or workarounds?",
+      "How does inconsistent shift quality affect your ability to scale to a second or third shift?",
+      "If [bottleneck] limits your throughput, how much revenue capacity are you leaving unused?",
+      "What's the risk to your reputation if [quality issue] reaches a major customer?"
+    ],
+    "need_payoff": [
+      "If you could predict machine failures 48 hours before they happen, what would that save you?",
+      "How would it change your margins if scrap was cut by 30%?",
+      "What would it be worth to have real-time visibility into every production line from your office?",
+      "If audit prep took 2 days instead of 2 weeks, what would your team do with that time?",
+      "How would it impact customer relationships if your on-time delivery rate was 98%+?",
+      "What would it mean for your business if quality was consistent across all shifts, all lines?",
+      "If engineers could spend 80% of their time on improvement instead of firefighting, what would change?",
+      "How much would it be worth to cut your order-to-delivery time by a week?",
+      "If you could trace any quality issue to its root cause in minutes, how would that change your response?",
+      "What would a 5% improvement in OEE mean for your annual output and revenue?"
+    ]
+  }
+}

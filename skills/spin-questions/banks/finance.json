@@ -1,0 +1,64 @@
+{
+  "industry": "Finance (Banking, Insurance, Fintech)",
+  "version": "1.0.0",
+  "questions": {
+    "situation": [
+      "How does your team currently handle client onboarding and KYC compliance?",
+      "What's your current approach to risk assessment and portfolio monitoring?",
+      "How do you manage reporting obligations across different regulatory frameworks?",
+      "What tools does your team use for client relationship management?",
+      "How do you currently segment and prioritize your client base?",
+      "What does your claims processing / underwriting workflow look like today?",
+      "How do you track and manage cross-sell and upsell opportunities?",
+      "What systems do you use for fraud detection and transaction monitoring?",
+      "How does your team handle compliance training and audit readiness?",
+      "What's your approach to digital channels vs. traditional client interaction?"
+    ],
+    "problem": [
+      "What's the most time-consuming compliance task your team faces?",
+      "Where do you see the most friction in your client onboarding process?",
+      "How often do regulatory changes force you to scramble to update processes?",
+      "What's your biggest challenge with data quality across your client base?",
+      "How difficult is it to get a single view of a client across all their products?",
+      "Where are you losing clients to more digitally-native competitors?",
+      "What's the hardest part about scaling your advisory services without adding headcount?",
+      "How often do manual processes lead to errors in reporting or compliance?",
+      "What visibility do you have into your risk exposure in real-time?",
+      "How much time do your advisors spend on admin vs. actual client-facing work?",
+      "What's your biggest challenge with fraud or suspicious activity detection?",
+      "How well do your current systems handle peak transaction volumes?",
+      "What's the most common reason clients churn or move assets elsewhere?",
+      "How difficult is it to personalize communications at scale?",
+      "Where do cross-sell opportunities fall through the cracks?"
+    ],
+    "implication": [
+      "If onboarding takes [current time], how many prospective clients drop off before completion?",
+      "What's the regulatory exposure if a compliance gap goes undetected?",
+      "How does [data quality issue] affect the accuracy of your risk models?",
+      "If competitors onboard clients 3x faster, what does that mean for your market share over 2 years?",
+      "When advisors spend [X%] on admin, what's the revenue impact of the client meetings that don't happen?",
+      "If you can't detect fraud fast enough, what's the potential loss exposure per incident?",
+      "How does [compliance burden] affect your ability to launch new products or enter new markets?",
+      "What's the cost of client churn at current rates — not just revenue lost, but acquisition cost wasted?",
+      "If cross-sell capture stays at [current %], how much wallet share are you leaving with competitors?",
+      "How does [manual process] expose you to operational risk during peak periods?",
+      "What happens to client trust if [error/delay] occurs during a critical transaction?",
+      "If regulatory penalties increase, what's the worst-case impact on your P&L?",
+      "How does [staffing constraint] limit your ability to serve high-net-worth clients at the level they expect?",
+      "What's the compound effect of [problem] on your NPS and referral pipeline?",
+      "If you can't personalize at scale, how does that affect retention of your most valuable segment?"
+    ],
+    "need_payoff": [
+      "If onboarding dropped from [current] to 48 hours, what would that do to your conversion rate?",
+      "How would it change your risk posture if you had real-time exposure monitoring?",
+      "What would it be worth to automate 80% of your compliance reporting?",
+      "If advisors could spend 70% of their time with clients instead of 40%, what would that mean for AUM growth?",
+      "How much revenue would you capture if cross-sell identification was automated and timely?",
+      "What would it mean for your regulatory standing to have audit-ready documentation at any moment?",
+      "If fraud detection time dropped from hours to seconds, what would that save annually?",
+      "How valuable would it be to predict client churn 90 days before it happens?",
+      "What would a 15% improvement in client retention mean for your bottom line?",
+      "If you could launch new products 3x faster while staying compliant, how would that change your competitive position?"
+    ]
+  }
+}
