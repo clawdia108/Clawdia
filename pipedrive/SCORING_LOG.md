@@ -1,3 +1,10 @@
 # Scoring Log
 
-_(Tento soubor bude aktualizován PipelinePilot agentem)_
+> Last run: 2026-03-04 03:55
+> Deals scored: 145
+> HOT: 0 | WARM: 7 | COOL: 48 | COLD: 90
+
+| Date | Scored | HOT | WARM | COOL | COLD |
+|------|--------|-----|------|------|------|
+| 2026-03-04 03:55 | 145 | 0 | 7 | 48 | 90 |
+| 2026-03-04 03:56 | 145 | 0 | 7 | 48 | 90 |
