@@ -24,56 +24,56 @@ OUTPUT = WORKSPACE / "MISSION_CONTROL.md"
 AGENTS = {
     "pipelinepilot": {
         "name": "PipelinePilot",
-        "role": "CRM & Sales Intelligence",
-        "mission": "Make Behavera's pipeline the most data-driven, zero-blind-spot sales machine in Czech HR tech.",
+        "role": "Echo Pulse Pipeline",
+        "mission": "Fill Josef's calendar with Echo Pulse demos at 50-200 employee companies.",
         "outputs": ["pipedrive/DEAL_SCORING.md", "pipedrive/PIPELINE_STATUS.md", "pipedrive/ENRICHMENT_LOG.md"],
     },
     "auditor": {
         "name": "Auditor",
-        "role": "Sales Performance Coach",
-        "mission": "Drive Josef to 8 demos/day, 40/week, and 500K+ CZK monthly closed revenue.",
+        "role": "Revenue Accountability",
+        "mission": "Drive Josef to close 20+ Echo Pulse deals/month = 258K+ CZK commission.",
         "outputs": ["reviews/daily-scorecard/SCOREBOARD.md"],
     },
     "copyagent": {
         "name": "CopyAgent",
-        "role": "Sales Content Production",
-        "mission": "Produce sales content that books demos and closes deals.",
+        "role": "Echo Pulse Sales Content",
+        "mission": "Write emails that get HR directors to book Echo Pulse demos.",
         "outputs": ["drafts/", "templates/sales/"],
     },
     "growthlab": {
         "name": "GrowthLab",
-        "role": "Market Intelligence",
-        "mission": "Give Josef an unfair intelligence advantage over every competitor in Czech HR tech.",
+        "role": "Prospect Research",
+        "mission": "Find companies with 50-200 employees that need engagement surveys NOW.",
         "outputs": ["intel/DAILY-INTEL.md", "intel/COMPETITOR_WATCH.md"],
     },
     "inboxforge": {
         "name": "InboxForge",
-        "role": "Email Operations",
-        "mission": "Inbox zero, zero missed opportunities.",
+        "role": "Lead Response",
+        "mission": "Never let a warm Echo Pulse lead go cold in the inbox.",
         "outputs": ["inbox/TRIAGE.md", "inbox/FOLLOW_UPS.md"],
     },
     "knowledgekeeper": {
         "name": "KnowledgeKeeper",
-        "role": "Knowledge Operations",
-        "mission": "Make the entire team smarter every day.",
+        "role": "Sales Knowledge",
+        "mission": "Arm Josef with knowledge that closes Echo Pulse deals.",
         "outputs": ["knowledge/READING_TRACKER.md", "knowledge/AGENT_INSIGHTS.md"],
     },
     "calendarcaptain": {
         "name": "CalendarCaptain",
-        "role": "Time & Meeting Prep",
-        "mission": "Maximize Josef's selling time and ensure zero unprepared meetings.",
+        "role": "Demo Scheduling",
+        "mission": "Pack Josef's calendar with Echo Pulse demos, protect calling time.",
         "outputs": ["calendar/TODAY.md", "calendar/TOMORROW_PREP.md"],
     },
     "codex": {
         "name": "Codex",
-        "role": "System Builder",
-        "mission": "Build the most reliable, self-improving AI agent infrastructure.",
+        "role": "Sales Automation",
+        "mission": "Build tools that put more Echo Pulse prospects in front of Josef.",
         "outputs": ["scripts/BUILD_LOG.md"],
     },
     "reviewer": {
         "name": "Reviewer",
-        "role": "Quality Control",
-        "mission": "Ensure every agent output is accurate, high-quality, and improving.",
+        "role": "Revenue QA",
+        "mission": "Ensure every agent is pulling its weight toward Echo Pulse sales.",
         "outputs": ["reviews/HEALTH_REPORT.md", "reviews/SYSTEM_HEALTH.md"],
     },
 }
@@ -146,7 +146,7 @@ def main():
 
     # === GLOBAL MISSION ===
     lines.append("## 🌟 Global Mission")
-    lines.append("**Make Behavera the #1 employee assessment platform in Czech Republic through relentless, data-driven sales execution powered by an autonomous AI agent army.**")
+    lines.append("**SELL ECHO PULSE. 50% commission on every engagement survey deal (99-129 CZK/person, cap 200 employees). Target: 20+ deals/month = 258,000+ CZK/month. Every agent, every cron, every piece of content exists to put Josef in front of HR directors at 50-200 employee companies and close Echo Pulse deals. Have fun. Keep inner peace. Stack money.**")
     lines.append("")
 
     # === AGENT ARMY STATUS ===
