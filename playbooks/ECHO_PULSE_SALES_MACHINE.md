@@ -35,63 +35,73 @@
 
 ---
 
-## 🎯 Ideal Customer Profile (ICP)
+## 🎯 Ideal Customer Profile (ICP) — TARGET: CEOs
+
+> CEOs are the decision makers. They have the budget. They don't need to "check with someone."
+> Skip HR — go straight to the top.
 
 ### Perfect Fit (Score 90+)
 - **Company size:** 80-200 employees
-- **Has HR Director/Manager** (not just CEO doing HR)
+- **Decision maker:** CEO / jednatel / founder reachable directly
 - **Industry:** Manufacturing, IT/SaaS, Shared Services, Logistics, Retail chains
 - **Location:** Czech Republic (Prague, Brno, Ostrava, Plzeň preferred)
-- **Signals:** Currently hiring, growing 20%+, new HR leader, employee satisfaction mentions
+- **Signals:** Company growing fast, hiring, CEO active on LinkedIn, mentions company culture
 
 ### Good Fit (Score 70-89)
 - **Company size:** 50-80 employees
-- **CEO/COO handles HR decisions** directly
-- **Industry:** Professional services, healthcare, construction
-- **Signals:** Mention of company culture on website, attendance at HR events
+- **Decision maker:** CEO/COO/Managing Director
+- **Industry:** Professional services, healthcare, construction, agencies
+- **Signals:** Mention of company culture on website, CEO speaks at events
 
 ### Weak Fit (Score <50)
-- <50 employees (deal too small to be worth the effort)
-- >200 employees (capped, but could still be worth it for relationship)
-- Government/public sector (slow procurement)
-- No clear HR decision maker
+- <50 employees (deal too small)
+- >200 employees (capped, but still worth it for max commission)
+- Government/public sector (slow procurement, no clear CEO authority)
+- Can't reach anyone with budget authority
 
 ---
 
-## 📞 The Pitch (30 seconds)
+## 📞 The Pitch (30 seconds) — FOR CEOs
 
-### Czech — Cold Call Opener
-"Dobrý den, [jméno]. Tady Josef Hofman z Behavera. Volám, protože pomáháme firmám o velikosti [X] zaměstnanců zjistit, jak na tom reálně jsou se spokojeností lidí — ne dotazníkem, co nikdo nečte, ale krátkým engagement pulzem, kde máte výsledky za 48 hodin. Stojí to od 99 korun na člověka. Měl byste 15 minut se na to podívat?"
+### Czech — Cold Call Opener (CEO)
+"Dobrý den, [jméno]. Tady Josef Hofman z Behavera. Volám, protože pracuji s jednateli firem vaší velikosti a pomáhám jim zjistit, jak na tom reálně jsou se spokojeností lidí — za 99 korun na hlavu, výsledky za 48 hodin. Žádná administrace na vaší straně. Měl byste 15 minut se na to podívat?"
+
+### Why CEOs Buy (not HR)
+1. **They decide fast** — no procurement, no committee, one call = done
+2. **They feel the pain directly** — turnover costs them money, they know it
+3. **It's cheap for them** — 99 CZK/person is a rounding error in their budget
+4. **They want data** — CEOs love dashboards, benchmarks, actionable numbers
+5. **Ego play** — "See how YOUR company compares to the industry"
 
 ### Key Selling Points
 1. **Quick:** Results in 48 hours, not weeks
 2. **Cheap:** 99-129 CZK/person — less than a team lunch
-3. **Actionable:** Specific recommendations, not just numbers
-4. **Anonymous:** People actually tell the truth
-5. **Benchmarked:** Compare against industry averages
+3. **CEO Dashboard:** Clear overview, no HR jargon, just numbers + actions
+4. **Anonymous:** People tell truth they'd never tell their boss
+5. **Benchmarked:** "Your company vs. your industry" — CEOs love this
 
 ---
 
-## 🔄 SPIN Questions (Engagement Survey Context)
+## 🔄 SPIN Questions (CEO-focused)
 
 ### Situation
-- "Jak aktuálně měříte spokojenost zaměstnanců?"
-- "Kdy naposledy jste dělali nějaký průzkum?"
-- "Kolik máte zaměstnanců a na kolika pobočkách?"
+- "Kolik máte teď zaměstnanců? Roste to?"
+- "Měříte nějak spokojenost lidí, nebo jedete na pocit?"
+- "Kdo u vás řeší HR? Máte někoho, nebo to děláte sám?"
 
 ### Problem
-- "Stává se vám, že lidé odcházejí a nevíte proč?"
-- "Máte pocit, že víte, jak se vaši lidé reálně cítí?"
-- "Řešíte fluktuaci nebo problémy s angažovaností?"
+- "Odcházejí vám lidi a nevíte proč?"
+- "Máte pocit, že víte, co si vaši lidé reálně myslí?"
+- "Stává se vám, že vás odchod klíčového člověka překvapí?"
 
 ### Implication
 - "Co vás stojí, když odejde jeden zaškolený člověk? 50K? 100K? Víc?"
-- "Když nevíte, co lidi trápí, jak můžete zabránit odchodům?"
-- "Kolik vás stojí nízká produktivita frustrovaného týmu?"
+- "Kolik byste ušetřil, kdybyste věděl 3 měsíce předem, kdo chce odejít?"
+- "Když nevíte, co tým trápí — jak děláte strategická rozhodnutí o lidech?"
 
 ### Need-Payoff
-- "Kdybych vám řekl, že za 99 Kč na osobu máte do 48 hodin jasný obrázek, jak na tom jste — pomohlo by to?"
-- "Co kdybyste měli konkrétní doporučení, co změnit, než vám odejde další člověk?"
+- "Kdybych vám řekl, že za 99 Kč na osobu máte za 48 hodin jasný obrázek + srovnání s vaším odvětvím — pomohlo by to?"
+- "Co kdybyste měl dashboard, kde vidíte přesně, kde hořít a co změnit — bez toho, abyste se musel na něco ptát osobně?"
 
 ---
 
@@ -109,8 +119,8 @@
 ### 4. "Máme jen X zaměstnanců, to se nevyplatí"
 → "Právě u menších firem to má největší dopad — jeden nespokojený člověk je u vás 5% týmu, ne 0.5%. Za [X × 99] Kč víte přesně, kde tlačí bota."
 
-### 5. "Musím se poradit s vedením"
-→ "Samozřejmě. Co kdybych vám poslal krátký přehled s cenou pro vaši velikost, abyste měli co ukázat? A domluvíme si krátký call i s tím, koho potřebujete?"
+### 5. "Musím se poradit s kolegy / HR"
+→ "Jasně. Ale vy jste jednatel — pokud se vám to bude dávat smysl, rozhodnutí je na vás, ne? Pojďme si to ukázat, a pak se rozhodnete sám."
 
 ### 6. "Nevěřím průzkumům — lidi neodpovídají upřímně"
 → "Přesně proto je Echo Pulse anonymní a krátký — žádná 40minutová anketa. Respondence je typicky 75-85% díky tomu, že to trvá 5 minut."
@@ -129,41 +139,43 @@
 
 ---
 
-## 📧 Email Templates
+## 📧 Email Templates (CEO-targeted)
 
-### Cold Outreach — HR Director
-**Subject:** Engagement průzkum za 48 hodin — [Firma]
+### Cold Outreach — CEO/Jednatel
+**Subject:** [Firma] — víte, jak se reálně cítí vaši lidé?
 
-Dobrý den [jméno],
+[Jméno],
 
-u firem o velikosti [X] zaměstnanců často vidíme, že se spokojenost měří buď vůbec, nebo jednou za rok 40minutovým dotazníkem, co nikdo nechce vyplňovat.
+pracuji s jednateli firem o velikosti [X] zaměstnanců. Nejčastější odpověď na otázku "jak měříte spokojenost lidí?" je: "No... nijak. Nebo jednou za rok přes Google Forms."
 
-Echo Pulse funguje jinak — 5 minut pro zaměstnance, výsledky za 48 hodin, konkrétní doporučení + srovnání s vaším odvětvím. Za 99-129 Kč na osobu.
+Echo Pulse to dělá jinak — 5 minut pro zaměstnance, výsledky za 48 hodin, srovnání s vaším odvětvím. Za 99 Kč na osobu. Žádná administrace na vaší straně.
 
-Měl/a byste 15 minut na krátké demo? [CAL LINK]
+15 minut na demo? [CAL LINK]
 
 Josef Hofman
 Behavera.com
 
 ### Follow-up Day 3
-**Subject:** Re: Engagement průzkum — [Firma]
+**Subject:** Re: [Firma] — jeden číslo
 
-[Jméno], jen navazuji na minulý email.
+[Jméno], jen rychle.
 
-Jedna věc, co firmy po Echo Pulse říkají nejčastěji: "Konečně vidíme, co lidi reálně trápí, ne co si myslíme, že je trápí."
+Firmy, co udělají Echo Pulse poprvé, říkají nejčastěji: "Konečně vidíme, co lidi reálně trápí — ne co si myslíme."
 
-Stojí to méně než jeden teambuilding. Máte 15 minut tento týden? [CAL LINK]
+Pro [X] lidí je to [X × 99] Kč. Méně než jeden teambuilding, ale 10× víc užitku.
+
+Máte 15 minut tento týden? [CAL LINK]
 
 Josef
 
-### Follow-up Day 7 (breakup-style)
-**Subject:** Poslední pokus — engagement [Firma]
+### Follow-up Day 7 (breakup)
+**Subject:** [Firma] — poslední zpráva
 
 [Jméno], nebudu otravovat.
 
-Pokud engagement vašich lidí teď není priorita, chápu. Ale kdybyste to chtěli řešit — za 99 Kč/osobu a 48 hodin máte jasno.
+Pokud spokojenost lidí teď není priorita, chápu. Ale kdybyste to chtěl řešit — za 99 Kč/osobu a 48 hodin máte jasný obrázek.
 
-Jsem tu: [CAL LINK]
+[CAL LINK]
 
 Josef
 

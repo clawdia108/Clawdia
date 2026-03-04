@@ -37,7 +37,7 @@ AGENTS = {
     "copyagent": {
         "name": "CopyAgent",
         "role": "Echo Pulse Sales Content",
-        "mission": "Write emails that get HR directors to book Echo Pulse demos.",
+        "mission": "Write emails that get CEOs to book Echo Pulse demos.",
         "outputs": ["drafts/", "templates/sales/"],
     },
     "growthlab": {
@@ -146,7 +146,7 @@ def main():
 
     # === GLOBAL MISSION ===
     lines.append("## 🌟 Global Mission")
-    lines.append("**SELL ECHO PULSE. 50% commission on every engagement survey deal (99-129 CZK/person, cap 200 employees). Target: 20+ deals/month = 258,000+ CZK/month. Every agent, every cron, every piece of content exists to put Josef in front of HR directors at 50-200 employee companies and close Echo Pulse deals. Have fun. Keep inner peace. Stack money.**")
+    lines.append("**SELL ECHO PULSE. 50% commission on every engagement survey deal (99-129 CZK/person, cap 200 employees). Target: 20+ deals/month = 258,000+ CZK/month. Every agent, every cron, every piece of content exists to put Josef in front of CEOs at 50-200 employee companies and close Echo Pulse deals. Have fun. Keep inner peace. Stack money.**")
     lines.append("")
 
     # === AGENT ARMY STATUS ===
