@@ -1,89 +1,100 @@
 {
-  "version": 2,
-  "description": "Mandatory review gates. Tasks matching a gate are auto-blocked until reviewed.",
+  "version": 3,
+  "description": "Review gates v3: místo blokování používáme approval-queue. Agenti NEBLOKUJÍ — připraví akci, dají do fronty, pokračují dál. Josef schvaluje 2x denně hromadně.",
+  "approval_queue_path": "approval-queue/pending/",
   "gates": [
     {
       "id": "user_facing_release",
-      "description": "Any user-visible output must be reviewed and simplified before release.",
+      "description": "User-facing output projde interním review (Reviewer), pak jde ven.",
       "match": {
         "output_visibility": ["user_facing"]
       },
       "required_review": true,
       "reviewer": "reviewer",
-      "auto_block": true,
-      "block_message": "User-facing output requires review before delivery."
+      "auto_block": false,
+      "queue_for_approval": false,
+      "note": "Reviewer zkontroluje automaticky. Neblokuje, jen flaguje problémy."
     },
     {
       "id": "crm_write",
-      "description": "Any write operation touching Pipedrive or another CRM.",
+      "description": "CRM writes jdou přes approval queue — Josef schválí hromadně.",
       "match": {
         "guardrails": ["no_cross_owner_writes_without_explicit_ack"]
       },
       "required_review": true,
       "reviewer": "main",
-      "auto_block": true,
-      "block_message": "CRM write operations require Bridge approval."
+      "auto_block": false,
+      "queue_for_approval": true,
+      "note": "Agent připraví akci, dá do approval-queue/pending/, pokračuje dál."
     },
     {
       "id": "external_message",
-      "description": "Any outbound communication to email, Slack, WhatsApp, or similar.",
+      "description": "Emaily a zprávy ven — agent napíše draft, dá do fronty, Josef schválí.",
       "match": {
         "guardrails": ["no_external_send_without_explicit_approval"]
       },
       "required_review": true,
       "reviewer": "main",
-      "auto_block": true,
-      "block_message": "External messages require explicit human approval."
+      "auto_block": false,
+      "queue_for_approval": true,
+      "note": "InboxForge/CopyAgent napíší draft → approval-queue → Josef schválí → odešle se."
     },
     {
       "id": "high_risk_autonomy",
-      "description": "High-risk tasks should not continue autonomously without a reviewer.",
+      "description": "High-risk: flag v digestu, ale neblokuj běh agenta.",
       "match": {
         "risk_level": ["high", "critical"]
       },
       "required_review": true,
       "reviewer": "reviewer",
       "auto_block": false,
-      "block_message": "High-risk tasks should be explicitly reviewed."
+      "queue_for_approval": false,
+      "note": "Reviewer flaguje, Bridge zmíní v digestu. Agent běží dál."
     },
     {
       "id": "remote_delegate",
-      "description": "Remote A2A delegation must be explicitly approved.",
+      "description": "Remote delegace — schválení přes queue.",
       "match": {
         "coordination_pattern": ["remote_a2a_delegate"]
       },
       "required_review": true,
       "reviewer": "main",
-      "auto_block": true,
-      "block_message": "Remote delegation requires Bridge approval."
+      "auto_block": false,
+      "queue_for_approval": true,
+      "note": "Jde do fronty, nečeká se."
     },
     {
       "id": "pricing_proposal",
-      "description": "Any pricing proposal or discount below standard rates requires approval.",
+      "description": "Cenové nabídky — agent připraví, dá do fronty.",
       "match": {
         "task_type": ["pricing_strategy", "proposal_draft"],
         "guardrails": ["no_discount_below_floor"]
       },
       "required_review": true,
       "reviewer": "main",
-      "auto_block": true,
-      "block_message": "Pricing proposals require Josef approval. No pricing below floor without explicit sign-off."
+      "auto_block": false,
+      "queue_for_approval": true,
+      "note": "Pricing pod floor vůbec nepřipravovat. Standardní cenové nabídky do fronty."
     },
     {
       "id": "cold_outreach_first_touch",
-      "description": "First message to any new prospect requires approval.",
+      "description": "První kontakt s novým prospektem — draft do fronty, Josef schválí.",
       "match": {
         "task_type": ["cadence_management", "sequence_step"],
         "guardrails": ["first_touch_approval"]
       },
       "required_review": true,
       "reviewer": "main",
-      "auto_block": true,
-      "block_message": "First outreach to new prospect requires Josef approval."
+      "auto_block": false,
+      "queue_for_approval": true,
+      "note": "Agent připraví email + SPIN research, dá obojí do fronty najednou."
     }
   ],
   "bypass_rules": {
     "heartbeat_tasks": true,
-    "complexity_low_internal": true
+    "complexity_low_internal": true,
+    "knowledge_writes": true,
+    "internal_triggers": true,
+    "research_tasks": true
   }
 }

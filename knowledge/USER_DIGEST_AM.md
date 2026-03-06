@@ -1,12 +1,13 @@
-# Ráno — 2026-03-03
+# Dobré ráno ☀️ pondělí 3. 3.
 
-## Co je dnes důležité
-1. **Připravit dnešní jasný přehled priorit a čtyři bloky práce bez technického balastu.** — termín dnes
-2. **Zkontrolovat hygienu pipeline a vrátit jen souhrnné počty a rizika bez osobních dat.** — termín dnes
-3. **Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.** — zablokováno
+Dneska je hlavně o tom připravit si jasný přehled a frontu follow-upů. Žádný velký schůzky, takže prostor na práci v klidu.
 
-## Co jsem udělal
-- Zatím nic nového.
+Pipeline drží — ale potřebuju od tebe potvrzení, než pošlu jakýkoliv follow-up.
 
-## Potřebuji od tebe
-- [ ] Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.
+**Potřebuju od tebe:**
+- Schválení fronty follow-upů (připravím návrhy, ty řekneš OK)
+
+<!--
+GENEROVÁNO DLE: knowledge/TELEGRAM_STYLE_GUIDE.md
+TEMPLATE: templates/user-report.md
+-->

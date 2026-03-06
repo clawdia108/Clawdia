@@ -1,0 +1,49 @@
+{
+  "id": "TASK-2002",
+  "title": "System health audit: validate control plane consistency and agent readiness",
+  "task_type": "system_review",
+  "status": "todo",
+  "priority": "P1",
+  "owner": "reviewer",
+  "complexity": "medium",
+  "risk_level": "low",
+  "output_visibility": "internal",
+  "approval_state": "not_required",
+  "review_required": false,
+  "summary": "Review all control plane configs for consistency. Check that model router rules match agent capabilities. Verify skill dependencies are installed. Flag stale outputs and broken dependency chains.",
+  "user_summary": "Audit systému: kontrola konzistence a připravenosti agentů",
+  "acceptance_checks": [
+    "All 7 agents verified against agent-registry.json",
+    "Model router rules validated against available models",
+    "Skill dependencies checked (yt-dlp, whisper, gog, python3)",
+    "Stale output report generated",
+    "Findings written to reviews/SYSTEM_HEALTH.md"
+  ],
+  "inputs": [
+    "control-plane/agent-registry.json",
+    "control-plane/model-router.json",
+    "control-plane/coordination-patterns.json",
+    "control-plane/review-gates.json",
+    "knowledge/EXECUTION_STATE.json"
+  ],
+  "outputs": [
+    "reviews/SYSTEM_HEALTH.md",
+    "reviews/CODE_QUALITY.md"
+  ],
+  "blockers": [],
+  "depends_on": [],
+  "guardrails": [],
+  "capabilities_required": ["validation", "comparison", "analysis"],
+  "skills_required": ["self-improving-agent"],
+  "due_at": "2026-03-04T17:00+01:00",
+  "created_at": "2026-03-04T12:00+01:00",
+  "updated_at": "2026-03-04T12:00+01:00",
+  "route_snapshot": {
+    "rule_id": "heartbeat_low_cost",
+    "lead_model": "openai/gpt-5-mini",
+    "worker_model": null,
+    "reviewer_model": null,
+    "output_model": "openai/gpt-5-mini",
+    "output_contract": "internal_snapshot"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "description": "Feature flags for OpenClaw → Claude MCP migration. Each flag controls one workflow delegation.",
+  "updated_at": "2026-03-06",
+  "dual_write_mode": true,
+  "dual_write_log_path": "logs/mcp-audit/dual-write-comparison/",
+  "flags": {
+    "gcal_read_via_mcp": {
+      "enabled": false,
+      "phase": 1,
+      "risk": "low",
+      "agent": "CalendarCaptain",
+      "description": "Calendar event reading via gcal_list_events + gcal_find_my_free_time",
+      "fallback": "gog_skill",
+      "rollback_tested": false
+    },
+    "gmail_read_via_mcp": {
+      "enabled": false,
+      "phase": 2,
+      "risk": "low",
+      "agent": "InboxForge",
+      "description": "Gmail search + read via gmail_search_messages + gmail_read_message",
+      "fallback": "gog_skill",
+      "rollback_tested": false
+    },
+    "gcal_write_via_mcp": {
+      "enabled": false,
+      "phase": 3,
+      "risk": "medium",
+      "agent": "CalendarCaptain",
+      "description": "Calendar event creation (Pomodoro blocks) via gcal_create_event",
+      "fallback": "gog_skill",
+      "rollback_tested": false,
+      "dedup_check_required": true
+    },
+    "slack_read_via_mcp": {
+      "enabled": false,
+      "phase": 4,
+      "risk": "low",
+      "agent": "CopyAgent",
+      "description": "Slack message search + read via slack_search_public_and_private",
+      "fallback": "manual",
+      "rollback_tested": false
+    },
+    "clay_enrichment_via_mcp": {
+      "enabled": false,
+      "phase": 5,
+      "risk": "medium",
+      "agent": "PipelinePilot",
+      "description": "Company + contact enrichment via Clay MCP (find-and-enrich-company, add-data-points)",
+      "fallback": "supadata_intel",
+      "rollback_tested": false,
+      "async_polling_required": true
+    },
+    "gmail_draft_via_mcp": {
+      "enabled": false,
+      "phase": 6,
+      "risk": "high",
+      "agent": "InboxForge",
+      "description": "Gmail draft creation via gmail_create_draft",
+      "fallback": "gog_skill",
+      "rollback_tested": false
+    },
+    "digest_delivery_slack_mcp": {
+      "enabled": false,
+      "phase": 6,
+      "risk": "high",
+      "agent": "Bridge",
+      "description": "AM/PM digest delivery to Josef via slack_send_message",
+      "fallback": "manual_pull",
+      "rollback_tested": false
+    },
+    "vercel_deploy_via_mcp": {
+      "enabled": false,
+      "phase": 7,
+      "risk": "medium",
+      "agent": "Codex",
+      "description": "Dashboard deployment via deploy_to_vercel",
+      "fallback": "manual_deploy",
+      "rollback_tested": false
+    }
+  },
+  "health_check": {
+    "enabled": true,
+    "interval_seconds": 300,
+    "connectors": [
+      {"name": "gmail_mcp", "ping_operation": "gmail_get_profile"},
+      {"name": "gcal_mcp", "ping_operation": "gcal_list_calendars"},
+      {"name": "slack_mcp", "ping_operation": "slack_read_user_profile"},
+      {"name": "clay_mcp", "ping_operation": "list_subroutines"},
+      {"name": "vercel_mcp", "ping_operation": "list_teams"}
+    ],
+    "alert_on_failure": true,
+    "auto_fallback_after_failures": 3
+  },
+  "audit": {
+    "log_path": "logs/mcp-audit/",
+    "retention_days": 30,
+    "weekly_summary": true
+  }
+}

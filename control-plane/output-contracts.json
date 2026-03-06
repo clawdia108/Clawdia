@@ -1,6 +1,7 @@
 {
-  "version": 1,
-  "description": "Output layers. Internal reasoning can be rich; exposed outputs must be simple.",
+  "version": 2,
+  "description": "Output layers. Internal reasoning can be rich; exposed outputs must be human, warm, and interesting to read. All user-facing messages MUST follow knowledge/TELEGRAM_STYLE_GUIDE.md.",
+  "style_guide": "knowledge/TELEGRAM_STYLE_GUIDE.md",
   "contracts": {
     "internal_snapshot": {
       "visibility": "internal",
@@ -60,14 +61,21 @@
     "urgent_alert": {
       "visibility": "user_facing",
       "format": "markdown",
-      "max_lines": 6,
+      "max_lines": 4,
       "allow_task_ids": false,
       "allow_agent_names": false,
       "allow_timestamps": false,
       "required_sections": [
         "problem",
-        "action_needed"
-      ]
+        "action"
+      ],
+      "style_rules": {
+        "must_read": "knowledge/TELEGRAM_STYLE_GUIDE.md",
+        "tone": "direct_colleague",
+        "format": "emoji_headline_then_action",
+        "example": "⚡ Mycroft (350K) — nereagují od pátku.\n\nZavolej přímo CEO, email nestačí.",
+        "forbidden": ["eskalace", "urgentní", "vyžaduje pozornost", "doporučení"]
+      }
     },
     "user_report": {
       "visibility": "user_facing",
@@ -79,11 +87,38 @@
       "allow_agent_names": false,
       "allow_timestamps": false,
       "required_sections": [
-        "Co je dnes důležité",
-        "Co jsem udělal",
-        "Potřebuji od tebe"
+        "main_message",
+        "need_from_you"
       ],
-      "style": "simple_human_readable"
+      "optional_sections": [
+        "schedule",
+        "numbers",
+        "headsup"
+      ],
+      "style_rules": {
+        "must_read": "knowledge/TELEGRAM_STYLE_GUIDE.md",
+        "tone": "smart_colleague_over_coffee",
+        "language": "czech_informal_professional",
+        "numbers": "rounded_with_context",
+        "deals": "by_company_name_never_ids",
+        "always": ["say_why_not_just_what", "include_recommendation", "be_interesting"],
+        "never": ["jargon", "corporate_speak", "raw_data_dumps", "nested_bullet_lists", "tables"],
+        "forbidden_words": [
+          "pipeline health", "eskalace", "optimalizace", "workflow",
+          "reprioritizace", "guardy", "fallback", "validovat",
+          "klíčová čísla", "co vyžaduje pozornost", "neudržitelné",
+          "Top 3 priority", "KPI", "stakeholder", "deliverable",
+          "action item", "sync", "alignment", "leverage", "scalable"
+        ],
+        "checklist_before_send": [
+          "Would I enjoy reading this on my phone between meetings?",
+          "Is there any jargon or robot-speak?",
+          "Does it say WHY, not just WHAT?",
+          "Is there a specific recommendation?",
+          "Is it under 15 lines?",
+          "Would I call this interesting reading?"
+        ]
+      }
     }
   }
 }

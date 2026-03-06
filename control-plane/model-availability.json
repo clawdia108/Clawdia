@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "description": "Maps model-router model IDs to actual API model identifiers. Updated 2026-03-04.",
+  "note": "The model-router.json uses canonical names. This file maps them to real API endpoints.",
+  "models": {
+    "openai/gpt-5.2": {
+      "actual_model": "gpt-4o",
+      "provider": "openai",
+      "status": "available",
+      "tier": "standard",
+      "notes": "gpt-5.2 is aspirational — using gpt-4o as current best reasoning model"
+    },
+    "openai/gpt-5.2-pro": {
+      "actual_model": "gpt-4o",
+      "provider": "openai",
+      "status": "available",
+      "tier": "premium",
+      "notes": "No distinct pro tier exists yet — maps to gpt-4o with higher token budget"
+    },
+    "openai/gpt-5.2-codex": {
+      "actual_model": "gpt-4o",
+      "provider": "openai",
+      "status": "available",
+      "tier": "premium",
+      "notes": "Codex-style model — using gpt-4o for code tasks"
+    },
+    "openai/gpt-5-mini": {
+      "actual_model": "gpt-4o-mini",
+      "provider": "openai",
+      "status": "available",
+      "tier": "economy",
+      "notes": "Primary economy workhorse — fast, cheap, good for structured tasks"
+    },
+    "openai/gpt-5-nano": {
+      "actual_model": "gpt-4o-mini",
+      "provider": "openai",
+      "status": "available",
+      "tier": "free",
+      "notes": "Nano tier maps to gpt-4o-mini — no distinct nano model exists"
+    },
+    "anthropic/claude-opus-4-1": {
+      "actual_model": "claude-opus-4-1-20250414",
+      "provider": "anthropic",
+      "status": "available",
+      "tier": "premium",
+      "notes": "Best reasoning model — use for orchestration, complex research, high-risk decisions"
+    },
+    "anthropic/claude-sonnet-4-20250514": {
+      "actual_model": "claude-sonnet-4-20250514",
+      "provider": "anthropic",
+      "status": "available",
+      "tier": "standard",
+      "notes": "Best writing model — use for drafting, review, tone-sensitive tasks"
+    },
+    "anthropic/claude-3-5-haiku-latest": {
+      "actual_model": "claude-3-5-haiku-20241022",
+      "provider": "anthropic",
+      "status": "available",
+      "tier": "economy",
+      "notes": "Fast screening model — good for validation, classification, quick checks"
+    },
+    "ollama/qwen2.5:7b": {
+      "actual_model": "qwen2.5:7b",
+      "provider": "ollama",
+      "status": "requires_local",
+      "tier": "free",
+      "notes": "Local fallback — requires Ollama running locally"
+    }
+  },
+  "tier_budgets": {
+    "free": { "daily_limit_usd": 0, "models": ["ollama/qwen2.5:7b", "openai/gpt-5-nano"] },
+    "economy": { "daily_limit_usd": 3, "models": ["openai/gpt-5-mini", "anthropic/claude-3-5-haiku-latest"] },
+    "standard": { "daily_limit_usd": 8, "models": ["openai/gpt-5.2", "anthropic/claude-sonnet-4-20250514"] },
+    "premium": { "daily_limit_usd": 20, "models": ["openai/gpt-5.2-pro", "anthropic/claude-opus-4-1"] }
+  },
+  "recommendations": {
+    "dealops": "Economy tier is correct — structured CRM tasks don't need expensive models. gpt-4o-mini handles JSON well.",
+    "timebox": "Economy tier is correct — calendar planning is template-driven.",
+    "inboxforge": "Standard tier justified — writing quality matters for email. Sonnet is the right choice.",
+    "growthlab": "Standard/Premium justified — research needs breadth and reasoning. Opus for lead, sonnet for workers.",
+    "reviewer": "Standard tier correct — validation needs reasoning but not creative writing.",
+    "knowledgekeeper": "Economy tier correct — summarization and sync are well-suited to smaller models.",
+    "main": "Standard tier correct — Bridge orchestration needs good reasoning for routing decisions."
+  }
+}

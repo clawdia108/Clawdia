@@ -1,0 +1,160 @@
+{
+  "generated_at": "2026-03-04T03:41+01:00",
+  "total_alerts": 18,
+  "critical": 3,
+  "warnings": 13,
+  "info": 2,
+  "alerts": [
+    {
+      "type": "overdue",
+      "severity": "critical",
+      "task_id": "TASK-1001",
+      "title": "Publish command center snapshot for the current day",
+      "owner": "timebox",
+      "hours_overdue": 18.7,
+      "due_at": "2026-03-03T09:00:00+01:00",
+      "message": "Task TASK-1001 is 18.7h overdue (owner: timebox)"
+    },
+    {
+      "type": "overdue",
+      "severity": "critical",
+      "task_id": "TASK-1002",
+      "title": "Run sanitized CRM hygiene audit and aggregate status update",
+      "owner": "dealops",
+      "hours_overdue": 18.4,
+      "due_at": "2026-03-03T09:15:00+01:00",
+      "message": "Task TASK-1002 is 18.4h overdue (owner: dealops)"
+    },
+    {
+      "type": "overdue",
+      "severity": "critical",
+      "task_id": "TASK-1003",
+      "title": "Prepare sanitized follow-up queue and approval state",
+      "owner": "inboxforge",
+      "hours_overdue": 18.2,
+      "due_at": "2026-03-03T09:30:00+01:00",
+      "message": "Task TASK-1003 is 18.2h overdue (owner: inboxforge)"
+    },
+    {
+      "type": "blocked",
+      "severity": "warning",
+      "task_id": "TASK-1003",
+      "title": "Prepare sanitized follow-up queue and approval state",
+      "owner": "inboxforge",
+      "hours_blocked": 19.4,
+      "blockers": [
+        "explicit_send_approval_missing",
+        "deal_context_not_finalized"
+      ],
+      "message": "Task TASK-1003 blocked for 19.4h: explicit_send_approval_missing, deal_context_not_finalized"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "inboxforge",
+      "path": "inbox/INBOX_DIGEST.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: inbox/INBOX_DIGEST.md (empty_placeholder) \u2014 agent: inboxforge"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "inboxforge",
+      "path": "inbox/DRAFTS.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: inbox/DRAFTS.md (empty_placeholder) \u2014 agent: inboxforge"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "dealops",
+      "path": "pipedrive/SCORING_LOG.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: pipedrive/SCORING_LOG.md (empty_placeholder) \u2014 agent: dealops"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "timebox",
+      "path": "calendar/PREP_NOTES.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: calendar/PREP_NOTES.md (empty_placeholder) \u2014 agent: timebox"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "timebox",
+      "path": "calendar/WEEKLY_OVERVIEW.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: calendar/WEEKLY_OVERVIEW.md (empty_placeholder) \u2014 agent: timebox"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "growthlab",
+      "path": "intel/DAILY-INTEL.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: intel/DAILY-INTEL.md (empty_placeholder) \u2014 agent: growthlab"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "growthlab",
+      "path": "intel/MARKET_SIGNALS.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: intel/MARKET_SIGNALS.md (empty_placeholder) \u2014 agent: growthlab"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "growthlab",
+      "path": "intel/COMPETITOR_WATCH.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: intel/COMPETITOR_WATCH.md (empty_placeholder) \u2014 agent: growthlab"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "growthlab",
+      "path": "knowledge/RESEARCH_LOG.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: knowledge/RESEARCH_LOG.md (empty_placeholder) \u2014 agent: growthlab"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "reviewer",
+      "path": "reviews/CODE_QUALITY.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: reviews/CODE_QUALITY.md (empty_placeholder) \u2014 agent: reviewer"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "reviewer",
+      "path": "reviews/SYSTEM_HEALTH.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: reviews/SYSTEM_HEALTH.md (empty_placeholder) \u2014 agent: reviewer"
+    },
+    {
+      "type": "stale_output",
+      "severity": "warning",
+      "agent": "knowledgekeeper",
+      "path": "knowledge/IMPROVEMENTS.md",
+      "reason": "empty_placeholder",
+      "message": "Stale output: knowledge/IMPROVEMENTS.md (empty_placeholder) \u2014 agent: knowledgekeeper"
+    },
+    {
+      "type": "idle_agent",
+      "severity": "info",
+      "agent": "inboxforge",
+      "message": "Agent 'inboxforge' has no active tasks \u2014 consider assigning work"
+    },
+    {
+      "type": "idle_agent",
+      "severity": "info",
+      "agent": "knowledgekeeper",
+      "message": "Agent 'knowledgekeeper' has no active tasks \u2014 consider assigning work"
+    }
+  ]
+}

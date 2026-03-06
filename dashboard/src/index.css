@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { border-color: #27272a; }
+  body { background: #09090b; color: #fafafa; }
+  ::selection { background: rgba(139, 92, 246, 0.3); color: #fafafa; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+}
+
+@layer components {
+  .glass {
+    background: rgba(24, 24, 27, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(63, 63, 70, 0.5);
+  }
+  .card {
+    @apply rounded-xl border border-zinc-800 bg-zinc-900/80;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    border-color: #3f3f46;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold;
+  }
+  .section-label {
+    @apply text-[11px] font-medium uppercase tracking-[0.12em] text-zinc-500;
+  }
+  .stat-value {
+    @apply text-2xl font-bold tabular-nums tracking-tight text-zinc-100;
+  }
+}

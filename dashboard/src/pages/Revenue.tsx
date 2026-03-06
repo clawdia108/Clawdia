@@ -1,401 +1,150 @@
-import { useCallback, useMemo } from 'react'
-import {
-  DollarSign,
-  TrendingUp,
-  Target,
-  Activity,
-  Flame,
-  ThermometerSun,
-  Snowflake,
-  ArrowUpRight,
-  ArrowDownRight,
-  Minus,
-  Users,
-  MessageSquare,
-  Calendar,
-  BarChart3,
-} from 'lucide-react'
-import { usePolling } from '../hooks/usePolling'
-import { api } from '../lib/api'
-import MetricCard from '../components/MetricCard'
+import { deals, pipelineStages, metrics } from '../lib/demo-data'
+import { DollarSign, Clock, Heart, ArrowRight } from 'lucide-react'
 
-interface PipelineDeal {
-  id: string
-  title: string
-  value: number
-  stage: string
-  health_score: number
-  lead_score: number
-  owner_contact: string
-  company: string
-  days_in_stage: number
-  last_activity: string
-  cadence_type: string
-  next_touch: string
-  velocity_trend: 'up' | 'down' | 'flat'
+function healthColor(health: number) {
+  if (health >= 80) return { bar: 'bg-emerald-500', text: 'text-emerald-400', badge: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' }
+  if (health >= 60) return { bar: 'bg-blue-500', text: 'text-blue-400', badge: 'bg-blue-500/15 text-blue-400 border-blue-500/30' }
+  if (health >= 40) return { bar: 'bg-amber-500', text: 'text-amber-400', badge: 'bg-amber-500/15 text-amber-400 border-amber-500/30' }
+  return { bar: 'bg-rose-500', text: 'text-rose-400', badge: 'bg-rose-500/15 text-rose-400 border-rose-500/30' }
 }
 
-interface RevenueData {
-  pipeline_total: number
-  weighted_pipeline: number
-  monthly_target: number
-  monthly_floor: number
-  deals_won_mtd: number
-  revenue_mtd: number
-  avg_deal_size: number
-  avg_cycle_days: number
-  win_rate: number
-  deals_by_stage: Record<string, { count: number; value: number }>
-  hot_deals: PipelineDeal[]
-  at_risk_deals: PipelineDeal[]
-  cadence_stats: {
-    active_cadences: number
-    touches_today: number
-    reply_rate: number
-    meetings_booked_mtd: number
+function stageBadgeColor(stage: string) {
+  const map: Record<string, string> = {
+    'Discovery': 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+    'Demo': 'bg-violet-500/15 text-violet-400 border-violet-500/30',
+    'Proposal': 'bg-amber-500/15 text-amber-400 border-amber-500/30',
+    'Negotiation': 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+    'Closed Won': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
   }
-  lead_score_distribution: {
-    hot: number
-    warm: number
-    cool: number
-    cold: number
-  }
+  return map[stage] || 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30'
 }
 
-// Mock data factory — in production this comes from /api/revenue
-function getMockRevenue(): RevenueData {
-  return {
-    pipeline_total: 87500,
-    weighted_pipeline: 42300,
-    monthly_target: 20000,
-    monthly_floor: 13000,
-    deals_won_mtd: 3,
-    revenue_mtd: 11200,
-    avg_deal_size: 4800,
-    avg_cycle_days: 23,
-    win_rate: 34,
-    deals_by_stage: {
-      'Lead In': { count: 12, value: 24000 },
-      'Qualified': { count: 8, value: 28800 },
-      'Proposal': { count: 4, value: 19200 },
-      'Negotiation': { count: 2, value: 15500 },
-    },
-    hot_deals: [
-      {
-        id: 'd1',
-        title: 'TechCorp AI Integration',
-        value: 8500,
-        stage: 'Negotiation',
-        health_score: 82,
-        lead_score: 91,
-        owner_contact: 'Martin Novak',
-        company: 'TechCorp s.r.o.',
-        days_in_stage: 4,
-        last_activity: '2h ago',
-        cadence_type: 'nurture',
-        next_touch: 'Tomorrow 10:00',
-        velocity_trend: 'up',
-      },
-      {
-        id: 'd2',
-        title: 'FinServ Platform Deal',
-        value: 12000,
-        stage: 'Proposal',
-        health_score: 74,
-        lead_score: 85,
-        owner_contact: 'Jana Kralova',
-        company: 'FinServ a.s.',
-        days_in_stage: 6,
-        last_activity: '1d ago',
-        cadence_type: 'nurture',
-        next_touch: 'Today 14:00',
-        velocity_trend: 'flat',
-      },
-    ],
-    at_risk_deals: [
-      {
-        id: 'd3',
-        title: 'RetailMax Automation',
-        value: 7000,
-        stage: 'Qualified',
-        health_score: 38,
-        lead_score: 52,
-        owner_contact: 'Petr Svoboda',
-        company: 'RetailMax CZ',
-        days_in_stage: 18,
-        last_activity: '8d ago',
-        cadence_type: 'reengagement',
-        next_touch: 'Overdue',
-        velocity_trend: 'down',
-      },
-    ],
-    cadence_stats: {
-      active_cadences: 24,
-      touches_today: 8,
-      reply_rate: 22,
-      meetings_booked_mtd: 6,
-    },
-    lead_score_distribution: {
-      hot: 5,
-      warm: 12,
-      cool: 18,
-      cold: 31,
-    },
-  }
-}
+const atRiskDeals = [...deals].filter(d => d.health < 60).sort((a, b) => a.health - b.health)
+const healthyDeals = [...deals].filter(d => d.health >= 60).sort((a, b) => b.health - a.health)
+const sortedDeals = [...atRiskDeals, ...healthyDeals]
 
-function HealthBadge({ score }: { score: number }) {
-  const color =
-    score >= 70 ? 'bg-claw-green/15 text-claw-green border-claw-green' :
-    score >= 40 ? 'bg-claw-orange/15 text-claw-orange border-claw-orange' :
-    'bg-claw-red/15 text-claw-red border-claw-red'
-  return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-black border-2 ${color}`}>
-      {score}
-    </span>
-  )
-}
-
-function LeadScoreBadge({ score }: { score: number }) {
-  const icon =
-    score >= 80 ? <Flame className="w-3 h-3" /> :
-    score >= 50 ? <ThermometerSun className="w-3 h-3" /> :
-    <Snowflake className="w-3 h-3" />
-  const color =
-    score >= 80 ? 'text-claw-red' :
-    score >= 50 ? 'text-claw-orange' :
-    'text-claw-blue'
-  return (
-    <span className={`inline-flex items-center gap-0.5 text-[10px] font-black ${color}`}>
-      {icon} {score}
-    </span>
-  )
-}
-
-function VelocityIcon({ trend }: { trend: 'up' | 'down' | 'flat' }) {
-  if (trend === 'up') return <ArrowUpRight className="w-3.5 h-3.5 text-claw-green" />
-  if (trend === 'down') return <ArrowDownRight className="w-3.5 h-3.5 text-claw-red" />
-  return <Minus className="w-3.5 h-3.5 text-warmgray" />
-}
-
-function ProgressBar({ current, target, floor }: { current: number; target: number; floor: number }) {
-  const pctTarget = Math.min((current / target) * 100, 100)
-  const pctFloor = Math.min((floor / target) * 100, 100)
-  const color = current >= target ? 'bg-claw-green' : current >= floor ? 'bg-claw-yellow' : 'bg-claw-red'
-
-  return (
-    <div className="relative">
-      <div className="w-full h-4 bg-sand-200 rounded-lg border-2 border-ink overflow-hidden">
-        <div
-          className={`h-full ${color} transition-all duration-700 ease-out`}
-          style={{ width: `${pctTarget}%` }}
-        />
-      </div>
-      {/* Floor marker */}
-      <div
-        className="absolute top-0 h-4 border-l-2 border-dashed border-ink/40"
-        style={{ left: `${pctFloor}%` }}
-      />
-      <div className="flex justify-between mt-1">
-        <span className="text-[9px] text-warmgray font-bold">€0</span>
-        <span className="text-[9px] text-warmgray font-bold" style={{ marginLeft: `${pctFloor - 20}%` }}>
-          Floor €{(floor / 1000).toFixed(0)}K
-        </span>
-        <span className="text-[9px] text-warmgray font-bold">Target €{(target / 1000).toFixed(0)}K</span>
-      </div>
-    </div>
-  )
-}
+const totalPipelineValue = deals.reduce((sum, d) => sum + d.value, 0)
+const maxStageValue = Math.max(...pipelineStages.map(s => s.value))
 
 export default function Revenue() {
-  // In production: const { data } = usePolling<RevenueData>(useCallback(() => api.getRevenue(), []))
-  const data = useMemo(() => getMockRevenue(), [])
-
   return (
-    <div className="space-y-6 animate-fade-in">
-      <div>
-        <h2 className="text-xl font-black text-ink flex items-center gap-2">
-          <DollarSign className="w-5 h-5 text-claw-green" />
-          Revenue Machine
-        </h2>
-        <p className="text-xs text-warmgray font-medium mt-0.5">
-          Pipeline health, deal scores, and cadence performance
-        </p>
-      </div>
-
-      {/* Monthly Progress */}
-      <div className="card-naive p-5">
-        <div className="flex items-center justify-between mb-3">
-          <h3 className="section-title">Monthly Revenue Progress</h3>
-          <span className="text-lg font-black text-ink">
-            €{data.revenue_mtd.toLocaleString()}
-            <span className="text-warmgray text-sm font-bold"> / €{(data.monthly_target / 1000).toFixed(0)}K</span>
-          </span>
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-zinc-100 tracking-tight">Pipeline</h1>
+          <p className="text-sm text-zinc-500 mt-1">
+            {deals.length} deals &middot; {atRiskDeals.length} at risk
+          </p>
         </div>
-        <ProgressBar current={data.revenue_mtd} target={data.monthly_target} floor={data.monthly_floor} />
-        <div className="flex gap-4 mt-3">
-          <span className="text-[11px] text-warmgray font-semibold">
-            {data.deals_won_mtd} deals closed · Avg €{data.avg_deal_size.toLocaleString()} · {data.win_rate}% win rate
-          </span>
+        <div className="flex items-center gap-3">
+          <div className="px-5 py-3 rounded-xl border border-zinc-800 bg-zinc-900/80">
+            <p className="text-xs text-zinc-500 uppercase tracking-wider mb-0.5">Total Pipeline</p>
+            <p className="text-2xl font-bold text-zinc-100 font-mono tabular-nums">
+              ${(totalPipelineValue / 1000).toFixed(0)}K
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* KPI Cards */}
-      <div className="grid grid-cols-4 gap-4">
-        <MetricCard
-          label="Pipeline"
-          value={`€${(data.pipeline_total / 1000).toFixed(0)}K`}
-          icon={BarChart3}
-          color="blue"
-          sub={`Weighted: €${(data.weighted_pipeline / 1000).toFixed(0)}K`}
-        />
-        <MetricCard
-          label="Avg Cycle"
-          value={`${data.avg_cycle_days}d`}
-          icon={Calendar}
-          color="yellow"
-          sub={`Win rate: ${data.win_rate}%`}
-        />
-        <MetricCard
-          label="Active Cadences"
-          value={data.cadence_stats.active_cadences}
-          icon={MessageSquare}
-          color="purple"
-          sub={`${data.cadence_stats.touches_today} touches today`}
-        />
-        <MetricCard
-          label="Meetings MTD"
-          value={data.cadence_stats.meetings_booked_mtd}
-          icon={Users}
-          color="green"
-          sub={`${data.cadence_stats.reply_rate}% reply rate`}
-        />
-      </div>
+      {/* Pipeline Stages Bar */}
+      <div className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-6">
+        <h2 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider mb-5">Pipeline Stages</h2>
 
-      {/* Pipeline Funnel */}
-      <div className="card-naive p-5">
-        <h3 className="section-title mb-3">Pipeline by Stage</h3>
-        <div className="space-y-2">
-          {Object.entries(data.deals_by_stage).map(([stage, { count, value }]) => {
-            const maxValue = Math.max(...Object.values(data.deals_by_stage).map(s => s.value))
-            const pct = (value / maxValue) * 100
+        {/* Horizontal bar visualization */}
+        <div className="flex gap-1 h-10 mb-5 rounded-lg overflow-hidden">
+          {pipelineStages.map((stage) => {
+            const pct = (stage.value / totalPipelineValue) * 100
             return (
-              <div key={stage} className="flex items-center gap-3">
-                <span className="text-xs font-bold text-ink w-24 shrink-0">{stage}</span>
-                <div className="flex-1 h-6 bg-sand-200 rounded-md border-2 border-ink overflow-hidden">
-                  <div
-                    className="h-full bg-claw-blue/70 transition-all duration-500"
-                    style={{ width: `${pct}%` }}
-                  />
+              <div
+                key={stage.name}
+                className="relative group cursor-default transition-all hover:opacity-90"
+                style={{ width: `${pct}%`, backgroundColor: stage.color }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {pct > 12 && (
+                    <span className="text-xs font-semibold text-white/90 drop-shadow-sm">
+                      {stage.name}
+                    </span>
+                  )}
                 </div>
-                <span className="text-xs font-black text-ink w-20 text-right tabular-nums">
-                  €{(value / 1000).toFixed(1)}K
-                </span>
-                <span className="text-[10px] text-warmgray font-bold w-12 text-right">{count} deals</span>
               </div>
             )
           })}
         </div>
+
+        {/* Stage details */}
+        <div className="grid grid-cols-5 gap-3">
+          {pipelineStages.map((stage) => (
+            <div key={stage.name} className="text-center">
+              <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: stage.color }} />
+              <p className="text-xs font-medium text-zinc-300">{stage.name}</p>
+              <p className="text-lg font-bold text-zinc-100 font-mono tabular-nums mt-0.5">
+                ${(stage.value / 1000).toFixed(0)}K
+              </p>
+              <p className="text-xs text-zinc-500">{stage.count} deal{stage.count !== 1 ? 's' : ''}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
-        {/* Hot Deals */}
-        <div>
-          <h3 className="section-title mb-3 flex items-center gap-1.5">
-            <Flame className="w-3.5 h-3.5 text-claw-red" />
-            Hot Deals
-          </h3>
-          <div className="space-y-2">
-            {data.hot_deals.map(deal => (
-              <div key={deal.id} className="card-naive p-3 hover:shadow-naive-yellow transition-shadow">
-                <div className="flex items-start justify-between">
+      {/* Deals Grid */}
+      <div>
+        <h2 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider mb-4">Deals</h2>
+        <div className="grid grid-cols-2 xl:grid-cols-3 gap-4">
+          {sortedDeals.map((deal) => {
+            const hc = healthColor(deal.health)
+            return (
+              <div
+                key={deal.id}
+                className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-5 hover:border-zinc-700 transition-all group"
+              >
+                {/* Top row: Company + Value */}
+                <div className="flex items-start justify-between mb-3">
                   <div>
-                    <p className="text-sm font-black text-ink">{deal.title}</p>
-                    <p className="text-[11px] text-warmgray font-medium">{deal.company} · {deal.owner_contact}</p>
+                    <h3 className="text-base font-semibold text-zinc-100">{deal.company}</h3>
+                    <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium border mt-1.5 ${stageBadgeColor(deal.stage)}`}>
+                      {deal.stage}
+                    </span>
                   </div>
-                  <span className="text-sm font-black text-claw-green">€{deal.value.toLocaleString()}</span>
+                  <p className="text-lg font-bold text-zinc-100 font-mono tabular-nums">
+                    ${(deal.value / 1000).toFixed(0)}K
+                  </p>
                 </div>
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="text-[10px] font-bold text-ink bg-sand-200 px-2 py-0.5 rounded border border-ink/10">
-                    {deal.stage}
-                  </span>
-                  <HealthBadge score={deal.health_score} />
-                  <LeadScoreBadge score={deal.lead_score} />
-                  <VelocityIcon trend={deal.velocity_trend} />
-                  <span className="text-[10px] text-warmgray font-medium ml-auto">
-                    {deal.days_in_stage}d in stage
-                  </span>
+
+                {/* Health Bar */}
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs text-zinc-500">Health</span>
+                    <span className={`text-xs font-mono font-semibold ${hc.text}`}>{deal.health}%</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full ${hc.bar} rounded-full transition-all duration-500`}
+                      style={{ width: `${deal.health}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-ink/5">
-                  <span className="text-[10px] text-warmgray font-medium">
-                    Last: {deal.last_activity}
-                  </span>
-                  <span className="text-[10px] font-bold text-claw-blue">
-                    Next: {deal.next_touch}
-                  </span>
+
+                {/* Next Action */}
+                <div className="flex items-start gap-2 mb-3">
+                  <ArrowRight className="w-3.5 h-3.5 text-zinc-500 mt-0.5 shrink-0" />
+                  <p className="text-xs text-zinc-400">{deal.nextAction}</p>
+                </div>
+
+                {/* Footer: Days in stage */}
+                <div className="flex items-center justify-between pt-3 border-t border-zinc-800">
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-3 h-3 text-zinc-600" />
+                    <span className="text-xs text-zinc-500 font-mono">{deal.daysInStage}d in stage</span>
+                  </div>
+                  {deal.health < 50 && (
+                    <span className="text-xs font-medium text-rose-400">at risk</span>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* At Risk Deals */}
-        <div>
-          <h3 className="section-title mb-3 flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-claw-orange" />
-            At Risk
-          </h3>
-          <div className="space-y-2">
-            {data.at_risk_deals.map(deal => (
-              <div key={deal.id} className="card-naive p-3 border-claw-red/30 hover:shadow-naive-red transition-shadow">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm font-black text-ink">{deal.title}</p>
-                    <p className="text-[11px] text-warmgray font-medium">{deal.company} · {deal.owner_contact}</p>
-                  </div>
-                  <span className="text-sm font-black text-claw-orange">€{deal.value.toLocaleString()}</span>
-                </div>
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="text-[10px] font-bold text-ink bg-sand-200 px-2 py-0.5 rounded border border-ink/10">
-                    {deal.stage}
-                  </span>
-                  <HealthBadge score={deal.health_score} />
-                  <LeadScoreBadge score={deal.lead_score} />
-                  <VelocityIcon trend={deal.velocity_trend} />
-                  <span className="text-[10px] text-claw-red font-bold ml-auto">
-                    {deal.days_in_stage}d in stage
-                  </span>
-                </div>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-ink/5">
-                  <span className="text-[10px] text-warmgray font-medium">
-                    Last: {deal.last_activity}
-                  </span>
-                  <span className={`text-[10px] font-bold ${deal.next_touch === 'Overdue' ? 'text-claw-red' : 'text-claw-blue'}`}>
-                    {deal.next_touch === 'Overdue' ? '⚠ OVERDUE' : `Next: ${deal.next_touch}`}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Lead Score Distribution */}
-          <div className="card-naive p-4 mt-4">
-            <h3 className="section-title mb-3">Lead Score Distribution</h3>
-            <div className="grid grid-cols-4 gap-2">
-              {[
-                { label: 'Hot', count: data.lead_score_distribution.hot, icon: Flame, color: 'text-claw-red' },
-                { label: 'Warm', count: data.lead_score_distribution.warm, icon: ThermometerSun, color: 'text-claw-orange' },
-                { label: 'Cool', count: data.lead_score_distribution.cool, icon: Target, color: 'text-claw-blue' },
-                { label: 'Cold', count: data.lead_score_distribution.cold, icon: Snowflake, color: 'text-warmgray' },
-              ].map(({ label, count, icon: Icon, color }) => (
-                <div key={label} className="text-center">
-                  <Icon className={`w-4 h-4 mx-auto ${color}`} />
-                  <p className="text-lg font-black text-ink mt-1">{count}</p>
-                  <p className="text-[10px] text-warmgray font-bold">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+            )
+          })}
         </div>
       </div>
     </div>

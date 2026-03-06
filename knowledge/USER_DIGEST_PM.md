@@ -1,12 +1,13 @@
-# Večer — 2026-03-03
+# Večerní shrnutí 🌙 pondělí 3. 3.
 
-## Co je dnes důležité
-1. **Připravit dnešní jasný přehled priorit a čtyři bloky práce bez technického balastu.** — termín dnes
-2. **Zkontrolovat hygienu pipeline a vrátit jen souhrnné počty a rizika bez osobních dat.** — termín dnes
-3. **Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.** — zablokováno
+Dneska se toho moc nestihlo — čekám na tvoje potvrzení follow-upů, takže fronta stojí.
 
-## Co jsem udělal
-- Zatím nic nového.
+Na zítra: schválíš follow-upy ráno, odpoledne je rozešlu.
 
-## Potřebuji od tebe
-- [ ] Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.
+**Potřebuju od tebe:**
+- Ráno potvrdit frontu follow-upů
+
+<!--
+GENEROVÁNO DLE: knowledge/TELEGRAM_STYLE_GUIDE.md
+TEMPLATE: templates/user-report.md
+-->
