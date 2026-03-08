@@ -308,35 +308,35 @@
       }
     }
   ],
-  "last_orchestrator_run": "2026-03-08T23:42:31.061439",
+  "last_orchestrator_run": "2026-03-09T00:12:53.494331",
   "system_health": {
     "spojka": {
       "status": "OK",
-      "age_hours": 3.8581568366951413
+      "age_hours": 4.364546371168561
     },
     "obchodak": {
       "status": "OK",
-      "age_hours": 1.5771303161647585
+      "age_hours": 0.0015731436014175416
     },
     "postak": {
       "status": "OK",
-      "age_hours": 3.0557825264665817
+      "age_hours": 3.562172060940001
     },
     "strateg": {
       "status": "OK",
-      "age_hours": 5.853823962344063
+      "age_hours": 6.360213496817483
     },
     "kalendar": {
       "status": "OK",
-      "age_hours": 3.055713161031405
+      "age_hours": 3.5621026955048243
     },
     "kontrolor": {
       "status": "OK",
-      "age_hours": 3.8584201480282676
+      "age_hours": 4.364809682501687
     },
     "archivar": {
       "status": "OK",
-      "age_hours": 27.187243245376482
+      "age_hours": 27.6936327798499
     }
   },
   "approval_queue": {

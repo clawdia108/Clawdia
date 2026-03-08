@@ -30,6 +30,7 @@ from lib.agent_health import AGENT_OUTPUTS, collect_agent_health
 from lib.paths import WORKSPACE
 from lib.secrets import load_secrets
 from lib.logger import make_logger
+from lib.notifications import notify_telegram
 
 dlog = make_logger("daily-digest")
 
@@ -244,21 +245,29 @@ def generate_html(data):
 
 
 def send_email(html, secrets):
-    """Send email via Resend API."""
+    """Send email via Resend API. Falls back to onboarding@resend.dev if domain unverified."""
     resend_key = secrets.get("RESEND_API_KEY")
     if not resend_key:
         dlog("No RESEND_API_KEY found", "ERROR")
         return False
 
-    recipient = secrets.get("DIGEST_EMAIL", secrets.get("JOSEF_EMAIL", "clawdia108@gmail.com"))
+    recipient = secrets.get("DIGEST_EMAIL", secrets.get("JOSEF_EMAIL", "josef.hofman@behavera.com"))
     if not recipient:
         dlog("No recipient email configured", "ERROR")
         return False
 
+    from_email = secrets.get("RESEND_FROM_EMAIL", "onboarding@resend.dev")
+    # Safety: only resend.dev domains work on free tier without verification
+    if not from_email.endswith("@resend.dev"):
+        dlog(f"From address '{from_email}' may not be verified, forcing onboarding@resend.dev", "WARN")
+        from_email = "onboarding@resend.dev"
+
+    subject = f"Clawdia Daily Digest — {date.today().strftime('%b %d')}"
+
     payload = json.dumps({
-        "from": f"Clawdia <{secrets.get('RESEND_FROM_EMAIL', 'onboarding@resend.dev')}>",
+        "from": f"Clawdia <{from_email}>",
         "to": [recipient],
-        "subject": f"Clawdia Daily Digest — {date.today().strftime('%b %d')}",
+        "subject": subject,
         "html": html,
     }).encode()
 
@@ -274,13 +283,13 @@ def send_email(html, secrets):
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             result = json.loads(resp.read())
-            dlog(f"Email sent: {result.get('id', '?')}")
+            dlog(f"Email sent: {result.get('id', '?')} to {recipient} from {from_email}")
             print(f"  Email sent to {recipient}")
             return True
     except urllib.error.HTTPError as e:
         body = e.read().decode() if hasattr(e, 'read') else str(e)
         dlog(f"Resend API error: {e.code} {body}", "ERROR")
-        print(f"  Send failed: {e.code}")
+        print(f"  Send failed: {e.code} — {body}")
         return False
     except Exception as e:
         dlog(f"Send error: {e}", "ERROR")
@@ -301,11 +310,24 @@ def cmd_send():
     print(f"  Anomalies: {data['anomalies_critical']}c / {data['anomalies_warning']}w")
 
     success = send_email(html, secrets)
-    if not success:
+    if success:
+        notify_telegram(f"Daily digest sent to {secrets.get('DIGEST_EMAIL', '?')}")
+    else:
         # Save locally as fallback
         out = WORKSPACE / "logs" / f"digest_{date.today()}.html"
         out.write_text(html)
         print(f"  Saved locally: {out}")
+        # Telegram backup with key stats
+        tg_msg = (
+            f"Daily Digest {date.today().strftime('%b %d')}\n"
+            f"Agents: {data['agents_healthy']}/{data['agents_total']}\n"
+            f"Orchestrator: {'Running' if data['orchestrator_running'] else 'STOPPED'}\n"
+            f"Top deals: {len(data.get('top_deals', []))}\n"
+            f"Anomalies: {data['anomalies_critical']}c / {data['anomalies_warning']}w\n"
+            f"Tasks pending: {data['pending_tasks']}\n"
+            f"(Email failed — sent via Telegram)"
+        )
+        notify_telegram(tg_msg)
 
 
 def cmd_preview():
@@ -323,38 +345,19 @@ def cmd_preview():
 
 
 def cmd_test():
-    """Send a test email."""
+    """Send a test email using the same send_email logic."""
     secrets = load_secrets()
-    html = "<h1>Clawdia Test Email</h1><p>If you see this, email delivery works.</p>"
+    html = """<div style="font-family:sans-serif;padding:20px;background:#0d1117;color:#e6e6e6;">
+    <h1 style="color:#2196F3;">Clawdia Test Email</h1>
+    <p>If you see this, email delivery works.</p>
+    <p style="color:#888;font-size:12px;">Sent at: {}</p>
+    </div>""".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-    resend_key = secrets.get("RESEND_API_KEY")
-    if not resend_key:
-        print("  No RESEND_API_KEY — cannot send test email")
-        return
-
-    recipient = secrets.get("DIGEST_EMAIL", secrets.get("JOSEF_EMAIL", ""))
-    if not recipient:
-        print("  No recipient email configured")
-        return
-
-    payload = json.dumps({
-        "from": "Clawdia <clawdia@resend.dev>",
-        "to": [recipient],
-        "subject": "Clawdia Test Email",
-        "html": html,
-    }).encode()
-
-    req = urllib.request.Request(
-        "https://api.resend.com/emails",
-        data=payload,
-        headers={"Authorization": f"Bearer {resend_key}", "Content-Type": "application/json"},
-    )
-
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            print(f"  Test email sent to {recipient}")
-    except Exception as e:
-        print(f"  Failed: {e}")
+    success = send_email(html, secrets)
+    if success:
+        print("  Test email sent successfully")
+    else:
+        print("  Test email failed — check logs/daily-digest.log")
 
 
 def main():

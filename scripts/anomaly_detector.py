@@ -43,8 +43,10 @@ TODAY = date.today()
 NOW = datetime.now()
 
 # Try importing structured logger and agent bus
+sys.path.insert(0, str(BASE / "scripts"))
+from lib.notifications import notify_telegram
+
 try:
-    sys.path.insert(0, str(BASE / "scripts"))
     from structured_log import slog
     from agent_bus import AgentBus, publish as bus_publish
     HAS_BUS = True
@@ -869,10 +871,15 @@ def cmd_scan():
             for i, a in enumerate(items, 1):
                 print_anomaly(a, i)
 
+    critical = sum(1 for a in anomalies if a.severity == 'critical')
+    warnings = sum(1 for a in anomalies if a.severity == 'warning')
     print(f"  Total: {len(anomalies)} anomalies "
-          f"({sum(1 for a in anomalies if a.severity == 'critical')} critical, "
-          f"{sum(1 for a in anomalies if a.severity == 'warning')} warning, "
+          f"({critical} critical, "
+          f"{warnings} warning, "
           f"{sum(1 for a in anomalies if a.severity == 'info')} info)\n")
+
+    if critical > 5:
+        notify_telegram(f"Anomaly Alert: {critical} critical, {warnings} warnings detected")
 
 
 def cmd_status():

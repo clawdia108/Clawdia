@@ -28,6 +28,7 @@ from pathlib import Path
 from collections import defaultdict
 
 from lib.agent_health import AGENT_OUTPUTS, collect_agent_health
+from lib.notifications import notify_telegram
 
 WORKSPACE = Path(__file__).resolve().parents[1]
 REPORTS_DIR = WORKSPACE / "reports"
@@ -620,6 +621,8 @@ def generate_report():
     print(f"  Agents: {healthy}/{total_agents} healthy")
     print(f"  Cost: ${costs.get('week', 0):.2f} this week")
     print(f"  Recommendations: {len(recommendations)}")
+
+    notify_telegram(f"Report generated: {filename}")
 
     return output
 

@@ -35,6 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.paths import WORKSPACE, LOGS_DIR
 from lib.secrets import load_secrets
 from lib.notifications import notify_telegram
+from lib.notion import push_analysis
 from lib.pipedrive import pipedrive_api
 
 LOG_FILE = LOGS_DIR / "signal-scanner.log"
@@ -364,6 +365,13 @@ def main():
             f"Skenováno {len(deals)} dealů\n"
             f"📂 Detail: reports/signals/"
         )
+
+    # Push to Notion
+    notion_token = secrets.get("NOTION_TOKEN")
+    if notion_token:
+        push_analysis(notion_token, f"Signal Scan {datetime.now().strftime('%d.%m')}",
+                       "Signal Intelligence", report[:1990],
+                       deals_affected=len(deals))
 
     return 0
 

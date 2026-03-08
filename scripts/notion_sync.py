@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.paths import WORKSPACE, LOGS_DIR
 from lib.secrets import load_secrets
 from lib.pipedrive import pipedrive_api, pipedrive_get_all
+from lib.notifications import notify_telegram
 
 LOG_FILE = LOGS_DIR / "notion-sync.log"
 SIGNALS_DIR = WORKSPACE / "knowledge" / "signals"
@@ -410,15 +411,17 @@ def main():
             mode = "analysis"
             analysis_file = sys.argv[i + 1]
 
+    created, updated, errors = 0, 0, 0
+
     if mode == "deals":
-        sync_deals(notion_token, pipedrive_token)
+        created, updated, errors = sync_deals(notion_token, pipedrive_token)
     elif mode == "digest":
         create_daily_digest(notion_token, pipedrive_token)
     elif mode == "analysis":
         push_analysis_from_file(notion_token, analysis_file)
     else:
         # Full sync
-        sync_deals(notion_token, pipedrive_token)
+        created, updated, errors = sync_deals(notion_token, pipedrive_token)
         create_daily_digest(notion_token, pipedrive_token)
 
         # Push any existing reports
@@ -431,6 +434,7 @@ def main():
             if rf.exists():
                 push_analysis_from_file(notion_token, str(rf))
 
+    notify_telegram(f"Notion Sync: {created} new, {updated} updated, {errors} errors")
     return 0
 
 

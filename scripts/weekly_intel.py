@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.paths import WORKSPACE, LOGS_DIR
 from lib.secrets import load_secrets
 from lib.notifications import notify_telegram
+from lib.notion import push_analysis
 from lib.pipedrive import pipedrive_api
 
 LOG_FILE = LOGS_DIR / "weekly-intel.log"
@@ -418,6 +419,13 @@ def main():
 
     notify_telegram("\n".join(tg_lines))
     log("Telegram digest sent")
+
+    # Push to Notion
+    notion_token = secrets.get("NOTION_TOKEN")
+    if notion_token:
+        push_analysis(notion_token, f"Weekly Intel {datetime.now().strftime('%d.%m')}",
+                       "Weekly Intel", report[:1990],
+                       deals_affected=len(scored))
 
     return 0
 

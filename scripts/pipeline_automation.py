@@ -23,19 +23,23 @@ Usage:
 """
 
 import json
-import os
 import subprocess
 import sys
-import urllib.request
-from datetime import datetime, date
+from datetime import datetime
 from pathlib import Path
-from collections import defaultdict
 
-WORKSPACE = Path(__file__).resolve().parents[1]
-ENV_PATH = WORKSPACE / ".secrets" / "pipedrive.env"
-STATE_FILE = WORKSPACE / "logs" / "pipeline-automation-state.json"
-HISTORY_FILE = WORKSPACE / "logs" / "pipeline-automation-history.json"
-LOG_FILE = WORKSPACE / "logs" / "pipeline-automation.log"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from lib.paths import WORKSPACE, LOGS_DIR
+from lib.secrets import load_secrets
+from lib.pipedrive import pipedrive_api, pipedrive_get_all
+from lib.notifications import notify_telegram
+
+STATE_FILE = LOGS_DIR / "pipeline-automation-state.json"
+HISTORY_FILE = LOGS_DIR / "pipeline-automation-history.json"
+LOG_FILE = LOGS_DIR / "pipeline-automation.log"
+
+PIPEDRIVE_USER_ID = 24403638
 
 
 def palog(msg, level="INFO"):
@@ -45,33 +49,6 @@ def palog(msg, level="INFO"):
         f.write(f"[{ts}] [{level}] {msg}\n")
     if level in ("INFO", "WARN"):
         print(f"  [{level}] {msg}")
-
-
-def load_env():
-    env = {}
-    if ENV_PATH.exists():
-        for line in ENV_PATH.read_text().splitlines():
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            if line.startswith("export "):
-                line = line[7:]
-            k, v = line.split("=", 1)
-            env[k.strip()] = v.strip().strip('"').strip("'")
-    return env
-
-
-def api_get(endpoint, env):
-    token = env.get("PIPEDRIVE_API_TOKEN", "")
-    domain = env.get("PIPEDRIVE_DOMAIN", "behavera")
-    url = f"https://{domain}.pipedrive.com/api/v1/{endpoint}?api_token={token}"
-    try:
-        req = urllib.request.Request(url)
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read())
-    except Exception as e:
-        palog(f"API error: {e}", "ERROR")
-        return None
 
 
 def load_state():
@@ -271,35 +248,38 @@ AUTOMATION_RULES = {
 
 def check_stage_changes():
     """Poll Pipedrive for stage changes and trigger automations."""
-    env = load_env()
-    if not env.get("PIPEDRIVE_API_TOKEN"):
-        palog("No Pipedrive API token", "ERROR")
+    secrets = load_secrets()
+    token = secrets.get("PIPEDRIVE_API_TOKEN", "")
+    if not token:
+        palog("No Pipedrive API token in secrets", "ERROR")
         return
 
     state = load_state()
     history = load_history()
     changes = []
 
-    # Fetch all deals
-    result = api_get("deals?status=all_not_deleted&limit=100", env)
-    if not result or not result.get("data"):
+    # Fetch all open deals (paginated) for our user
+    deals = pipedrive_get_all(token, "/deals", {
+        "status": "all_not_deleted",
+        "user_id": str(PIPEDRIVE_USER_ID),
+    })
+    if not deals:
         palog("No deals returned from API", "WARN")
         return
 
-    deals = result["data"]
+    # Pre-fetch all stages so we don't call the API per deal
+    stage_map = {}
+    stages_data = pipedrive_api(token, "GET", "/stages", {"limit": "500"})
+    if stages_data:
+        for s in stages_data:
+            stage_map[s["id"]] = s.get("name", str(s["id"]))
+
     old_stages = state.get("deal_stages", {})
 
     for deal in deals:
         deal_id = str(deal.get("id", ""))
-        stage_name = deal.get("stage_id", 0)
-
-        # Resolve stage name
-        pipeline_id = deal.get("pipeline_id")
-        stage_info = api_get(f"stages/{stage_name}", env) if isinstance(stage_name, int) else None
-        if stage_info and stage_info.get("data"):
-            stage_name = stage_info["data"].get("name", str(stage_name))
-        else:
-            stage_name = str(stage_name)
+        stage_id = deal.get("stage_id", 0)
+        stage_name = stage_map.get(stage_id, str(stage_id))
 
         # Check for Won/Lost status
         if deal.get("status") == "won":
@@ -327,7 +307,7 @@ def check_stage_changes():
         if rule:
             palog(f"Stage change: {change['deal'].get('title', '?')} → {to_stage}")
             try:
-                result = rule["action"](change["deal"], env)
+                result = rule["action"](change["deal"], secrets)
                 history["actions"].append({
                     "timestamp": datetime.now().isoformat(),
                     "deal_id": change["deal_id"],
@@ -350,6 +330,8 @@ def check_stage_changes():
     print(f"  Deals scanned: {len(deals)}")
     print(f"  Stage changes: {len(changes)}")
     print(f"  Actions taken: {actions_taken}\n")
+
+    notify_telegram(f"Pipeline Auto: {len(deals)} deals scanned, {len(changes)} stage changes, {actions_taken} actions")
 
     return changes
 
@@ -392,8 +374,8 @@ def cmd_simulate(stage):
         "org_name": "Test Company", "value": 10000,
         "stage_id": stage, "status": "open",
     }
-    env = load_env()
-    result = rule["action"](fake_deal, env)
+    secrets = load_secrets()
+    result = rule["action"](fake_deal, secrets)
     print(f"  Result: {result}\n")
 
 

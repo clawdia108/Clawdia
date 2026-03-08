@@ -1,170 +1,149 @@
 #!/bin/bash
-# Overnight Full System Run — Execute all agents and collect results
-# Run: nohup bash scripts/overnight_run.sh &> logs/overnight.log &
-set -e
+# ============================================================
+# Overnight Full System Run — Master Orchestration
+# ============================================================
+# Runs at 06:30 via launchd (com.clawdia.overnight)
+# Executes all data gathering, scoring, analysis, and prep
+# so everything is fresh when Josef starts his day.
+#
+# FLOW:
+#   1. Health check + tests
+#   2. Data gathering (Fathom, signals, enrichment)
+#   3. Scoring & analysis (deals, velocity, predictions)
+#   4. Intelligence (market, competitive, anomalies)
+#   5. Morning prep (call list, SPIN, follow-ups, drafts)
+#   6. Reporting & sync (Notion, status, backup)
+#   7. Telegram summary
+# ============================================================
+
 cd /Users/josefhofman/Clawdia
 
 LOG="logs/overnight.log"
+mkdir -p logs reports reports/call-lists reports/health reports/signals reports/weekly \
+  proposals meeting-prep intel status knowledge/agent-memory knowledge/signals \
+  knowledge/pipeline_snapshots knowledge/call_coaching drafts/followups
+
+echo "============================================" | tee -a "$LOG"
+echo "  OVERNIGHT RUN — $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "$LOG"
+echo "============================================" | tee -a "$LOG"
+
+START=$(date +%s)
+ERRORS=0
+STEPS_OK=0
+TOTAL_STEPS=0
 
 # Timeout wrapper — kill any script that runs > 5 minutes
 run_step() {
-    "$@" &
-    local pid=$!
-    local i=0
-    while kill -0 "$pid" 2>/dev/null; do
-        sleep 1
-        i=$((i + 1))
-        if [ "$i" -ge 300 ]; then
-            kill "$pid" 2>/dev/null
-            sleep 1
-            kill -9 "$pid" 2>/dev/null
-            echo "  (timed out after 5min)"
-            return 1
-        fi
-    done
-    wait "$pid" 2>/dev/null
+    local name="$1"
+    shift
+    TOTAL_STEPS=$((TOTAL_STEPS + 1))
+    echo "" | tee -a "$LOG"
+    echo "--- [$TOTAL_STEPS] $name ---" | tee -a "$LOG"
+
+    timeout 300 "$@" 2>&1 | tail -5 | tee -a "$LOG"
+    local exit_code=${PIPESTATUS[0]}
+
+    if [ "$exit_code" -eq 0 ]; then
+        STEPS_OK=$((STEPS_OK + 1))
+        echo "  OK" | tee -a "$LOG"
+    elif [ "$exit_code" -eq 124 ]; then
+        ERRORS=$((ERRORS + 1))
+        echo "  TIMEOUT (5min)" | tee -a "$LOG"
+    else
+        ERRORS=$((ERRORS + 1))
+        echo "  ERROR (exit $exit_code)" | tee -a "$LOG"
+    fi
 }
-RESULTS="logs/overnight-results.json"
-mkdir -p logs reports proposals meeting-prep intel status knowledge/agent-memory debates experiments sequences
 
-echo "============================================" | tee -a "$LOG"
-echo "  OVERNIGHT RUN — $(date)" | tee -a "$LOG"
-echo "============================================" | tee -a "$LOG"
-
-# Track timing
-START=$(date +%s)
-
-# ── 1. FULL TEST SUITE ─────────────────────────────
+# ════════════════════════════════════════════════════════════
+# PHASE 1: HEALTH CHECK & TESTS
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [1/12] TEST SUITE ---" | tee -a "$LOG"
-echo "Smoke tests:" | tee -a "$LOG"
-python3 tests/test_smoke.py 2>&1 | tail -3 | tee -a "$LOG"
-echo "Chaos tests:" | tee -a "$LOG"
-python3 tests/test_chaos.py 2>&1 | tail -5 | tee -a "$LOG"
-echo "Integration tests:" | tee -a "$LOG"
-python3 tests/test_integration.py 2>&1 | tail -5 | tee -a "$LOG"
-echo "Schema validation:" | tee -a "$LOG"
-python3 scripts/schema_validator.py validate 2>&1 | tail -3 | tee -a "$LOG"
+echo "== PHASE 1: HEALTH CHECK ==" | tee -a "$LOG"
 
-# ── 2. PIPELINE SCORING ────────────────────────────
+run_step "SMOKE TESTS" python3 tests/test_smoke.py
+run_step "INTEGRATION TESTS" python3 tests/test_integration.py
+run_step "SCHEMA VALIDATION" python3 scripts/schema_validator.py validate
+
+# ════════════════════════════════════════════════════════════
+# PHASE 2: DATA GATHERING
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [2/12] PIPELINE SCORING ---" | tee -a "$LOG"
-python3 scripts/pipedrive_lead_scorer.py 2>&1 | tail -5 | tee -a "$LOG" || echo "Lead scorer error" | tee -a "$LOG"
+echo "== PHASE 2: DATA GATHERING ==" | tee -a "$LOG"
 
-# ── 3. DEAL VELOCITY ───────────────────────────────
+run_step "FATHOM SYNC" python3 scripts/fathom_sync.py
+run_step "SIGNAL SCANNER" python3 scripts/signal_scanner.py
+run_step "LUSHA ENRICHMENT" python3 scripts/lusha_enricher.py --top 5
+run_step "HUMANIZER TRAINING" python3 scripts/humanizer_trainer.py
+
+# ════════════════════════════════════════════════════════════
+# PHASE 3: SCORING & ANALYSIS
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [3/12] DEAL VELOCITY ---" | tee -a "$LOG"
-python3 scripts/deal_velocity.py velocity 2>&1 | tail -10 | tee -a "$LOG" || echo "Velocity error" | tee -a "$LOG"
+echo "== PHASE 3: SCORING & ANALYSIS ==" | tee -a "$LOG"
 
-# ── 4. KNOWLEDGE GRAPH ─────────────────────────────
+run_step "LEAD SCORING" python3 scripts/pipedrive_lead_scorer.py
+run_step "DEAL HEALTH" python3 scripts/deal_health_scorer.py --snapshot
+run_step "DEAL VELOCITY" python3 scripts/deal_velocity.py velocity
+run_step "SUCCESS PREDICTIONS" python3 scripts/success_predictor.py predict
+run_step "ENGAGEMENT SCORING" python3 scripts/engagement_scorer.py score
+run_step "PIPELINE AUTOMATION" python3 scripts/pipeline_automation.py check
+
+# ════════════════════════════════════════════════════════════
+# PHASE 4: INTELLIGENCE
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [4/12] KNOWLEDGE GRAPH ---" | tee -a "$LOG"
-python3 scripts/knowledge_graph.py build 2>&1 | tail -5 | tee -a "$LOG" || echo "Graph build error" | tee -a "$LOG"
+echo "== PHASE 4: INTELLIGENCE ==" | tee -a "$LOG"
 
-# ── 5. SUCCESS PREDICTIONS ─────────────────────────
+run_step "KNOWLEDGE GRAPH" python3 scripts/knowledge_graph.py build
+run_step "MARKET TRENDS" python3 scripts/market_trends.py report
+run_step "COMPETITIVE INTEL" python3 scripts/competitive_intel.py scan
+run_step "ANOMALY DETECTION" python3 scripts/anomaly_detector.py scan
+run_step "WIN/LOSS ANALYSIS" python3 scripts/win_loss_analysis.py summary
+
+# ════════════════════════════════════════════════════════════
+# PHASE 5: MORNING PREP
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [5/12] SUCCESS PREDICTIONS ---" | tee -a "$LOG"
-python3 scripts/success_predictor.py predict 2>&1 | tail -15 | tee -a "$LOG" || echo "Predictor error" | tee -a "$LOG"
+echo "== PHASE 5: MORNING PREP ==" | tee -a "$LOG"
 
-# ── 6. MARKET TRENDS ──────────────────────────────
+run_step "COLD CALL LIST" python3 scripts/cold_call_list.py --export
+run_step "FOLLOW-UP ENGINE" python3 scripts/followup_engine.py --scan
+run_step "EMAIL SEQUENCES" python3 scripts/email_sequences.py advance
+run_step "MEETING PREP" python3 scripts/meeting_prep.py --upcoming
+run_step "STRATEGIC BRIEF" python3 scripts/strategic_brief.py generate
+
+# ════════════════════════════════════════════════════════════
+# PHASE 6: REPORTING & SYNC
+# ════════════════════════════════════════════════════════════
 echo "" | tee -a "$LOG"
-echo "--- [6/12] MARKET TRENDS ---" | tee -a "$LOG"
-python3 scripts/market_trends.py report 2>&1 | tail -10 | tee -a "$LOG" || echo "Trends error" | tee -a "$LOG"
+echo "== PHASE 6: REPORTING & SYNC ==" | tee -a "$LOG"
 
-# ── 7. COMPETITIVE INTEL ──────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [7/12] COMPETITIVE INTEL ---" | tee -a "$LOG"
-run_step python3 scripts/competitive_intel.py scan | tail -10 | tee -a "$LOG" || echo "Comp intel error" | tee -a "$LOG"
+run_step "REPORT GENERATOR" python3 scripts/report_generator.py generate
+run_step "NOTION SYNC" python3 scripts/notion_sync.py
+run_step "STATUS PAGE" python3 scripts/status_page.py
+run_step "DAILY STANDUP" python3 scripts/standup_generator.py
+run_step "SCORECARD" python3 scripts/adhd-scorecard.py
+run_step "DEDUP + CLEANUP" python3 scripts/knowledge_dedup.py scan
+run_step "BACKUP" python3 scripts/backup_system.py snapshot
 
-# ── 8. ANOMALY DETECTION ─────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [8/12] ANOMALY DETECTION ---" | tee -a "$LOG"
-python3 scripts/anomaly_detector.py scan 2>&1 | tail -10 | tee -a "$LOG" || echo "Anomaly error" | tee -a "$LOG"
-
-# ── 9. MEETING PREP ──────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [9/12] MEETING PREP ---" | tee -a "$LOG"
-run_step python3 scripts/meeting_prep.py --upcoming | tail -10 | tee -a "$LOG" || echo "Meeting prep error" | tee -a "$LOG"
-
-# ── 10. PIPELINE AUTOMATION ──────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [10/12] PIPELINE AUTOMATION ---" | tee -a "$LOG"
-python3 scripts/pipeline_automation.py check 2>&1 | tail -5 | tee -a "$LOG" || echo "Automation error" | tee -a "$LOG"
-
-# ── 11. WEEKLY REPORT ────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [11/12] WEEKLY REPORT ---" | tee -a "$LOG"
-python3 scripts/report_generator.py generate 2>&1 | tail -5 | tee -a "$LOG" || echo "Report error" | tee -a "$LOG"
-
-# ── 12. DEDUP + CLEANUP ─────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- [12/12] DEDUP + CLEANUP ---" | tee -a "$LOG"
-python3 scripts/knowledge_dedup.py scan 2>&1 | tail -5 | tee -a "$LOG" || echo "Dedup error" | tee -a "$LOG"
-
-# ── ADVANCE EMAIL SEQUENCES ─────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: EMAIL SEQUENCES ---" | tee -a "$LOG"
-python3 scripts/email_sequences.py advance 2>&1 | tail -5 | tee -a "$LOG" || echo "Sequence error" | tee -a "$LOG"
-
-# ── STRATEGIC BRIEF ─────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: STRATEGIC BRIEF ---" | tee -a "$LOG"
-python3 scripts/strategic_brief.py generate 2>&1 | tail -5 | tee -a "$LOG" || echo "Brief error" | tee -a "$LOG"
-
-# ── STANDUP ─────────────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: DAILY STANDUP ---" | tee -a "$LOG"
-python3 scripts/standup_generator.py 2>&1 | tail -10 | tee -a "$LOG" || echo "Standup error" | tee -a "$LOG"
-
-# ── STATUS PAGE ─────────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: STATUS PAGE ---" | tee -a "$LOG"
-python3 scripts/status_page.py 2>&1 | tail -3 | tee -a "$LOG" || echo "Status page error" | tee -a "$LOG"
-
-# ── WIN/LOSS ────────────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: WIN/LOSS ANALYSIS ---" | tee -a "$LOG"
-python3 scripts/win_loss_analysis.py summary 2>&1 | tail -10 | tee -a "$LOG" || echo "Win/loss error" | tee -a "$LOG"
-
-# ── REFERRAL NETWORK ────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: REFERRAL NETWORK ---" | tee -a "$LOG"
-python3 scripts/referral_network.py network 2>&1 | tail -10 | tee -a "$LOG" || echo "Referral error" | tee -a "$LOG"
-
-# ── ENGAGEMENT SCORES ───────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: ENGAGEMENT SCORING ---" | tee -a "$LOG"
-python3 scripts/engagement_scorer.py score 2>&1 | tail -10 | tee -a "$LOG" || echo "Engagement error" | tee -a "$LOG"
-
-# ── AGENT DEBATE ────────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: AGENT DEBATE ---" | tee -a "$LOG"
-run_step python3 scripts/debate_protocol.py start deal_priority | tail -15 | tee -a "$LOG" || echo "Debate error" | tee -a "$LOG"
-
-# ── SCORECARD UPDATE ────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- BONUS: SCORECARD ---" | tee -a "$LOG"
-python3 scripts/adhd-scorecard.py 2>&1 | tail -5 | tee -a "$LOG" || echo "Scorecard error" | tee -a "$LOG"
-
-# ── BACKUP ──────────────────────────────────────
-echo "" | tee -a "$LOG"
-echo "--- FINAL: BACKUP ---" | tee -a "$LOG"
-python3 scripts/backup_system.py snapshot 2>&1 | tail -3 | tee -a "$LOG" || echo "Backup error" | tee -a "$LOG"
-
-# ── COLLECT RESULTS ─────────────────────────────
+# ════════════════════════════════════════════════════════════
+# COLLECT RESULTS
+# ════════════════════════════════════════════════════════════
 END=$(date +%s)
 ELAPSED=$((END - START))
 
 echo "" | tee -a "$LOG"
 echo "============================================" | tee -a "$LOG"
 echo "  OVERNIGHT RUN COMPLETE" | tee -a "$LOG"
+echo "  Steps: $STEPS_OK/$TOTAL_STEPS OK, $ERRORS errors" | tee -a "$LOG"
 echo "  Duration: ${ELAPSED}s ($((ELAPSED / 60))min)" | tee -a "$LOG"
-echo "  Finished: $(date)" | tee -a "$LOG"
+echo "  Finished: $(date '+%Y-%m-%d %H:%M:%S')" | tee -a "$LOG"
 echo "============================================" | tee -a "$LOG"
 
 # Save structured results
 python3 -c "
-import json, time, os
+import json, time
 from pathlib import Path
 from datetime import datetime
 
@@ -188,11 +167,9 @@ def file_fresh(p, hours=24):
 results = {
     'timestamp': datetime.now().isoformat(),
     'duration_seconds': ${ELAPSED},
-    'tests': {
-        'smoke': safe_json(BASE / 'logs/smoke-test-results.json'),
-        'chaos': safe_json(BASE / 'logs/chaos-test-results.json'),
-        'integration': safe_json(BASE / 'logs/integration-test-results.json'),
-    },
+    'steps_ok': ${STEPS_OK},
+    'steps_total': ${TOTAL_STEPS},
+    'errors': ${ERRORS},
     'agents': {
         'spojka': file_fresh(BASE / 'knowledge/USER_DIGEST_AM.md'),
         'obchodak': file_fresh(BASE / 'pipedrive/PIPELINE_STATUS.md'),
@@ -204,30 +181,47 @@ results = {
     },
     'outputs': {
         'pipeline_scored': file_fresh(BASE / 'pipedrive/DEAL_SCORING.md'),
-        'velocity_tracked': file_fresh(BASE / 'pipedrive/deal_velocity.json'),
-        'graph_built': file_fresh(BASE / 'knowledge/graph.json'),
-        'predictions_made': file_fresh(BASE / 'knowledge/deal-predictions.json'),
-        'trends_analyzed': file_fresh(BASE / 'knowledge/market-trends.json'),
-        'report_generated': (BASE / 'reports').exists() and len(list((BASE / 'reports').glob('*.html'))) > 0,
-        'meeting_preps': (BASE / 'meeting-prep').exists() and len(list((BASE / 'meeting-prep').glob('*.md'))) > 0,
-        'status_page': file_fresh(BASE / 'status/index.html'),
+        'deal_health': file_fresh(BASE / 'reports/health'),
+        'signals': file_fresh(BASE / 'reports/signals'),
+        'call_list': file_fresh(BASE / 'reports/call-lists'),
+        'velocity': file_fresh(BASE / 'pipedrive/deal_velocity.json'),
+        'graph': file_fresh(BASE / 'knowledge/graph.json'),
+        'predictions': file_fresh(BASE / 'knowledge/deal-predictions.json'),
+        'trends': file_fresh(BASE / 'knowledge/market-trends.json'),
+        'notion_synced': file_fresh(BASE / 'logs/notion-sync.log'),
     },
     'scorecard': safe_json(BASE / 'reviews/daily-scorecard/score_state.json'),
 }
 
 healthy = sum(1 for v in results['agents'].values() if v)
 total = len(results['agents'])
-results['summary'] = f'{healthy}/{total} agents healthy'
+results['summary'] = f'{healthy}/{total} agents healthy, {${STEPS_OK}}/{${TOTAL_STEPS}} steps OK'
 
 Path(BASE / 'logs/overnight-results.json').write_text(json.dumps(results, indent=2))
-print(f'Results saved. Agents: {healthy}/{total} healthy')
+print(f'Results saved: {results[\"summary\"]}')
+" 2>&1 | tee -a "$LOG"
+
+# ════════════════════════════════════════════════════════════
+# TELEGRAM SUMMARY
+# ════════════════════════════════════════════════════════════
+python3 -c "
+import sys
+sys.path.insert(0, 'scripts')
+from lib.notifications import notify_telegram
+
+msg = '''Overnight Run Complete
+
+Steps: ${STEPS_OK}/${TOTAL_STEPS} OK, ${ERRORS} errors
+Duration: $((ELAPSED / 60))min
+
+Ready for your morning. Check Notion Sales Hub for full overview.'''
+
+notify_telegram(msg)
+print('Telegram summary sent')
 " 2>&1 | tee -a "$LOG"
 
 # Generate morning digest preview
-echo "" | tee -a "$LOG"
-echo "--- MORNING DIGEST ---" | tee -a "$LOG"
-python3 scripts/daily_digest.py preview 2>&1 | tee -a "$LOG" || echo "Digest error" | tee -a "$LOG"
+run_step "MORNING DIGEST" python3 scripts/daily_digest.py preview
 
 echo "" | tee -a "$LOG"
-echo "Good night! Results in logs/overnight-results.json" | tee -a "$LOG"
-echo "Morning digest in status/digest_preview.html" | tee -a "$LOG"
+echo "All done. Results in logs/overnight-results.json" | tee -a "$LOG"

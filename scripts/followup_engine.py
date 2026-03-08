@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.paths import WORKSPACE, LOGS_DIR
 from lib.secrets import load_secrets
 from lib.notifications import notify_telegram
+from lib.notion import push_analysis
 from lib.pipedrive import pipedrive_api
 
 LOG_FILE = LOGS_DIR / "followup-engine.log"
@@ -380,8 +381,12 @@ def main():
 
     if scan_only:
         # Print detailed scan
+        total_deals = 0
+        scan_summary = []
         for category, deals in results.items():
             if deals:
+                total_deals += len(deals)
+                scan_summary.append(f"{category}: {len(deals)}")
                 print(f"\n{'='*50}")
                 print(f"  {category.upper()} ({len(deals)} deals)")
                 print(f"{'='*50}")
@@ -389,6 +394,14 @@ def main():
                     days = d.get("days_silent", d.get("days_overdue", ""))
                     days_str = f" ({days}d)" if days else ""
                     print(f"  {d['deal_id']:4d} | {d['org'][:25]:25s} | {d['person'][:20]:20s} | {d['action']}{days_str}")
+
+        # Push to Notion
+        notion_token = secrets.get("NOTION_TOKEN")
+        if notion_token and total_deals > 0:
+            findings = " | ".join(scan_summary)
+            push_analysis(notion_token, f"Follow-up Scan {datetime.now().strftime('%d.%m')}",
+                           "Pipeline Analysis", findings,
+                           deals_affected=total_deals)
         return 0
 
     # Generate follow-up drafts
