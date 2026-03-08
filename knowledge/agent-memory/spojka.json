@@ -1,0 +1,24 @@
+{
+  "agent": "bridge",
+  "created_at": "2026-03-07T20:55:21.161349",
+  "decisions": [
+    {
+      "id": "10b1859d",
+      "timestamp": "2026-03-07T20:55:21.161402",
+      "context": "Morning briefing cycle",
+      "decision": "Prioritize pipeline deals over inbox",
+      "outcome": "Good focus",
+      "confidence": 0.8,
+      "tags": [
+        "morning"
+      ]
+    }
+  ],
+  "patterns": [],
+  "contacts": {},
+  "context": {
+    "current_task": null,
+    "recent_events": [],
+    "notes": []
+  }
+}

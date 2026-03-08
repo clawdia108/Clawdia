@@ -1,0 +1,89 @@
+{
+  "id": "sales_pipeline",
+  "name": "Sales Pipeline Automation",
+  "description": "End-to-end: Score → Draft → Review → Approve → Execute",
+  "max_duration_hours": 48,
+  "entry": [
+    "score_deals"
+  ],
+  "steps": {
+    "score_deals": {
+      "agent": "obchodak",
+      "action": "run_lead_scoring",
+      "next": [
+        "identify_stale",
+        "identify_hot"
+      ],
+      "timeout_minutes": 30
+    },
+    "identify_stale": {
+      "agent": "udrzbar",
+      "action": "find_stale_deals",
+      "next": [
+        "draft_followups"
+      ],
+      "depends_on": [
+        "score_deals"
+      ]
+    },
+    "identify_hot": {
+      "agent": "udrzbar",
+      "action": "find_hot_deals",
+      "next": [
+        "draft_outreach"
+      ],
+      "depends_on": [
+        "score_deals"
+      ]
+    },
+    "draft_followups": {
+      "agent": "textar",
+      "action": "draft_followup_emails",
+      "next": [
+        "review_content"
+      ],
+      "depends_on": [
+        "identify_stale"
+      ]
+    },
+    "draft_outreach": {
+      "agent": "textar",
+      "action": "draft_outreach_emails",
+      "next": [
+        "review_content"
+      ],
+      "depends_on": [
+        "identify_hot"
+      ]
+    },
+    "review_content": {
+      "agent": "kontrolor",
+      "action": "review_email_drafts",
+      "next": [
+        "submit_approval"
+      ],
+      "depends_on": [
+        "draft_followups",
+        "draft_outreach"
+      ],
+      "retries": 2
+    },
+    "submit_approval": {
+      "agent": "kontrolor",
+      "action": "submit_for_approval",
+      "next": [
+        "execute_sends"
+      ],
+      "depends_on": [
+        "review_content"
+      ]
+    },
+    "execute_sends": {
+      "agent": "postak",
+      "action": "send_approved_emails",
+      "depends_on": [
+        "submit_approval"
+      ]
+    }
+  }
+}

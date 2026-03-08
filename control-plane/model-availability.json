@@ -74,12 +74,12 @@
     "premium": { "daily_limit_usd": 20, "models": ["openai/gpt-5.2-pro", "anthropic/claude-opus-4-1"] }
   },
   "recommendations": {
-    "dealops": "Economy tier is correct — structured CRM tasks don't need expensive models. gpt-4o-mini handles JSON well.",
-    "timebox": "Economy tier is correct — calendar planning is template-driven.",
-    "inboxforge": "Standard tier justified — writing quality matters for email. Sonnet is the right choice.",
-    "growthlab": "Standard/Premium justified — research needs breadth and reasoning. Opus for lead, sonnet for workers.",
-    "reviewer": "Standard tier correct — validation needs reasoning but not creative writing.",
-    "knowledgekeeper": "Economy tier correct — summarization and sync are well-suited to smaller models.",
-    "main": "Standard tier correct — Bridge orchestration needs good reasoning for routing decisions."
+    "udrzbar": "Economy tier is correct — structured CRM tasks don't need expensive models. gpt-4o-mini handles JSON well.",
+    "planovac": "Economy tier is correct — calendar planning is template-driven.",
+    "postak": "Standard tier justified — writing quality matters for email. Sonnet is the right choice.",
+    "strateg": "Standard/Premium justified — research needs breadth and reasoning. Opus for lead, sonnet for workers.",
+    "kontrolor": "Standard tier correct — validation needs reasoning but not creative writing.",
+    "archivar": "Economy tier correct — summarization and sync are well-suited to smaller models.",
+    "main": "Standard tier correct — Spojka orchestration needs good reasoning for routing decisions."
   }
 }

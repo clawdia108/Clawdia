@@ -1,0 +1,27 @@
+{
+  "agent": "inboxforge",
+  "created_at": "2026-03-07T20:55:21.163523",
+  "decisions": [],
+  "patterns": [],
+  "contacts": {
+    "keboola_ceo": {
+      "contact_id": "keboola_ceo",
+      "interactions": [
+        {
+          "date": "2026-03-07T20:55:21.163545",
+          "type": "email",
+          "summary": "Sent intro email about EchoPulse"
+        }
+      ],
+      "preference_notes": [],
+      "tags": [
+        "prospect"
+      ]
+    }
+  },
+  "context": {
+    "current_task": null,
+    "recent_events": [],
+    "notes": []
+  }
+}

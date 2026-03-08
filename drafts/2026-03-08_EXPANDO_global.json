@@ -1,0 +1,14 @@
+{
+  "subject": "EXPANDO global — další kroky",
+  "body": "Dobrý den, pane [příjmení],\n\nděkuji za zájem.\n\nPrůběžné průzkumy vám ukáží skutečný stav týmů každý měsíc – dřív, než problém eskaluje do výpovědi. Anonymní zpětná vazba odhalí to, co lidé na osobní schůzce neřeknou.\n\nSpuštění za 2 dny, 99–129 Kč na osobu.\n\nHodí se vám to dokončit tento týden?\n\nJosef Hofman, Behavera",
+  "to": "kontakt@expandoglobal.cz",
+  "from": "josef.hofman@behavera.com",
+  "template": "hot_closing",
+  "spin_approach": "need_payoff",
+  "deal_title": "Expando",
+  "deal_org": "EXPANDO global",
+  "deal_value": "75,000 CZK",
+  "model_used": "claude-sonnet-4-6",
+  "generated_at": "2026-03-08T11:38:16.295704",
+  "status": "draft"
+}

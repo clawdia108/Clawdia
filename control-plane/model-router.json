@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "description": "Task-aware multi-model routing. Evaluated top-to-bottom, first match wins.",
+  "version": 4,
+  "description": "Task-aware multi-model routing. Evaluated top-to-bottom, first match wins. v4: GPT-5.4 replaces GPT-5.2 as default frontier model (March 2026).",
   "selection_dimensions": [
     "task_type",
     "complexity",
@@ -11,13 +11,23 @@
     "capabilities_required"
   ],
   "models": {
+    "openai/gpt-5.4": {
+      "provider": "openai",
+      "context_window": 272000,
+      "max_output_tokens": 128000,
+      "cost_per_1k_input_usd": 0.0025,
+      "cost_per_1k_output_usd": 0.015,
+      "strengths": ["reasoning", "tool_use", "computer_use", "tool_search", "knowledge_work", "context_management"],
+      "notes": "Released 2026-03-05. 33% fewer errors vs 5.2, native computer use, 1M context available on request."
+    },
     "openai/gpt-5.2": {
       "provider": "openai",
       "context_window": 400000,
       "max_output_tokens": 128000,
       "cost_per_1k_input_usd": 0.00175,
       "cost_per_1k_output_usd": 0.014,
-      "strengths": ["reasoning", "tool_use", "coding", "context_management"]
+      "strengths": ["reasoning", "tool_use", "coding", "context_management"],
+      "status": "legacy — replaced by gpt-5.4 for most tasks"
     },
     "openai/gpt-5.2-pro": {
       "provider": "openai",
@@ -51,7 +61,7 @@
       "cost_per_1k_output_usd": 0.0004,
       "strengths": ["summarization", "classification", "high_throughput"]
     },
-    "anthropic/claude-opus-4-1-20250805": {
+    "anthropic/claude-opus-4-6": {
       "provider": "anthropic",
       "context_window": 200000,
       "max_output_tokens": 32000,
@@ -59,7 +69,7 @@
       "cost_per_1k_output_usd": 0.075,
       "strengths": ["parallel_research", "advanced_coding", "deep_reasoning"]
     },
-    "anthropic/claude-sonnet-4-20250514": {
+    "anthropic/claude-sonnet-4-6": {
       "provider": "anthropic",
       "context_window": 200000,
       "max_output_tokens": 64000,
@@ -75,13 +85,13 @@
       "cost_per_1k_output_usd": 0.004,
       "strengths": ["fast_checks", "low_latency", "cheap_screening"]
     },
-    "ollama/qwen2.5:7b": {
+    "ollama/llama3.1:8b": {
       "provider": "ollama",
-      "context_window": 32000,
+      "context_window": 128000,
       "max_output_tokens": 8192,
       "cost_per_1k_input_usd": 0,
       "cost_per_1k_output_usd": 0,
-      "strengths": ["local", "privacy", "fallback"]
+      "strengths": ["local", "privacy", "fallback", "classification", "triage"]
     }
   },
   "routing_rules": [
@@ -91,7 +101,7 @@
       "match": {
         "task_type": ["heartbeat"]
       },
-      "model": "ollama/qwen2.5:7b",
+      "model": "ollama/llama3.1:8b",
       "fallback": null,
       "max_tokens": 512,
       "budget_tier": "free"
@@ -104,8 +114,8 @@
         "risk_level": ["low"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-nano",
-      "fallbacks": ["ollama/qwen2.5:7b"],
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["ollama/llama3.1:8b"],
       "output_contract": "cron_digest",
       "reasoning_effort": "minimal",
       "budget_tier": "free"
@@ -116,8 +126,8 @@
       "match": {
         "task_type": ["simplify_output"]
       },
-      "model": "ollama/qwen2.5:7b",
-      "fallback": "anthropic/claude-haiku-20240520",
+      "model": "ollama/llama3.1:8b",
+      "fallback": "anthropic/claude-haiku-4-5",
       "max_tokens": 1024,
       "budget_tier": "free"
     },
@@ -129,10 +139,10 @@
         "output_visibility": ["user_facing"]
       },
       "pattern": "background_digest",
-      "lead_model": "openai/gpt-5-mini",
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
       "reviewer_model": "anthropic/claude-3-5-haiku-latest",
-      "output_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5-nano"],
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/llama3.1:8b"],
       "output_contract": "user_report",
       "reasoning_effort": "low",
       "budget_tier": "economy"
@@ -141,15 +151,15 @@
       "id": "knowledge_sync",
       "description": "Summarization, deduplication, archival, and state snapshots.",
       "match": {
-        "agent": ["knowledgekeeper"],
+        "agent": ["archivar"],
         "task_type": ["knowledge_sync", "archival", "state_snapshot"],
         "complexity": ["low", "medium"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
-      "model": "ollama/qwen2.5:7b",
-      "fallback": "anthropic/claude-haiku-20240520",
-      "fallbacks": ["openai/gpt-5-nano", "ollama/qwen2.5:7b"],
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
+      "model": "ollama/llama3.1:8b",
+      "fallback": "anthropic/claude-haiku-4-5",
+      "fallbacks": ["openai/gpt-5-nano", "ollama/llama3.1:8b"],
       "output_contract": "internal_snapshot",
       "reasoning_effort": "low",
       "max_tokens": 4096,
@@ -159,15 +169,15 @@
       "id": "planning_calendar",
       "description": "Calendar management, time blocking, daily planning.",
       "match": {
-        "agent": ["timebox"],
+        "agent": ["planovac"],
         "task_type": ["daily_plan", "calendar_plan", "meeting_prep"],
         "complexity": ["low", "medium"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
-      "model": "anthropic/claude-haiku-20240520",
-      "fallback": "ollama/qwen2.5:7b",
-      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/qwen2.5:7b"],
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
+      "model": "anthropic/claude-haiku-4-5",
+      "fallback": "ollama/llama3.1:8b",
+      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/llama3.1:8b"],
       "output_contract": "internal_snapshot",
       "reasoning_effort": "low",
       "max_tokens": 2048,
@@ -177,17 +187,17 @@
       "id": "crm_structured_analysis",
       "description": "Pipeline hygiene, CRM scoring, and structured non-writing analysis.",
       "match": {
-        "agent": ["dealops"],
+        "agent": ["udrzbar"],
         "task_type": ["crm_audit", "crm_hygiene", "crm_status"],
         "complexity": ["low", "medium"],
         "capabilities_required": ["structured_data", "json"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
       "reviewer_model": "anthropic/claude-3-5-haiku-latest",
-      "model": "anthropic/claude-haiku-20240520",
-      "fallback": "ollama/qwen2.5:7b",
-      "fallbacks": ["ollama/qwen2.5:7b"],
+      "model": "anthropic/claude-haiku-4-5",
+      "fallback": "ollama/llama3.1:8b",
+      "fallbacks": ["ollama/llama3.1:8b"],
       "output_contract": "internal_snapshot",
       "reasoning_effort": "low",
       "max_tokens": 4096,
@@ -201,8 +211,8 @@
         "capabilities_required": ["structured_data", "analysis"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5-nano"],
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/llama3.1:8b"],
       "output_contract": "scoring_result",
       "reasoning_effort": "low",
       "budget_tier": "economy"
@@ -215,7 +225,7 @@
         "capabilities_required": ["analysis", "structured_data"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
       "fallbacks": ["anthropic/claude-3-5-haiku-latest"],
       "output_contract": "sentiment_result",
       "reasoning_effort": "low",
@@ -229,8 +239,8 @@
         "capabilities_required": ["structured_data"]
       },
       "pattern": "deterministic_router",
-      "lead_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5-nano"],
+      "lead_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-3-5-haiku-latest", "ollama/llama3.1:8b"],
       "output_contract": "cadence_action",
       "reasoning_effort": "low",
       "budget_tier": "economy"
@@ -243,9 +253,9 @@
         "capabilities_required": ["writing", "analysis"]
       },
       "pattern": "reviewer_refiner",
-      "lead_model": "anthropic/claude-sonnet-4-20250514",
-      "reviewer_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5.2"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-sonnet-4-6"],
       "output_contract": "question_bank",
       "reasoning_effort": "medium",
       "budget_tier": "standard"
@@ -258,9 +268,9 @@
         "capabilities_required": ["writing", "analysis", "tone_matching"]
       },
       "pattern": "reviewer_refiner",
-      "lead_model": "anthropic/claude-sonnet-4-20250514",
-      "reviewer_model": "openai/gpt-5.2",
-      "fallbacks": ["openai/gpt-5.2"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "reviewer_model": "anthropic/claude-sonnet-4-6",
+      "fallbacks": ["anthropic/claude-sonnet-4-6"],
       "output_contract": "proposal_draft",
       "reasoning_effort": "high",
       "budget_tier": "standard"
@@ -273,9 +283,9 @@
         "capabilities_required": ["writing", "tone_matching"]
       },
       "pattern": "reviewer_refiner",
-      "lead_model": "anthropic/claude-sonnet-4-20250514",
-      "reviewer_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5.2"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-sonnet-4-6"],
       "output_contract": "social_content",
       "reasoning_effort": "medium",
       "budget_tier": "standard"
@@ -284,16 +294,16 @@
       "id": "writing_with_review",
       "description": "Drafting and user-visible writing with an explicit review pass.",
       "match": {
-        "agent": ["growthlab"],
+        "agent": ["strateg"],
         "capabilities_required": ["writing", "tone_matching", "web_search", "synthesis"]
       },
       "pattern": "reviewer_refiner",
-      "lead_model": "anthropic/claude-sonnet-4-20250514",
-      "reviewer_model": "openai/gpt-5-mini",
-      "output_model": "openai/gpt-5-mini",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "anthropic/claude-haiku-20240520",
-      "fallbacks": ["openai/gpt-5.2"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "reviewer_model": "anthropic/claude-3-5-haiku-latest",
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback": "anthropic/claude-haiku-4-5",
+      "fallbacks": ["anthropic/claude-sonnet-4-6"],
       "output_contract": "handoff_packet",
       "reasoning_effort": "medium",
       "max_tokens": 4096,
@@ -303,11 +313,11 @@
       "id": "content_generation",
       "description": "Email drafts, reports, user-facing summaries",
       "match": {
-        "agent": ["inboxforge", "main"],
+        "agent": ["postak", "main"],
         "capabilities_required": ["writing", "tone_matching"]
       },
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "anthropic/claude-haiku-20240520",
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback": "anthropic/claude-haiku-4-5",
       "max_tokens": 4096,
       "budget_tier": "standard"
     },
@@ -315,19 +325,19 @@
       "id": "research_parallel",
       "description": "Breadth-first web research with a strong lead agent and cheaper subagents.",
       "match": {
-        "agent": ["reviewer"],
+        "agent": ["kontrolor"],
         "task_type": ["research", "market_scan", "competitor_scan"],
         "requires_parallel_workers": [true],
         "capabilities_required": ["validation", "comparison"]
       },
       "pattern": "orchestrator_worker",
-      "lead_model": "anthropic/claude-opus-4-1-20250805",
-      "worker_model": "anthropic/claude-sonnet-4-20250514",
-      "aggregator_model": "openai/gpt-5.2",
-      "output_model": "openai/gpt-5-mini",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "anthropic/claude-haiku-20240520",
-      "fallbacks": ["openai/gpt-5.2", "anthropic/claude-sonnet-4-20250514"],
+      "lead_model": "anthropic/claude-opus-4-6",
+      "worker_model": "anthropic/claude-sonnet-4-6",
+      "aggregator_model": "anthropic/claude-sonnet-4-6",
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback": "anthropic/claude-haiku-4-5",
+      "fallbacks": ["openai/gpt-5.4", "anthropic/claude-sonnet-4-6"],
       "output_contract": "internal_snapshot",
       "reasoning_effort": "high",
       "max_parallel_workers": 4,
@@ -343,10 +353,10 @@
         "requires_tools": [true]
       },
       "pattern": "orchestrator_worker",
-      "lead_model": "openai/gpt-5.2-codex",
-      "reviewer_model": "openai/gpt-5.2",
-      "output_model": "openai/gpt-5-mini",
-      "fallbacks": ["anthropic/claude-opus-4-1-20250805"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "reviewer_model": "anthropic/claude-sonnet-4-6",
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-opus-4-6", "anthropic/claude-3-5-haiku-latest"],
       "output_contract": "review_report",
       "reasoning_effort": "high",
       "budget_tier": "premium"
@@ -358,10 +368,10 @@
         "risk_level": ["critical"]
       },
       "pattern": "reviewer_refiner",
-      "lead_model": "openai/gpt-5.2-pro",
-      "reviewer_model": "anthropic/claude-opus-4-1-20250805",
-      "output_model": "openai/gpt-5-mini",
-      "fallbacks": ["openai/gpt-5.2"],
+      "lead_model": "anthropic/claude-opus-4-6",
+      "reviewer_model": "anthropic/claude-opus-4-6",
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "fallbacks": ["anthropic/claude-sonnet-4-6"],
       "output_contract": "review_report",
       "reasoning_effort": "xhigh",
       "background_mode_preferred": true,
@@ -374,12 +384,12 @@
         "complexity": ["high"]
       },
       "pattern": "orchestrator_worker",
-      "lead_model": "openai/gpt-5.2",
-      "worker_model": "anthropic/claude-sonnet-4-20250514",
-      "output_model": "openai/gpt-5-mini",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "fallback": "anthropic/claude-haiku-20240520",
-      "fallbacks": ["anthropic/claude-opus-4-1-20250805"],
+      "lead_model": "anthropic/claude-sonnet-4-6",
+      "worker_model": "anthropic/claude-sonnet-4-6",
+      "output_model": "anthropic/claude-3-5-haiku-latest",
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback": "anthropic/claude-haiku-4-5",
+      "fallbacks": ["anthropic/claude-opus-4-6", "anthropic/claude-3-5-haiku-latest"],
       "output_contract": "internal_snapshot",
       "reasoning_effort": "high",
       "max_tokens": 8192,
@@ -391,25 +401,25 @@
       "daily_limit_usd": null,
       "cost_per_call_usd": 0,
       "daily_limit": null,
-      "preferred_models": ["ollama/qwen2.5:7b", "openai/gpt-5-nano"]
+      "preferred_models": ["ollama/llama3.1:8b", "anthropic/claude-3-5-haiku-latest"]
     },
     "economy": {
       "daily_limit_usd": 3,
       "cost_per_call_usd": 0.005,
       "daily_limit": 50,
-      "preferred_models": ["openai/gpt-5-mini", "openai/gpt-5-nano", "anthropic/claude-3-5-haiku-latest"]
+      "preferred_models": ["anthropic/claude-3-5-haiku-latest", "ollama/llama3.1:8b"]
     },
     "standard": {
       "daily_limit_usd": 8,
       "cost_per_call_usd": 0.02,
       "daily_limit": 30,
-      "preferred_models": ["openai/gpt-5.2", "anthropic/claude-sonnet-4-20250514"]
+      "preferred_models": ["anthropic/claude-sonnet-4-6", "anthropic/claude-3-5-haiku-latest"]
     },
     "premium": {
       "daily_limit_usd": 20,
       "cost_per_call_usd": 0.05,
       "daily_limit": 10,
-      "preferred_models": ["openai/gpt-5.2-pro", "anthropic/claude-opus-4-1-20250805"]
+      "preferred_models": ["anthropic/claude-opus-4-6", "anthropic/claude-sonnet-4-6"]
     }
   },
   "selection_logic": "first_match_wins",

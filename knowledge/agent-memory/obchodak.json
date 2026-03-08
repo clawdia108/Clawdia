@@ -1,0 +1,25 @@
+{
+  "agent": "pipelinepilot",
+  "created_at": "2026-03-07T20:55:21.162636",
+  "decisions": [],
+  "patterns": [
+    {
+      "pattern_id": "c1d00a9d",
+      "description": "Czech CEOs respond better on Tuesday mornings",
+      "first_seen": "2026-03-07T20:55:21.162674",
+      "last_seen": "2026-03-07T20:55:21.162678",
+      "frequency": 1,
+      "active": true,
+      "tags": [
+        "timing",
+        "outreach"
+      ]
+    }
+  ],
+  "contacts": {},
+  "context": {
+    "current_task": null,
+    "recent_events": [],
+    "notes": []
+  }
+}

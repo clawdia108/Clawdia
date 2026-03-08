@@ -1,0 +1,172 @@
+{
+  "spojka": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T23:51:19.607857",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "obchodak": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:12.204788",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "postak": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T22:03:48.334761",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "strateg": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-08T10:43:33.953850",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "kalendar": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666778",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "kontrolor": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T22:04:50.810744",
+    "total_tasks_completed": 8,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 7.645e-05,
+    "last_completed_at": "2026-03-07T22:04:50.810314",
+    "consecutive_failures": 0
+  },
+  "archivar": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666784",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "udrzbar": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666788",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "textar": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T23:51:19.860490",
+    "total_tasks_completed": 8,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 8.673333333333332e-05,
+    "last_completed_at": "2026-03-07T22:04:50.798934",
+    "consecutive_failures": 0
+  },
+  "hlidac": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666794",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "planovac": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666797",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "vyvojar": {
+    "state": "idle",
+    "current_task": null,
+    "entered_state_at": "2026-03-07T20:20:03.666801",
+    "total_tasks_completed": 0,
+    "total_tasks_failed": 0,
+    "total_time_working_minutes": 0,
+    "last_completed_at": null,
+    "consecutive_failures": 0
+  },
+  "agents": {
+    "archivar": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:50:57.500367"
+    },
+    "hlidac": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:50:58.544888"
+    },
+    "kalendar": {
+      "state": "idle",
+      "updated_at": "2026-03-08T11:51:47.652200"
+    },
+    "kontrolor": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:50:59.914082"
+    },
+    "obchodak": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:51:00.856651"
+    },
+    "planovac": {
+      "state": "idle",
+      "updated_at": "2026-03-08T11:53:02.624826"
+    },
+    "postak": {
+      "state": "idle",
+      "updated_at": "2026-03-08T12:00:12.719794"
+    },
+    "spojka": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:51:00.862093"
+    },
+    "strateg": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:51:01.150360"
+    },
+    "textar": {
+      "state": "idle",
+      "updated_at": "2026-03-08T12:01:34.784394"
+    },
+    "udrzbar": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:51:01.154729"
+    },
+    "vyvojar": {
+      "state": "idle",
+      "updated_at": "2026-03-08T19:51:01.165189"
+    }
+  }
+}

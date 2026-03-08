@@ -1,0 +1,20 @@
+{
+  "id": "ae7b54ccd9cf3210",
+  "session_id": "collab_1772911288_7dc5c7",
+  "from_agent": "growthlab",
+  "to_agent": "reviewer",
+  "timestamp": "2026-03-07T20:21:35.594186",
+  "task_context": "Create email campaign: Behavera outreach to Czech CEOs",
+  "work_done": "Draft produced and enriched. Your job: review quality.",
+  "artifacts": [],
+  "expected_next_steps": [
+    "Evaluate draft against review criteria",
+    "Provide specific, actionable feedback",
+    "Publish feedback to shared context with topic 'review_feedback' and content_type 'feedback'",
+    "Set confidence based on overall quality assessment"
+  ],
+  "quality_notes": null,
+  "status": "pending",
+  "acceptance_notes": null,
+  "chain_position": 2
+}

@@ -1,0 +1,17 @@
+{
+  "total_points": 419,
+  "current_streak": 2,
+  "best_streak": 2,
+  "level": 1,
+  "title": "Pipeline Warrior",
+  "daily_scores": {
+    "2026-03-07": 187,
+    "2026-03-08": 197
+  },
+  "achievements": [
+    "first_50_day",
+    "first_recovery",
+    "first_100_day",
+    "all_agents_healthy"
+  ]
+}

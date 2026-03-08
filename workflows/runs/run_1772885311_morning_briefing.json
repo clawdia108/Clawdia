@@ -1,0 +1,156 @@
+{
+  "run_id": "run_1772885311_morning_briefing",
+  "workflow_id": "morning_briefing",
+  "workflow_name": "Morning Briefing Generation",
+  "status": "timed_out",
+  "context": {
+    "pipeline_data": "67 deals",
+    "calendar_data": "3 meetings",
+    "inbox_data": "12 emails",
+    "briefing": "compiled"
+  },
+  "step_states": {
+    "fetch_pipeline": {
+      "status": "completed",
+      "started_at": "2026-03-07T13:08:31.410186",
+      "completed_at": "2026-03-07T13:08:31.410685",
+      "output": {
+        "pipeline_data": "67 deals"
+      },
+      "error": null,
+      "attempts": 1,
+      "agent": "pipelinepilot",
+      "action": "get_pipeline_snapshot"
+    },
+    "fetch_calendar": {
+      "status": "completed",
+      "started_at": "2026-03-07T13:08:31.410266",
+      "completed_at": "2026-03-07T13:08:31.410917",
+      "output": {
+        "calendar_data": "3 meetings"
+      },
+      "error": null,
+      "attempts": 1,
+      "agent": "calendarcaptain",
+      "action": "get_today_schedule"
+    },
+    "fetch_inbox": {
+      "status": "completed",
+      "started_at": "2026-03-07T13:08:31.410409",
+      "completed_at": "2026-03-07T13:08:31.411145",
+      "output": {
+        "inbox_data": "12 emails"
+      },
+      "error": null,
+      "attempts": 1,
+      "agent": "inboxforge",
+      "action": "get_inbox_summary"
+    },
+    "compile_briefing": {
+      "status": "completed",
+      "started_at": "2026-03-07T13:08:31.411439",
+      "completed_at": "2026-03-07T13:08:31.411727",
+      "output": {
+        "briefing": "compiled"
+      },
+      "error": null,
+      "attempts": 1,
+      "agent": "bridge",
+      "action": "compile_morning_briefing"
+    },
+    "adhd_focus": {
+      "status": "running",
+      "started_at": "2026-03-07T13:08:31.411972",
+      "completed_at": null,
+      "output": null,
+      "error": null,
+      "attempts": 1,
+      "agent": "timebox",
+      "action": "generate_focus_plan"
+    }
+  },
+  "events": [
+    {
+      "ts": "2026-03-07T13:08:31.410190",
+      "type": "step_started",
+      "step": "fetch_pipeline",
+      "details": {
+        "attempt": 1
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.410282",
+      "type": "step_started",
+      "step": "fetch_calendar",
+      "details": {
+        "attempt": 1
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.410413",
+      "type": "step_started",
+      "step": "fetch_inbox",
+      "details": {
+        "attempt": 1
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.410691",
+      "type": "step_completed",
+      "step": "fetch_pipeline",
+      "details": {
+        "output_keys": [
+          "pipeline_data"
+        ]
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.410923",
+      "type": "step_completed",
+      "step": "fetch_calendar",
+      "details": {
+        "output_keys": [
+          "calendar_data"
+        ]
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.411149",
+      "type": "step_completed",
+      "step": "fetch_inbox",
+      "details": {
+        "output_keys": [
+          "inbox_data"
+        ]
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.411443",
+      "type": "step_started",
+      "step": "compile_briefing",
+      "details": {
+        "attempt": 1
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.411732",
+      "type": "step_completed",
+      "step": "compile_briefing",
+      "details": {
+        "output_keys": [
+          "briefing"
+        ]
+      }
+    },
+    {
+      "ts": "2026-03-07T13:08:31.411975",
+      "type": "step_started",
+      "step": "adhd_focus",
+      "details": {
+        "attempt": 1
+      }
+    }
+  ],
+  "created_at": "2026-03-07T13:08:31.409782",
+  "completed_at": "2026-03-07T15:17:43.950839"
+}

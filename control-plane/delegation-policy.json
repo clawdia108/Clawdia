@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "updated_at": "2026-03-08T12:45:00+01:00",
+  "single_control_plane_owner": "main",
+  "owner_display_name": "Spojka",
+  "owner_runtime": "openclaw",
+  "policy": {
+    "principle": "One boss, many specialists. OpenClaw/Spojka owns routing, approvals, shared state, and final publication.",
+    "forbidden": [
+      "secondary_runtimes_must_not_mutate_shared_control_plane_state_without_handoff",
+      "secondary_runtimes_must_not_publish_final_user_digest_directly",
+      "secondary_runtimes_must_not_self-assign_global_priority"
+    ],
+    "required": [
+      "all_cross-runtime_work_must_have_request_id",
+      "all_secondary_runtime_outputs_must_return_as_artifacts_or_handoffs",
+      "shared_state_changes_must_flow_back_through_openclaw"
+    ]
+  },
+  "runtime_roles": {
+    "openclaw": {
+      "role": "control_plane",
+      "owns": [
+        "task_queue",
+        "agent_registry",
+        "approval_flow",
+        "execution_state",
+        "shared_reports",
+        "cross-runtime_routing"
+      ],
+      "best_for": [
+        "orchestration",
+        "state_management",
+        "automation",
+        "workflow_control"
+      ]
+    },
+    "claude_code": {
+      "role": "reasoning_specialist",
+      "owns": [
+        "research_artifacts",
+        "second_opinion_reviews",
+        "design_critiques",
+        "long-form_analysis"
+      ],
+      "best_for": [
+        "deep_reasoning",
+        "critique",
+        "scheduled_knowledge_work",
+        "strategic_review"
+      ]
+    },
+    "codex": {
+      "role": "implementation_specialist",
+      "owns": [
+        "code_changes",
+        "tooling",
+        "integration_work",
+        "technical_debugging"
+      ],
+      "best_for": [
+        "coding",
+        "refactoring",
+        "repo_analysis",
+        "technical_execution"
+      ]
+    }
+  },
+  "routing_defaults": {
+    "research": "claude_code",
+    "architecture_review": "claude_code",
+    "copy_critique": "claude_code",
+    "code_change": "codex",
+    "debugging": "codex",
+    "system_state_update": "openclaw",
+    "approval_decision": "openclaw",
+    "user_digest": "openclaw"
+  },
+  "handoff_contract": {
+    "required_fields": [
+      "request_id",
+      "source_runtime",
+      "target_runtime",
+      "owner_agent",
+      "task_type",
+      "artifacts",
+      "summary"
+    ],
+    "return_path": [
+      "bus/claude-results/",
+      "collaboration/handoffs/",
+      "bus/outbox/"
+    ]
+  }
+}

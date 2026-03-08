@@ -54,6 +54,32 @@ Maintained in `skills/pitch-builder/stories.json`:
   - Resolution (specific outcome with numbers)
 - Indexed by: industry, deal size, objection type
 
+### Ready-to-Use Czech Intrigue Stories
+
+**Story 1: Grammer — "The 34% Discovery"**
+> "Měli jsme klienta v automotive — 400+ lidí. CEO si myslel, že je vše v pořádku.
+> Za 6 týdnů Echo Pulse ukázal, že 34 % klíčových lidí v produkci plánuje odchod.
+> Ne kvůli penězům — kvůli komunikaci s přímým nadřízeným.
+> Včasný zásah jim ušetřil přes 2 miliony na náboru."
+*Use when: prospect thinks everything is fine / doesn't see urgency*
+
+**Story 2: Valxon — "Wrong Assumption"**
+> "CEO ve výrobní firmě, 200 lidí, mi řekl: 'Víme, že problém je v odměnách.'
+> Echo Pulse za týden ukázal, že problém vůbec nejsou odměny — je to komunikace.
+> Za 2 měsíce rozjeli program pro celou firmu."
+*Use when: prospect thinks they already know the problem*
+
+**Story 3: 365.bank — "The Hidden Risk"**
+> "Fintech firma, 300+ lidí. HR ředitelka chtěla měřit psychologické bezpečí.
+> Našli 2 oddělení, kde se lidé báli mluvit o problémech.
+> Restrukturalizace managementu ušetřila 1,8M Kč ročně na náboru."
+*Use when: prospect worries about what results might show*
+
+**Story 4: The Turnover Math**
+> "Průměrná firma s 200 zaměstnanci ztratí 2-4 miliony ročně na nežádoucí fluktuaci.
+> Jeden odchod stojí 6-9 měsíčních platů. Echo Pulse stojí méně než jeden odchod."
+*Use when: price objection / ROI discussion*
+
 ## Pricing Strategy (Anchoring-First)
 
 ### Rules
@@ -97,6 +123,28 @@ Timebox spaces these 2-3 days apart. Only after 3 rapport touches does the pitch
 - Proposal draft for review
 - Pricing recommendation with anchor strategy
 - Objection-handling playcard (linked to intrigue stories)
+
+## Czech Market Pitch Adaptations
+- NEVER use American-style enthusiasm ("Game-changer!", "Amazing!")
+- Lead with DATA, not testimonials — Czechs trust numbers over stories
+- Always offer "pilotní projekt" not "free trial" — reduces perceived risk
+- Reference Czech companies (Grammer, Vodafone, Valxon, 365.bank) — NEVER US examples
+- Price transparency: show pricing upfront, don't make them ask
+- Two-option close ALWAYS: "Preferujete pilot pro 1 tým, nebo rovnou celé oddělení?"
+- 100% money-back guarantee: "Pokud nenajdeme nic relevantního, vracíme peníze"
+
+## ROI Calculator Framework
+Use this formula in every pitch:
+```
+Počet zaměstnanců × průměrná měsíční mzda × 7.5 (replacement months) × fluktuace (%) = roční náklad fluktuace
+→ Echo Pulse investice = zlomek tohoto nákladu
+→ "Stačí zabránit 1 odchodu za rok a investice se vrátí 3×"
+```
+
+## Knowledge Sources
+- `knowledge/OBJECTION_LIBRARY.md` — 10 objections with reframes
+- `knowledge/COPYWRITER_KNOWLEDGE_BASE.md` — product details, case studies, ROI data
+- `knowledge/JOSEF_TONE_OF_VOICE.md` — voice matching for pitch delivery
 
 ## Review Gates
 - All proposals → review gate (user_facing_release)

@@ -82,6 +82,36 @@ Auto-generate SPIN-sequenced discovery questions (Situation → Problem → Impl
 - Minimum acceptable: [fallback next step]
 ```
 
+## HR SaaS Specific Question Bank (Echo Pulse)
+
+### Situation (pick max 2 — research the rest)
+- "Jak aktuálně měříte spokojenost zaměstnanců?"
+- "Kolikrát ročně děláte průzkumy engagementu?"
+- "Jak dlouho trvá, než dostanete výsledky?"
+- "Kdo ve firmě má na starosti retenci?"
+
+### Problem (pick 3-4)
+- "Co se stane, když klíčový člověk odejde bez varování?"
+- "Jaká je vaše fluktuace za poslední rok? Překvapila vás?"
+- "Odkud se dozvíte, že je něco špatně v týmu?"
+- "Jak rychle dokážete reagovat na pokles morálky?"
+- "Máte přehled o tom, co si lidé doopravdy myslí?"
+- "Co děláte, když exit rozhovor odhalí systémový problém?"
+
+### Implication (THE MONEY MAKER — pick 3-5)
+- "Pokud [high turnover] pokračuje, jak to ovlivní vaši schopnost růst?"
+- "Co vás stojí, když klíčový člověk odejde — kolik měsíců a kolik peněz?"
+- "Jak to ovlivňuje morálku těch, kdo zůstávají?"
+- "Kolik času vašeho HR týmu zabírá řešení důsledků, místo prevence?"
+- "Co se stane s projekty, když odejde člověk uprostřed implementace?"
+- "Jak to ovlivňuje vaši pověst zaměstnavatele na trhu?"
+
+### Need-Payoff (let THEM sell the solution — pick 2-3)
+- "Kdybyste věděl/a 3 měsíce předem, kdo plánuje odejít — co byste udělal/a?"
+- "Co by to znamenalo pro vaše náklady, kdybyste snížil/a fluktuaci o 20 %?"
+- "Jak by vám pomohlo vědět přesně, co trápí vaše lidi — do 24 hodin?"
+- "Co kdybyste dostal/a AI doporučení, co konkrétně zlepšit — ne jen data?"
+
 ## Industry Question Banks
 
 Maintained in `skills/spin-questions/banks/` as JSON:
@@ -92,6 +122,11 @@ Maintained in `skills/spin-questions/banks/` as JSON:
 - `ecommerce.json` — Retail, D2C, marketplace
 
 Each bank contains 10 Situation, 15 Problem, 20 Implication, 10 Need-payoff templates per industry.
+
+## Knowledge Sources
+- `knowledge/OBJECTION_LIBRARY.md` — 10 objections with reframes and call scripts
+- `knowledge/COPYWRITER_KNOWLEDGE_BASE.md` — product details, 12 engagement factors, personas
+- `knowledge/JOSEF_TONE_OF_VOICE.md` — voice matching for question delivery
 
 ## Advance Tracking Integration
 After every call, DealOps classifies the outcome:

@@ -1,0 +1,126 @@
+{
+  "deal_id": 360,
+  "org": "Mycroft Mind",
+  "scanned_at": "2026-03-08T21:38:05.586265",
+  "signals": [
+    {
+      "source": "atmoskop",
+      "type": "employee_review",
+      "priority": "high",
+      "title": "Mycroft Mind, a.s. - očima zaměstnanců | Atmoskop.cz",
+      "url": "https://www.atmoskop.cz/nazory-na-zamestnavatele/2928571-mycroft-mind-a-s",
+      "snippet": "Jak se pracuje ve firmě Mycroft Mind, a.s.? Přečtěte si hodnocení od reálných zaměstnanců na Atmoskop.cz, ať víte, do čeho jdete.",
+      "relevance": "Zaměstnanecké recenze = pain point pro Echo Pulse"
+    },
+    {
+      "source": "atmoskop",
+      "type": "employee_review",
+      "priority": "high",
+      "title": "Mycroft Mind, a.s. - through the eyes of employees - Atmoskop.cz",
+      "url": "https://www.atmoskop.cz/en/nazory-na-zamestnavatele/2928571-mycroft-mind-a-s",
+      "snippet": "What&#x27;s it like working at Mycroft Mind, a.s.? Read reviews from real employees on Atmoskop.cz so you know what to expect.",
+      "relevance": "Zaměstnanecké recenze = pain point pro Echo Pulse"
+    },
+    {
+      "source": "atmoskop",
+      "type": "employee_review",
+      "priority": "high",
+      "title": "Vacancies in Mycroft Mind, a.s. | Atmoskop.cz",
+      "url": "https://www.atmoskop.cz/en/nazory-na-zamestnavatele/2928571-mycroft-mind-a-s/nabidky-prace",
+      "snippet": "What&#x27;s it like working at Mycroft Mind, a.s.? Read reviews from real employees on Atmoskop.cz so you know what to expect.",
+      "relevance": "Zaměstnanecké recenze = pain point pro Echo Pulse"
+    },
+    {
+      "source": "jobs.cz",
+      "type": "hiring_general",
+      "priority": "medium",
+      "title": "Firma Mycroft Mind, a.s. - Jobs.cz - Aktuální nabídka práce od ...",
+      "url": "https://www.jobs.cz/prace/?company=1623644651",
+      "snippet": "Mycroft Mind, a.s. Brno - Ponava Senior Product Owner 6. února Možnost občasné práce z domova Mycroft Mind, a.s. Brno - Ponava",
+      "relevance": "Hiring = růst = kulturní výzvy"
+    },
+    {
+      "source": "jobs.cz",
+      "type": "hiring_general",
+      "priority": "medium",
+      "title": "Nabídka práce Brno - Jobs.cz",
+      "url": "https://www.jobs.cz/prace/brno/?date=7d&page=12&locality%5Bradius%5D=10",
+      "snippet": "6. února 45 000 ‍-‍ 60 000 Kč Možnost občasné práce z domova Manuvia a.s. Brno Senior Product Owner 6. února Možnost občasné práce z domovaOdpovězte teď a budete mezi prvními Mycroft Mind, a.s. Brno -",
+      "relevance": "Hiring = růst = kulturní výzvy"
+    },
+    {
+      "source": "jobs.cz",
+      "type": "hiring_general",
+      "priority": "medium",
+      "title": "Aktuální nabídka práce od zaměstnavatelů i ... - Jobs.cz",
+      "url": "https://www.jobs.cz/prace/?q%5B%5D=%242.4",
+      "snippet": "IT Security Engineer (DevOps) 10. prosince Možnost občasné práce z domova Odpovězte teď a budete mezi prvními Mycroft Mind, a.s. Brno - Ponava Specialist - Payments, EMEA with Spanish 10. prosince Mož",
+      "relevance": "Hiring = růst = kulturní výzvy"
+    },
+    {
+      "source": "news",
+      "type": "funding_growth",
+      "priority": "high",
+      "title": "Grant Funding Profiles | Funding | CDC",
+      "url": "https://www.cdc.gov/funding/funding-profiles/index.html",
+      "snippet": "The CDC Grant Funding Profiles site offers quick access to information on CDC funding provided to recipients in states and territories to address issues of public health importance. This includes fund",
+      "relevance": "Investice/růst = budget na nové nástroje"
+    },
+    {
+      "source": "news",
+      "type": "funding_growth",
+      "priority": "high",
+      "title": "Funding Institutional",
+      "url": "https://www.fundinginstitutional.com/",
+      "snippet": "Maximize research funding potential by leveraging Funding Institutional&#x27;s comprehensive insights into the R&amp;D funding landscape. Our platform combines data on awarded grants, funders, and fun",
+      "relevance": "Investice/růst = budget na nové nástroje"
+    },
+    {
+      "source": "linkedin/web",
+      "type": "leadership_change",
+      "priority": "high",
+      "title": "Human Resources Director Duties, Job Description and Skills",
+      "url": "https://www.indeed.com/career-advice/finding-a-job/human-resource-director",
+      "snippet": "Learn what a human resources director does, discover how to become one and explore their skills, salary and job outlook to learn more about this career path.",
+      "relevance": "Nový leader = nové priority = window of opportunity"
+    },
+    {
+      "source": "linkedin/web",
+      "type": "leadership_change",
+      "priority": "high",
+      "title": "Meaning of the acronyms CEO, COO, CMO, CIO, and CTO - Esade",
+      "url": "https://www.esade.edu/beyond/en/c-level-executives-what-do-the-acronyms-ceo-coo-cmo-cio-and-cto-stand-for/",
+      "snippet": "CEO, COO, CMO, CIO, CTO, and so on and so forth. Leadership positions are filled with acronyms, that&#x27;s true. It is becoming increasingly common for companies around the world to use these English",
+      "relevance": "Nový leader = nové priority = window of opportunity"
+    },
+    {
+      "source": "linkedin/web",
+      "type": "leadership_change",
+      "priority": "high",
+      "title": "Human Resource Director - SHRM",
+      "url": "https://www.shrm.org/topics-tools/tools/job-descriptions/human-resource-director",
+      "snippet": "This is a sample job description for a Human Resource Director position.",
+      "relevance": "Nový leader = nové priority = window of opportunity"
+    },
+    {
+      "source": "web",
+      "type": "company_info",
+      "priority": "low",
+      "title": "Tým | Tým, týmová spolupráce a dynamika skupiny | Pedagogika volného ...",
+      "url": "https://is.muni.cz/do/rect/el/estud/pedf/ps23/pvc/web/pages/03_06_01_tym.html",
+      "snippet": "Tým na rozdíl od pracovní skupiny více spolupracuje, je flexibilní, vytváří nové myšlenky a efektivně řeší problémy. Jedna z definic (Hayes, 2005) říká, že týmem můžeme nazvat skupinu lidí, která spol",
+      "relevance": "Obecné info o firmě"
+    },
+    {
+      "source": "web",
+      "type": "company_info",
+      "priority": "low",
+      "title": "Spokojenost + pocit naplnění + seberealizace = wellbeing",
+      "url": "https://www.mojepsychologie.cz/relax/worklife-balance/spokojenost-pocit-naplneni-seberealizace-wellbeing-64",
+      "snippet": "Wellbeing lze taky jednoduše popsat jako spokojenost se životem, jeho pozitivní hodnocení, pocit naplnění a dobrý pocit ze seberealizace.",
+      "relevance": "Obecné info o firmě"
+    }
+  ],
+  "signal_count": 13,
+  "high_priority": 8
+}

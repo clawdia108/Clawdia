@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-03-04T03:41+01:00",
+  "generated_at": "2026-03-08T23:12+01:00",
   "counts": {
     "open": 5,
     "done": 0,
     "blocked": 1,
     "needs_review": 0,
-    "stale_outputs": 12,
-    "dependency_issues": 0
+    "stale_outputs": 0,
+    "healthy_agents": 7,
+    "total_agents": 7
   },
   "top_priorities": [
     {
@@ -21,7 +22,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
-      "user_summary": "P\u0159ipravit dne\u0161n\u00ed jasn\u00fd p\u0159ehled priorit a \u010dty\u0159i bloky pr\u00e1ce bez technick\u00e9ho balastu.",
+      "user_summary": "Připravit dnešní jasný přehled priorit a čtyři bloky práce bez technického balastu.",
       "due_at": "2026-03-03T09:00+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [],
@@ -46,7 +47,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Refresh aggregate hygiene counts, identify risk categories, and produce non-identifying next-step guidance.",
-      "user_summary": "Zkontrolovat hygienu pipeline a vr\u00e1tit jen souhrnn\u00e9 po\u010dty a rizika bez osobn\u00edch dat.",
+      "user_summary": "Zkontrolovat hygienu pipeline a vrátit jen souhrnné počty a rizika bez osobních dat.",
       "due_at": "2026-03-03T09:15+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [
@@ -73,7 +74,7 @@
       "approval_state": "pending_human",
       "output_visibility": "internal",
       "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
-      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "user_summary": "Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.",
       "due_at": "2026-03-03T09:30+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [
@@ -101,7 +102,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Review all control plane configs for consistency. Check that model router rules match agent capabilities. Verify skill dependencies are installed. Flag stale outputs and broken dependency chains.",
-      "user_summary": "Audit syst\u00e9mu: kontrola konzistence a p\u0159ipravenosti agent\u016f",
+      "user_summary": "Audit systému: kontrola konzistence a připravenosti agentů",
       "due_at": "2026-03-04T17:00+01:00",
       "updated_at": "2026-03-04T12:00+01:00",
       "blockers": [],
@@ -126,7 +127,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Research current AI sales automation tools, competitors, and market trends. Focus on what's working for SMBs in Europe. Identify 3-5 actionable experiments we could run.",
-      "user_summary": "Pr\u016fzkum trhu: AI n\u00e1stroje pro automatizaci prodeje v Evrop\u011b, Q1 2026",
+      "user_summary": "Průzkum trhu: AI nástroje pro automatizaci prodeje v Evropě, Q1 2026",
       "due_at": "2026-03-04T18:00+01:00",
       "updated_at": "2026-03-04T12:00+01:00",
       "blockers": [],
@@ -153,7 +154,7 @@
       "approval_state": "pending_human",
       "output_visibility": "internal",
       "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
-      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "user_summary": "Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.",
       "due_at": "2026-03-03T09:30+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [
@@ -173,92 +174,7 @@
   "needs_review": [],
   "recently_completed": [],
   "recently_archived": [],
-  "stale_outputs": [
-    {
-      "agent": "inboxforge",
-      "path": "inbox/INBOX_DIGEST.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 15
-    },
-    {
-      "agent": "inboxforge",
-      "path": "inbox/DRAFTS.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 9
-    },
-    {
-      "agent": "dealops",
-      "path": "pipedrive/SCORING_LOG.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 14
-    },
-    {
-      "agent": "timebox",
-      "path": "calendar/PREP_NOTES.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 13
-    },
-    {
-      "agent": "timebox",
-      "path": "calendar/WEEKLY_OVERVIEW.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 18
-    },
-    {
-      "agent": "growthlab",
-      "path": "intel/DAILY-INTEL.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 14
-    },
-    {
-      "agent": "growthlab",
-      "path": "intel/MARKET_SIGNALS.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 17
-    },
-    {
-      "agent": "growthlab",
-      "path": "intel/COMPETITOR_WATCH.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 19
-    },
-    {
-      "agent": "growthlab",
-      "path": "knowledge/RESEARCH_LOG.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 15
-    },
-    {
-      "agent": "reviewer",
-      "path": "reviews/CODE_QUALITY.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 15
-    },
-    {
-      "agent": "reviewer",
-      "path": "reviews/SYSTEM_HEALTH.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 16
-    },
-    {
-      "agent": "knowledgekeeper",
-      "path": "knowledge/IMPROVEMENTS.md",
-      "reason": "empty_placeholder",
-      "last_modified": "2026-03-03T07:47+01:00",
-      "size_bytes": 15
-    }
-  ],
+  "stale_outputs": [],
   "dependency_issues": [],
   "tasks": [
     {
@@ -273,7 +189,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Produce a sanitized command center with overdue counts, today focus, and four execution blocks.",
-      "user_summary": "P\u0159ipravit dne\u0161n\u00ed jasn\u00fd p\u0159ehled priorit a \u010dty\u0159i bloky pr\u00e1ce bez technick\u00e9ho balastu.",
+      "user_summary": "Připravit dnešní jasný přehled priorit a čtyři bloky práce bez technického balastu.",
       "due_at": "2026-03-03T09:00+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [],
@@ -298,7 +214,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Refresh aggregate hygiene counts, identify risk categories, and produce non-identifying next-step guidance.",
-      "user_summary": "Zkontrolovat hygienu pipeline a vr\u00e1tit jen souhrnn\u00e9 po\u010dty a rizika bez osobn\u00edch dat.",
+      "user_summary": "Zkontrolovat hygienu pipeline a vrátit jen souhrnné počty a rizika bez osobních dat.",
       "due_at": "2026-03-03T09:15+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [
@@ -325,7 +241,7 @@
       "approval_state": "pending_human",
       "output_visibility": "internal",
       "summary": "Track follow-up readiness in a sanitized queue and wait for explicit send approval before any external action.",
-      "user_summary": "P\u0159ipravit frontu follow-up\u016f, ale nic nepos\u00edlat bez tv\u00e9ho v\u00fdslovn\u00e9ho schv\u00e1len\u00ed.",
+      "user_summary": "Připravit frontu follow-upů, ale nic neposílat bez tvého výslovného schválení.",
       "due_at": "2026-03-03T09:30+01:00",
       "updated_at": "2026-03-03T08:20+01:00",
       "blockers": [
@@ -353,7 +269,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Review all control plane configs for consistency. Check that model router rules match agent capabilities. Verify skill dependencies are installed. Flag stale outputs and broken dependency chains.",
-      "user_summary": "Audit syst\u00e9mu: kontrola konzistence a p\u0159ipravenosti agent\u016f",
+      "user_summary": "Audit systému: kontrola konzistence a připravenosti agentů",
       "due_at": "2026-03-04T17:00+01:00",
       "updated_at": "2026-03-04T12:00+01:00",
       "blockers": [],
@@ -378,7 +294,7 @@
       "approval_state": "not_required",
       "output_visibility": "internal",
       "summary": "Research current AI sales automation tools, competitors, and market trends. Focus on what's working for SMBs in Europe. Identify 3-5 actionable experiments we could run.",
-      "user_summary": "Pr\u016fzkum trhu: AI n\u00e1stroje pro automatizaci prodeje v Evrop\u011b, Q1 2026",
+      "user_summary": "Průzkum trhu: AI nástroje pro automatizaci prodeje v Evropě, Q1 2026",
       "due_at": "2026-03-04T18:00+01:00",
       "updated_at": "2026-03-04T12:00+01:00",
       "blockers": [],
@@ -391,5 +307,47 @@
         "output_contract": "internal_snapshot"
       }
     }
-  ]
+  ],
+  "last_orchestrator_run": "2026-03-08T23:42:31.061439",
+  "system_health": {
+    "spojka": {
+      "status": "OK",
+      "age_hours": 3.8581568366951413
+    },
+    "obchodak": {
+      "status": "OK",
+      "age_hours": 1.5771303161647585
+    },
+    "postak": {
+      "status": "OK",
+      "age_hours": 3.0557825264665817
+    },
+    "strateg": {
+      "status": "OK",
+      "age_hours": 5.853823962344063
+    },
+    "kalendar": {
+      "status": "OK",
+      "age_hours": 3.055713161031405
+    },
+    "kontrolor": {
+      "status": "OK",
+      "age_hours": 3.8584201480282676
+    },
+    "archivar": {
+      "status": "OK",
+      "age_hours": 27.187243245376482
+    }
+  },
+  "approval_queue": {
+    "pending": 0,
+    "approved": 0,
+    "expired": 0,
+    "processed": 0
+  },
+  "cost_summary": {
+    "today": 0,
+    "total": 0,
+    "top_models": {}
+  }
 }

@@ -1,0 +1,56 @@
+{
+  "id": "morning_briefing",
+  "name": "Morning Briefing Generation",
+  "description": "Generate comprehensive morning briefing with all context",
+  "max_duration_hours": 2,
+  "entry": [
+    "fetch_pipeline",
+    "fetch_calendar",
+    "fetch_inbox"
+  ],
+  "steps": {
+    "fetch_pipeline": {
+      "agent": "obchodak",
+      "action": "get_pipeline_snapshot",
+      "next": [
+        "compile_briefing"
+      ],
+      "timeout_minutes": 10
+    },
+    "fetch_calendar": {
+      "agent": "kalendar",
+      "action": "get_today_schedule",
+      "next": [
+        "compile_briefing"
+      ],
+      "timeout_minutes": 10
+    },
+    "fetch_inbox": {
+      "agent": "postak",
+      "action": "get_inbox_summary",
+      "next": [
+        "compile_briefing"
+      ],
+      "timeout_minutes": 10
+    },
+    "compile_briefing": {
+      "agent": "spojka",
+      "action": "compile_morning_briefing",
+      "next": [
+        "adhd_focus"
+      ],
+      "depends_on": [
+        "fetch_pipeline",
+        "fetch_calendar",
+        "fetch_inbox"
+      ]
+    },
+    "adhd_focus": {
+      "agent": "planovac",
+      "action": "generate_focus_plan",
+      "depends_on": [
+        "compile_briefing"
+      ]
+    }
+  }
+}

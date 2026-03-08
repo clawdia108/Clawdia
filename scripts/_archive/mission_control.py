@@ -22,56 +22,56 @@ WORKSPACE = Path(__file__).resolve().parents[1]
 OUTPUT = WORKSPACE / "MISSION_CONTROL.md"
 
 AGENTS = {
-    "pipelinepilot": {
-        "name": "PipelinePilot",
+    "obchodak": {
+        "name": "Obchodák",
         "role": "Echo Pulse Pipeline",
         "mission": "Fill Josef's calendar with Echo Pulse demos at 50-200 employee companies.",
         "outputs": ["pipedrive/DEAL_SCORING.md", "pipedrive/PIPELINE_STATUS.md", "pipedrive/ENRICHMENT_LOG.md"],
     },
-    "auditor": {
-        "name": "Auditor",
+    "hlidac": {
+        "name": "Hlídač",
         "role": "Revenue Accountability",
         "mission": "Drive Josef to close 20+ Echo Pulse deals/month = 258K+ CZK commission.",
         "outputs": ["reviews/daily-scorecard/SCOREBOARD.md"],
     },
-    "copyagent": {
-        "name": "CopyAgent",
+    "textar": {
+        "name": "Textař",
         "role": "Echo Pulse Sales Content",
         "mission": "Write emails that get CEOs to book Echo Pulse demos.",
         "outputs": ["drafts/", "templates/sales/"],
     },
-    "growthlab": {
-        "name": "GrowthLab",
+    "strateg": {
+        "name": "Stratég",
         "role": "Prospect Research",
         "mission": "Find companies with 50-200 employees that need engagement surveys NOW.",
         "outputs": ["intel/DAILY-INTEL.md", "intel/COMPETITOR_WATCH.md"],
     },
-    "inboxforge": {
-        "name": "InboxForge",
+    "postak": {
+        "name": "Pošťák",
         "role": "Lead Response",
         "mission": "Never let a warm Echo Pulse lead go cold in the inbox.",
         "outputs": ["inbox/TRIAGE.md", "inbox/FOLLOW_UPS.md"],
     },
-    "knowledgekeeper": {
-        "name": "KnowledgeKeeper",
+    "archivar": {
+        "name": "Archivář",
         "role": "Sales Knowledge",
         "mission": "Arm Josef with knowledge that closes Echo Pulse deals.",
         "outputs": ["knowledge/READING_TRACKER.md", "knowledge/AGENT_INSIGHTS.md"],
     },
-    "calendarcaptain": {
-        "name": "CalendarCaptain",
+    "kalendar": {
+        "name": "Kalendář",
         "role": "Demo Scheduling",
         "mission": "Pack Josef's calendar with Echo Pulse demos, protect calling time.",
         "outputs": ["calendar/TODAY.md", "calendar/TOMORROW_PREP.md"],
     },
-    "codex": {
-        "name": "Codex",
+    "vyvojar": {
+        "name": "Vývojář",
         "role": "Sales Automation",
         "mission": "Build tools that put more Echo Pulse prospects in front of Josef.",
         "outputs": ["scripts/BUILD_LOG.md"],
     },
-    "reviewer": {
-        "name": "Reviewer",
+    "kontrolor": {
+        "name": "Kontrolor",
         "role": "Revenue QA",
         "mission": "Ensure every agent is pulling its weight toward Echo Pulse sales.",
         "outputs": ["reviews/HEALTH_REPORT.md", "reviews/SYSTEM_HEALTH.md"],

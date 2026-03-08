@@ -127,7 +127,7 @@ def check_idle_agents(execution_state, tasks):
         if task.get("status") in ("todo", "in_progress", "needs_review"):
             agents_with_tasks.add(task.get("owner"))
 
-    idle_agents = {"growthlab", "reviewer", "timebox", "inboxforge", "dealops", "knowledgekeeper"} - agents_with_tasks
+    idle_agents = {"strateg", "kontrolor", "planovac", "postak", "udrzbar", "archivar"} - agents_with_tasks
     for agent in idle_agents:
         alerts.append({
             "type": "idle_agent",

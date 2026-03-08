@@ -1,0 +1,26 @@
+{
+  "reports": [
+    {
+      "file": "weekly_2026-03-02.html",
+      "week": "2026-03-02 to 2026-03-08",
+      "generated": "2026-03-07T20:42:51.954973",
+      "metrics": {
+        "deals": 10,
+        "pipeline_value": 0,
+        "healthy_agents": 7,
+        "weekly_cost": 0
+      }
+    },
+    {
+      "file": "weekly_2026-03-02.html",
+      "week": "2026-03-02 to 2026-03-08",
+      "generated": "2026-03-07T22:10:38.610090",
+      "metrics": {
+        "deals": 10,
+        "pipeline_value": 0,
+        "healthy_agents": 7,
+        "weekly_cost": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "handoff_id": "9a569f9d846f860b",
+    "from": "collaboration_engine",
+    "to": "copyagent",
+    "timestamp": "2026-03-07T20:21:32.747231",
+    "status": "pending"
+  },
+  {
+    "handoff_id": "39c809a62a3168a8",
+    "from": "copyagent",
+    "to": "growthlab",
+    "timestamp": "2026-03-07T20:21:35.481812",
+    "status": "pending"
+  },
+  {
+    "handoff_id": "ae7b54ccd9cf3210",
+    "from": "growthlab",
+    "to": "reviewer",
+    "timestamp": "2026-03-07T20:21:35.594186",
+    "status": "pending"
+  },
+  {
+    "handoff_id": "81dec6e5c13c0f56",
+    "from": "copyagent",
+    "to": "bridge",
+    "timestamp": "2026-03-07T20:21:35.827558",
+    "status": "pending"
+  }
+]

@@ -1,0 +1,126 @@
+name: Clawdia CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile all Python scripts
+        run: |
+          echo "=== Compiling Python scripts ==="
+          FAIL=0
+          for f in scripts/*.py; do
+            if python3 -c "compile(open('$f').read(), '$f', 'exec')" 2>/dev/null; then
+              echo "  PASS  $f"
+            else
+              echo "  FAIL  $f"
+              FAIL=1
+            fi
+          done
+          for f in tests/*.py; do
+            if python3 -c "compile(open('$f').read(), '$f', 'exec')" 2>/dev/null; then
+              echo "  PASS  $f"
+            else
+              echo "  FAIL  $f"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+      - name: Check shell script syntax
+        run: |
+          echo "=== Checking shell scripts ==="
+          FAIL=0
+          for f in scripts/*.sh; do
+            if bash -n "$f" 2>/dev/null; then
+              echo "  PASS  $f"
+            else
+              echo "  FAIL  $f"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate JSON state files
+        run: |
+          echo "=== Validating JSON files ==="
+          FAIL=0
+          for f in control-plane/*.json knowledge/*.json; do
+            if [ -f "$f" ]; then
+              if python3 -c "import json; json.load(open('$f'))" 2>/dev/null; then
+                echo "  PASS  $f"
+              else
+                echo "  FAIL  $f"
+                FAIL=1
+              fi
+            fi
+          done
+          exit $FAIL
+
+      - name: Validate workflow definitions
+        run: |
+          echo "=== Validating workflow definitions ==="
+          for f in workflows/definitions/*.json; do
+            if [ -f "$f" ]; then
+              python3 -c "
+          import json
+          with open('$f') as fh:
+              d = json.load(fh)
+          assert 'id' in d, 'missing id'
+          assert 'steps' in d, 'missing steps'
+          print(f'  PASS  $f ({len(d[\"steps\"])} steps)')
+          "
+            fi
+          done
+
+  smoke-tests:
+    runs-on: ubuntu-latest
+    needs: [lint-and-compile, validate-json]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run smoke tests
+        run: python3 tests/test_smoke.py
+        env:
+          CI: true
+
+  schema-validation:
+    runs-on: ubuntu-latest
+    needs: [lint-and-compile]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run schema validation
+        run: python3 scripts/schema_validator.py validate

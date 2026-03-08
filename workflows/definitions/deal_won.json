@@ -1,0 +1,52 @@
+{
+  "id": "deal_won",
+  "name": "Deal Won Celebration & Onboarding",
+  "description": "When a deal is won: celebrate, update scorecard, start onboarding",
+  "max_duration_hours": 24,
+  "entry": [
+    "log_win"
+  ],
+  "steps": {
+    "log_win": {
+      "agent": "hlidac",
+      "action": "log_deal_win",
+      "next": [
+        "update_scorecard",
+        "draft_onboarding",
+        "notify_team"
+      ]
+    },
+    "update_scorecard": {
+      "agent": "hlidac",
+      "action": "add_win_points",
+      "depends_on": [
+        "log_win"
+      ]
+    },
+    "draft_onboarding": {
+      "agent": "textar",
+      "action": "draft_onboarding_email",
+      "next": [
+        "review_onboarding"
+      ],
+      "depends_on": [
+        "log_win"
+      ]
+    },
+    "review_onboarding": {
+      "agent": "kontrolor",
+      "action": "review_onboarding_draft",
+      "depends_on": [
+        "draft_onboarding"
+      ],
+      "retries": 2
+    },
+    "notify_team": {
+      "agent": "spojka",
+      "action": "send_win_notification",
+      "depends_on": [
+        "log_win"
+      ]
+    }
+  }
+}

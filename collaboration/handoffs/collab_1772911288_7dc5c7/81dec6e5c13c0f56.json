@@ -1,0 +1,19 @@
+{
+  "id": "81dec6e5c13c0f56",
+  "session_id": "collab_1772911288_7dc5c7",
+  "from_agent": "copyagent",
+  "to_agent": "bridge",
+  "timestamp": "2026-03-07T20:21:35.827558",
+  "task_context": "Create email campaign: Behavera outreach to Czech CEOs",
+  "work_done": "Draft revised after 0 rounds of feedback. Ready for approval.",
+  "artifacts": [],
+  "expected_next_steps": [
+    "Review final output",
+    "Decide: approve, revise, or escalate",
+    "Publish decision to shared context with topic 'approval_decision' and content_type 'decision'"
+  ],
+  "quality_notes": null,
+  "status": "pending",
+  "acceptance_notes": null,
+  "chain_position": 3
+}

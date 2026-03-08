@@ -410,7 +410,7 @@ def write_pending_reviews(open_tasks):
     if review_tasks:
         lines.append("## Blocked / Needs Review")
         for task in review_tasks:
-            reviewer = task.data.get("reviewer", "reviewer")
+            reviewer = task.data.get("reviewer", "kontrolor")
             lines.append(
                 f"- `{task.task_id}` owned by `{task.owner}` "
                 f"status `{task.status}` reviewer `{reviewer}`"
@@ -420,7 +420,7 @@ def write_pending_reviews(open_tasks):
     if review_required:
         lines.append("## In-Progress (review required on completion)")
         for task in review_required:
-            reviewer = task.data.get("reviewer", "reviewer")
+            reviewer = task.data.get("reviewer", "kontrolor")
             lines.append(
                 f"- `{task.task_id}` owned by `{task.owner}` "
                 f"complexity `{task.complexity}` reviewer `{reviewer}`"

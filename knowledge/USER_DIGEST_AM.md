@@ -1,13 +1,11 @@
-# Dobré ráno ☀️ pondělí 3. 3.
+# Clawdia Dashboard — 2026-03-08 19:51
 
-Dneska je hlavně o tom připravit si jasný přehled a frontu follow-upů. Žádný velký schůzky, takže prostor na práci v klidu.
+## Active Agents: 6
+- obchodak: scoring + stale detection
+- strateg: Studuj články o SPIN selling v češtině
+- kontrolor: health + review (0 stale)
+- archivar: knowledge sync
+- udrzbar: maintenance
+- hlidac: anomaly detection
 
-Pipeline drží — ale potřebuju od tebe potvrzení, než pošlu jakýkoliv follow-up.
-
-**Potřebuju od tebe:**
-- Schválení fronty follow-upů (připravím návrhy, ty řekneš OK)
-
-<!--
-GENEROVÁNO DLE: knowledge/TELEGRAM_STYLE_GUIDE.md
-TEMPLATE: templates/user-report.md
--->
+## Bus: 4 pending messages

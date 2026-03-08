@@ -1,0 +1,10 @@
+{
+  "agent": "vyvojar",
+  "request_id": "f664e9780c104dc6",
+  "success": true,
+  "source": "vyvojar",
+  "result_file": "bus/claude-results/f664e9780c104dc6.json",
+  "saved_output": null,
+  "summary": "1. **OpenClaw/Spojka confirmed sole control-plane owner** — routes, approvals, shared state publication, and runtime boundary decisions are exclusively its domain. Claude and Codex are delegated specialists.\n\n2. **Claude owns:** naming canonicalization, model-router authority cleanup (single source of truth), MCP flag cleanup/activation (gcal + gmail low-risk first).\n\n3. **Codex owns:** shared state consistency (`agent-states.json` schema unification), stale test repair, health reporting fixes (runtime timestamps, not file age — already partially done).\n\n4. **Risk to track:** `workspace/openclaw.model-routing.json` still uses legacy IDs (`dealops`, `growthlab`, `timebox`) — if OpenClaw routes a task using these, the Python runner silently drops it. Silent failure, hard to debug.\n\n5. **Immediate next step:** Codex fixes `agent-states.json` mixed schema (top-level records vs nested `agents{}`) — this unblocks both the drift checker and health server from giving reliable data. Everything ",
+  "imported_at": "2026-03-08T13:06:53.746456"
+}

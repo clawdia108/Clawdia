@@ -1,0 +1,19 @@
+{
+  "id": "39c809a62a3168a8",
+  "session_id": "collab_1772911288_7dc5c7",
+  "from_agent": "copyagent",
+  "to_agent": "growthlab",
+  "timestamp": "2026-03-07T20:21:35.481812",
+  "task_context": "Create email campaign: Behavera outreach to Czech CEOs",
+  "work_done": "Initial draft produced. Your job: enrich with your expertise.",
+  "artifacts": [],
+  "expected_next_steps": [
+    "Review the initial draft",
+    "Add relevant data, research, or perspectives",
+    "Publish enrichment to shared context with topic 'enrichment'"
+  ],
+  "quality_notes": null,
+  "status": "pending",
+  "acceptance_notes": null,
+  "chain_position": 1
+}

@@ -57,7 +57,7 @@
   "human_in_loop": {
     "pause_on": [
       "approval_state=pending_human",
-      "approval_state=pending_bridge",
+      "approval_state=pending_spojka",
       "risk_level=critical",
       "output_visibility=user_facing && review_required=true"
     ],

@@ -1,0 +1,14 @@
+{
+  "subject": "wpj apps s.r.o. — další kroky",
+  "body": "**Analýza: hot_closing / need_payoff**\n\nEmail je solidní základ. Konkrétní, krátký, má CTA. Ale tři věci ho brzdí:\n\n---\n\n**Problémy:**\n\n1. **Need-payoff fáze vyžaduje, aby klient řekl hodnotu sám** — teď ji říká prodejce. „Budete mít první data\" je lepší než podmínkový způsob, ale pořád je to váš claim, ne jeho touha.\n\n2. **Cena přišla moc brzy** — v hot_closing se cena uvádí, ale 55 000 Kč bez kontextu ROI působí jako náklad, ne investice. CEO vidí číslo a počítá co ztrácí, ne co získá.\n\n3. **„Stačí říct ano a zbytek zařídím\"** — zní servilně. V need_payoff jste partner s řešením, ne dodavatel čekající na pokyn.\n\n---\n\n**Finální email:**\n\nDobrý den, pane [příjmení],\n\nza 14 dní od spuštění budete vědět, kdo uvažuje o odchodu a proč — přímo od lidí, bez filtrů přes HR.\n\nEcho Pulse běží od druhého dne. Při vaší velikosti vychází na 55 000 Kč ročně — méně než jeden neočekávaný odchod klíčového člověka.\n\nMáte ve čtvrtek nebo v pátek volných 15 minut?\n\nJosef Hofman, Behavera\n\n---\n\n**Co se změnilo a proč:**\n\n- **ROI kotva místo holé ceny** — „méně než jeden neočekávaný odchod\" přesouvá 55 000 Kč z nákladu do pojistky. CEO to okamžitě přepočítá sám.\n- **„Stačí říct ano\"** pryč — byl jste v pozici prosebníka. Teď nabízíte schůzku jako rovný rovnému.\n- **Délka zachována** — 15 sekund čtení, nic víc.",
+  "to": "kontakt@wpjappss.r.o..cz",
+  "from": "josef.hofman@behavera.com",
+  "template": "hot_closing",
+  "spin_approach": "need_payoff",
+  "deal_title": "WPJ deal",
+  "deal_org": "wpj apps s.r.o.",
+  "deal_value": "55,000 CZK",
+  "model_used": "claude-sonnet-4-6",
+  "generated_at": "2026-03-08T11:38:46.480473",
+  "status": "draft"
+}

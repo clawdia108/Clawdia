@@ -1,0 +1,14 @@
+{
+  "subject": "Vodafone Czech Republic a.s. — další kroky",
+  "body": "Dobrý den, [jméno],\n\ndruhý rok s Echo Pulse – po 12 měsících pravidelných pulse surveys budete vědět přesně: kde ztrácíte lidi, kdo je frustrovaný dřív, než odejde, a které týmy jedou naplno.\n\nSpustit zvládneme za 2 dny. 99–129 Kč na osobu a měsíc.\n\nMá smysl to dotáhnout teď, dokud máte čerstvé výsledky z prvního roku jako srovnání – nebo vidíte důvod to odložit?\n\nJosef Hofman, Behavera\n\n---\n\n**Jedna změna, jeden důvod:**\n\nCTA bylo měkké – „stačí říct kdy\" přesouvá iniciativu na zákazníka a v hot_closing fázi to zpomaluje deal. Otázka „nebo vidíte důvod to odložit?\" vytváří mírný urgency frame, odhaluje případnou námitku a zároveň nezní jako americký hard-sell. CEO buď potvrdí, nebo pojmenuje blokátor – obojí je pro vás lepší než ticho.",
+  "to": "kontakt@vodafoneczechrepublica.s..cz",
+  "from": "josef.hofman@behavera.com",
+  "template": "hot_closing",
+  "spin_approach": "need_payoff",
+  "deal_title": "Vodafone Licence 2nd year",
+  "deal_org": "Vodafone Czech Republic a.s.",
+  "deal_value": "384,441 CZK",
+  "model_used": "claude-sonnet-4-6",
+  "generated_at": "2026-03-08T12:00:48.893841",
+  "status": "draft"
+}

@@ -1,41 +1,49 @@
-# SCOREBOARD — Sales Performance Tracker
+# Sales Scorecard — 2026-03-08
 
-## Current Status
-- **Level:** Rookie (0 XP)
-- **XP:** 0
-- **Streak:** 0 days
-- **Best Streak:** 0 days
+## Today: 197 pts  [████████████████████]
 
-## Level Thresholds
-| Level | XP Required | Badge |
-|-------|------------|-------|
-| Rookie | 0-499 | 🟢 |
-| Closer | 500-1999 | 🔵 |
-| Dealmaker | 2000-4999 | 🟣 |
-| Sales Machine | 5000+ | 🔴 |
+### Activities
+  Morning briefing generated (+10)
+  Pipeline reviewed (+15)
+  Stale deals identified (+10)
+  Lead scoring complete (+10)
+  Inbox triaged (+15)
+  Market intel updated (+10)
+  Daily plan created (+10)
+  Created 5 drafts (+50)
+  Agent triggers fired (31) (+15)
+  All 7 agents healthy! (+20)
+  Auto-recovered 4 agents (+32)
 
-## XP Rules
-| Action | XP |
-|--------|-----|
-| Demo booked | +10 |
-| Demo call completed | +20 |
-| Follow-up sent | +5 |
-| Proposal sent | +50 |
-| Deal won | +100 |
-| Daily target hit (all metrics) | +25 bonus |
-| Weekly boss fight won (5/5 days) | +200 bonus |
+## Stats
+| Metric | Value |
+|--------|-------|
+| Total Points | 419 |
+| Current Streak | 2 days 🔥🔥 |
+| Best Streak | 2 days |
+| Level | Pipeline Warrior |
+| Next: Revenue Ninja (181 pts to go) [███████░░░░░░░░░░░░] | |
 
-## Weekly Boss Fights
-| Week | Mon | Tue | Wed | Thu | Fri | Result |
-|------|-----|-----|-----|-----|-----|--------|
-| — | — | — | — | — | — | — |
+## Achievements: 4/15 [█████░░░░░░░░░░░░░░░]
+  ✅ First 50-Point Day
+  ✅ Century Club
+  ⬜ On Fire
+  ⬜ Unstoppable
+  ⬜ Week Warrior
+  ⬜ Fortnight Force
+  ⬜ Monthly Monster
+  ⬜ Grand
+  ⬜ Elite
+  ⬜ Legendary
+  ⬜ Transcendent
+  ✅ Army Commander
+  ✅ Phoenix
+  ⬜ Weekly Crusher
+  ⬜ Consistency King
 
-## XP History
-| Date | Demos Booked | Calls Done | Follow-ups | Proposals | Deals Won | Bonus | Daily XP |
-|------|-------------|-----------|-----------|----------|----------|-------|----------|
-| — | — | — | — | — | — | — | — |
+## Last 7 Days
+  2026-03-08: 197 pts ███████████████████████████████████████
+  2026-03-07: 187 pts █████████████████████████████████████
 
-## Monthly Revenue Tracking
-| Month | Target Min | Target Opt | Actual | Status |
-|-------|-----------|-----------|--------|--------|
-| 2026-03 | 100,000 CZK | 350,000 CZK | 0 CZK | — |
+---
+*Pipeline Warrior | 🔥🔥 Keep the streak alive!*

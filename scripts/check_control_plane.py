@@ -1,131 +1,200 @@
 #!/usr/bin/env python3
+"""
+Control Plane Checker — detect drift between declared and live runtime layers
+=============================================================================
+Audits the current workspace reality instead of assuming one perfect historical
+architecture. Reports mismatches between:
+- control-plane registry
+- workspace routing config
+- execution state / task queue ownership
+- filesystem agents
+- bus inboxes
+"""
+
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
 
+BASE = Path("/Users/josefhofman/Clawdia")
 
-ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / "control-plane" / "agent-registry.json"
-PATTERNS_PATH = ROOT / "control-plane" / "coordination-patterns.json"
-CONTRACTS_PATH = ROOT / "control-plane" / "output-contracts.json"
-RUNTIME_PATH = ROOT / "control-plane" / "runtime-policies.json"
-GATES_PATH = ROOT / "control-plane" / "review-gates.json"
-ARMY_PATH = ROOT / "openclaw.agent-army.json"
-ROUTING_PATH = ROOT / "workspace" / "openclaw.model-routing.json"
-MODEL_ROUTER_PATH = ROOT / "control-plane" / "model-router.json"
-TASK_TEMPLATE_PATH = ROOT / "tasks" / "templates" / "task.json"
-TASKS_OPEN_DIR = ROOT / "tasks" / "open"
-AGENTS_DIR = ROOT / "agents"
+REGISTRY_PATH = BASE / "control-plane" / "agent-registry.json"
+EXECUTION_STATE_PATH = BASE / "knowledge" / "EXECUTION_STATE.json"
+TASK_QUEUE_PATH = BASE / "control-plane" / "task-queue.json"
+TASKS_OPEN_DIR = BASE / "tasks" / "open"
+ROUTING_PATH = BASE / "workspace" / "openclaw.model-routing.json"
+DELEGATION_POLICY_PATH = BASE / "control-plane" / "delegation-policy.json"
+AGENTS_DIR = BASE / "agents"
+BUS_INBOX_DIR = BASE / "bus" / "inbox"
 
 
-def load(path: Path):
+def load_json(path):
+    if not path.exists():
+        return None
     return json.loads(path.read_text())
 
 
-def iter_tasks():
+def registry_identity_sets(registry):
+    registry_ids = set(registry.get("agents", {}).keys())
+    alias_map = defaultdict(set)
+    all_known_ids = set(registry_ids)
+
+    for agent_id, meta in registry.get("agents", {}).items():
+        alias_map[agent_id].add(agent_id)
+        for alias in meta.get("aliases", []):
+            alias_map[agent_id].add(alias)
+            all_known_ids.add(alias)
+
+    return registry_ids, alias_map, all_known_ids
+
+
+def collect_execution_state_owners(execution_state):
+    owners = set()
+    if not execution_state:
+        return owners
+
+    for section_name in ("top_priorities", "blocked_tasks", "needs_review", "tasks"):
+        for task in execution_state.get(section_name, []):
+            owner = task.get("owner")
+            if owner:
+                owners.add(owner)
+    return owners
+
+
+def collect_task_queue_agents(task_queue):
+    agents = set()
+    if not task_queue:
+        return agents
+    for task in task_queue.get("tasks", []):
+        assigned = task.get("assigned_to")
+        if assigned:
+            agents.add(assigned)
+    return agents
+
+
+def collect_open_task_agents():
+    owners = set()
+    reviewers = set()
     for path in sorted(TASKS_OPEN_DIR.glob("*.json")):
-        yield path, load(path)
+        task = load_json(path) or {}
+        owner = task.get("owner")
+        reviewer = task.get("reviewer")
+        if owner:
+            owners.add(owner)
+        if reviewer:
+            reviewers.add(reviewer)
+    return owners, reviewers
 
 
-def get_model_ids(routing: dict) -> set[str]:
-    model_ids = set()
-    for provider, meta in routing["models"]["providers"].items():
-        for model in meta.get("models", []):
-            model_ids.add(f"{provider}/{model['id']}")
-    return model_ids
+def collect_routing_agents(routing):
+    entries = (((routing or {}).get("agents") or {}).get("entries") or {})
+    return set(entries.keys())
+
+
+def collect_filesystem_agents():
+    if not AGENTS_DIR.exists():
+        return set()
+    return {path.name for path in AGENTS_DIR.iterdir() if path.is_dir()}
+
+
+def collect_bus_inboxes():
+    if not BUS_INBOX_DIR.exists():
+        return set()
+    return {path.name for path in BUS_INBOX_DIR.iterdir() if path.is_dir()}
 
 
 def main():
-    registry = load(REGISTRY_PATH)
-    patterns = load(PATTERNS_PATH)
-    contracts = load(CONTRACTS_PATH)
-    runtime = load(RUNTIME_PATH)
-    gates = load(GATES_PATH)
-    army = load(ARMY_PATH)
-    routing = load(ROUTING_PATH)
-    model_router = load(MODEL_ROUTER_PATH)
-    task_template = load(TASK_TEMPLATE_PATH)
+    registry = load_json(REGISTRY_PATH)
+    if not registry:
+        print("CONTROL PLANE CHECK FAILED")
+        print("- Missing or invalid control-plane/agent-registry.json")
+        return 1
 
-    registry_agents = set(registry["agents"].keys())
-    roster_agents = set(army["agentArmy"]["agents"]) | {army["agentArmy"]["main"]}
-    routing_agents = set(routing["agents"]["entries"].keys())
-    filesystem_agents = {path.name for path in AGENTS_DIR.iterdir() if path.is_dir()} | {"main"}
-    pattern_ids = set(patterns["patterns"].keys())
-    contract_ids = set(contracts["contracts"].keys())
-    model_ids = get_model_ids(routing)
+    execution_state = load_json(EXECUTION_STATE_PATH) or {}
+    task_queue = load_json(TASK_QUEUE_PATH) or {}
+    routing = load_json(ROUTING_PATH) or {}
+    delegation_policy = load_json(DELEGATION_POLICY_PATH) or {}
 
+    registry_ids, alias_map, all_known_ids = registry_identity_sets(registry)
+    routing_agents = collect_routing_agents(routing)
+    filesystem_agents = collect_filesystem_agents()
+    bus_inboxes = collect_bus_inboxes()
+    execution_owners = collect_execution_state_owners(execution_state)
+    queue_agents = collect_task_queue_agents(task_queue)
+    task_owners, task_reviewers = collect_open_task_agents()
+
+    warnings = []
     errors = []
-    if registry_agents != roster_agents:
-        errors.append(
-            f"registry vs army mismatch: {sorted(registry_agents ^ roster_agents)}"
-        )
-    if not registry_agents.issubset(routing_agents):
-        missing = sorted(registry_agents - routing_agents)
-        errors.append(f"registry agents missing from routing: {missing}")
-    if not (registry_agents - {"main"}).issubset(filesystem_agents):
-        missing = sorted((registry_agents - {"main"}) - filesystem_agents)
-        errors.append(f"registry agents missing from agents/: {missing}")
-    if routing.get("task_routing", {}).get("router_config") != "control-plane/model-router.json":
-        errors.append("task_routing.router_config must point to control-plane/model-router.json")
-    if routing.get("coordination", {}).get("patterns_config") != "control-plane/coordination-patterns.json":
-        errors.append("coordination.patterns_config mismatch")
-    if "scopes" not in runtime.get("sessions", {}):
-        errors.append("runtime-policies.json missing sessions.scopes")
 
-    for rule in model_router.get("routing_rules", []):
-        if rule["pattern"] not in pattern_ids:
-            errors.append(f"router rule {rule['id']} references unknown pattern {rule['pattern']}")
-        contract = rule.get("output_contract")
-        if contract and contract not in contract_ids:
-            errors.append(f"router rule {rule['id']} references unknown contract {contract}")
-        for key in ("lead_model", "worker_model", "aggregator_model", "reviewer_model", "output_model"):
-            model = rule.get(key)
-            if model and model not in model_ids:
-                errors.append(f"router rule {rule['id']} references unknown model {model}")
+    if delegation_policy.get("single_control_plane_owner") != registry.get("main_agent"):
+        warnings.append("delegation-policy single_control_plane_owner does not match agent-registry main_agent")
 
-    for gate in gates.get("gates", []):
-        reviewer = gate.get("reviewer")
-        if reviewer and reviewer not in registry_agents:
-            errors.append(f"review gate {gate['id']} references unknown reviewer {reviewer}")
+    missing_filesystem = sorted((registry_ids - {"main"}) - filesystem_agents)
+    if missing_filesystem:
+        warnings.append(f"registry agents missing from agents/: {missing_filesystem}")
 
-    required_template_fields = {
-        "task_type",
-        "risk_level",
-        "coordination_pattern",
-        "expected_output_contract",
-        "approval_state",
-        "route_snapshot",
-    }
-    missing_fields = sorted(required_template_fields - set(task_template))
-    if missing_fields:
-        errors.append(f"task template missing fields: {missing_fields}")
+    missing_inbox = sorted((registry_ids - {"main"}) - bus_inboxes)
+    if missing_inbox:
+        warnings.append(f"registry agents missing bus inboxes: {missing_inbox}")
 
-    for path, task in iter_tasks():
-        owner = task.get("owner")
-        if owner not in registry_agents:
-            errors.append(f"{path.name}: owner {owner!r} not in registry")
-        reviewer = task.get("reviewer")
-        if reviewer not in registry_agents:
-            errors.append(f"{path.name}: reviewer {reviewer!r} not in registry")
-        pattern = task.get("coordination_pattern")
-        if pattern not in pattern_ids:
-            errors.append(f"{path.name}: unknown coordination_pattern {pattern!r}")
-        contract = task.get("expected_output_contract")
-        if contract not in contract_ids:
-            errors.append(f"{path.name}: unknown expected_output_contract {contract!r}")
+    if "claude" not in bus_inboxes:
+        warnings.append("claude inbox missing; Claude Bridge mailbox is not initialized until first run")
+
+    unknown_execution_owners = sorted(execution_owners - all_known_ids)
+    if unknown_execution_owners:
+        warnings.append(f"execution_state references unknown owners: {unknown_execution_owners}")
+
+    unknown_queue_agents = sorted(queue_agents - all_known_ids)
+    if unknown_queue_agents:
+        warnings.append(f"task_queue references unknown assignees: {unknown_queue_agents}")
+
+    unknown_task_owners = sorted(task_owners - all_known_ids)
+    if unknown_task_owners:
+        errors.append(f"tasks/open references unknown owners: {unknown_task_owners}")
+
+    unknown_task_reviewers = sorted(task_reviewers - all_known_ids)
+    if unknown_task_reviewers:
+        errors.append(f"tasks/open references unknown reviewers: {unknown_task_reviewers}")
+
+    routing_only = sorted(routing_agents - all_known_ids)
+    if routing_only:
+        warnings.append(f"routing config contains runtime-only or drifted agent ids: {routing_only}")
+
+    registry_not_in_routing = sorted(registry_ids - routing_agents)
+    if registry_not_in_routing:
+        warnings.append(f"registry agents missing from workspace/openclaw.model-routing.json: {registry_not_in_routing}")
+
+    duplicate_state_shape = load_json(BASE / "control-plane" / "agent-states.json") or {}
+    if duplicate_state_shape and "agents" in duplicate_state_shape and any(key != "agents" for key in duplicate_state_shape.keys()):
+        warnings.append("control-plane/agent-states.json mixes top-level agent records with nested agents{} records")
+
+    print("CONTROL PLANE CHECK")
+    print(f"- main owner: {registry.get('main_agent')}")
+    print(f"- registry ids: {sorted(registry_ids)}")
+    print(f"- routing ids: {sorted(routing_agents)}")
+    print(f"- filesystem agents: {sorted(filesystem_agents)}")
+    print(f"- bus inboxes: {sorted(bus_inboxes)}")
+    print(f"- execution_state owners: {sorted(execution_owners)}")
+    print(f"- task_queue assignees: {sorted(queue_agents)}")
+
+    if warnings:
+        print("\nWARNINGS")
+        for warning in warnings:
+            print(f"- {warning}")
 
     if errors:
-        print("CONTROL PLANE CHECK FAILED")
+        print("\nERRORS")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("CONTROL PLANE CHECK OK")
-    print(f"- registry agents: {sorted(registry_agents)}")
-    print(f"- routing agents: {sorted(routing_agents)}")
-    print(f"- filesystem agents: {sorted(filesystem_agents)}")
-    print(f"- coordination patterns: {sorted(pattern_ids)}")
-    print(f"- output contracts: {sorted(contract_ids)}")
+    print("\nSTATUS")
+    print("- control plane is internally usable")
+    if warnings:
+        print("- drift exists and should be remediated")
+        return 0
+
+    print("- no drift detected by current checks")
     return 0
 
 

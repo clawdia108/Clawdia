@@ -362,17 +362,60 @@ def get_stage_name(stage_id):
 
 def main():
     import sys
+    import traceback
+
+    SCORER_LOG = WORKSPACE / "logs" / "lead-scorer.log"
+    SCORER_LOG.parent.mkdir(exist_ok=True)
+
+    def slog(msg, level="INFO"):
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        line = f"[{ts}] [{level}] {msg}"
+        print(line)
+        with open(SCORER_LOG, "a") as f:
+            f.write(line + "\n")
+        # Keep log under 200KB
+        try:
+            if SCORER_LOG.stat().st_size > 200_000:
+                lines = SCORER_LOG.read_text().splitlines()
+                SCORER_LOG.write_text("\n".join(lines[-500:]) + "\n")
+        except OSError:
+            pass
+
     write_notes = "--write-notes" in sys.argv
     josef_only = "--josef-only" in sys.argv
 
-    env = load_env(ENV_PATH)
-    base = env["PIPEDRIVE_BASE_URL"].rstrip("/")
-    token = env["PIPEDRIVE_API_TOKEN"]
-    my_id = int(env["PIPEDRIVE_USER_ID"])
+    try:
+        env = load_env(ENV_PATH)
+    except FileNotFoundError:
+        slog(f"Env file not found: {ENV_PATH}", "ERROR")
+        return None
+    except Exception as e:
+        slog(f"Failed to load env: {e}", "ERROR")
+        return None
 
-    print("Fetching open deals...")
-    all_deals = paged_get(base, token, "/api/v1/deals", {"status": "open"})
-    print(f"  Total open deals: {len(all_deals)}")
+    base = env.get("PIPEDRIVE_BASE_URL", "").rstrip("/")
+    token = env.get("PIPEDRIVE_API_TOKEN", "")
+    my_id_str = env.get("PIPEDRIVE_USER_ID", "")
+
+    if not base or not token or not my_id_str:
+        slog("Missing required env vars (PIPEDRIVE_BASE_URL, API_TOKEN, USER_ID)", "ERROR")
+        return None
+
+    try:
+        my_id = int(my_id_str)
+    except ValueError:
+        slog(f"Invalid PIPEDRIVE_USER_ID: {my_id_str}", "ERROR")
+        return None
+
+    slog("Fetching open deals...")
+    try:
+        all_deals = paged_get(base, token, "/api/v1/deals", {"status": "open"})
+    except Exception as e:
+        slog(f"Failed to fetch deals from Pipedrive API: {e}", "ERROR")
+        slog(traceback.format_exc(), "ERROR")
+        return None
+
+    slog(f"Total open deals: {len(all_deals)}")
 
     # Score all deals
     scored = []
@@ -678,8 +721,19 @@ def main():
         print(f"  ⏰ Overdue activities: {len(overdue)}")
     print(f"{'='*60}")
 
+    slog(f"Scoring complete: {len(scored)} deals, {len(hot)} HOT, {len(warm)} WARM, {len(cool)} COOL, {len(cold)} COLD")
     return scored
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        import traceback
+        log_path = WORKSPACE / "logs" / "lead-scorer.log"
+        log_path.parent.mkdir(exist_ok=True)
+        with open(log_path, "a") as f:
+            f.write(f"[{datetime.now().isoformat()}] [FATAL] Unhandled exception: {e}\n")
+            f.write(traceback.format_exc() + "\n")
+        print(f"FATAL: {e}", file=__import__('sys').stderr)
+        raise

@@ -5,15 +5,15 @@
   "gates": [
     {
       "id": "user_facing_release",
-      "description": "User-facing output projde interním review (Reviewer), pak jde ven.",
+      "description": "User-facing output projde interním review (Kontrolor), pak jde ven.",
       "match": {
         "output_visibility": ["user_facing"]
       },
       "required_review": true,
-      "reviewer": "reviewer",
+      "kontrolor": "kontrolor",
       "auto_block": false,
       "queue_for_approval": false,
-      "note": "Reviewer zkontroluje automaticky. Neblokuje, jen flaguje problémy."
+      "note": "Kontrolor zkontroluje automaticky. Neblokuje, jen flaguje problémy."
     },
     {
       "id": "crm_write",
@@ -22,7 +22,7 @@
         "guardrails": ["no_cross_owner_writes_without_explicit_ack"]
       },
       "required_review": true,
-      "reviewer": "main",
+      "kontrolor": "main",
       "auto_block": false,
       "queue_for_approval": true,
       "note": "Agent připraví akci, dá do approval-queue/pending/, pokračuje dál."
@@ -34,10 +34,10 @@
         "guardrails": ["no_external_send_without_explicit_approval"]
       },
       "required_review": true,
-      "reviewer": "main",
+      "kontrolor": "main",
       "auto_block": false,
       "queue_for_approval": true,
-      "note": "InboxForge/CopyAgent napíší draft → approval-queue → Josef schválí → odešle se."
+      "note": "Pošťák/Textař napíší draft → approval-queue → Josef schválí → odešle se."
     },
     {
       "id": "high_risk_autonomy",
@@ -46,10 +46,10 @@
         "risk_level": ["high", "critical"]
       },
       "required_review": true,
-      "reviewer": "reviewer",
+      "kontrolor": "kontrolor",
       "auto_block": false,
       "queue_for_approval": false,
-      "note": "Reviewer flaguje, Bridge zmíní v digestu. Agent běží dál."
+      "note": "Kontrolor flaguje, Spojka zmíní v digestu. Agent běží dál."
     },
     {
       "id": "remote_delegate",
@@ -58,7 +58,7 @@
         "coordination_pattern": ["remote_a2a_delegate"]
       },
       "required_review": true,
-      "reviewer": "main",
+      "kontrolor": "main",
       "auto_block": false,
       "queue_for_approval": true,
       "note": "Jde do fronty, nečeká se."
@@ -71,7 +71,7 @@
         "guardrails": ["no_discount_below_floor"]
       },
       "required_review": true,
-      "reviewer": "main",
+      "kontrolor": "main",
       "auto_block": false,
       "queue_for_approval": true,
       "note": "Pricing pod floor vůbec nepřipravovat. Standardní cenové nabídky do fronty."
@@ -84,7 +84,7 @@
         "guardrails": ["first_touch_approval"]
       },
       "required_review": true,
-      "reviewer": "main",
+      "kontrolor": "main",
       "auto_block": false,
       "queue_for_approval": true,
       "note": "Agent připraví email + SPIN research, dá obojí do fronty najednou."

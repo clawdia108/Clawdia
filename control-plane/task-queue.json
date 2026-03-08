@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "updated_at": "2026-03-08T09:09:31.848886",
+  "task_count": 4,
+  "tasks": [
+    {
+      "task_id": "affb1649d4b1",
+      "title": "research Keboola's new product launch",
+      "description": "research Keboola's new product launch",
+      "priority": "P0",
+      "original_priority": "P2",
+      "required_capabilities": [
+        "research"
+      ],
+      "created_at": "2026-03-07T20:30:19.849887",
+      "assigned_to": "strateg",
+      "status": "assigned",
+      "deadline": null,
+      "escalation_count": 2,
+      "assigned_at": "2026-03-08T09:09:31.848854"
+    },
+    {
+      "task_id": "4cc4c997669d",
+      "title": "Score new pipeline deals",
+      "description": "Run scoring on newly added Pipedrive deals",
+      "priority": "P1",
+      "original_priority": "P1",
+      "required_capabilities": [
+        "crm",
+        "scoring"
+      ],
+      "created_at": "2026-03-07T20:19:51.152265",
+      "assigned_to": "obchodak",
+      "status": "done",
+      "deadline": null,
+      "escalation_count": 0,
+      "assigned_at": "2026-03-07T20:20:03.668753",
+      "completed_at": "2026-03-07T20:20:12.202762"
+    },
+    {
+      "task_id": "c174770ecef4",
+      "title": "Draft follow-up emails",
+      "description": "Write follow-ups for scored deals",
+      "priority": "P2",
+      "original_priority": "P2",
+      "required_capabilities": [
+        "email",
+        "drafting"
+      ],
+      "created_at": "2026-03-07T20:19:54.415672",
+      "assigned_to": "postak",
+      "status": "assigned",
+      "deadline": null,
+      "escalation_count": 0,
+      "assigned_at": "2026-03-07T20:20:09.029167"
+    },
+    {
+      "task_id": "ae67d1f739bb",
+      "title": "Compile market intel report",
+      "description": "Weekly competitor analysis",
+      "priority": "P3",
+      "original_priority": "P3",
+      "required_capabilities": [
+        "research",
+        "intel"
+      ],
+      "created_at": "2026-03-07T20:19:54.562991",
+      "assigned_to": "strateg",
+      "status": "assigned",
+      "deadline": null,
+      "escalation_count": 0,
+      "assigned_at": "2026-03-07T20:20:09.038767"
+    }
+  ]
+}

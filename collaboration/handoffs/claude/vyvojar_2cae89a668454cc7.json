@@ -1,0 +1,10 @@
+{
+  "agent": "vyvojar",
+  "request_id": "2cae89a668454cc7",
+  "success": true,
+  "source": "vyvojar",
+  "result_file": "bus/claude-results/2cae89a668454cc7.json",
+  "saved_output": null,
+  "summary": "Already answered this above — scroll up for the full remediation split. Here's a quick recap of the ownership split:\n\n| Owner | Themes |\n|-------|--------|\n| **CLAUDE** | Naming canonicalization (#1), MCP flag activation (#6), model-router as single authority (#2) |\n| **CODEX** | Shared state schema normalization (#4), stale test fixes + real health check wiring (#5) |\n| **OPENCLAW** | Orchestration boundary enforcement — what Python dispatches vs what scheduled tasks dispatch (#3) |\n\n**Sequence:** State schema → naming → MCP flags → tests → model-router authority → runtime boundaries\n\n**Top risk:** State schema change must happen off-hours (after 20:00) to avoid mid-cycle orchestrator crash.",
+  "imported_at": "2026-03-08T13:00:37.414516"
+}

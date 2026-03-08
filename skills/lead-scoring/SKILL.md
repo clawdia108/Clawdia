@@ -54,7 +54,37 @@ Multi-factor lead scoring system using Pipedrive behavioral + firmographic signa
 4. New leads start at 15 (base score for being in pipeline)
 5. Score changes >20 points trigger Bridge notification
 
+## Buying Signal Triggers (signal-based selling — 2x conversion vs static lists)
+When detected, immediately bump score and trigger cadence:
+
+| Signal | Score Bump | Source | Action |
+|--------|-----------|--------|--------|
+| HR job posting | +25 | Web scrape / LinkedIn | Immediate personalized outreach |
+| Funding announcement | +20 | Crunchbase / news | Congratulations email + Echo Pulse pitch |
+| New CEO/CHRO/VP HR | +20 | LinkedIn job changes | "New leaders want data" angle |
+| Glassdoor complaints | +15 | Glassdoor monitoring | "We help companies like yours" |
+| Competitor evaluation (G2 visit) | +15 | G2 / Capterra signals | Competitive positioning email |
+| Growth milestone (50/100/200+) | +10 | LinkedIn headcount | "At your size, informal breaks down" |
+| Video message viewed | +10 | Loom/Vidyard analytics | Follow-up within 24h |
+| LinkedIn post engagement | +5 | LinkedIn activity | Comment + DM follow-up |
+| Website visit (behavera.com) | +10 | Analytics | Auto-trigger warm cadence |
+
+## ADHD-Friendly Score Display
+For Josef's dashboard and morning briefing:
+- 🔥 HOT (80-100): RED — call TODAY, these are money
+- 🟡 WARM (50-79): YELLOW — touch this week
+- 🔵 COOL (25-49): BLUE — let cadence engine handle it
+- ⚪ COLD (0-24): GREY — ignore until signal detected
+
+Show max 5 hot leads in morning briefing. More = decision paralysis for ADHD brain.
+
 ## Integration with Other Skills
 - **cadence-engine**: Score determines cadence intensity (hot = daily, warm = 3-day, cool = weekly)
 - **sentiment-classifier**: Positive sentiment adds +5 bonus, negative subtracts -10
 - **deal-health**: Score feeds into overall deal health calculation
+- **spin-sales-prep**: Hot leads auto-trigger SPIN prep generation
+- **pitch-builder**: Score determines pitch aggressiveness level
+
+## Knowledge Sources
+- `knowledge/COPYWRITER_KNOWLEDGE_BASE.md` — ICP definition, persona details
+- `intel/MARKET_SIGNALS.md` — trigger events and industry signals

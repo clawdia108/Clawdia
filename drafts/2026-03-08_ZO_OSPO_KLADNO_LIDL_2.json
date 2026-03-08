@@ -1,0 +1,14 @@
+{
+  "subject": "ZO OSPO KLADNO LIDL 2 — další kroky",
+  "body": "**Dobrý den,**\n\nděkuji za zájem – rád bych to posunul dopředu.\n\nNa základě toho, co jste zmínil, pulse surveys vám dají přehled o tom, kdo uvažuje o odchodu a kde se hromadí problémy na směnách – dřív, než to eskaluje do fluktuace nebo konfliktu, který řešíte až zpětně.\n\nSpuštění do 2 dnů, 99–129 Kč/osobu měsíčně.\n\nHodí se vám krátký hovor tento nebo příští týden, abychom nastavili první kolo přímo pro váš tým?\n\nJosef Hofman, Behavera\n\n---\n\n**Co jsem změnil a proč:**\n\n- **\"děkuji, že jste se ozval\"** → nahrazeno akcí, ne poděkováním. Zbytečně slabý opener pro closing fázi\n- **Need-payoff fráze** (\"dřív, než to eskaluje do fluktuace nebo konfliktu, který řešíte až zpětně\") – explicitnější payoff, CEO musí vidět co *nezíská*, když nejedná\n- **CTA zpřesněn** – původní \"dáte vědět, zda byste to chtěli\" je příliš otevřené a pasivní. Nový CTA navrhuje konkrétní krok s časovým rámcem\n- **Délka** – OK, pod 15 sekund čtení ✓\n- **Tón** – ne hard-sell, ale direktivní a věcný ✓",
+  "to": "kontakt@zoospokladnolidl2.cz",
+  "from": "josef.hofman@behavera.com",
+  "template": "hot_closing",
+  "spin_approach": "need_payoff",
+  "deal_title": "Lidl",
+  "deal_org": "ZO OSPO KLADNO LIDL 2",
+  "deal_value": "100,000 CZK",
+  "model_used": "claude-sonnet-4-6",
+  "generated_at": "2026-03-08T12:01:33.671657",
+  "status": "draft"
+}

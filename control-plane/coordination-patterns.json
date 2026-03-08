@@ -49,7 +49,7 @@
       "context_policy": "same prompt family, distinct scopes per worker",
       "stop_condition": "all workers complete or quorum threshold is met"
     },
-    "reviewer_refiner": {
+    "kontrolor_refiner": {
       "description": "Generate, evaluate against acceptance checks, refine once or twice, then release.",
       "use_when": [
         "quality bar is explicit",
@@ -62,7 +62,7 @@
         "acceptance_checks",
         "expected_output_contract"
       ],
-      "context_policy": "reviewer sees output plus acceptance checks, not all tool chatter",
+      "context_policy": "kontrolor sees output plus acceptance checks, not all tool chatter",
       "stop_condition": "review passes or task escalates"
     },
     "approval_checkpoint": {

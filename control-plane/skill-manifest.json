@@ -11,7 +11,7 @@
       "entry": "skills/youtube-watcher/SKILL.md",
       "scripts": ["skills/youtube-watcher/scripts/get_transcript.py"],
       "requires_binaries": ["yt-dlp"],
-      "bound_agents": ["growthlab"],
+      "bound_agents": ["strateg"],
       "task_types": ["video_transcript"],
       "capabilities_added": ["video_transcription"]
     },
@@ -22,7 +22,7 @@
       "has_scripts": false,
       "entry": "skills/auto-updater/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["knowledgekeeper"],
+      "bound_agents": ["archivar"],
       "task_types": ["auto_update", "skill_update", "system_maintenance"],
       "capabilities_added": ["auto_update"]
     },
@@ -39,7 +39,7 @@
       ],
       "data_files": ["skills/humanize-ai-text/scripts/patterns.json"],
       "requires_binaries": ["python3"],
-      "bound_agents": ["inboxforge"],
+      "bound_agents": ["postak"],
       "task_types": ["ai_detection", "humanize_text"],
       "capabilities_added": ["ai_detection", "text_humanization"]
     },
@@ -50,7 +50,7 @@
       "has_scripts": false,
       "entry": "skills/openai-whisper/SKILL.md",
       "requires_binaries": ["whisper"],
-      "bound_agents": ["growthlab"],
+      "bound_agents": ["strateg"],
       "task_types": ["audio_transcript"],
       "capabilities_added": ["audio_transcription"]
     },
@@ -65,7 +65,7 @@
         "memory/MEMORY_TEMPLATE.md"
       ],
       "requires_binaries": [],
-      "bound_agents": ["main", "knowledgekeeper"],
+      "bound_agents": ["main", "archivar"],
       "task_types": ["heartbeat", "memory_flush", "proactive_check"],
       "capabilities_added": ["proactive_memory"],
       "architectural_features": [
@@ -83,7 +83,7 @@
       "has_scripts": false,
       "entry": "skills/humanizer/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["inboxforge"],
+      "bound_agents": ["postak"],
       "task_types": ["text_rewrite", "humanize_text"],
       "capabilities_added": ["text_humanization"]
     },
@@ -94,7 +94,7 @@
       "has_scripts": false,
       "entry": "skills/summarize/SKILL.md",
       "requires_binaries": ["summarize"],
-      "bound_agents": ["growthlab", "knowledgekeeper"],
+      "bound_agents": ["strateg", "archivar"],
       "task_types": ["media_summary", "content_summarization"],
       "capabilities_added": ["content_summarization"]
     },
@@ -105,7 +105,7 @@
       "has_scripts": false,
       "entry": "skills/gog/SKILL.md",
       "requires_binaries": ["gog"],
-      "bound_agents": ["timebox", "inboxforge"],
+      "bound_agents": ["planovac", "postak"],
       "task_types": ["gmail_ops", "calendar_ops", "drive_ops", "gworkspace"],
       "capabilities_added": ["google_workspace"]
     },
@@ -140,7 +140,7 @@
         ".learnings/LEARNINGS.md"
       ],
       "requires_binaries": [],
-      "bound_agents": ["main", "knowledgekeeper", "reviewer"],
+      "bound_agents": ["main", "archivar", "kontrolor"],
       "task_types": ["error_log", "learning_capture", "skill_extraction"],
       "capabilities_added": ["self_improvement"],
       "architectural_features": [
@@ -157,7 +157,7 @@
       "entry": "skills/pipedrive-api/SKILL.md",
       "requires_env": ["MATON_API_KEY"],
       "requires_binaries": [],
-      "bound_agents": ["dealops"],
+      "bound_agents": ["udrzbar"],
       "task_types": ["crm_write", "deal_update", "contact_update", "pipeline_ops"],
       "capabilities_added": ["pipedrive_api"]
     },
@@ -168,7 +168,7 @@
       "has_scripts": false,
       "entry": "skills/knowledge-sync/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["knowledgekeeper"],
+      "bound_agents": ["archivar"],
       "task_types": ["knowledge_sync"],
       "capabilities_added": ["knowledge_sync"]
     },
@@ -179,7 +179,7 @@
       "has_scripts": false,
       "entry": "skills/web-research/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["growthlab"],
+      "bound_agents": ["strateg"],
       "task_types": ["research", "market_scan"],
       "capabilities_added": ["web_research"]
     },
@@ -191,7 +191,7 @@
       "entry": "skills/lead-scoring/SKILL.md",
       "requires_binaries": [],
       "requires_env": ["MATON_API_KEY"],
-      "bound_agents": ["dealops"],
+      "bound_agents": ["udrzbar"],
       "task_types": ["lead_scoring", "lead_classification", "score_recalc"],
       "capabilities_added": ["lead_scoring", "lead_classification"]
     },
@@ -202,7 +202,7 @@
       "has_scripts": false,
       "entry": "skills/sentiment-classifier/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["inboxforge"],
+      "bound_agents": ["postak"],
       "task_types": ["sentiment_classification", "reply_routing", "frame_detection"],
       "capabilities_added": ["sentiment_analysis", "frame_detection", "buying_signal_detection"]
     },
@@ -214,7 +214,7 @@
       "entry": "skills/deal-health/SKILL.md",
       "requires_binaries": [],
       "requires_env": ["MATON_API_KEY"],
-      "bound_agents": ["dealops"],
+      "bound_agents": ["udrzbar"],
       "task_types": ["deal_health_scoring", "churn_prediction", "advance_tracking"],
       "capabilities_added": ["deal_health", "churn_prediction"]
     },
@@ -225,7 +225,7 @@
       "has_scripts": false,
       "entry": "skills/cadence-engine/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["main", "inboxforge"],
+      "bound_agents": ["main", "postak"],
       "task_types": ["cadence_management", "sequence_step", "ab_test", "backoff_check"],
       "capabilities_added": ["multi_channel_cadence", "ab_testing", "adaptive_sequencing"]
     },
@@ -243,7 +243,7 @@
         "skills/spin-questions/banks/ecommerce.json"
       ],
       "requires_binaries": [],
-      "bound_agents": ["dealops"],
+      "bound_agents": ["udrzbar"],
       "task_types": ["spin_question_gen", "precall_brief", "discovery_prep"],
       "capabilities_added": ["spin_methodology", "precall_briefing"]
     },
@@ -258,7 +258,7 @@
         "skills/pitch-builder/concessions.json"
       ],
       "requires_binaries": [],
-      "bound_agents": ["growthlab"],
+      "bound_agents": ["strateg"],
       "task_types": ["pitch_building", "proposal_draft", "frame_counter", "pricing_strategy"],
       "capabilities_added": ["pitch_building", "frame_control", "pricing_strategy"]
     },
@@ -269,7 +269,7 @@
       "has_scripts": false,
       "entry": "skills/social-selling/SKILL.md",
       "requires_binaries": [],
-      "bound_agents": ["growthlab"],
+      "bound_agents": ["strateg"],
       "task_types": ["social_selling", "linkedin_content", "profile_audit", "prospect_engagement"],
       "capabilities_added": ["social_selling", "linkedin_management", "ssi_optimization"]
     }

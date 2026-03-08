@@ -1,0 +1,10 @@
+{
+  "agent": "vyvojar",
+  "request_id": "094cd0cf3e0e4bf0",
+  "success": true,
+  "source": "vyvojar",
+  "result_file": "bus/claude-results/094cd0cf3e0e4bf0.json",
+  "saved_output": null,
+  "summary": "POST_RESTART_OK",
+  "imported_at": "2026-03-08T13:01:57.161233"
+}

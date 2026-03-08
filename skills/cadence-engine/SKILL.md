@@ -71,12 +71,45 @@ Multi-channel outreach sequencing with adaptive timing, A/B testing, and lead-sc
 - After 50 sends per variant → promote winner, generate new challenger
 - Results logged in `experiments/cadence-ab-log.md`
 
+### 5. Video Outreach (add to any cadence — 25-30% reply rate)
+| Timing | Channel | Touch | Content Strategy |
+|--------|---------|-------|-----------------|
+| Day 4 (cold) or Day 1 (warm) | Video (Loom/Vidyard) | Personalized 60s video | Show THEIR company on screen + Echo Pulse dashboard |
+| Day 7 (if video viewed) | Email | Reference video | "Viděl/a jste video — co říkáte na [specific point]?" |
+| Day 10 (if not viewed) | Email | Text alternative | Same message as video, text format |
+
+Rules for video:
+- ALWAYS under 60 seconds
+- Czech language, Josefův tón
+- One stat, one CTA
+- Best for warm deals (reply rate 2x higher than cold text)
+
+### 6. LinkedIn Content Nurture (passive — runs alongside any cadence)
+| Frequency | Action | Strategy |
+|-----------|--------|----------|
+| 2x/week | Post content | Founder story or value insight (builds trust) |
+| Daily (5 min) | Engage with prospect content | Like + thoughtful comment (creates familiarity) |
+| Weekly | Send 1 DM | Value-first message, never pitch |
+
+## Signal-Based Cadence Triggers (2026 — intelligence over volume)
+Instead of time-based sequences, trigger touches based on BUYING SIGNALS:
+| Signal | Action | Priority |
+|--------|--------|----------|
+| HR job posting on their careers page | Immediate personalized outreach | 🔥 Hot |
+| Funding announcement | Congratulations email + Echo Pulse connection | 🔥 Hot |
+| Leadership change (new CEO/CHRO) | "New leaders often want data" angle | 🟡 Warm |
+| Glassdoor complaints about culture | "We help companies like yours measure..." | 🔥 Hot |
+| Competitor evaluation (G2/Capterra visit) | "Noticed you're looking at engagement tools..." | 🔥 Hot |
+| Growth milestone (50/100/200+ employees) | "At your size, informal engagement breaks down" | 🟡 Warm |
+| Company expansion announcement | "Growth = engagement risk" angle | 🟡 Warm |
+
 ## Anti-Spam Quality Gate
 Before any message is queued for send:
 1. Claude scores message on: value-to-pitch ratio, personalization depth, length appropriateness
 2. Messages scoring <60/100 get rewritten
 3. Daily send limits enforced: max 50 cold emails, max 20 LinkedIn messages
 4. Domain health check before batch sends (SPF/DKIM/bounce rate)
+5. Video messages: max 5/day (quality over quantity)
 
 ## State Management
 - Each prospect has a cadence state in Pipedrive custom fields:

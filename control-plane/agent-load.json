@@ -1,0 +1,36 @@
+{
+  "agents": {
+    "obchodak": {
+      "active_tasks": [],
+      "total_assigned": 1,
+      "total_released": 1,
+      "last_assigned_at": "2026-03-07T20:20:03.667409",
+      "last_released_at": "2026-03-07T20:20:12.203833"
+    },
+    "postak": {
+      "active_tasks": [
+        "c174770ecef4"
+      ],
+      "total_assigned": 1,
+      "total_released": 0,
+      "last_assigned_at": "2026-03-07T20:20:09.026972"
+    },
+    "strateg": {
+      "active_tasks": [
+        "ae67d1f739bb"
+      ],
+      "total_assigned": 1,
+      "total_released": 0,
+      "last_assigned_at": "2026-03-07T20:20:09.036838"
+    },
+    "strateg": {
+      "active_tasks": [
+        "affb1649d4b1"
+      ],
+      "total_assigned": 1,
+      "total_released": 0,
+      "last_assigned_at": "2026-03-08T09:09:31.833813"
+    }
+  },
+  "updated_at": "2026-03-08T09:09:31.833900"
+}
