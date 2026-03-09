@@ -427,6 +427,19 @@ def coach_call(meeting, fathom_key, pd_token, secrets, history):
         })
         log(f"  Coaching note written to deal {deal['id']}")
 
+    # Push to Notion
+    try:
+        from notion_sync import push_coaching_report
+        notion_token = secrets.get("NOTION_TOKEN")
+        if notion_token:
+            push_coaching_report(
+                notion_token, title, org_name, score,
+                talk_data["ratio"], 0, coaching_text[:1900],
+            )
+            log(f"  Coaching pushed to Notion")
+    except Exception as e:
+        log(f"  Notion push failed: {e}")
+
     log(f"  Score: {score}/70 | Talk: {talk_data['ratio']}%")
     return session
 

@@ -1,0 +1,14 @@
+{
+  "sales_hub": "31dcacf2-0357-81ea-a6e8-f7148706ed92",
+  "playbook": "31ecacf2-0357-81f4-9351-ed76da5e00ef",
+  "coaching": "31ecacf2-0357-8136-b1fd-cc17cfa7162b",
+  "coaching_db": "31ecacf2-0357-815e-8dcb-d3974563b5db",
+  "weekly_reports": "31ecacf2-0357-8171-bef1-c558571e4488",
+  "weekly_db": "31ecacf2-0357-81d1-8703-dedaa7be49ba",
+  "dashboard": "31ecacf2-0357-8118-8d88-e3a3de28735d",
+  "meeting_prep": "31ecacf2-0357-81bf-b997-ccdccac20bc9",
+  "knowledge_base": "31ecacf2-0357-81d3-8920-fe13afc92a09",
+  "deals_db": "31dcacf2-0357-81de-b4d7-c51787a2c146",
+  "digest_db": "31dcacf2-0357-81aa-a88a-c7e21c92475c",
+  "analyses_db": "31dcacf2-0357-8173-a092-f0f4aeb7fb62"
+}

@@ -421,12 +421,30 @@ def main():
     notify_telegram("\n".join(tg_lines))
     log("Telegram digest sent")
 
-    # Push to Notion
+    # Push to Notion — analyses + weekly summary DB
     notion_token = secrets.get("NOTION_TOKEN")
     if notion_token:
         push_analysis(notion_token, f"Weekly Intel {datetime.now().strftime('%d.%m')}",
                        "Weekly Intel", report[:1990],
                        deals_affected=len(deals))
+        try:
+            from notion_sync import push_weekly_summary
+            health_score = 100 - (velocity['stale_14d'] * 3 + velocity['no_next_step'] * 5)
+            hot_c = sum(1 for d in deals if d.get("stage_order_nr", 0) >= 3
+                        and d.get("last_activity_date", "") >= (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d"))
+            warm_c = sum(1 for d in deals if d.get("stage_order_nr", 0) >= 2
+                         and d.get("last_activity_date", "") >= (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d"))
+            push_weekly_summary(
+                notion_token,
+                f"Week {datetime.now().strftime('%V — %d.%m.%Y')}",
+                velocity['total_value'], hot_c, warm_c,
+                len(won) if won else 0, len(lost) if lost else 0,
+                len(activities), 0, 0, max(0, health_score),
+                priorities[0]['org'] if priorities else "",
+                report[:500],
+            )
+        except Exception as e:
+            log(f"Weekly summary Notion push failed: {e}")
 
     return 0
 

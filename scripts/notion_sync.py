@@ -32,6 +32,18 @@ SALES_HUB_ID = "31dcacf2-0357-81ea-a6e8-f7148706ed92"
 DEALS_DB_ID = "31dcacf2-0357-81de-b4d7-c51787a2c146"
 DIGEST_DB_ID = "31dcacf2-0357-81aa-a88a-c7e21c92475c"
 ANALYSES_DB_ID = "31dcacf2-0357-8173-a092-f0f4aeb7fb62"
+COACHING_DB_ID = "31ecacf2-0357-815e-8dcb-d3974563b5db"
+WEEKLY_DB_ID = "31ecacf2-0357-81d1-8703-dedaa7be49ba"
+
+# Page IDs for content pages
+NOTION_PAGES = {
+    "playbook": "31ecacf2-0357-81f4-9351-ed76da5e00ef",
+    "coaching": "31ecacf2-0357-8136-b1fd-cc17cfa7162b",
+    "weekly_reports": "31ecacf2-0357-8171-bef1-c558571e4488",
+    "dashboard": "31ecacf2-0357-8118-8d88-e3a3de28735d",
+    "meeting_prep": "31ecacf2-0357-81bf-b997-ccdccac20bc9",
+    "knowledge_base": "31ecacf2-0357-81d3-8920-fe13afc92a09",
+}
 
 STAGE_MAP = {
     0: "Lead",
@@ -359,6 +371,57 @@ def push_analysis(notion_token, title, category, findings, action_items="", deal
 
     if result:
         log(f"Analysis pushed: {title}")
+    return result
+
+
+def push_coaching_report(notion_token, call_name, deal_name, score, talk_ratio,
+                         spin_score, feedback, improvement_area="Overall"):
+    """Push coaching report to Notion Coaching Reports DB."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    props = {
+        "Call": {"title": [{"text": {"content": call_name[:100]}}]},
+        "Date": {"date": {"start": today}},
+        "Deal": {"rich_text": [{"text": {"content": (deal_name or "")[:100]}}]},
+        "Score": {"number": score or 0},
+        "Talk Ratio": {"number": round(talk_ratio / 100, 2) if talk_ratio else 0},
+        "SPIN Score": {"number": spin_score or 0},
+        "Key Feedback": {"rich_text": [{"text": {"content": truncate(feedback or "")}}]},
+        "Improvement Area": {"select": {"name": improvement_area}},
+        "Status": {"select": {"name": "New"}},
+    }
+    result = notion_api(notion_token, "POST", "/pages", {
+        "parent": {"database_id": COACHING_DB_ID},
+        "properties": props,
+    })
+    if result:
+        log(f"Coaching report pushed: {call_name} (score: {score})")
+    return result
+
+
+def push_weekly_summary(notion_token, week_label, pipeline_value, hot, warm,
+                        won, lost, calls, emails, win_rate, health,
+                        top_priority="", key_insight=""):
+    """Push weekly summary to Notion Weekly Summaries DB."""
+    props = {
+        "Week": {"title": [{"text": {"content": week_label[:100]}}]},
+        "Pipeline Value": {"number": pipeline_value or 0},
+        "Hot Deals": {"number": hot or 0},
+        "Warm Deals": {"number": warm or 0},
+        "Deals Won": {"number": won or 0},
+        "Deals Lost": {"number": lost or 0},
+        "Calls Made": {"number": calls or 0},
+        "Emails Sent": {"number": emails or 0},
+        "Win Rate": {"number": round(win_rate / 100, 2) if win_rate else 0},
+        "Health Score": {"number": health or 0},
+        "Top Priority": {"rich_text": [{"text": {"content": truncate(top_priority)}}]},
+        "Key Insight": {"rich_text": [{"text": {"content": truncate(key_insight)}}]},
+    }
+    result = notion_api(notion_token, "POST", "/pages", {
+        "parent": {"database_id": WEEKLY_DB_ID},
+        "properties": props,
+    })
+    if result:
+        log(f"Weekly summary pushed: {week_label}")
     return result
 
 
