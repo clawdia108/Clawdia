@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-03-09T06:15:06.206448",
+  "mode": "dry_run",
+  "health": {
+    "healthy": 4,
+    "at_risk": 27,
+    "critical": 2,
+    "updated": 0,
+    "actions": 0
+  },
+  "signals": {
+    "actions": 0,
+    "hot_deals": 5
+  },
+  "nextstep": {
+    "actions": 0,
+    "missing": 3
+  }
+}

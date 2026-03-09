@@ -216,7 +216,8 @@ def main():
     secrets = load_secrets()
     token = secrets.get("PIPEDRIVE_API_TOKEN") or secrets.get("PIPEDRIVE_TOKEN")
     if not token:
-        token = "8a21711bcee8c0a34e7cfeefbeba2e554444d5d0"
+        log("No Pipedrive token found in secrets")
+        return 1
 
     deal_id = None
     transcript_file = None

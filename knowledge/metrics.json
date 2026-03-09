@@ -1,0 +1,298 @@
+{
+  "agents": {
+    "obchodak": {
+      "total_runs": 5,
+      "total_success": 5,
+      "total_failures": 0,
+      "total_duration": 3.6,
+      "avg_duration": 0.7,
+      "last_run": "2026-03-09T01:05:36.550745",
+      "tasks": {
+        "deal_scoring": {
+          "runs": 2,
+          "success": 2,
+          "failures": 0
+        },
+        "deal_health": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "stale_cleanup": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "writeback": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "kontrolor": {
+      "total_runs": 4,
+      "total_success": 4,
+      "total_failures": 0,
+      "total_duration": 2.6,
+      "avg_duration": 0.7,
+      "last_run": "2026-03-09T01:12:21.448740",
+      "tasks": {
+        "health_report": {
+          "runs": 2,
+          "success": 2,
+          "failures": 0
+        },
+        "anomaly_scan": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "schema_check": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "spojka": {
+      "total_runs": 6,
+      "total_success": 5,
+      "total_failures": 1,
+      "total_duration": 1.6,
+      "avg_duration": 0.3,
+      "last_run": "2026-03-09T01:19:03.338025",
+      "tasks": {
+        "scorecard": {
+          "runs": 2,
+          "success": 2,
+          "failures": 0
+        },
+        "daily_digest": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "standup": {
+          "runs": 2,
+          "success": 1,
+          "failures": 1
+        },
+        "nudge": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "hlidac": {
+      "total_runs": 3,
+      "total_success": 3,
+      "total_failures": 0,
+      "total_duration": 2.6,
+      "avg_duration": 0.9,
+      "last_run": "2026-03-09T01:14:09.861528",
+      "tasks": {
+        "activity_guard": {
+          "runs": 2,
+          "success": 2,
+          "failures": 0
+        },
+        "pipeline_guard": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "textar": {
+      "total_runs": 5,
+      "total_success": 3,
+      "total_failures": 2,
+      "total_duration": 315.9,
+      "avg_duration": 63.2,
+      "last_run": "2026-03-09T07:14:53.857193",
+      "tasks": {
+        "email_draft": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "spin_prep": {
+          "runs": 2,
+          "success": 0,
+          "failures": 2
+        },
+        "followup": {
+          "runs": 2,
+          "success": 2,
+          "failures": 0
+        }
+      }
+    },
+    "postak": {
+      "total_runs": 3,
+      "total_success": 3,
+      "total_failures": 0,
+      "total_duration": 2.5,
+      "avg_duration": 0.8,
+      "last_run": "2026-03-09T01:06:55.217273",
+      "tasks": {
+        "cold_calls": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "morning_prep": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "email_sequences": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "strateg": {
+      "total_runs": 3,
+      "total_success": 3,
+      "total_failures": 0,
+      "total_duration": 284.0,
+      "avg_duration": 94.7,
+      "last_run": "2026-03-09T01:11:39.258090",
+      "tasks": {
+        "market_intel": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "competitive": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "signals": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "kalendar": {
+      "total_runs": 3,
+      "total_success": 3,
+      "total_failures": 0,
+      "total_duration": 40.6,
+      "avg_duration": 13.5,
+      "last_run": "2026-03-09T01:12:19.900405",
+      "tasks": {
+        "meeting_prep": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "fathom_sync": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "auto_next_step": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "archivar": {
+      "total_runs": 3,
+      "total_success": 3,
+      "total_failures": 0,
+      "total_duration": 106.7,
+      "avg_duration": 35.6,
+      "last_run": "2026-03-09T01:14:08.099205",
+      "tasks": {
+        "notion_sync": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "knowledge_graph": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "dedup": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "udrzbar": {
+      "total_runs": 2,
+      "total_success": 2,
+      "total_failures": 0,
+      "total_duration": 0.2,
+      "avg_duration": 0.1,
+      "last_run": "2026-03-09T01:14:08.228897",
+      "tasks": {
+        "backup": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "status_page": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    },
+    "planovac": {
+      "total_runs": 3,
+      "total_success": 2,
+      "total_failures": 1,
+      "total_duration": 2.7,
+      "avg_duration": 0.9,
+      "last_run": "2026-03-09T01:19:03.248997",
+      "tasks": {
+        "strategic_brief": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        },
+        "weekly_intel": {
+          "runs": 2,
+          "success": 1,
+          "failures": 1
+        }
+      }
+    },
+    "vyvojar": {
+      "total_runs": 1,
+      "total_success": 1,
+      "total_failures": 0,
+      "total_duration": 0.2,
+      "avg_duration": 0.2,
+      "last_run": "2026-03-09T01:14:12.481967",
+      "tasks": {
+        "report": {
+          "runs": 1,
+          "success": 1,
+          "failures": 0
+        }
+      }
+    }
+  },
+  "daily": {
+    "2026-03-09": {
+      "runs": 41,
+      "success": 37,
+      "failures": 4,
+      "duration": 763.2
+    }
+  },
+  "updated_at": "2026-03-09T07:14:53.857268"
+}

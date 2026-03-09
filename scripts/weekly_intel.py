@@ -352,7 +352,8 @@ def main():
     secrets = load_secrets()
     token = secrets.get("PIPEDRIVE_API_TOKEN") or secrets.get("PIPEDRIVE_TOKEN")
     if not token:
-        token = "8a21711bcee8c0a34e7cfeefbeba2e554444d5d0"
+        log("No Pipedrive token found in secrets")
+        return 1
 
     stdout_only = "--stdout" in sys.argv
     week_num = None
@@ -425,7 +426,7 @@ def main():
     if notion_token:
         push_analysis(notion_token, f"Weekly Intel {datetime.now().strftime('%d.%m')}",
                        "Weekly Intel", report[:1990],
-                       deals_affected=len(scored))
+                       deals_affected=len(deals))
 
     return 0
 

@@ -2,7 +2,7 @@
   "generated_at": "2026-03-08T23:12+01:00",
   "counts": {
     "open": 5,
-    "done": 0,
+    "done": 36,
     "blocked": 1,
     "needs_review": 0,
     "stale_outputs": 0,
@@ -306,37 +306,734 @@
         "output_model": "openai/gpt-5-mini",
         "output_contract": "internal_snapshot"
       }
+    },
+    {
+      "task_id": "obchodak_1773014109",
+      "agent": "obchodak",
+      "task_type": "deal_scoring",
+      "status": "completed",
+      "started_at": "2026-03-09T00:55:09.334439",
+      "completed_at": "2026-03-09T00:55:09.745844",
+      "duration_seconds": 0.4,
+      "result": "ritten (147 deals scored)\n✅ PIPELINE_STATUS.md written\n✅ SCORING_LOG.md updated\n\n============================================================\n  LEAD SCORING COMPLETE — 2026-03-09 00:55\n  147 deals sco",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kontrolor_1773014119",
+      "agent": "kontrolor",
+      "task_type": "health_report",
+      "status": "completed",
+      "started_at": "2026-03-09T00:55:19.298985",
+      "completed_at": "2026-03-09T00:55:20.279668",
+      "duration_seconds": 1.0,
+      "result": " 4 |\n| 3 | DPMB deal | Vědeckotechnický k | **72**/100 | 3 |\n| 4 | AQUAdem, s.r.o. | AQUAdem, s.r.o. | **61**/100 | 7 |\n| 5 | SUNNYMONT s.r.o. | SUNNYMONT s.r.o. | **61**/100 | 7 |\n\n## 🎯 Co udělat TEĎ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773014120",
+      "agent": "spojka",
+      "task_type": "scorecard",
+      "status": "completed",
+      "started_at": "2026-03-09T00:55:20.282374",
+      "completed_at": "2026-03-09T00:55:20.332672",
+      "duration_seconds": 0.1,
+      "result": "Scorecard: 55 pts today, 474 total, streak: 3, achievements: 5/15\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "hlidac_1773014120",
+      "agent": "hlidac",
+      "task_type": "activity_guard",
+      "status": "completed",
+      "started_at": "2026-03-09T00:55:20.335228",
+      "completed_at": "2026-03-09T00:55:21.364831",
+      "duration_seconds": 1.0,
+      "result": "{\"mode\": \"dry_run\", \"open_deals\": 33, \"covered_deals\": 29, \"missing_before\": 4, \"subject\": \"naplánovat další krok\", \"due_date\": \"2026-03-10\", \"allowed_owner_ids\": [24403638], \"sample_missing_deal_ids\"",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "obchodak_1773014733",
+      "agent": "obchodak",
+      "task_type": "deal_scoring",
+      "status": "completed",
+      "started_at": "2026-03-09T01:05:33.258146",
+      "completed_at": "2026-03-09T01:05:33.671009",
+      "duration_seconds": 0.4,
+      "result": "ritten (147 deals scored)\n✅ PIPELINE_STATUS.md written\n✅ SCORING_LOG.md updated\n\n============================================================\n  LEAD SCORING COMPLETE — 2026-03-09 01:05\n  147 deals sco",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "obchodak_1773014733",
+      "agent": "obchodak",
+      "task_type": "deal_health",
+      "status": "completed",
+      "started_at": "2026-03-09T01:05:33.673165",
+      "completed_at": "2026-03-09T01:05:35.674860",
+      "duration_seconds": 2.0,
+      "result": " 4 |\n| 3 | DPMB deal | Vědeckotechnický k | **72**/100 | 3 |\n| 4 | AQUAdem, s.r.o. | AQUAdem, s.r.o. | **61**/100 | 7 |\n| 5 | SUNNYMONT s.r.o. | SUNNYMONT s.r.o. | **61**/100 | 7 |\n\n## 🎯 Co udělat TEĎ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "obchodak_1773014735",
+      "agent": "obchodak",
+      "task_type": "stale_cleanup",
+      "status": "completed",
+      "started_at": "2026-03-09T01:05:35.677429",
+      "completed_at": "2026-03-09T01:05:36.013348",
+      "duration_seconds": 0.3,
+      "result": "[2026-03-09 01:05:35] Fetching open deals...\n[2026-03-09 01:05:35] Found 33 open deals\n[2026-03-09 01:05:35] Classification: 9 active, 1 stale, 0 disqualify, 0 lost\n[2026-03-09 01:05:36] Report saved:",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "obchodak_1773014736",
+      "agent": "obchodak",
+      "task_type": "writeback",
+      "status": "completed",
+      "started_at": "2026-03-09T01:05:36.015144",
+      "completed_at": "2026-03-09T01:05:36.550688",
+      "duration_seconds": 0.5,
+      "result": "ng open deals...\n[2026-03-09 01:05:36] Found 33 open deals\n[2026-03-09 01:05:36] \n=== HEALTH LABEL WRITEBACK ===\n[2026-03-09 01:05:36] Health: {'healthy': 4, 'at_risk': 27, 'critical': 2, 'updated': 0",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "textar_1773014736",
+      "agent": "textar",
+      "task_type": "email_draft",
+      "status": "completed",
+      "started_at": "2026-03-09T01:05:36.553177",
+      "completed_at": "2026-03-09T01:06:37.477978",
+      "duration_seconds": 60.9,
+      "result": "Generated 0 drafts, failed 2: 2HHOLINGER s.r.o., 50% commission, 99-129 CZK/person, cap 200\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "textar_1773014797",
+      "agent": "textar",
+      "task_type": "spin_prep",
+      "status": "failed",
+      "started_at": "2026-03-09T01:06:37.486947",
+      "completed_at": "2026-03-09T01:06:51.818403",
+      "duration_seconds": 14.3,
+      "result": "[2026-03-09 01:06:37] Finding deals with upcoming activities (next 48h)...\n[2026-03-09 01:06:51] Found 14 deals needing SPIN prep\n[2026-03-09 01:06:51] Generating SPIN brief for: 2HHOLINGER deal (2HHO",
+      "error": "Users/josefhofman/Clawdia/scripts/spin_prep_generator.py\", line 430, in generate_spin_brief\n    transcript_data = search_fathom_notes(deal, token)\n                                                ^^^^^\nNameError: name 'token' is not defined. Did you mean: 'open'? Or did you forget to import 'token'?\n",
+      "metrics": {
+        "exit_code": 1,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "textar_1773014811",
+      "agent": "textar",
+      "task_type": "followup",
+      "status": "completed",
+      "started_at": "2026-03-09T01:06:51.820555",
+      "completed_at": "2026-03-09T01:06:52.741444",
+      "duration_seconds": 0.9,
+      "result": ".o.    | Hana Strieborná      | breakup_or_disqualify (21d)\n   346 | DI industrial spol. s r.o | Ing. Žaneta Koukalov | breakup_or_disqualify (26d)\n   358 | JuiceUP s.r.o.            | Jasmína Orlická",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 1,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "postak_1773014812",
+      "agent": "postak",
+      "task_type": "cold_calls",
+      "status": "completed",
+      "started_at": "2026-03-09T01:06:52.743583",
+      "completed_at": "2026-03-09T01:06:54.843157",
+      "duration_seconds": 2.1,
+      "result": "y — chápu že to teď není priorita, jen chci nechat otevřené dveře.\"*\n\n### 19. GDF GROUP DEAL — 0/100 \n**Deal 385** | Value: — | Stage: 1 | Silent: 0d\n  🎯 *\"Navazuju na náš poslední rozhovor — mám pro ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "postak_1773014814",
+      "agent": "postak",
+      "task_type": "morning_prep",
+      "status": "completed",
+      "started_at": "2026-03-09T01:06:54.845627",
+      "completed_at": "2026-03-09T01:06:55.159115",
+      "duration_seconds": 0.3,
+      "result": "Pulling deals from Pipedrive...\nMorning prep saved to /Users/josefhofman/Clawdia/knowledge/MORNING_PREP.md\nCall list saved to /Users/josefhofman/Clawdia/knowledge/CALL_LIST.md\nTop deals: 10 | Today's ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "postak_1773014815",
+      "agent": "postak",
+      "task_type": "email_sequences",
+      "status": "completed",
+      "started_at": "2026-03-09T01:06:55.161009",
+      "completed_at": "2026-03-09T01:06:55.217230",
+      "duration_seconds": 0.1,
+      "result": "Advancing active sequences...\n\nNo steps to advance right now.\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "strateg_1773014815",
+      "agent": "strateg",
+      "task_type": "market_intel",
+      "status": "completed",
+      "started_at": "2026-03-09T01:06:55.219305",
+      "completed_at": "2026-03-09T01:07:58.523302",
+      "duration_seconds": 63.3,
+      "result": "enská dea  Demo Scheduled        57   2.5x medium\n  TopGis deal               Interested/Qualif     45   2.5x medium\n  GMC tech deal             Demo Scheduled        54   2.3x medium\n  RENETRA deal  ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "strateg_1773014878",
+      "agent": "strateg",
+      "task_type": "competitive",
+      "status": "completed",
+      "started_at": "2026-03-09T01:07:58.531212",
+      "completed_at": "2026-03-09T01:11:27.362585",
+      "duration_seconds": 208.8,
+      "result": " \n  [NOTE] 2026-03-06 | Glint (LinkedIn/Mi | comparison,feature_g | 📝 Kompletní přepis: Simona Veeserová / Josef Hofma\n  [NOTE] 2026-03-06 | Glint (LinkedIn/Mi | comparison,feature_g | 📝 Kompletní pře",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "strateg_1773015087",
+      "agent": "strateg",
+      "task_type": "signals",
+      "status": "completed",
+      "started_at": "2026-03-09T01:11:27.366208",
+      "completed_at": "2026-03-09T01:11:39.257973",
+      "duration_seconds": 11.9,
+      "result": " dynamika skupiny | Pedagogika\n  _Obecné info o firmě_\n  > Tým na rozdíl od pracovní skupiny více spolupracuje, je flexibilní, vytváří nové myšlenky a efektivně řeší problémy. Jed\n- 🟢 **company_info**",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kalendar_1773015099",
+      "agent": "kalendar",
+      "task_type": "meeting_prep",
+      "status": "completed",
+      "started_at": "2026-03-09T01:11:39.261792",
+      "completed_at": "2026-03-09T01:12:19.057441",
+      "duration_seconds": 39.8,
+      "result": "58: 📋 Juice Up — naplánovat next step (task, 2026-03-12) ---\n  Saved: /Users/josefhofman/Clawdia/meeting-prep/358_2026-03-09.md\n\n--- Deal 269: 📧 Balíkovna (Česká pošta) — poslat template (email, 2026-",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kalendar_1773015139",
+      "agent": "kalendar",
+      "task_type": "fathom_sync",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:19.060831",
+      "completed_at": "2026-03-09T01:12:19.477786",
+      "duration_seconds": 0.4,
+      "result": "[2026-03-09 01:12:19] Fetching meetings from Fathom...\n[2026-03-09 01:12:19] Found 1 meetings\n[2026-03-09 01:12:19] Done: 0 synced, 0 errors\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kalendar_1773015139",
+      "agent": "kalendar",
+      "task_type": "auto_next_step",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:19.480324",
+      "completed_at": "2026-03-09T01:12:19.900354",
+      "duration_seconds": 0.4,
+      "result": "[2026-03-09 01:12:19] Fetching Fathom meetings from last 3 days...\n[2026-03-09 01:12:19] Found 0 meetings\n[2026-03-09 01:12:19] \nDone: 0 next steps created, 0 skipped (already have activity)\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kontrolor_1773015139",
+      "agent": "kontrolor",
+      "task_type": "anomaly_scan",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:19.903183",
+      "completed_at": "2026-03-09T01:12:20.422937",
+      "duration_seconds": 0.5,
+      "result": "sted/Qualified, owner: Gio)\u001b[0m\n     \u001b[2mAction: Schedule a follow-up for Talent Perform Consulting — next activity: 2026-03-09\u001b[0m\n     \u001b[2mDetected: 2026-03-09T01:12:19\u001b[0m\n\n  35. \u001b[0;36mINFO    \u001b[0",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kontrolor_1773015140",
+      "agent": "kontrolor",
+      "task_type": "health_report",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:20.425288",
+      "completed_at": "2026-03-09T01:12:21.391791",
+      "duration_seconds": 1.0,
+      "result": " 4 |\n| 3 | DPMB deal | Vědeckotechnický k | **72**/100 | 3 |\n| 4 | AQUAdem, s.r.o. | AQUAdem, s.r.o. | **61**/100 | 7 |\n| 5 | SUNNYMONT s.r.o. | SUNNYMONT s.r.o. | **61**/100 | 7 |\n\n## 🎯 Co udělat TEĎ",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "kontrolor_1773015141",
+      "agent": "kontrolor",
+      "task_type": "schema_check",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:21.395702",
+      "completed_at": "2026-03-09T01:12:21.448688",
+      "duration_seconds": 0.1,
+      "result": "  reviews/daily-scorecard/score_state.json\n  \u001b[0;32mPASS\u001b[0m  control-plane/model-router.json\n  \u001b[0;31mFAIL\u001b[0m  control-plane/agent-states.json\n         $[agents]: missing required field 'state'\n  \u001b[",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "archivar_1773015141",
+      "agent": "archivar",
+      "task_type": "notion_sync",
+      "status": "completed",
+      "started_at": "2026-03-09T01:12:21.451516",
+      "completed_at": "2026-03-09T01:13:59.701859",
+      "duration_seconds": 98.3,
+      "result": "-09 01:13:57] Creating daily digest for 2026-03-09...\n[2026-03-09 01:13:58] Daily digest created: 4 HOT, 38 WARM, pipeline 2,502,065 CZK\n[2026-03-09 01:13:58] Analysis pushed: Pipeline Status\n[2026-03",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "archivar_1773015239",
+      "agent": "archivar",
+      "task_type": "knowledge_graph",
+      "status": "completed",
+      "started_at": "2026-03-09T01:13:59.708829",
+      "completed_at": "2026-03-09T01:14:07.906531",
+      "duration_seconds": 8.2,
+      "result": "Building knowledge graph from Pipedrive...\n  Fetching organizations...\n  -> 2240 organizations\n  Fetching contacts (persons)...\n  -> 4277 contacts\n  Fetching deals (all statuses)...\n  -> 303 deals\n  F",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "archivar_1773015247",
+      "agent": "archivar",
+      "task_type": "dedup",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:07.909592",
+      "completed_at": "2026-03-09T01:14:08.099151",
+      "duration_seconds": 0.2,
+      "result": "com\n    \u001b[0;31m90%\u001b[0m  Same domain: up21.com\n    \u001b[0;31m90%\u001b[0m  Same domain: foxconn.com\n    \u001b[0;31m90%\u001b[0m  Same domain: manpowergroup.com\n    \u001b[0;31m90%\u001b[0m  Same domain: accenture.com\n    \u001b[0;31m",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "udrzbar_1773015248",
+      "agent": "udrzbar",
+      "task_type": "backup",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:08.102126",
+      "completed_at": "2026-03-09T01:14:08.164385",
+      "duration_seconds": 0.1,
+      "result": "Snapshot created: 20260309_011408 (17 files)\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "udrzbar_1773015248",
+      "agent": "udrzbar",
+      "task_type": "status_page",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:08.167091",
+      "completed_at": "2026-03-09T01:14:08.228849",
+      "duration_seconds": 0.1,
+      "result": "Status page generated: /Users/josefhofman/Clawdia/status/index.html\nOpen: file:///Users/josefhofman/Clawdia/status/index.html\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "hlidac_1773015248",
+      "agent": "hlidac",
+      "task_type": "pipeline_guard",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:08.231543",
+      "completed_at": "2026-03-09T01:14:09.055971",
+      "duration_seconds": 0.8,
+      "result": "\n  Pipeline Automation Check\n  Deals scanned: 113\n  Stage changes: 0\n  Actions taken: 0\n\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "hlidac_1773015249",
+      "agent": "hlidac",
+      "task_type": "activity_guard",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:09.058600",
+      "completed_at": "2026-03-09T01:14:09.861465",
+      "duration_seconds": 0.8,
+      "result": "{\"mode\": \"dry_run\", \"open_deals\": 33, \"covered_deals\": 29, \"missing_before\": 4, \"subject\": \"naplánovat další krok\", \"due_date\": \"2026-03-10\", \"allowed_owner_ids\": [24403638], \"sample_missing_deal_ids\"",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "planovac_1773015249",
+      "agent": "planovac",
+      "task_type": "strategic_brief",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:09.864198",
+      "completed_at": "2026-03-09T01:14:09.987543",
+      "duration_seconds": 0.1,
+      "result": " disqualify\n   _Source: deal velocity_\n\n**2. [HIGH] Operations**\n   Unblock 1 blocked task(s) -- may need manual approval\n   _Source: task management_\n\n**3. [MEDIUM] Productivity**\n   Low activity thi",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "planovac_1773015249",
+      "agent": "planovac",
+      "task_type": "weekly_intel",
+      "status": "failed",
+      "started_at": "2026-03-09T01:14:09.990547",
+      "completed_at": "2026-03-09T01:14:10.894948",
+      "duration_seconds": 0.9,
+      "result": "hy: **3** | 🟡 At Risk: **25** | 🔴 Critical: **5**\n\n⚠️ **3 single-threaded high-value dealů** — přidej druhý kontakt!\n\n## 📈 Velocity Check\n\n- Deals s aktivitou tento týden: **1** touchpointů\n- Won deal",
+      "error": "fman/Clawdia/scripts/weekly_intel.py\", line 435, in <module>\n    exit(main())\n         ~~~~^^\n  File \"/Users/josefhofman/Clawdia/scripts/weekly_intel.py\", line 429, in main\n    deals_affected=len(scored))\n                       ^^^^^^\nNameError: name 'scored' is not defined. Did you mean: 'sorted'?\n",
+      "metrics": {
+        "exit_code": 1,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773015250",
+      "agent": "spojka",
+      "task_type": "daily_digest",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:10.898082",
+      "completed_at": "2026-03-09T01:14:11.201483",
+      "duration_seconds": 0.3,
+      "result": "\n  Preview saved: /Users/josefhofman/Clawdia/status/digest_preview.html\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773015251",
+      "agent": "spojka",
+      "task_type": "standup",
+      "status": "failed",
+      "started_at": "2026-03-09T01:14:11.206469",
+      "completed_at": "2026-03-09T01:14:11.471877",
+      "duration_seconds": 0.3,
+      "result": "",
+      "error": " \"/Users/josefhofman/Clawdia/scripts/standup_generator.py\", line 317, in generate_done_yesterday\n    agent_list = \", \".join(set(agents_recovered)[:5]) if agents_recovered else f\"{success_count} agents\"\n                           ~~~~~~~~~~~~~~~~~~~~~^^^^\nTypeError: 'set' object is not subscriptable\n",
+      "metrics": {
+        "exit_code": 1,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773015251",
+      "agent": "spojka",
+      "task_type": "scorecard",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:11.479143",
+      "completed_at": "2026-03-09T01:14:11.565696",
+      "duration_seconds": 0.1,
+      "result": "Scorecard: 55 pts today, 474 total, streak: 3, achievements: 5/15\n",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 1,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773015251",
+      "agent": "spojka",
+      "task_type": "nudge",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:11.568443",
+      "completed_at": "2026-03-09T01:14:12.247276",
+      "duration_seconds": 0.7,
+      "result": "",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 1,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "vyvojar_1773015252",
+      "agent": "vyvojar",
+      "task_type": "report",
+      "status": "completed",
+      "started_at": "2026-03-09T01:14:12.250142",
+      "completed_at": "2026-03-09T01:14:12.481636",
+      "duration_seconds": 0.2,
+      "result": "\nWeekly Report Generated\n  File: /Users/josefhofman/Clawdia/reports/weekly_2026-03-09.html\n  Period: 2026-03-09 to 2026-03-15\n  Pipeline: 10 deals, $0\n  Agents: 7/7 healthy\n  Cost: $0.00 this week\n  R",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "textar_1773015303",
+      "agent": "textar",
+      "task_type": "spin_prep",
+      "status": "failed",
+      "started_at": "2026-03-09T01:15:03.029838",
+      "completed_at": "2026-03-09T01:19:01.546345",
+      "duration_seconds": 238.5,
+      "result": "03-09 01:18:51] Generating SPIN brief for: GMC tech deal (GMC tech s.r.o.) [deal 340]\n[2026-03-09 01:18:56] Claude CLI error: \n[2026-03-09 01:18:56]   ERROR: Failed to generate brief for deal 340\n[202",
+      "error": "",
+      "metrics": {
+        "exit_code": 1,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "planovac_1773015541",
+      "agent": "planovac",
+      "task_type": "weekly_intel",
+      "status": "completed",
+      "started_at": "2026-03-09T01:19:01.552590",
+      "completed_at": "2026-03-09T01:19:03.248557",
+      "duration_seconds": 1.7,
+      "result": "hy: **3** | 🟡 At Risk: **25** | 🔴 Critical: **5**\n\n⚠️ **3 single-threaded high-value dealů** — přidej druhý kontakt!\n\n## 📈 Velocity Check\n\n- Deals s aktivitou tento týden: **1** touchpointů\n- Won deal",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "spojka_1773015543",
+      "agent": "spojka",
+      "task_type": "standup",
+      "status": "completed",
+      "started_at": "2026-03-09T01:19:03.253425",
+      "completed_at": "2026-03-09T01:19:03.337756",
+      "duration_seconds": 0.1,
+      "result": "update [in_progress] -> dealops\n- 2 overdue deal activities to clear\n- Orchestrator running (3 cycles so far today)\n\n## Blockers\n- All 7 agents healthy\n- Blocked: Prepare sanitized follow-up queue and",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
+    },
+    {
+      "task_id": "textar_1773036892",
+      "agent": "textar",
+      "task_type": "followup",
+      "status": "completed",
+      "started_at": "2026-03-09T07:14:52.526094",
+      "completed_at": "2026-03-09T07:14:53.856443",
+      "duration_seconds": 1.3,
+      "result": ".o.    | Hana Strieborná      | breakup_or_disqualify (21d)\n   346 | DI industrial spol. s r.o | Ing. Žaneta Koukalov | breakup_or_disqualify (26d)\n   358 | JuiceUP s.r.o.            | Jasmína Orlická",
+      "error": "",
+      "metrics": {
+        "exit_code": 0,
+        "calls": 0,
+        "errors": 0,
+        "tokens": 0
+      }
     }
   ],
-  "last_orchestrator_run": "2026-03-09T00:12:53.494331",
+  "last_orchestrator_run": "2026-03-09T06:52:35.353352",
   "system_health": {
     "spojka": {
       "status": "OK",
-      "age_hours": 4.364546371168561
+      "age_hours": 11.025950781438086
     },
     "obchodak": {
       "status": "OK",
-      "age_hours": 0.0015731436014175416
+      "age_hours": 0.12604421350691053
     },
     "postak": {
       "status": "OK",
-      "age_hours": 3.562172060940001
+      "age_hours": 10.223576471209526
     },
     "strateg": {
       "status": "OK",
-      "age_hours": 6.360213496817483
+      "age_hours": 13.021617907087007
     },
     "kalendar": {
       "status": "OK",
-      "age_hours": 3.5621026955048243
+      "age_hours": 10.223507105774349
     },
     "kontrolor": {
       "status": "OK",
-      "age_hours": 4.364809682501687
+      "age_hours": 11.026214092771212
     },
     "archivar": {
       "status": "OK",
-      "age_hours": 27.6936327798499
+      "age_hours": 34.355037190119425
     }
   },
   "approval_queue": {
@@ -349,5 +1046,80 @@
     "today": 0,
     "total": 0,
     "top_models": {}
-  }
+  },
+  "agents": {
+    "obchodak": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:05:36.014868",
+      "updated_at": "2026-03-09T01:05:36.551368",
+      "last_result": "ng open deals...\n[2026-03-09 01:05:36] Found 33 open deals\n[2026-03-09 01:05:36] \n=== HEALTH LABEL W"
+    },
+    "kontrolor": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:12:21.394498",
+      "updated_at": "2026-03-09T01:12:21.449517",
+      "last_result": "  reviews/daily-scorecard/score_state.json\n  \u001b[0;32mPASS\u001b[0m  control-plane/model-router.json\n  \u001b[0;"
+    },
+    "spojka": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:19:03.252463",
+      "updated_at": "2026-03-09T01:19:03.338723",
+      "last_result": "update [in_progress] -> dealops\n- 2 overdue deal activities to clear\n- Orchestrator running (3 cycle"
+    },
+    "hlidac": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:14:09.058167",
+      "updated_at": "2026-03-09T01:14:09.862402",
+      "last_result": "{\"mode\": \"dry_run\", \"open_deals\": 33, \"covered_deals\": 29, \"missing_before\": 4, \"subject\": \"naplánov"
+    },
+    "textar": {
+      "status": "idle",
+      "last_active": "2026-03-09T07:14:52.524657",
+      "updated_at": "2026-03-09T07:14:53.858352",
+      "last_result": ".o.    | Hana Strieborná      | breakup_or_disqualify (21d)\n   346 | DI industrial spol. s r.o | Ing"
+    },
+    "postak": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:06:55.160687",
+      "updated_at": "2026-03-09T01:06:55.217867",
+      "last_result": "Advancing active sequences...\n\nNo steps to advance right now.\n"
+    },
+    "strateg": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:11:27.365829",
+      "updated_at": "2026-03-09T01:11:39.259075",
+      "last_result": " dynamika skupiny | Pedagogika\n  _Obecné info o firmě_\n  > Tým na rozdíl od pracovní skupiny více sp"
+    },
+    "kalendar": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:12:19.479937",
+      "updated_at": "2026-03-09T01:12:19.900996",
+      "last_result": "[2026-03-09 01:12:19] Fetching Fathom meetings from last 3 days...\n[2026-03-09 01:12:19] Found 0 mee"
+    },
+    "archivar": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:14:07.909078",
+      "updated_at": "2026-03-09T01:14:08.100029",
+      "last_result": "com\n    \u001b[0;31m90%\u001b[0m  Same domain: up21.com\n    \u001b[0;31m90%\u001b[0m  Same domain: foxconn.com\n    \u001b[0;3"
+    },
+    "udrzbar": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:14:08.166656",
+      "updated_at": "2026-03-09T01:14:08.229673",
+      "last_result": "Status page generated: /Users/josefhofman/Clawdia/status/index.html\nOpen: file:///Users/josefhofman/"
+    },
+    "planovac": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:19:01.551645",
+      "updated_at": "2026-03-09T01:19:03.250021",
+      "last_result": "hy: **3** | 🟡 At Risk: **25** | 🔴 Critical: **5**\n\n⚠️ **3 single-threaded high-value dealů** — přide"
+    },
+    "vyvojar": {
+      "status": "idle",
+      "last_active": "2026-03-09T01:14:12.249620",
+      "updated_at": "2026-03-09T01:14:12.482678",
+      "last_result": "\nWeekly Report Generated\n  File: /Users/josefhofman/Clawdia/reports/weekly_2026-03-09.html\n  Period:"
+    }
+  },
+  "last_autopilot_run": "2026-03-09T06:10:06.170136"
 }

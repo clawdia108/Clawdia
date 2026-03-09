@@ -314,7 +314,7 @@ class StandupGenerator:
                             agent = parts[1].strip().split()[0] if parts[1].strip() else "unknown"
                             agents_recovered.append(agent)
             if success_count > 0:
-                agent_list = ", ".join(set(agents_recovered)[:5]) if agents_recovered else f"{success_count} agents"
+                agent_list = ", ".join(list(set(agents_recovered))[:5]) if agents_recovered else f"{success_count} agents"
                 items.append(f"Recovered {success_count} agent(s) ({agent_list})")
 
         # Events analysis

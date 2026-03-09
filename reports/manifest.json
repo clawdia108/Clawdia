@@ -21,6 +21,28 @@
         "healthy_agents": 7,
         "weekly_cost": 0
       }
+    },
+    {
+      "file": "weekly_2026-03-09.html",
+      "week": "2026-03-09 to 2026-03-15",
+      "generated": "2026-03-09T01:14:12.297826",
+      "metrics": {
+        "deals": 10,
+        "pipeline_value": 0,
+        "healthy_agents": 7,
+        "weekly_cost": 0
+      }
+    },
+    {
+      "file": "weekly_2026-03-09.html",
+      "week": "2026-03-09 to 2026-03-15",
+      "generated": "2026-03-09T05:06:00.800789",
+      "metrics": {
+        "deals": 10,
+        "pipeline_value": 0,
+        "healthy_agents": 7,
+        "weekly_cost": 0
+      }
     }
   ]
 }

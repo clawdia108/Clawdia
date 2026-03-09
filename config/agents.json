@@ -1,0 +1,133 @@
+{
+  "agents": {
+    "obchodak": {
+      "enabled": true,
+      "description": "Sales pipeline management",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "deal_scoring": "scripts/pipedrive_lead_scorer.py",
+        "deal_health": "scripts/deal_health_scorer.py --snapshot",
+        "stale_cleanup": "scripts/stale_deal_cleanup.py --report",
+        "writeback": "scripts/pipedrive_writeback.py"
+      }
+    },
+    "textar": {
+      "enabled": true,
+      "description": "Czech B2B copywriting",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "email_draft": "scripts/draft_generator.py 3",
+        "spin_prep": "scripts/spin_prep_generator.py",
+        "followup": "scripts/followup_engine.py --scan"
+      }
+    },
+    "postak": {
+      "enabled": true,
+      "description": "Outreach coordination",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "cold_calls": "scripts/cold_call_list.py --export",
+        "morning_prep": "scripts/morning_sales_prep.py",
+        "email_sequences": "scripts/email_sequences.py advance"
+      }
+    },
+    "strateg": {
+      "enabled": true,
+      "description": "Market intelligence",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "market_intel": "scripts/market_trends.py report",
+        "competitive": "scripts/competitive_intel.py scan",
+        "signals": "scripts/signal_scanner.py"
+      }
+    },
+    "kalendar": {
+      "enabled": true,
+      "description": "Calendar management",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "meeting_prep": "scripts/meeting_prep.py --upcoming",
+        "fathom_sync": "scripts/fathom_sync.py",
+        "auto_next_step": "scripts/auto_next_step.py --days 3"
+      }
+    },
+    "kontrolor": {
+      "enabled": true,
+      "description": "Quality assurance",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "anomaly_scan": "scripts/anomaly_detector.py scan",
+        "health_report": "scripts/deal_health_scorer.py",
+        "schema_check": "scripts/schema_validator.py validate"
+      }
+    },
+    "archivar": {
+      "enabled": true,
+      "description": "Knowledge management",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "notion_sync": "scripts/notion_sync.py",
+        "knowledge_graph": "scripts/knowledge_graph.py build",
+        "dedup": "scripts/knowledge_dedup.py scan"
+      }
+    },
+    "udrzbar": {
+      "enabled": true,
+      "description": "System maintenance",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "backup": "scripts/backup_system.py snapshot",
+        "status_page": "scripts/status_page.py"
+      }
+    },
+    "hlidac": {
+      "enabled": true,
+      "description": "Pipeline guard",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "pipeline_guard": "scripts/pipeline_automation.py check",
+        "activity_guard": "scripts/pipedrive_open_deal_activity_guard.py"
+      }
+    },
+    "planovac": {
+      "enabled": true,
+      "description": "Strategic planning",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "strategic_brief": "scripts/strategic_brief.py generate",
+        "weekly_intel": "scripts/weekly_intel.py"
+      }
+    },
+    "spojka": {
+      "enabled": true,
+      "description": "Communication hub",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "daily_digest": "scripts/daily_digest.py preview",
+        "standup": "scripts/standup_generator.py",
+        "scorecard": "scripts/adhd-scorecard.py",
+        "nudge": "scripts/motivational_nudge.py auto"
+      }
+    },
+    "vyvojar": {
+      "enabled": true,
+      "description": "System development",
+      "model": "claude-sonnet-4-6",
+      "max_concurrent": 1,
+      "scripts": {
+        "report": "scripts/report_generator.py generate"
+      }
+    }
+  }
+}

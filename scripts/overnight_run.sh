@@ -33,6 +33,7 @@ STEPS_OK=0
 TOTAL_STEPS=0
 
 # Timeout wrapper — kill any script that runs > 5 minutes
+# macOS doesn't have `timeout`, so we use a background process + wait
 run_step() {
     local name="$1"
     shift
@@ -40,15 +41,31 @@ run_step() {
     echo "" | tee -a "$LOG"
     echo "--- [$TOTAL_STEPS] $name ---" | tee -a "$LOG"
 
-    timeout 300 "$@" 2>&1 | tail -5 | tee -a "$LOG"
-    local exit_code=${PIPESTATUS[0]}
+    # Run with 5-minute timeout
+    "$@" &
+    local pid=$!
+    local i=0
+    local timed_out=0
+    while kill -0 "$pid" 2>/dev/null; do
+        sleep 1
+        i=$((i + 1))
+        if [ "$i" -ge 300 ]; then
+            kill "$pid" 2>/dev/null
+            sleep 1
+            kill -9 "$pid" 2>/dev/null
+            timed_out=1
+            break
+        fi
+    done
+    wait "$pid" 2>/dev/null
+    local exit_code=$?
 
-    if [ "$exit_code" -eq 0 ]; then
-        STEPS_OK=$((STEPS_OK + 1))
-        echo "  OK" | tee -a "$LOG"
-    elif [ "$exit_code" -eq 124 ]; then
+    if [ "$timed_out" -eq 1 ]; then
         ERRORS=$((ERRORS + 1))
         echo "  TIMEOUT (5min)" | tee -a "$LOG"
+    elif [ "$exit_code" -eq 0 ]; then
+        STEPS_OK=$((STEPS_OK + 1))
+        echo "  OK" | tee -a "$LOG"
     else
         ERRORS=$((ERRORS + 1))
         echo "  ERROR (exit $exit_code)" | tee -a "$LOG"
@@ -88,6 +105,9 @@ run_step "DEAL VELOCITY" python3 scripts/deal_velocity.py velocity
 run_step "SUCCESS PREDICTIONS" python3 scripts/success_predictor.py predict
 run_step "ENGAGEMENT SCORING" python3 scripts/engagement_scorer.py score
 run_step "PIPELINE AUTOMATION" python3 scripts/pipeline_automation.py check
+run_step "STALE CLEANUP" python3 scripts/stale_deal_cleanup.py --report
+run_step "PIPEDRIVE WRITEBACK" python3 scripts/pipedrive_writeback.py
+run_step "AUTO NEXT-STEP" python3 scripts/auto_next_step.py --days 3
 
 # ════════════════════════════════════════════════════════════
 # PHASE 4: INTELLIGENCE

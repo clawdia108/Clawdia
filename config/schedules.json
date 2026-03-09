@@ -1,0 +1,48 @@
+{
+  "schedules": {
+    "obchodak": {
+      "deal_scoring": {"hours": [6], "interval_hours": 4},
+      "deal_health": {"hours": [12]},
+      "stale_cleanup": {"weekdays": [0], "hours": [6]},
+      "writeback": {"hours": [6]}
+    },
+    "textar": {
+      "email_draft": {"hours": [8]},
+      "spin_prep": {"hours": [8]},
+      "followup": {"hours": [14]}
+    },
+    "postak": {
+      "morning_prep": {"hours": [7]},
+      "email_sequences": {"hours": [14]}
+    },
+    "strateg": {
+      "signals": {"weekdays": [0, 2, 4], "hours": [12]},
+      "market_intel": {"weekdays": [0], "hours": [9]}
+    },
+    "kalendar": {
+      "meeting_prep": {"hours": [7]},
+      "fathom_sync": {"hours": [13]},
+      "auto_next_step": {"hours": [13]}
+    },
+    "kontrolor": {
+      "health_report": {"hours": [12]},
+      "anomaly_scan": {"hours": [6, 18]}
+    },
+    "archivar": {
+      "notion_sync": {"hours": [8, 18]}
+    },
+    "spojka": {
+      "nudge": {"hours": [7, 12, 15, 18]},
+      "daily_digest": {"hours": [7]},
+      "scorecard": {"hours": [20]}
+    },
+    "hlidac": {
+      "activity_guard": {"interval_hours": 3}
+    },
+    "planovac": {
+      "weekly_intel": {"weekdays": [6], "hours": [18]}
+    }
+  },
+  "work_hours": {"start": 6, "end": 20},
+  "timezone": "Europe/Prague"
+}

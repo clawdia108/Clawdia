@@ -426,8 +426,8 @@ def generate_spin_brief(deal, secrets):
     existing_notes = existing_notes[:2000] or "Žádné poznámky."
 
     # Call transcripts — try Fathom first, then TLDV as fallback
-    fathom_key = secrets.get("FATHOM_API_KEY") or "OhEX8Iok__OfUZhjkSjyRw.zv89cbVZ_jO6iQLRJqRbKuTCZBgmF8cL4GqD39WHmTw"
-    transcript_data = search_fathom_notes(deal, token)
+    fathom_key = secrets.get("FATHOM_API_KEY")
+    transcript_data = search_fathom_notes(deal, fathom_key)
     if not transcript_data:
         transcript_data = search_fathom_api(fathom_key, org_name, person_name)
     if not transcript_data:
@@ -623,7 +623,8 @@ def main():
     secrets = load_secrets()
     token = secrets.get("PIPEDRIVE_API_TOKEN") or secrets.get("PIPEDRIVE_TOKEN")
     if not token:
-        token = "8a21711bcee8c0a34e7cfeefbeba2e554444d5d0"
+        log("No Pipedrive token found in secrets")
+        return 1
 
     dry_run = "--dry-run" in sys.argv
     specific_deal = None

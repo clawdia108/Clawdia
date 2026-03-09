@@ -1,23 +1,21 @@
 # Sales Scorecard — 2026-03-09
 
-## Today: 45 pts  [█████████░░░░░░░░░░░]
+## Today: 55 pts  [███████████░░░░░░░░░]
 
 ### Activities
   Pipeline reviewed (+15)
+  Stale deals identified (+10)
   Lead scoring complete (+10)
   All 7 agents healthy! (+20)
 
 ## Stats
 | Metric | Value |
 |--------|-------|
-| Total Points | 464 |
+| Total Points | 474 |
 | Current Streak | 3 days 🔥🔥🔥 |
 | Best Streak | 3 days |
 | Level | Pipeline Warrior |
-| Next: Revenue Ninja (136 pts to go) [██████████░░░░░░░░░] | |
-
-## NEW ACHIEVEMENTS UNLOCKED!
-  **On Fire** — 3-day streak
+| Next: Revenue Ninja (126 pts to go) [███████████░░░░░░░░] | |
 
 ## Achievements: 5/15 [██████░░░░░░░░░░░░░░]
   ✅ First 50-Point Day
@@ -37,7 +35,7 @@
   ⬜ Consistency King
 
 ## Last 7 Days
-  2026-03-09:  45 pts █████████
+  2026-03-09:  55 pts ███████████
   2026-03-08: 197 pts ███████████████████████████████████████
   2026-03-07: 187 pts █████████████████████████████████████
 

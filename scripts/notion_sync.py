@@ -398,7 +398,10 @@ def main():
     if not notion_token:
         log("ERROR: NOTION_TOKEN not found in secrets")
         return 1
-    pipedrive_token = secrets.get("PIPEDRIVE_API_TOKEN") or secrets.get("PIPEDRIVE_TOKEN") or "8a21711bcee8c0a34e7cfeefbeba2e554444d5d0"
+    pipedrive_token = secrets.get("PIPEDRIVE_API_TOKEN") or secrets.get("PIPEDRIVE_TOKEN")
+    if not pipedrive_token:
+        log("No Pipedrive token found in secrets")
+        return 1
 
     mode = "full"
     analysis_file = None
